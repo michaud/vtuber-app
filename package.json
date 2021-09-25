@@ -1,0 +1,21 @@
+{
+  "name": "vtuber-app",
+  "version": "0.0.1",
+  "description": "vtuber app using face recognition",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "author": "mv",
+  "license": "ISC",
+  "devDependencies": {
+    "@tensorflow-models/face-landmarks-detection": "0.0.3",
+    "@tensorflow/tfjs-backend-cpu": "^3.9.0",
+    "@tensorflow/tfjs-backend-wasm": "^3.9.0",
+    "@tensorflow/tfjs-backend-webgl": "^3.9.0",
+    "@tensorflow/tfjs-converter": "^3.9.0",
+    "@tensorflow/tfjs-core": "^3.9.0",
+    "parcel": "^2.0.0-rc.0"
+  }
+}
