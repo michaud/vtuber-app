@@ -83,7 +83,7 @@ class FaceMeshFaceGeometry extends BufferGeometry {
         let ptr = 0;
         this.face = face;
 
-        for (const p of face.scaledMesh) {
+        for (const p of face.mesh) {
 
             this.positions[ptr] = cameraFlipped
                 ? p[0] + 0.5 * this.w
@@ -103,7 +103,7 @@ class FaceMeshFaceGeometry extends BufferGeometry {
                 const ar = this.h / this.w;
                 const scale = 2 * Math.sqrt(this.w / 1000);
 
-                for (const p of face.scaledMesh) {
+                for (const p of face.mesh) {
 
                     this.positions[ptr] = scale * (p[0] / this.w + 0.5);
                     this.positions[ptr + 1] = scale * (-p[1] / this.h + 0.5) * ar;

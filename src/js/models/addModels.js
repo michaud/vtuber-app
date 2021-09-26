@@ -1,5 +1,5 @@
 import models from "./models.js";
-import addModelToUIList from "../addModelToUIList.js";
+import addModelToUIList from "../ui/addModelToUIList.js";
 
 const addModels = (
     scene,

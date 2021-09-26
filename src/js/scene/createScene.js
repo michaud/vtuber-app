@@ -14,8 +14,9 @@ import {
 } from 'three';
 
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
-import paths from './paths.js';
+import paths from '../paths.js';
 import { RGBELoaderCallback } from './RGBELoading.js';
+import addOriginHelper from '../helpers/addOriginHelper.js';
 
 const createSene = () => {
 
@@ -78,12 +79,14 @@ const createSene = () => {
         RGBELoaderCallback(scene, pmremGenerator)
     );
 
+    addOriginHelper(scene);
+    
     return {
         renderer,
         scene,
         camera,
         canvas
-    };
-}
+    }
+};
 
 export default createSene;

@@ -3,7 +3,7 @@ const updateBowlerAction = (
     mesh
 ) => {
 
-    const scale = 9;
+    const scale = 7;
 
     const bolwerUpdate = (
         geom

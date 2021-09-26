@@ -3,7 +3,7 @@ const updateGlassesAction = (
     mesh
 ) => {
 
-    const scale = 9;
+    const scale = 8;
 
     const glassesUpdate = (
         geom

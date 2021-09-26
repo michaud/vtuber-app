@@ -3,12 +3,12 @@ import {
     Clock
 } from 'three';
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { FaceMeshFaceGeometry } from "./face.js";
+import { FaceMeshFaceGeometry } from "./face/face.js";
 
-import createSene from "./createScene.js";
+import createSene from "./scene/createScene.js";
 import addModels from './models/addModels.js';
-import setUpResize from './resizeUpdate.js';
-import addCameraViewControls from "./addCameraViewControls.js";
+import setUpResize from './scene/resizeUpdate.js';
+import addCameraViewControls from "./ui/addCameraViewControls.js";
 
 const init = (av) => {
 

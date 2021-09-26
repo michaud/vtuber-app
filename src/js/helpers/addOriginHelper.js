@@ -15,7 +15,7 @@ const addOriginHelper = (scene) => {
     dirz.normalize();
 
     const origin = new Vector3(0, 0, 0);
-    const length = 1;
+    const length = 10;
 
     const arrowHelperx = new ArrowHelper(dirx, origin, length, 0xff0000);
     const arrowHelpery = new ArrowHelper(diry, origin, length, 0x00ff00);

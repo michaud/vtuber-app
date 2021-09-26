@@ -3,7 +3,7 @@ const updateNoseAction = (
     mesh
 ) => {
 
-    const scale = 20;
+    const scale = 15;
 
     const noseUpdate = (
         geom,
