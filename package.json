@@ -16,6 +16,12 @@
     "@tensorflow/tfjs-backend-webgl": "^3.9.0",
     "@tensorflow/tfjs-converter": "^3.9.0",
     "@tensorflow/tfjs-core": "^3.9.0",
-    "parcel": "^2.0.0-rc.0"
+    "@types/three": "^0.132.1",
+    "parcel": "^2.0.0-rc.0",
+    "parcel-reporter-static-files-copy": "^1.3.0",
+    "three": "^0.132.2"
+  },
+  "staticFiles": {
+    "staticOutPath": "assets/"
   }
 }

@@ -1,16 +1,37 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <title>vtuber</title>
     <script src="../third_party/gum-av.js" type="module"></script>
     <script type="module" src="js/index.js"></script>
+    <link rel="stylesheet" href="./style/index.css">
 </head>
-
 <body>
-    <h1>vtuber!</h1>
     <gum-av></gum-av>
+    <canvas id="canvas"></canvas>
+    <div class="tools">
+        <ul id="actionList">
+        </ul>
+        <div id="view">
+            <div class="row">
+                <button class="btn-cv" id="btn_top" style="--i:0">top</button>
+            </div>
+            <div class="row">
+                <button class="btn-cv" id="btn_front" style="--i:1">front</button>
+            </div>
+            <div class="row">
+                <button class="btn-cv" id="btn_left" style="--i:2">left</button>
+                <button class="btn-cv" id="btn_right" style="--i:3">right</button>
+            </div>
+            <div class="row">
+                <button class="btn-cv" id="btn_back" style="--i:4">back</button>
+            </div>
+            <div class="row">
+                <button class="btn-cv" id="btn_bottom" style="--i:5">bottom</button>
+            </div>
+        </div>
+        <p id="status">Loading...</p>
+    </div>
 </body>
-
 </html>
