@@ -14,10 +14,9 @@ const start = async ()=> {
 
     await Promise.all([tf.setBackend('webgl'), av.ready()]);
 
-    render({
+    render(() => {status.textContent = ""})({
         ...init(av),
-        ...await getPredictions(status),
-        status
+        ...await getPredictions(status)
     });
 };
 
