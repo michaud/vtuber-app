@@ -2,9 +2,11 @@ import updates from "./updates.js";
 import detect from "./detect/detect.js";
 import detectors from "./detect/detectors.js";
 
-const render = (onInitialize, onFirstDetection) => {
+const render = (onInit, onFirstFaceDetect) => {
 
     const flipCamera = true;
+    let onInitialize = onInit;
+    let onFirstFaceDetection = onFirstFaceDetect;
 
     const rerender = async ({
         faceDetectionModel,
@@ -19,8 +21,8 @@ const render = (onInitialize, onFirstDetection) => {
         av
     })=> {
 
-        onFirstDetection && onFirstDetection();
-        onFirstDetection = undefined;
+        onFirstFaceDetection && onFirstFaceDetection();
+        onFirstFaceDetection = undefined;
 
         const faces = await faceDetectionModel.estimateFaces({
             input: av.video,
