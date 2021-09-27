@@ -1,5 +1,4 @@
 import models from "./models.js";
-import addModelToUIList from "../ui/addModelToUIList.js";
 
 const addModels = (
     scene,
@@ -17,21 +16,6 @@ const addModels = (
                 faceGeometry,
                 renderer,
                 camera,
-            );
-
-            const modelActionHandlers = Object
-                .keys(model.actions)
-                .reduce((acc, key) => ({
-                    ...acc,
-                    [key]: () => model.actions[key](threeTime)
-                })
-            );
-
-        
-            addModelToUIList(
-                model,
-                () => model.create(),
-                modelActionHandlers
             );
 
             return model;

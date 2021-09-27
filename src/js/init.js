@@ -9,6 +9,7 @@ import createSene from "./scene/createScene.js";
 import addModels from './models/addModels.js';
 import setUpResize from './scene/resizeUpdate.js';
 import addCameraViewControls from "./ui/addCameraViewControls.js";
+import addModelToUIList from "./ui/addModelToUIList.js";
 
 const init = (av) => {
 
@@ -42,6 +43,23 @@ const init = (av) => {
         renderer,
         camera
     );
+
+    updateActions.forEach(action => {
+
+        const modelActionHandlers = Object
+            .keys(action.actions)
+            .reduce((acc, key) => ({
+                ...acc,
+                [key]: () => action.actions[key](threeTime)
+            })
+        );
+
+        addModelToUIList(
+            action,
+            () => action.create(),
+            modelActionHandlers
+        )
+    });
 
     addCameraViewControls(camera);
 
