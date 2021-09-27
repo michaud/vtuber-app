@@ -7,8 +7,10 @@ import {
     Group
 } from 'three';
 
-import appConstants from '../../appConstants.js';
-import paths from '../../paths.js';
+import appConstants from '../../constants/appConstants.js';
+
+import paths from "../../constants/paths";
+
 import addActions from '../addActions.js';
 import addPlaneTextures from "./addPlaneTextures.js";
 import emojisActionDefinitions from './emojisActionDefinitions.js';

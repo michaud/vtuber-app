@@ -4,7 +4,8 @@ import { LoadingManager } from 'three';
 import glassesActionDefinitions from './glassesActionDefinitions';
 import updateGlassesAction from './updateGlassesAction';
 import addActions from '../addActions';
-import paths from '../../paths';
+import paths from '../../constants/paths';
+
 
 const addGlasses = (scene) => {
 

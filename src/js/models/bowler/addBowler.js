@@ -5,7 +5,8 @@ import { LoadingManager } from 'three';
 import updateBowlerAction from './updateBowlerAction';
 import bowlerActionDefinitions from './bowlerActionDefinitions';
 import addActions from '../addActions';
-import paths from '../../paths';
+import paths from '../../constants/paths';
+
 
 const addBowler = (scene) => {
 

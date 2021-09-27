@@ -1,5 +1,6 @@
 import { Vector3 } from 'three';
-import appConstants from '../../appConstants.js';
+import appConstants from '../../constants/appConstants.js';
+
 
 const updateEmojisAction = (
     _,

@@ -14,7 +14,7 @@ import {
 } from 'three';
 
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
-import paths from '../paths.js';
+import paths from "../constants/paths.js";
 import { RGBELoaderCallback } from './RGBELoading.js';
 import addOriginHelper from '../helpers/addOriginHelper.js';
 

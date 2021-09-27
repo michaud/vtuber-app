@@ -5,7 +5,8 @@ import {
     MeshStandardMaterial,
     TextureLoader,
 } from "three";
-import paths from "../../paths";
+import paths from "../../constants/paths";
+
 import addActions from "../addActions";
 import maskActionDefinitions from "./maskActionDefinitions";
 

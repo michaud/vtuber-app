@@ -1,5 +1,6 @@
 import { TextureLoader } from "three";
-import paths from "../../paths";
+import paths from "../../constants/paths";
+
 
 const addPlaneTextures = (imageList, planes, NUM_KEYPOINTS) => {
     // < 17 right eye

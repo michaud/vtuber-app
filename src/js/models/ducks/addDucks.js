@@ -8,7 +8,8 @@ import {
 import updateDuckAction from './updateDuckAction';
 import duckActionDefinitions from './duckActionDefinitions';
 import addActions from '../addActions';
-import paths from '../../paths';
+import paths from '../../constants/paths';
+
 
 const duckIds = ['000', '001', '002', '003', '004', '005', '006', '007'];
 

@@ -8,7 +8,7 @@ import {
 import updateBlowAction from './updateBlowAction';
 import blowActionDefinitions from './blowActionDefinitions';
 import addActions from '../addActions';
-import paths from '../../paths';
+import paths from '../../constants/paths';
 
 const addBlow = (scene, mixer) => {
 
