@@ -1,6 +1,4 @@
-import updates from "./updates.js";
-import detect from "./detect/detect.js";
-import detectors from "./detect/detectors.js";
+import updateWithFaceDetection from "./updateWithFaceDetection";
 
 const render = (onInit, onFirstFaceDetect) => {
 
@@ -24,29 +22,18 @@ const render = (onInit, onFirstFaceDetect) => {
         onFirstFaceDetection && onFirstFaceDetection();
         onFirstFaceDetection = undefined;
 
-        const faces = await faceDetectionModel.estimateFaces({
-            input: av.video,
-            flipHorizontal: flipCamera
-        });
-
+        
         const delta = threeTime.getDelta();
         mixer && mixer.update(delta);
-
-        // There's at least one face.
-        if (faces.length > 0) {
-            // Update face mesh geometry with new data.
-            faceGeometry.update(faces[0], flipCamera);
-
-            updates(
-                models,
-                faceGeometry,
-                threeTime.elapsedTime,
-                detect(
-                    detectors,
-                    faceGeometry
-                )
-            );
-        }
+        
+        updateWithFaceDetection(
+            faceDetectionModel,
+            av,
+            flipCamera,
+            faceGeometry,
+            models,
+            threeTime.elapsedTime
+        );
 
         controls.update();
 

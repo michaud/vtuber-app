@@ -2,7 +2,7 @@ import * as tf from '@tensorflow/tfjs-core';
 // Adds the WebGL backend to the global backend registry.
 import '@tensorflow/tfjs-backend-webgl';
 
-import render from './render.js';
+import render from './render/render.js';
 import { getFaceDetection } from './getFaceDetection.js';
 import init from './init.js';
 import {
