@@ -38,4 +38,24 @@ const addModelToUIList = (model, addModelHandler, modelActionHandlers) => {
     actionList.appendChild(listItem);
 };
 
-export default addModelToUIList;
+const addModelInteractions = models => {
+
+    models.forEach(model => {
+
+        const modelActionHandlers = Object
+            .keys(model.actions)
+            .reduce((acc, key) => ({
+                ...acc,
+                [key]: () => model.actions[key](threeTime)
+            })
+        );
+
+        addModelToUIList(
+            model,
+            () => model.create(),
+            modelActionHandlers
+        )
+    });
+};
+
+export default addModelInteractions;

@@ -9,7 +9,7 @@ import createSene from "./scene/createScene.js";
 import addModels from './models/addModels.js';
 import setUpResize from './scene/resizeUpdate.js';
 import addCameraViewControls from "./ui/addCameraViewControls.js";
-import addModelToUIList from "./ui/addModelToUIList.js";
+import addModelInteractions from './ui/addModelInteractions.js';
 
 const init = (av) => {
 
@@ -39,28 +39,9 @@ const init = (av) => {
         scene,
         mixer,
         faceGeometry,
-        threeTime,
-        renderer,
-        camera
     );
 
-    models.forEach(model => {
-
-        const modelActionHandlers = Object
-            .keys(model.actions)
-            .reduce((acc, key) => ({
-                ...acc,
-                [key]: () => model.actions[key](threeTime)
-            })
-        );
-
-        addModelToUIList(
-            model,
-            () => model.create(),
-            modelActionHandlers
-        )
-    });
-
+    addModelInteractions(models);
     addCameraViewControls(camera);
 
     return {

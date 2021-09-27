@@ -3,19 +3,14 @@ import models from "./models.js";
 const addModels = (
     scene,
     mixer,
-    faceGeometry,
-    threeTime,
-    renderer,
-    camera
+    faceGeometry
     ) => models.map(
         add => {
 
             const model = add(
                 scene,
                 mixer,
-                faceGeometry,
-                renderer,
-                camera,
+                faceGeometry
             );
 
             return model;
