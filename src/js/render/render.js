@@ -1,12 +1,9 @@
 import updateWithFaceDetection from "./updateWithFaceDetection";
 
-const render = (onInit, onFirstFaceDetect) => {
-
-    const flipCamera = true;
-    let onInitialize = onInit;
-    let onFirstFaceDetection = onFirstFaceDetect;
-
-    const rerender = async ({
+const render = (
+    onInit,
+    onFirstFaceDetect,
+    {
         faceDetectionModel,
         models,
         controls,
@@ -17,17 +14,24 @@ const render = (onInit, onFirstFaceDetect) => {
         renderer,
         camera,
         av
-    })=> {
+    }
+) => {
 
+    const flipCamera = true;
+    let onInitialize = onInit;
+    let onFirstFaceDetection = onFirstFaceDetect;
+
+    const rerender = async ()=> {
+
+        //execute once
         if(onFirstFaceDetection) {
             onFirstFaceDetection();
             onFirstFaceDetection = undefined;
         } 
 
-        
         const delta = threeTime.getDelta();
         mixer && mixer.update(delta);
-        
+
         updateWithFaceDetection(
             faceDetectionModel,
             av,
@@ -41,19 +45,9 @@ const render = (onInit, onFirstFaceDetect) => {
 
         renderer.render(scene, camera);
 
-        requestAnimationFrame(() => rerender({
-            faceDetectionModel,
-            models,
-            controls,
-            scene,
-            mixer,
-            faceGeometry,
-            threeTime,
-            renderer,
-            camera,
-            av
-        }));
+        requestAnimationFrame(() => rerender());
 
+        //execute once
         if(onInitialize) {
             onInitialize();
             onInitialize = undefined;   

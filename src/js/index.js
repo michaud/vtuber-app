@@ -20,13 +20,12 @@ const start = async ()=> {
 
     render(
         onClear(status),
-        onFirstFaceDetection(status)
-    )({
-        ...init(av),
-        ...await getFaceDetection(
-            onLoadModel(status)
-        )
-    });
+        onFirstFaceDetection(status),
+        {
+            ...init(av),
+            ...await getFaceDetection(onLoadModel(status))
+        }
+    )();
 };
 
 start();
