@@ -1,4 +1,4 @@
-import updates from "./updates.js";
+import updates from "../render/updates.js";
 import detect from "../detect/detect.js";
 import detectors from "../detect/detectors.js";
 

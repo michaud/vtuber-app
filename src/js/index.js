@@ -3,7 +3,7 @@ import * as tf from '@tensorflow/tfjs-core';
 import '@tensorflow/tfjs-backend-webgl';
 
 import render from './render/render.js';
-import { getFaceDetection } from './getFaceDetection.js';
+import { getFaceDetection } from './faceDetection/getFaceDetection.js';
 import init from './init.js';
 import {
     onClear,

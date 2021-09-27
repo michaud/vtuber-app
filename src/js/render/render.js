@@ -1,4 +1,4 @@
-import updateWithFaceDetection from "./updateWithFaceDetection";
+import updateWithFaceDetection from "./../faceDetection/updateWithFaceDetection";
 
 const render = (
     onInit,
