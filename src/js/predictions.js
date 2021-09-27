@@ -4,7 +4,7 @@ export const getPredictions = async (status) => {
 
     status.textContent = "Loading model...";
 
-    const model = await faceLandmarksDetection.load(
+    const faceDetectionModel = await faceLandmarksDetection.load(
         faceLandmarksDetection.SupportedPackages.mediapipeFacemesh,
         { maxFaces: 1 }
     );
@@ -12,6 +12,6 @@ export const getPredictions = async (status) => {
     status.textContent = "Detecting face...";
 
     return {
-        model
+        faceDetectionModel
     };
 };

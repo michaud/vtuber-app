@@ -35,7 +35,7 @@ const init = (av) => {
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.update();
     
-    const updateActions = addModels(
+    const models = addModels(
         scene,
         mixer,
         faceGeometry,
@@ -44,19 +44,19 @@ const init = (av) => {
         camera
     );
 
-    updateActions.forEach(action => {
+    models.forEach(model => {
 
         const modelActionHandlers = Object
-            .keys(action.actions)
+            .keys(model.actions)
             .reduce((acc, key) => ({
                 ...acc,
-                [key]: () => action.actions[key](threeTime)
+                [key]: () => model.actions[key](threeTime)
             })
         );
 
         addModelToUIList(
-            action,
-            () => action.create(),
+            model,
+            () => model.create(),
             modelActionHandlers
         )
     });
@@ -64,7 +64,7 @@ const init = (av) => {
     addCameraViewControls(camera);
 
     return {
-        updateActions,
+        models,
         faceGeometry,
         controls,
         scene,

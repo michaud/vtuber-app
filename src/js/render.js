@@ -3,8 +3,8 @@ import detect from "./detect/detect.js";
 import detectors from "./detect/detectors.js";
 
 const render = async ({
-    model,
-    updateActions,
+    faceDetectionModel,
+    models,
     controls,
     scene,
     mixer,
@@ -18,7 +18,7 @@ const render = async ({
 
     const flipCamera = true;
 
-    const faces = await model.estimateFaces({
+    const faces = await faceDetectionModel.estimateFaces({
         input: av.video,
         flipHorizontal: flipCamera
     });
@@ -37,7 +37,7 @@ const render = async ({
         faceGeometry.update(faces[0], flipCamera);
 
         updates(
-            updateActions,
+            models,
             faceGeometry,
             threeTime.elapsedTime,
             detect(
@@ -52,8 +52,8 @@ const render = async ({
     renderer.render(scene, camera);
 
     requestAnimationFrame(() => render({
-        model,
-        updateActions,
+        faceDetectionModel,
+        models,
         controls,
         scene,
         mixer,
