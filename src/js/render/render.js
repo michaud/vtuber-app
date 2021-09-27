@@ -19,8 +19,10 @@ const render = (onInit, onFirstFaceDetect) => {
         av
     })=> {
 
-        onFirstFaceDetection && onFirstFaceDetection();
-        onFirstFaceDetection = undefined;
+        if(onFirstFaceDetection) {
+            onFirstFaceDetection();
+            onFirstFaceDetection = undefined;
+        } 
 
         
         const delta = threeTime.getDelta();
@@ -52,8 +54,10 @@ const render = (onInit, onFirstFaceDetect) => {
             av
         }));
 
-        onInitialize && onInitialize();
-        onInitialize = undefined;
+        if(onInitialize) {
+            onInitialize();
+            onInitialize = undefined;   
+        }
     };
 
     return rerender;
