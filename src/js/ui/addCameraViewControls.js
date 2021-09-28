@@ -30,6 +30,6 @@ const addCameraViewControls = (camera, gui) => {
     btnRight.onclick = onClickViewCamera('right');
     btnFront.onclick = onClickViewCamera('front');
     btnBack.onclick = onClickViewCamera('back');
-}
+};
 
 export default addCameraViewControls;

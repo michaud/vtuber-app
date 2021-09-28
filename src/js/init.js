@@ -12,6 +12,7 @@ import addCameraViewControls from "./ui/addCameraViewControls.js";
 import addModelInteractions from './ui/addModelInteractions.js';
 import addComposer from './composer/addComposer.js';
 import * as dat from 'dat.gui';
+import addDebugTools from './ui/addDebugTools.js';
 
 const init = (av) => {
 
@@ -47,8 +48,9 @@ const init = (av) => {
 
     const composer = addComposer(scene, camera, renderer, gui);
 
-    addModelInteractions(models, threeTime, gui);
-    addCameraViewControls(camera, gui);
+    addModelInteractions(models, threeTime);
+    addCameraViewControls(camera);
+    addDebugTools(scene);
 
     return {
         models,

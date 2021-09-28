@@ -10,8 +10,7 @@ import {
     ACESFilmicToneMapping,
     PMREMGenerator,
     LoadingManager,
-    UnsignedByteType,
-    ReinhardToneMapping
+    UnsignedByteType
 } from 'three';
 
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
@@ -32,7 +31,7 @@ const createSene = () => {
 
     renderer.toneMapping = ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1;
-    //renderer.physicallyCorrectLights = true;
+    renderer.physicallyCorrectLights = true;
 
     renderer.shadowMap.autoUpdate = true;
     renderer.receiveShadow = true;
@@ -80,8 +79,6 @@ const createSene = () => {
         RGBELoaderCallback(scene, pmremGenerator)
     );
 
-    addOriginHelper(scene);
-    
     return {
         renderer,
         scene,

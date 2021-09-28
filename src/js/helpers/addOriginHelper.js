@@ -1,5 +1,6 @@
 import {
     ArrowHelper,
+    Group,
     Vector3
 } from "three";
 
@@ -20,9 +21,17 @@ const addOriginHelper = (scene) => {
     const arrowHelperx = new ArrowHelper(dirx, origin, length, 0xff0000);
     const arrowHelpery = new ArrowHelper(diry, origin, length, 0x00ff00);
     const arrowHelperz = new ArrowHelper(dirz, origin, length, 0x0000ff);
-    scene.add(arrowHelperx);
-    scene.add(arrowHelpery);
-    scene.add(arrowHelperz);
+
+    const group = new Group();
+    group.name = 'origin';
+
+    group.add(arrowHelperx);
+    group.add(arrowHelpery);
+    group.add(arrowHelperz);
+
+    scene.add(group);
+
+    return group;
 };
 
 export default addOriginHelper;
