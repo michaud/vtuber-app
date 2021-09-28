@@ -42,6 +42,7 @@ const init = (av) => {
         scene,
         mixer,
         faceGeometry,
+        ['emojis']
     );
 
     const gui = new dat.GUI();
