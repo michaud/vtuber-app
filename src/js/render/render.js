@@ -13,7 +13,8 @@ const render = (
         threeTime,
         renderer,
         camera,
-        av
+        av,
+        composer
     }
 ) => {
 
@@ -43,8 +44,8 @@ const render = (
 
         controls.update();
 
-        renderer.render(scene, camera);
-
+        //renderer.render(scene, camera);
+        composer.render();
         requestAnimationFrame(() => rerender());
 
         //execute once

@@ -21,14 +21,16 @@ const addModelToUIList = (model, addModelHandler, modelActionHandlers) => {
 
     const content = document.createElement('div');
     content.classList.add(['content']);
+
     Object.keys(model.actions).map(key => {
+
         const button = document.createElement('button');
         button.classList.add(['btn-cv']);
         button.onclick = modelActionHandlers[key];
 
         button.appendChild(document.createTextNode(key))
         content.appendChild(button)
-    })
+    });
 
     detail.appendChild(summary);
     detail.appendChild(content);
@@ -38,7 +40,7 @@ const addModelToUIList = (model, addModelHandler, modelActionHandlers) => {
     actionList.appendChild(listItem);
 };
 
-const addModelInteractions = models => {
+const addModelInteractions = (models, threeTime) => {
 
     models.forEach(model => {
 

@@ -10,6 +10,8 @@ import addModels from './models/addModels.js';
 import setUpResize from './scene/resizeUpdate.js';
 import addCameraViewControls from "./ui/addCameraViewControls.js";
 import addModelInteractions from './ui/addModelInteractions.js';
+import addComposer from './composer/addComposer.js';
+import * as dat from 'dat.gui';
 
 const init = (av) => {
 
@@ -41,8 +43,12 @@ const init = (av) => {
         faceGeometry,
     );
 
-    addModelInteractions(models);
-    addCameraViewControls(camera);
+    const gui = new dat.GUI();
+
+    const composer = addComposer(scene, camera, renderer, gui);
+
+    addModelInteractions(models, threeTime, gui);
+    addCameraViewControls(camera, gui);
 
     return {
         models,
@@ -53,6 +59,7 @@ const init = (av) => {
         faceGeometry,
         threeTime,
         renderer,
+        composer,
         camera,
         av
     };
