@@ -15,9 +15,9 @@ const updateWithFaceDetection = async (
         input: av.video,
         flipHorizontal: flipCamera
     });
-    // There's at least one face.
+    /* There's at least one face. */
     if (faces.length > 0) {
-        // Update face mesh geometry with new data.
+        /* Update face mesh geometry with new data. */
         faceGeometry.update(faces[0], flipCamera);
 
         updates(

@@ -23,7 +23,7 @@ const switchToCirclesAction = (
                 plane.children[0].geometry = new PlaneGeometry(1, 1);
         });
 
-        //remove yourself from the actionList
+        /* remove yourself from the actionList */
         const idx = actionList.findIndex(item => item.name === name);
         actionList.splice(idx, 1);
     };

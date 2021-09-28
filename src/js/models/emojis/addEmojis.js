@@ -16,7 +16,7 @@ import addPlaneTextures from "./addPlaneTextures.js";
 import emojisActionDefinitions from './emojisActionDefinitions.js';
 import updateEmojisAction from './updateEmojisAction.js';
 
-const addEmojis = scene => {
+const addEmojis = (scene, _, faceGeometry) => {
 
     const mesh = [];
     const updateActions = [];
@@ -49,7 +49,7 @@ const addEmojis = scene => {
         
             const texture = new TextureLoader().load(`${paths.profilePics}empty.png`);
 
-            const geometry = new PlaneGeometry(0.9, 0.9);
+            const geometry = new PlaneGeometry(0.5, 0.5);
             const material = new MeshStandardMaterial({
                 side: DoubleSide,
                 map: texture,
@@ -60,7 +60,7 @@ const addEmojis = scene => {
             const plane = new Mesh(geometry, material);
             plane.frustumCulled = false;
 
-            //isolate for transforms
+            /* isolate for transforms */
             const group = new Group();
 
             group.add(plane);

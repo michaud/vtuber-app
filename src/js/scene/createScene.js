@@ -21,7 +21,7 @@ import addOriginHelper from '../helpers/addOriginHelper.js';
 const createSene = () => {
 
     const canvas = document.querySelector("canvas");
-    // Set a background color, or change alpha to false for a solid canvas.
+    /* Set a background color, or change alpha to false for a solid canvas. */
     const renderer = new WebGLRenderer({ antialias: true, alpha: true, canvas });
     // renderer.setClearColor(0x202020);
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -42,7 +42,7 @@ const createSene = () => {
     const scene = new Scene();
     const camera = new OrthographicCamera(1, 1, 1, 1, -1000, 1000);
 
-    // Add lights.
+    /* Add lights */
     const spotLight = new SpotLight(0xffffff, 0.8);
     spotLight.position.set(0.5, 0.5, 1);
     spotLight.position.multiplyScalar(400);

@@ -25,7 +25,7 @@ const init = (av) => {
     const mixer = new AnimationMixer(scene);
     const threeTime = new Clock();
     
-    // Create a new geometry helper.
+    /* Create a new geometry helper */
     const faceGeometry = new FaceMeshFaceGeometry();
     
     setUpResize(

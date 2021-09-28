@@ -13,16 +13,11 @@ const addSobolPass = ({
         sobol: false
     };
 
-    // color to grayscale conversion
+    /* color to grayscale conversion */
     const effectGrayScale = new ShaderPass(LuminosityShader);
 
     composer.addPass( renderScene );
     composer.addPass(effectGrayScale);
-
-    // you might want to use a gaussian blur filter before
-    // the next pass to improve the result of the Sobel operator
-
-    // Sobel operator
 
     effectSobel = new ShaderPass(SobelOperatorShader);
     effectSobel.uniforms['resolution'].value.x = window.innerWidth * window.devicePixelRatio;

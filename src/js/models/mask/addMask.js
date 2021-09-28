@@ -21,12 +21,12 @@ const addMask = (
 
     const create = () => {
 
-        // Load textures for mask material.
+        /* Load textures for mask material. */
         const colorTexture = new TextureLoader().load(`${paths.mask}mesh_map.jpg`);
         // const aoTexture = new TextureLoader().load("../../assets/ao.jpg");
         // const alphaTexture = new TextureLoader().load("../../assets/mask.png");
 
-        // Create material for mask.
+        /* Create material for mask. */
         const material = new MeshStandardMaterial({
             // color: 0xFF0000,
             // roughness: 0.8,
@@ -39,7 +39,7 @@ const addMask = (
             side: DoubleSide,
         });
 
-        // Create mask mesh.
+        /* Create mask mesh. */
         const mask = new Mesh(faceGeometry, material);
         scene.add(mask);
         mask.receiveShadow = mask.castShadow = false;

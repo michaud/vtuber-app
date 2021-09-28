@@ -24,7 +24,7 @@ const render = (
 
     const rerender = async ()=> {
 
-        //execute once
+        /* execute once */
         if(onFirstFaceDetection) {
             onFirstFaceDetection();
             onFirstFaceDetection = undefined;
@@ -48,7 +48,7 @@ const render = (
         composer.render();
         requestAnimationFrame(() => rerender());
 
-        //execute once
+        /* execute once */
         if(onInitialize) {
             onInitialize();
             onInitialize = undefined;   

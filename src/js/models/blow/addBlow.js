@@ -19,8 +19,7 @@ const addBlow = (scene, mixer) => {
     const create = () => {
 
         const gltfLoadmanager = new LoadingManager();
-        // ./node_modules/three/examples/js/libs/draco/draco_wasm_wrapper.js
-        // ./node_modules/three/examples/js/libs/draco/draco_decoder.wasm
+
         const dracoLoader = new DRACOLoader();
         dracoLoader.setDecoderPath(paths.decoder);
 

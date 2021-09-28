@@ -76,11 +76,11 @@ const displaceAction = (
 
             } else {
 
-                //reset
+                /* reset */
                 startReveal = undefined;
                 revealIndex = 0;
 
-                //remove yourself from the actionList
+                /* remove yourself from the actionList */
                 const idx = actionList.findIndex(item => item.name === name);
                 actionList.splice(idx, 1);
             }

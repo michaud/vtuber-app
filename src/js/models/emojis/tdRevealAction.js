@@ -36,7 +36,7 @@ const tdRevealAction = (
                 revealIndex = 0;
                 mesh.forEach(plane => plane.children[0].visible = true);
                 
-                //remove yourself from the actionList
+                /* remove yourself from the actionList */
                 const idx = actionList.findIndex(item => item.name === name);
                 actionList.splice(idx, 1);
             }

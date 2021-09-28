@@ -10,7 +10,7 @@ const addOriginHelper = (scene) => {
     const diry = new Vector3(0, 1, 0);
     const dirz = new Vector3(0, 0, 1);
 
-    //normalize the direction vector (convert to vector of length 1)
+    /* normalize the direction vector (convert to vector of length 1) */
     dirx.normalize();
     diry.normalize();
     dirz.normalize();

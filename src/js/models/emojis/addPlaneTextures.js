@@ -4,7 +4,7 @@ import paths from "../../constants/paths";
 
 
 const addPlaneTextures = (imageList, planes) => {
-    // < 17 right eye
+    /* index < 17 right eye */
     const eyes = [33, 246, 161, 160, 159, 158, 157, 173, 133, 155, 154, 153, 145, 144, 163, 7, 243,
                   263, 466, 388, 387, 386, 385, 384, 398, 362, 381, 380, 374, 373, 390, 249, 463];
     const imageCount = imageList.length - 1;

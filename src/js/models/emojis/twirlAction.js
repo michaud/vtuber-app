@@ -38,7 +38,7 @@ const twirlAction = (
                 start = undefined;
                 stepIndex = 0;
                 
-                //remove yourself from the actionList
+                /* remove yourself from the actionList */
                 const idx = actionList.findIndex(item => item.name === name);
                 mesh[geomIndex].children[0].scale.set(oriScale.x, oriScale.y, oriScale.z);
                 actionList.splice(idx, 1);
