@@ -1,13 +1,28 @@
 import { Vector3 } from 'three';
 import appConstants from '../../constants/appConstants.js';
+import {
+    faceFeatureMapping,
+    faceFeatureScaleFactor
+} from './faceFeatureMapping.js';
 
+const getScaleFactorForIndex = (i, faceFeatureMapping) => {
+
+    let scaleFactor = 1;
+    Object.keys(faceFeatureMapping).map(key => {
+        if(faceFeatureMapping[key].indexOf(i) > -1) {
+            scaleFactor = faceFeatureScaleFactor[key];
+        }
+    });
+
+    return scaleFactor;
+};
 
 const updateEmojisAction = (
     _,
     mesh
 ) => {
 
-    const scale = 8;
+    const scale = 7;
 
     const emojisUpdate = (
         geom,
@@ -40,7 +55,8 @@ const updateEmojisAction = (
 
             norm.add(pos);
             geom.attributes.position.needsUpdate = true;
-            mesh[i].scale.setScalar(scale * track.scale);
+            const scaleFactor = getScaleFactorForIndex(i, faceFeatureMapping);
+            mesh[i].scale.setScalar(scale * scaleFactor * track.scale);
             mesh[i].lookAt(norm);
         }
     };

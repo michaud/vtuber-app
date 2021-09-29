@@ -10,7 +10,7 @@ const updates = (
             geom,
             timeStamp
         );
-        
+
         if(detections.length > 0) action.actions.detections && action.actions.detections(detections);
     }
 );

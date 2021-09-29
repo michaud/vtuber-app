@@ -6,11 +6,8 @@ const getAction = (
     updateActions,
     mesh,
     animations
-) => () => hasAction(
-    update,
-    updateActions
-) && updateActions.push(
-    action(
+) => () => hasAction(update, updateActions) && 
+    updateActions.push(action(
         updateActions,
         mesh,
         animations
@@ -21,8 +18,7 @@ const addActions = (
     updateActions,
     mesh,
     actionDefinitions,
-    animations,
-    detections = []
+    animations
 ) => {
 
     const actions = Object
@@ -40,8 +36,7 @@ const addActions = (
                 action,
                 updateActions,
                 mesh,
-                animations,
-                detections
+                animations
             )
         })
     }

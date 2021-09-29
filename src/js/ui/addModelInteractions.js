@@ -22,15 +22,17 @@ const addModelToUIList = (model, addModelHandler, modelActionHandlers) => {
     const content = document.createElement('div');
     content.classList.add(['content']);
 
-    Object.keys(model.actions).map(key => {
+    Object.keys(model.actions)
+        .filter(item => item !== 'detections')
+        .map(key => {
 
-        const button = document.createElement('button');
-        button.classList.add(['btn-cv']);
-        button.onclick = modelActionHandlers[key];
+            const button = document.createElement('button');
+            button.classList.add(['btn-cv']);
+            button.onclick = modelActionHandlers[key];
 
-        button.appendChild(document.createTextNode(key))
-        content.appendChild(button)
-    });
+            button.appendChild(document.createTextNode(key))
+            content.appendChild(button)
+        });
 
     detail.appendChild(summary);
     detail.appendChild(content);

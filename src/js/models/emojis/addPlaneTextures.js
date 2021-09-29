@@ -17,7 +17,7 @@ const addPlaneTextures = (imageList, planes) => {
             const fileName = imageList[rndImgIndex];
             const texture = new TextureLoader().load(`${paths.profilePics}${fileName}`);
 
-            planes[i].children[0].material.opacity = 1.0;
+            planes[i].children[0].material.opacity = 1;
             planes[i].children[0].material.map = texture;
         }
     }

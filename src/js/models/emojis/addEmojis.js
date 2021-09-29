@@ -1,10 +1,10 @@
 import {
     TextureLoader,
-    PlaneGeometry,
     Mesh,
     DoubleSide,
     MeshStandardMaterial,
-    Group
+    Group,
+    CircleGeometry
 } from 'three';
 
 import appConstants from '../../constants/appConstants.js';
@@ -49,7 +49,7 @@ const addEmojis = (scene, _, faceGeometry) => {
         
             const texture = new TextureLoader().load(`${paths.profilePics}empty.png`);
 
-            const geometry = new PlaneGeometry(0.5, 0.5);
+            const geometry = new CircleGeometry(.66, 36);
             const material = new MeshStandardMaterial({
                 side: DoubleSide,
                 map: texture,
