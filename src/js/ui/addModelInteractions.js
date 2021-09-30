@@ -38,7 +38,7 @@ const addModelInteractions = (models, threeTime, pane) => {
 
     const folder = pane.addFolder({
         title: 'models',
-        expanded: true,
+        expanded: false,
     });
     models.forEach(model => {
 

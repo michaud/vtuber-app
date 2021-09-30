@@ -11,7 +11,7 @@ const addComposer = (scene, camera, renderer, pane) => {
 
     const folder = pane.addFolder({
         title: 'post processing',
-        expanded: true,
+        expanded: false,
     });
 
     effectPasses.forEach(pass => {
