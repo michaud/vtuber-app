@@ -11,47 +11,41 @@ import setUpResize from './scene/resizeUpdate.js';
 import addCameraViewControls from "./ui/addCameraViewControls.js";
 import addModelInteractions from './ui/addModelInteractions.js';
 import addComposer from './composer/addComposer.js';
-import {
-    Pane
-} from 'tweakpane';
-// import * as EssentialsPlugin from '@tweakpane/plugin-essentials';
 import addDebugTools from './ui/addDebugTools.js';
 
-const init = (av) => {
+const init = (
+    av,
+    pane
+) => {
 
     const {
         renderer,
         scene,
         camera
     } = createSene();
-    
+
     const mixer = new AnimationMixer(scene);
     const threeTime = new Clock();
-    
+
     /* Create a new geometry helper */
     const faceGeometry = new FaceMeshFaceGeometry();
-    
+
     setUpResize(
         av,
         camera,
         faceGeometry,
         renderer
     );
-    
+
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.update();
-    
+
     const models = addModels(
         scene,
         mixer,
         faceGeometry,
         ['emojis']
     );
-
-    const pane = new Pane();
-    pane.containerElem_.style.width = '250px';
-    pane.containerElem_.style.left = 0;
-    // pane.registerPlugin(EssentialsPlugin);
 
     addModelInteractions(models, threeTime, pane);
     pane.addSeparator();
