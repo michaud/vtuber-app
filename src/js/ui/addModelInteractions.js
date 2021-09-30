@@ -1,63 +1,60 @@
-const addModelToUIList = (model, addModelHandler, modelActionHandlers) => {
+const addModelToUIList = (
+    model,
+    addModelHandler,
+    modelActionHandlers,
+    pane
+) => {
 
-    const actionList = document.querySelector("#actionList");
-    const detail = document.createElement('details');
-    const summary = document.createElement('summary');
+    const buttonList = Object.keys(modelActionHandlers)
+        .reduce((acc, item, idx) => {
+            if(idx % 2  === 0) {
+                acc.push([item])
+            } else {
+                acc[acc.length -1].push(item);
+            }
 
-    const summaryContent = document.createElement('div');
-    summaryContent.classList.add(['title']);
-    summaryContent.appendChild(document.createTextNode(model.name));
-    summary.appendChild(summaryContent);
+            return acc;
+        },[])
 
-    const summaryAction = document.createElement('div');
-    summaryAction.classList.add(['action']);
-    const button = document.createElement('button');
-    button.classList.add(['btn-cv']);
-    button.appendChild(document.createTextNode('+'));
-    button.onclick = addModelHandler;
-    summaryAction.appendChild(button);
+    pane.addButton({
+        title: `add ${model.name}`,
+    }).on('click', addModelHandler);
 
-    summary.appendChild(summaryAction);
-
-    const content = document.createElement('div');
-    content.classList.add(['content']);
-
-    Object.keys(model.actions)
-        .filter(item => item !== 'detections')
-        .map(key => {
-
-            const button = document.createElement('button');
-            button.classList.add(['btn-cv']);
-            button.onclick = modelActionHandlers[key];
-
-            button.appendChild(document.createTextNode(key))
-            content.appendChild(button)
-        });
-
-    detail.appendChild(summary);
-    detail.appendChild(content);
-
-    const listItem = document.createElement('li');
-    listItem.appendChild(detail)
-    actionList.appendChild(listItem);
+    pane.addFolder({
+        title: 'actions',
+        expanded: false,
+    }).addBlade({
+        view: 'buttongrid',
+        size: [2, buttonList.length],
+        cells: (x, y) => ({
+            title: buttonList[y][x],
+        }),
+    }).on('click', (ev) => ev.cell.title && 
+        modelActionHandlers[ev.cell.title]()
+    );
 };
 
-const addModelInteractions = (models, threeTime) => {
+const addModelInteractions = (models, threeTime, pane) => {
 
+    const folder = pane.addFolder({
+        title: 'models',
+        expanded: true,
+    });
     models.forEach(model => {
 
         const modelActionHandlers = Object
             .keys(model.actions)
+            .filter(item => item !== 'detections')
             .reduce((acc, key) => ({
                 ...acc,
                 [key]: () => model.actions[key](threeTime)
-            })
-        );
+            }), {});
 
         addModelToUIList(
             model,
             () => model.create(),
-            modelActionHandlers
+            modelActionHandlers,
+            folder
         )
     });
 };

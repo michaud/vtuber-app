@@ -9,7 +9,7 @@ const addBloomPass = ({
     composer,
     renderScene,
     renderer,
-    gui
+    folder
 }) => {
     
     const params = {
@@ -50,31 +50,61 @@ const addBloomPass = ({
     finalPass.needsSwap = true;
     finalPass.enabled = params.bloom;
 
-    gui.add( params, 'bloom').onChange( function ( value ) {
-        finalPass.enabled = Boolean(value);
+
+    const f = folder.addFolder({
+        title: 'bloom',
+        expanded: true,
+    });
+
+    f.addInput(params, 'bloom', { label: 'on'}).on('change',(ev)=> {
+        finalPass.enabled = Boolean(ev.value);
     });
     
-    const folder = gui.addFolder( 'bloomParams' );
     
-    folder.add( params, 'exposure', 0.1, 2 ).onChange( function ( value ) {
+    const fparams = f.addFolder({
+        title: 'params',
+        expanded: false,
+    });
+
+    fparams.addInput(params, 'exposure', {
+        label: 'exposure',
+        step: 0.1,
+        min: 0.1,
+        max: 2,
+    }).on(
+        'change',
+        (ev)=> renderer.toneMappingExposure = Math.pow( ev.value, 4.0 )
+    );
+
+    fparams.addInput(params, 'bloomThreshold', {
+        label: 'threshold',
+        step: 0.1,
+        min: 0.0,
+        max: 1.0,
+    }).on(
+        'change',
+        (ev)=> pass.threshold = Number(ev.value)
+    );
     
-        renderer.toneMappingExposure = Math.pow( value, 4.0 );
-    } );
-    
-    folder.add( params, 'bloomThreshold', 0.0, 1.0 ).onChange( function ( value ) {
-    
-        pass.threshold = Number( value );
-    } );
-    
-    folder.add( params, 'bloomStrength', 0.0, 10.0 ).onChange( function ( value ) {
-    
-        pass.strength = Number( value );
-    } );
-    
-    folder.add( params, 'bloomRadius', 0.0, 1.0 ).step( 0.01 ).onChange( function ( value ) {
-    
-        pass.radius = Number( value );
-    } );
+    fparams.addInput(params, 'bloomStrength', {
+        label: 'strength',
+        step: 0.1,
+        min: 0.0,
+        max: 10.0,
+    }).on(
+        'change',
+        (ev)=> pass.strength = Number(ev.value)
+    );
+
+    fparams.addInput(params, 'bloomRadius', {
+        label: 'radius',
+        step: 0.01,
+        min: 0.0,
+        max: 1.0,
+    }).on(
+        'change',
+        (ev)=> pass.radius = Number(ev.value )
+    );
 
     composer.addPass(finalPass);
 };

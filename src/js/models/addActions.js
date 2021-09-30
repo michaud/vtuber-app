@@ -28,17 +28,17 @@ const addActions = (
             const action = actionDefinitions[key];
 
             return ({
-            ...acc,
-            detections: action.detections ?
-            action.detections(animations) :
-            action.detections,
-            [key]: getAction(
-                action,
-                updateActions,
-                mesh,
-                animations
-            )
-        })
+                ...acc,
+                detections: action.detections ?
+                action.detections(animations) :
+                action.detections,
+                [key]: getAction(
+                    action,
+                    updateActions,
+                    mesh,
+                    animations
+                )
+            })
     }
     , {})
 

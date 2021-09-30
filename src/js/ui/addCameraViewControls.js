@@ -13,7 +13,7 @@ const onClickView = camera => dir => () => {
     camera.position.set(ori.x, ori.y, ori.z);
 };
 
-const addCameraViewControls = (camera, gui) => {
+const addCameraViewControls = camera => {
 
     const btnTop = document.querySelector("#btn_top");
     const btnLeft = document.querySelector("#btn_left");

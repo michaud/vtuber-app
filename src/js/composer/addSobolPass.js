@@ -6,7 +6,7 @@ import { SobelOperatorShader } from 'three/examples/jsm/shaders/SobelOperatorSha
 const addSobolPass = ({
     composer,
     renderScene,
-    gui
+    folder
 }) => {
 
     const params = {
@@ -28,10 +28,14 @@ const addSobolPass = ({
     effectSobel.enabled = params.sobol;
     effectGrayScale.enabled = params.sobol;
 
-    gui.add( params, 'sobol').onChange( function ( value ) {
+    const f = folder.addFolder({
+        title: 'sobol',
+        expanded: true,
+    });
 
-        effectGrayScale.enabled = Boolean(value);
-        effectSobel.enabled = Boolean(value);
+    f.addInput(params, 'sobol', { label: 'on'}).on('change',(ev)=> {
+        effectGrayScale.enabled = Boolean(ev.value);
+        effectSobel.enabled = Boolean(ev.value);
     });
 
     return composer;

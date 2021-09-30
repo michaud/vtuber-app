@@ -3,52 +3,90 @@ import { DotScreenPass } from 'three/examples/jsm/postprocessing/DotScreenPass.j
 
 const addDotScreenPass = ({
     composer,
-    gui
+    folder
 }) => {
 
     const params = {
-        dotScreen: false,
+        'dotscreen': false,
         centerX: 0,
         centerY: 0,
         angle: 1.28,
         scale: 1.5
     };
 
-    const effectDotScreenPass = new DotScreenPass(new Vector2(0, 0), params.angle, params.scale);
+    const pass = new DotScreenPass(new Vector2(0, 0), params.angle, params.scale);
 
-    effectDotScreenPass.enabled = params.dotScreen;
+    pass.enabled = params['dotscreen'];
 
-    gui.add(params, 'dotScreen').onChange(function (value) {
-        effectDotScreenPass.enabled = Boolean(value);
+    const f = folder.addFolder({
+        title: 'dot screen',
+        expanded: true,
     });
 
-    const folder = gui.addFolder('dot params');
-
-    folder.add(params, 'centerX', 0.0, 1.0).step(0.01).onChange(function (value) {
-
-        const center = effectDotScreenPass.uniforms['center'].value;
-
-        effectDotScreenPass.uniforms['center'].value.copy(new Vector2(Number(value), center.x));
+    f.addInput(params, 'dotscreen', { label: 'on'}).on('change',(ev)=> {
+        pass.enabled = Boolean(ev.value);
     });
 
-    folder.add(params, 'centerY', 0.0, 1.0).step(0.01).onChange(function (value) {
-
-        const center = effectDotScreenPass.uniforms['center'].value;
-
-        effectDotScreenPass.uniforms['center'].value.copy(new Vector2(center.x, Number(value)));
+    const fparams = f.addFolder({
+        title: 'params',
+        expanded: false,
     });
 
-    folder.add(params, 'angle', 0.0, 2.0).onChange(function (value) {
+    fparams.addInput(params, 'centerX', {
+        label: 'centerX',
+        step: 0.1,
+        min: 0.0,
+        max: 1.0,
+    }).on('change', (ev)=> {
 
-        effectDotScreenPass.uniforms['angle'].value = Number(value);
+        pass.uniforms['center'].value.copy(
+            new Vector2(
+                Number(ev.value),
+                pass.uniforms['center'].value.y
+            )
+        );
+    })
+
+    fparams.addInput(params, 'centerY', {
+        label: 'centerY',
+        step: 0.1,
+        min: 0.0,
+        max: 1.0,
+    }).on('change', (ev)=> {
+
+        pass.uniforms['center'].value.copy(
+            new Vector2(
+                pass.uniforms['center'].value.x,
+                Number(ev.value)
+            )
+        );
     });
 
-    folder.add(params, 'scale', 0.0, 2.0).onChange(function (value) {
+    fparams.addInput(params, 'angle', {
+        label: 'angle',
+        step: 0.1,
+        min: 0.0,
+        max: Math.PI * 2,
+    }).on(
+        'change',
+        (ev)=> pass.uniforms['angle'].value = Number(ev.value)
+    );
 
-        effectDotScreenPass.uniforms['scale'].value = Number(value);
-    });
+    fparams.addInput(params, 'scale', {
+        label: 'scale',
+        step: 0.1,
+        min: 0.0,
+        max: Math.PI * 2,
+    }).on(
+        'change',
+        (ev)=> pass.uniforms['scale'].value = Number(ev.value)
+    );
 
-    composer.addPass(effectDotScreenPass);
+    folder.addSeparator();
+
+    composer.addPass(pass);
+
+    return pass;
 };
 
 export default addDotScreenPass;

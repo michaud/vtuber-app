@@ -11,7 +11,10 @@ import setUpResize from './scene/resizeUpdate.js';
 import addCameraViewControls from "./ui/addCameraViewControls.js";
 import addModelInteractions from './ui/addModelInteractions.js';
 import addComposer from './composer/addComposer.js';
-import * as dat from 'dat.gui';
+import {
+    Pane
+} from 'tweakpane';
+// import * as EssentialsPlugin from '@tweakpane/plugin-essentials';
 import addDebugTools from './ui/addDebugTools.js';
 
 const init = (av) => {
@@ -45,11 +48,15 @@ const init = (av) => {
         ['emojis']
     );
 
-    const gui = new dat.GUI();
+    const pane = new Pane();
+    pane.containerElem_.style.width = '250px';
+    pane.containerElem_.style.left = 0;
+    // pane.registerPlugin(EssentialsPlugin);
 
-    const composer = addComposer(scene, camera, renderer, gui);
+    addModelInteractions(models, threeTime, pane);
+    pane.addSeparator();
+    const composer = addComposer(scene, camera, renderer, pane);
 
-    addModelInteractions(models, threeTime);
     addCameraViewControls(camera);
     addDebugTools(scene);
 
