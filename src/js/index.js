@@ -19,9 +19,6 @@ import {
 const start = async ()=> {
     
     const av = document.querySelector('gum-av');
-    const status = document.querySelector('#status');
-
-    await Promise.all([tf.setBackend('webgl'), av.ready()]);
 
     const pane = new Pane();
     pane.containerElem_.style.width = '250px';
@@ -34,13 +31,18 @@ const start = async ()=> {
         parse: (v) => String(v),
         value: 'loading...',
     });
+    
+    await Promise.all([tf.setBackend('webgl'), av.ready()]);
+
+    const data = init(av, pane);
+    const faceDetection = await getFaceDetection(onLoadModel(statusPane))
 
     render(
-        onClear(status),
-        onFirstFaceDetection(status),
+        onClear(statusPane),
+        onFirstFaceDetection(statusPane),
         {
-            ...init(av, pane),
-            ...await getFaceDetection(onLoadModel(status))
+            ...data,
+            ...faceDetection
         }
     )();
 };
