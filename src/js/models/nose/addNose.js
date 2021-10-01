@@ -5,8 +5,8 @@ import {
 } from 'three';
 
 import addActions from '../addActions';
-import noseActionDefinitions from './noseActionDefinitions';
-import updateNoseAction from './updateNoseAction';
+import actionDefinitions from './actionDefinitions';
+import updateAction from './updateAction';
 
 const addNose = (scene) => {
 
@@ -29,7 +29,7 @@ const addNose = (scene) => {
         mesh.push(noseMesh);
 
         updateActions.push(
-            updateNoseAction(
+            updateAction(
                 updateActions,
                 mesh
             )
@@ -46,7 +46,7 @@ const addNose = (scene) => {
     const { actions } = addActions(
         updateActions,
         mesh,
-        noseActionDefinitions
+        actionDefinitions
     );
 
     return {

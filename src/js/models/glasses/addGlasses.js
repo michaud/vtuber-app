@@ -1,5 +1,5 @@
-import glassesActionDefinitions from './glassesActionDefinitions';
-import updateGlassesAction from './updateGlassesAction';
+import actionDefinitions from './actionDefinitions';
+import updateGlassesAction from './updateAction';
 import addActions from '../addActions';
 
 import loadModel from '../loadModel';
@@ -17,7 +17,7 @@ const addGlasses = (scene) => {
                 scene.add(gltf.scene);
                 mesh.push(gltf.scene);
                 updateActions.push(
-                    updateGlassesAction(
+                    updateAction(
                         updateActions,
                         mesh
                     )
@@ -36,7 +36,7 @@ const addGlasses = (scene) => {
     const { actions } = addActions(
         updateActions,
         mesh,
-        glassesActionDefinitions
+        actionDefinitions
     ); 
 
     return {

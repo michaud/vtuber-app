@@ -5,7 +5,7 @@ const updateDuckAction = (
 
     const scale = 9;
 
-    const duckUpdate = (
+    const update = (
         geom,
         // moment
     ) => {
@@ -27,7 +27,7 @@ const updateDuckAction = (
         mesh[0].rotation.setFromRotationMatrix(track.rotation);
     };
 
-    return duckUpdate;
+    return update;
 };
 
 export default updateDuckAction;

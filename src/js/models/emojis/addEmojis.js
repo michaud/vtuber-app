@@ -13,8 +13,8 @@ import paths from "../../constants/paths";
 
 import addActions from '../addActions.js';
 import addPlaneTextures from "./addPlaneTextures.js";
-import emojisActionDefinitions from './emojisActionDefinitions.js';
-import updateEmojisAction from './updateEmojisAction.js';
+import actionDefinitions from './actionDefinitions.js';
+import updateAction from './updateAction.js';
 
 const addEmojis = (scene, _, faceGeometry) => {
 
@@ -75,7 +75,7 @@ const addEmojis = (scene, _, faceGeometry) => {
         );
 
         updateActions.push(
-            updateEmojisAction(
+            updateAction(
                 updateActions,
                 mesh
             )
@@ -92,7 +92,7 @@ const addEmojis = (scene, _, faceGeometry) => {
     const { actions } = addActions(
         updateActions,
         mesh,
-        emojisActionDefinitions
+        actionDefinitions
     );
 
     return {

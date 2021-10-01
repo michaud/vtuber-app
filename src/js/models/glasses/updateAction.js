@@ -1,11 +1,11 @@
-const updateBowlerAction = (
+const updateAction = (
     _,
     mesh
 ) => {
 
-    const scale = 7;
+    const scale = 8;
 
-    const bolwerUpdate = (
+    const update = (
         geom
         // moment
     ) => {
@@ -13,19 +13,19 @@ const updateBowlerAction = (
         if(mesh.length === 0) return;
 
         const points = geom.getAttribute('position');
-        const track = geom.track(10, 108, 337);
+        const track = geom.track(6, 196, 419);
 
         mesh[0].scale.setScalar(scale * track.scale);
         mesh[0].position.set(
             points.array[197 * 3],
-            points.array[(197 * 3) + 1]-30,
+            points.array[(197 * 3) + 1],
             points.array[(197 * 3) + 2]
         );
 
         mesh[0].rotation.setFromRotationMatrix(track.rotation);
-    }
+    };
 
-    return bolwerUpdate;
+    return update;
 };
 
-export default updateBowlerAction;
+export default updateAction;

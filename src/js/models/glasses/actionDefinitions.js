@@ -1,7 +1,7 @@
 import toggleShowAction from './toggleShowAction';
 
-const glassesActionDefinitions = {
+const actionDefinitions = {
     'show / hide': { update: 'toggleShowUpdate', action: toggleShowAction },
 }
 
-export default glassesActionDefinitions;
+export default actionDefinitions;

@@ -1,7 +1,7 @@
 import toggleShowAction from './toggleShowAction';
 
-const maskActionDefinitions = {
+const actionDefinitions = {
     'show / hide': { update: 'toggleShowUpdate', action: toggleShowAction },
 }
 
-export default maskActionDefinitions;
+export default actionDefinitions;

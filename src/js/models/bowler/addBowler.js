@@ -1,5 +1,5 @@
-import updateBowlerAction from './updateBowlerAction';
-import bowlerActionDefinitions from './bowlerActionDefinitions';
+import updateAction from './updateAction';
+import actionDefinitions from './actionDefinitions';
 import addActions from '../addActions';
 import loadModel from '../loadModel';
 
@@ -19,7 +19,7 @@ const addBowler = (scene) => {
                 mesh.push(gltf.scene);
 
                 updateActions.push(
-                    updateBowlerAction(
+                    updateAction(
                         updateActions,
                         mesh
                     )
@@ -38,7 +38,7 @@ const addBowler = (scene) => {
     const { actions } = addActions(
         updateActions,
         mesh,
-        bowlerActionDefinitions
+        actionDefinitions
     ); 
 
     return {

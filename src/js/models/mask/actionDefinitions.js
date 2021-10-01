@@ -1,7 +1,7 @@
 import toggleShowAction from './toggleShowAction';
 
-const noseActionDefinitions = {
+const actionDefinitions = {
     'show / hide': { update: 'toggleShowUpdate', action: toggleShowAction },
 }
 
-export default noseActionDefinitions;
+export default actionDefinitions;

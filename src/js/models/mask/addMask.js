@@ -5,10 +5,10 @@ import {
     MeshStandardMaterial,
     TextureLoader,
 } from "three";
-import paths from "../../constants/paths";
 
+import paths from "../../constants/paths";
 import addActions from "../addActions";
-import maskActionDefinitions from "./maskActionDefinitions";
+import actionDefinitions from "./actionDefinitions";
 
 const addMask = (
     scene,
@@ -57,7 +57,7 @@ const addMask = (
     const { actions } = addActions(
         updateActions,
         mesh,
-        maskActionDefinitions
+        actionDefinitions
     );
 
     return {

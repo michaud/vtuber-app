@@ -1,7 +1,7 @@
 import { LoopOnce } from 'three';
 
-import updateDuckAction from './updateDuckAction';
-import duckActionDefinitions from './duckActionDefinitions';
+import updateAction from './updateAction';
+import actionDefinitions from './actionDefinitions';
 import addActions from '../addActions';
 import loadModel from '../loadModel';
 
@@ -11,7 +11,7 @@ const addDucks = (scene, mixer) => {
 
     const mesh = [];
     const updateActions = [];
-    const duckAnimations = [];
+    const animations = [];
 
     const create = () => {
 
@@ -22,7 +22,7 @@ const addDucks = (scene, mixer) => {
                 mesh.push(gltf.scene);
 
                 updateActions.push(
-                    updateDuckAction(
+                    updateAction(
                         updateActions,
                         mesh
                     )
@@ -35,7 +35,7 @@ const addDucks = (scene, mixer) => {
                 );
 
                 updateActions.push(
-                    updateDuckAction(
+                    updateAction(
                         updateActions,
                         mesh
                     )
@@ -55,7 +55,7 @@ const addDucks = (scene, mixer) => {
                         anim.setLoop(LoopOnce);
                     }
 
-                    duckAnimations.push(anim);
+                    animations.push(anim);
                 })
             }
         );
@@ -71,8 +71,8 @@ const addDucks = (scene, mixer) => {
     const { actions } = addActions(
         updateActions,
         mesh,
-        duckActionDefinitions,
-        duckAnimations
+        actionDefinitions,
+        animations
     ); 
 
     return {

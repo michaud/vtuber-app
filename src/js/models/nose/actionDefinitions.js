@@ -1,7 +1,7 @@
 import toggleShowAction from './toggleShowAction';
 
-const bowlerActionDefinitions = {
+const actionDefinitions = {
     'show / hide': { update: 'toggleShowUpdate', action: toggleShowAction },
 }
 
-export default bowlerActionDefinitions;
+export default actionDefinitions;

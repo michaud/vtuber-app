@@ -8,7 +8,7 @@ import normalMoveOutAction from './normalMoveOutAction.js';
 import normalMoveInAction from './normalMoveInAction.js';
 
 /* key is used as label for button */
-const emojisActionDefinitions = {
+const actionDefinitions = {
     'show / hide': { update: 'toggleShowUpdate', action: toggleShowAction },
     'top down': { update: 'tdRevealUpdate', action: tdRevealAction },
     'oreveal': { update: 'orevealUpdate', action: orevealAction },
@@ -19,4 +19,4 @@ const emojisActionDefinitions = {
     'move in': { update: 'normalMoveInUpdate', action: normalMoveInAction }
 };
 
-export default emojisActionDefinitions;
+export default actionDefinitions;

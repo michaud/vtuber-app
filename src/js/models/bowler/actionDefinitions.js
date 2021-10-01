@@ -1,7 +1,7 @@
 import toggleShowAction from './toggleShowAction';
 
-const mistacheActionDefinitions = {
+const actionDefinitions = {
     'show / hide': { update: 'toggleShowUpdate', action: toggleShowAction },
 }
 
-export default mistacheActionDefinitions;
+export default actionDefinitions;

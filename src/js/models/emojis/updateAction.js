@@ -17,7 +17,7 @@ const getScaleFactorForIndex = (i, faceFeatureMapping) => {
     return scaleFactor;
 };
 
-const updateEmojisAction = (
+const updateAction = (
     _,
     mesh
 ) => {
@@ -64,4 +64,4 @@ const updateEmojisAction = (
     return emojisUpdate;
 };
 
-export default updateEmojisAction;
+export default updateAction;

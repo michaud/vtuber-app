@@ -1,11 +1,11 @@
-const updateNoseAction = (
+const updateAction = (
     _,
     mesh
 ) => {
 
     const scale = 15;
 
-    const noseUpdate = (
+    const update = (
         geom,
         // moment
     ) => {
@@ -19,7 +19,7 @@ const updateNoseAction = (
         mesh[0].scale.setScalar(scale * track.scale);
     }
 
-    return noseUpdate;
+    return update;
 };
 
-export default updateNoseAction;
+export default updateAction;

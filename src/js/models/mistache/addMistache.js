@@ -1,5 +1,5 @@
-import updateMistacheAction from './updateMistacheAction';
-import mistacheActionDefinitions from './mistacheActionDefinitions';
+import updateAction from './updateAction';
+import actionDefinitions from './actionDefinitions';
 import addActions from '../addActions';
 import loadModel from '../loadModel';
 
@@ -19,7 +19,7 @@ const addMistache = (scene) => {
                 mesh.push(gltf.scene);
 
                 updateActions.push(
-                    updateMistacheAction(
+                    updateAction(
                         updateActions,
                         mesh
                     )
@@ -38,7 +38,7 @@ const addMistache = (scene) => {
     const { actions } = addActions(
         updateActions,
         mesh,
-        mistacheActionDefinitions
+        actionDefinitions
     ); 
 
     return {
