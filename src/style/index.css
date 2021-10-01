@@ -127,8 +127,10 @@ details {
 
 .btn-cv {
     /* --hue: calc(var(--i) * 30deg + 150deg);
-    color: white;
     background-color: hsl(var(--hue, 0), 80%, 50%); */
+    color: rgba(255, 255, 255, 0.644);
+    background-color: rgb(61 61 61);
+    border-color: black;
     padding: .2rem .5rem;
     font-weight: bold;
     font-size: 1rem;
