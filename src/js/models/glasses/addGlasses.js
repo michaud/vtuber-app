@@ -1,11 +1,8 @@
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
-import { LoadingManager } from 'three';
 import glassesActionDefinitions from './glassesActionDefinitions';
 import updateGlassesAction from './updateGlassesAction';
 import addActions from '../addActions';
-import paths from '../../constants/paths';
 
+import loadModel from '../loadModel';
 
 const addGlasses = (scene) => {
 
@@ -14,16 +11,7 @@ const addGlasses = (scene) => {
 
     const create = () => {
 
-        const gltfLoadmanager = new LoadingManager();
-
-        const dracoLoader = new DRACOLoader();
-        dracoLoader.setDecoderPath(paths.decoder);
-
-        const GLTFLoad = new GLTFLoader(gltfLoadmanager)
-            .setPath(paths.models)
-            .setDRACOLoader(dracoLoader);
-
-        GLTFLoad.load(
+        loadModel(
             'glasses.glb',
             gltf => {
                 scene.add(gltf.scene);

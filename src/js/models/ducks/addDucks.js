@@ -1,15 +1,9 @@
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
-import {
-    LoadingManager,
-    LoopOnce
-} from 'three';
+import { LoopOnce } from 'three';
 
 import updateDuckAction from './updateDuckAction';
 import duckActionDefinitions from './duckActionDefinitions';
 import addActions from '../addActions';
-import paths from '../../constants/paths';
-
+import loadModel from '../loadModel';
 
 const duckIds = ['000', '001', '002', '003', '004', '005', '006', '007'];
 
@@ -21,16 +15,7 @@ const addDucks = (scene, mixer) => {
 
     const create = () => {
 
-        const gltfLoadmanager = new LoadingManager();
-
-        const dracoLoader = new DRACOLoader();
-        dracoLoader.setDecoderPath(paths.decoder);
-
-        const GLTFLoad = new GLTFLoader(gltfLoadmanager)
-            .setPath(paths.models)
-            .setDRACOLoader(dracoLoader);
-
-        GLTFLoad.load(
+        loadModel(
             'ducks.glb',
             gltf => {
                 scene.add(gltf.scene);

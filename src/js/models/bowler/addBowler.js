@@ -1,12 +1,7 @@
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
-import { LoadingManager } from 'three';
-
 import updateBowlerAction from './updateBowlerAction';
 import bowlerActionDefinitions from './bowlerActionDefinitions';
 import addActions from '../addActions';
-import paths from '../../constants/paths';
-
+import loadModel from '../loadModel';
 
 const addBowler = (scene) => {
 
@@ -15,16 +10,7 @@ const addBowler = (scene) => {
 
     const create = () => {
 
-        const gltfLoadmanager = new LoadingManager();
-
-        const dracoLoader = new DRACOLoader();
-        dracoLoader.setDecoderPath(paths.decoder);
-
-        const GLTFLoad = new GLTFLoader(gltfLoadmanager)
-            .setPath(paths.models)
-            .setDRACOLoader(dracoLoader);
-
-        GLTFLoad.load(
+        loadModel(
             'bowler_hat.glb',
             gltf => {
 
