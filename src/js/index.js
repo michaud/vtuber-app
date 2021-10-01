@@ -25,7 +25,7 @@ const start = async ()=> {
     pane.containerElem_.style.left = 0;
     pane.registerPlugin(EssentialsPlugin);
 
-    const statusPane = pane.addBlade({
+    const status = pane.addBlade({
         view: 'text',
         label: 'status',
         parse: (v) => String(v),
@@ -35,11 +35,11 @@ const start = async ()=> {
     await Promise.all([tf.setBackend('webgl'), av.ready()]);
 
     const data = init(av, pane);
-    const faceDetection = await getFaceDetection(onLoadModel(statusPane))
+    const faceDetection = await getFaceDetection(onLoadModel(status))
 
     render(
-        onClear(statusPane),
-        onFirstFaceDetection(statusPane),
+        onClear(status),
+        onFirstFaceDetection(status),
         {
             ...data,
             ...faceDetection
