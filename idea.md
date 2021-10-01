@@ -14,7 +14,7 @@
         - flip all, flip random
     - twirl
         - V one
-        - flip all, flip random
+        - twirl all, twirl random
     - pop out and return
     - luxaflex
     - stripped top down, left right, ping pong
