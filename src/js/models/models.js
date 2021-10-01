@@ -5,6 +5,7 @@ import addGlasses from './glasses/addGlasses';
 import addMask from "./mask/addMask.js";
 import addNose from "./nose/addNose.js";
 import addEmojis from './emojis/addEmojis';
+import addMistache from './mistache/addMistache';
 
 const models = [
     addEmojis,
@@ -13,7 +14,8 @@ const models = [
     addNose,
     addMask,
     addBowler,
-    addBlow
+    addBlow,
+    addMistache
 ];
 
 export default models;
