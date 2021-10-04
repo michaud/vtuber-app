@@ -1,3 +1,4 @@
+import { runOnce } from "../utils/runOnce";
 import updateWithFaceDetection from "./../faceDetection/updateWithFaceDetection";
 
 const render = (
@@ -20,15 +21,12 @@ const render = (
 
     const flipCamera = true;
     let onInitialize = onInit;
-    let onFirstFaceDetection = onFirstFaceDetect;
+    const runOnFirstFaceDetect = runOnce(onFirstFaceDetect);
+    const runOnInitialize = runOnce(onInitialize);
 
     const rerender = async ()=> {
 
-        /* execute once */
-        if(onFirstFaceDetection) {
-            onFirstFaceDetection();
-            onFirstFaceDetection = undefined;
-        } 
+        runOnFirstFaceDetect();
 
         const delta = threeTime.getDelta();
         mixer && mixer.update(delta);
@@ -48,11 +46,7 @@ const render = (
         composer.render();
         requestAnimationFrame(() => rerender());
 
-        /* execute once */
-        if(onInitialize) {
-            onInitialize();
-            onInitialize = undefined;   
-        }
+        runOnInitialize();
     };
 
     return rerender;
