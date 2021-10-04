@@ -37,14 +37,16 @@ const start = async ()=> {
     const data = init(av, pane);
     const faceDetection = await getFaceDetection(onLoadModel(status))
 
-    render(
+    const renderLoop = render(
         onClear(status),
         onFirstFaceDetection(status),
         {
             ...data,
             ...faceDetection
         }
-    )();
+    );
+    
+    renderLoop();
 };
 
 start();
