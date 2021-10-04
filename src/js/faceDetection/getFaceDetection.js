@@ -1,11 +1,11 @@
-import * as faceLandmarksDetection from '@tensorflow-models/face-landmarks-detection';
+import * as fld from '@tensorflow-models/face-landmarks-detection';
 
-export const getFaceDetection = async (onStartLoadModel) => {
+const getFaceDetection = async (onStartLoadModel) => {
 
     onStartLoadModel();
 
-    const faceDetectionModel = await faceLandmarksDetection.load(
-        faceLandmarksDetection.SupportedPackages.mediapipeFacemesh,
+    const faceDetectionModel = await fld.load(
+        fld.SupportedPackages.mediapipeFacemesh,
         { maxFaces: 1 }
     );
 
@@ -13,3 +13,5 @@ export const getFaceDetection = async (onStartLoadModel) => {
         faceDetectionModel
     };
 };
+
+export default getFaceDetection;
