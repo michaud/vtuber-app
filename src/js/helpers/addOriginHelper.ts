@@ -1,10 +1,11 @@
 import {
     ArrowHelper,
     Group,
+    Scene,
     Vector3
 } from "three";
 
-const addOriginHelper = (scene) => {
+const addOriginHelper = (scene:Scene) => {
 
     const dirx = new Vector3(1, 0, 0);
     const diry = new Vector3(0, 1, 0);
@@ -35,3 +36,4 @@ const addOriginHelper = (scene) => {
 };
 
 export default addOriginHelper;
+    

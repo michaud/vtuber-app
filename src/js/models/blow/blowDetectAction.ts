@@ -1,5 +1,6 @@
+import { AnimationAction } from "three";
 
-const blowDetectAction = (animations) => (detections) => {
+const blowDetectAction = (animations : AnimationAction[]) => (detections : string[]) => {
 
     if (animations.length > 0 && detections && detections.includes('O')) {
 

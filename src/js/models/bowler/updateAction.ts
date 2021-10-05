@@ -1,34 +1,37 @@
-import { BufferAttribute, Object3D } from "three";
+import { BufferAttribute, InterleavedBufferAttribute, Matrix4, Object3D, Vector3 } from "three";
 import { FaceMeshFaceGeometry } from "./../../face/face";
 import { UpdateAction } from "../../types/Action";
+import { TrackData } from "../../types/TrackData";
 
 const updateAction = (
     actionList : UpdateAction[],
     mesh : Object3D[]
-) : UpdateAction => {
+) => {
 
-    const scale = 9;
+    const scale = 7;
 
-    const blowUpdate = (
-        geom : FaceMeshFaceGeometry
+    const update = (
+        geom : FaceMeshFaceGeometry,
+        moment : number
     ) => {
 
         if(mesh.length === 0) return;
 
-        const points:BufferAttribute = geom.getAttribute('position') as BufferAttribute;
-        const track = geom.track(6, 196, 419);
+        const points : BufferAttribute = geom.getAttribute('position') as BufferAttribute;
+    
+        const track : TrackData = geom.track(10, 108, 337);
 
         mesh[0].scale.setScalar(scale * track.scale);
         mesh[0].position.set(
             points.array[197 * 3],
-            points.array[(197 * 3) + 1],
+            points.array[(197 * 3) + 1]-30,
             points.array[(197 * 3) + 2]
         );
 
         mesh[0].rotation.setFromRotationMatrix(track.rotation);
-    };
+    }
 
-    return blowUpdate;
+    return update;
 };
 
 export default updateAction;

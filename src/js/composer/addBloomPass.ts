@@ -2,15 +2,20 @@ import { ShaderMaterial, Vector2 } from "three";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
+/* @ts-ignore */
 import frag from '../shader/shader.frag';
+/* @ts-ignore */
 import vert from '../shader/shader.vert';
+import { PassArguments } from "../types/PassArguments";
+
+
 
 const addBloomPass = ({
     composer,
     renderScene,
     renderer,
     folder
-}) => {
+}:PassArguments) => {
     
     const params = {
         exposure: 1,

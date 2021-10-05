@@ -2,12 +2,13 @@ import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass";
 import { LuminosityShader } from 'three/examples/jsm/shaders/LuminosityShader.js';
 import { SobelOperatorShader } from 'three/examples/jsm/shaders/SobelOperatorShader.js';
+import { PassArguments } from "../types/PassArguments";
 
 const addSobolPass = ({
     composer,
     renderScene,
     folder
-}) => {
+} : PassArguments) => {
 
     const params = {
         sobol: false
@@ -19,7 +20,7 @@ const addSobolPass = ({
     composer.addPass( renderScene );
     composer.addPass(effectGrayScale);
 
-    effectSobel = new ShaderPass(SobelOperatorShader);
+    const effectSobel = new ShaderPass(SobelOperatorShader);
     effectSobel.uniforms['resolution'].value.x = window.innerWidth * window.devicePixelRatio;
     effectSobel.uniforms['resolution'].value.y = window.innerHeight * window.devicePixelRatio;
 

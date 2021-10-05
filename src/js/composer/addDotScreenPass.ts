@@ -1,10 +1,11 @@
 import { Vector2 } from 'three';
 import { DotScreenPass } from 'three/examples/jsm/postprocessing/DotScreenPass.js';
+import { PassArguments } from '../types/PassArguments';
 
 const addDotScreenPass = ({
     composer,
     folder
-}) => {
+} : PassArguments) => {
 
     const params = {
         'dotscreen': false,
@@ -14,7 +15,7 @@ const addDotScreenPass = ({
         scale: 1.5
     };
 
-    const pass = new DotScreenPass(new Vector2(0, 0), params.angle, params.scale);
+    const pass:DotScreenPass = new DotScreenPass(new Vector2(0, 0), params.angle, params.scale);
 
     pass.enabled = params['dotscreen'];
 
@@ -38,10 +39,11 @@ const addDotScreenPass = ({
         min: 0.0,
         max: 1.0,
     }).on('change', (ev)=> {
-
+/* @ts-ignore  */
         pass.uniforms['center'].value.copy(
             new Vector2(
                 Number(ev.value),
+/* @ts-ignore  */
                 pass.uniforms['center'].value.y
             )
         );
@@ -53,9 +55,10 @@ const addDotScreenPass = ({
         min: 0.0,
         max: 1.0,
     }).on('change', (ev)=> {
-
+/* @ts-ignore  */
         pass.uniforms['center'].value.copy(
             new Vector2(
+/* @ts-ignore  */
                 pass.uniforms['center'].value.x,
                 Number(ev.value)
             )
@@ -69,6 +72,7 @@ const addDotScreenPass = ({
         max: Math.PI * 2,
     }).on(
         'change',
+/* @ts-ignore  */
         (ev)=> pass.uniforms['angle'].value = Number(ev.value)
     );
 
@@ -79,6 +83,7 @@ const addDotScreenPass = ({
         max: Math.PI * 2,
     }).on(
         'change',
+/* @ts-ignore  */
         (ev)=> pass.uniforms['scale'].value = Number(ev.value)
     );
 

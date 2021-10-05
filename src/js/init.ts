@@ -11,16 +11,16 @@ import { FaceMeshFaceGeometry } from "./face/face";
 import createSene from "./scene/createScene";
 import addModels from './models/addModels';
 import setUpResize from './scene/resizeUpdate';
-import addCameraViewControls from "./ui/addCameraViewControls.js";
-import addModelInteractions from './ui/addModelInteractions.js';
-import addComposer from './composer/addComposer.js';
-import addDebugTools from './ui/addDebugTools.js';
+import addCameraViewControls from "./ui/addCameraViewControls";
+import addModelInteractions from './ui/addModelInteractions';
+import addComposer from './composer/addComposer';
+import addDebugTools from './ui/addDebugTools';
 import { Pane } from 'tweakpane';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
 import { Model } from './types/model';
 
 export type AppResources = {
-        models:object[],
+        models:Model[],
         faceGeometry:FaceMeshFaceGeometry,
         controls:OrbitControls,
         scene:Scene,

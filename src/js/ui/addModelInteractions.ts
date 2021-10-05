@@ -1,8 +1,18 @@
+import { Clock } from "three";
+import { FolderApi, Pane } from "tweakpane";
+import { UpdateAction } from "../types/Action";
+import { Model } from "../types/model";
+import { VoidRunner } from "../types/voidRunner";
+
+type ModelActionHandlers = {
+    [index: string]: UpdateAction
+}
+
 const addModelToUIList = (
-    model,
-    addModelHandler,
-    modelActionHandlers,
-    pane
+    model:Model,
+    addModelHandler:VoidRunner,
+    modelActionHandlers:ModelActionHandlers,
+    pane:FolderApi
 ) => {
 
     const buttonList = Object.keys(modelActionHandlers)
@@ -26,28 +36,29 @@ const addModelToUIList = (
     }).addBlade({
         view: 'buttongrid',
         size: [2, buttonList.length],
-        cells: (x, y) => ({
+        cells: (x:number, y:number) => ({
             title: buttonList[y][x],
         }),
+/* @ts-ignore typing on tweakerpane is not complete */
     }).on('click', (ev) => ev.cell.title && 
         modelActionHandlers[ev.cell.title]()
     );
 };
 
-const addModelInteractions = (models, threeTime, pane) => {
+const addModelInteractions = (models:Model[], threeTime:Clock, pane:Pane) => {
 
     const folder = pane.addFolder({
         title: 'models',
         expanded: false,
     });
-    models.forEach(model => {
+    models.forEach((model:Model) => {
 
         const modelActionHandlers = Object
             .keys(model.actions)
             .filter(item => item !== 'detections')
             .reduce((acc, key) => ({
                 ...acc,
-                [key]: () => model.actions[key](threeTime)
+                [key]: () => model.actions[key](null, threeTime.elapsedTime)
             }), {});
 
         addModelToUIList(

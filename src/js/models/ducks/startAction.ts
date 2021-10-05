@@ -1,15 +1,15 @@
+import { AnimationAction, Object3D } from "three";
+import { UpdateAction } from "../../types/Action";
+
 const startAction = (
-    actionList,
-    _,
-    animations
+    actionList : UpdateAction[],
+    mesh : Object3D[],
+    animations : AnimationAction[]
 ) => {
 
-    const name = 'duckStartUpdate';
+    const name : string = 'duckStartUpdate';
 
-    const duckStartUpdate = (
-        // geom,
-        // moment
-    ) => {
+    const duckStartUpdate = () => {
 
         animations.map(act => {
 
@@ -21,7 +21,7 @@ const startAction = (
         });
 
         /* remove yourself from the actionList */
-        const idx = actionList.findIndex(item => item.name === name);
+        const idx:number = actionList.findIndex(item => item.name === name);
         actionList.splice(idx, 1);
     };
 

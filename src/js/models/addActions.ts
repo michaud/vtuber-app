@@ -16,7 +16,7 @@ const getAction = (
     { update, action } : { update:string, action:Action },
     updateActions : UpdateAction[],
     mesh : Object3D[],
-    animations : AnimationAction[]
+    animations? : AnimationAction[]
 ) : VoidRunner => () : void => {
 
     //find type for action
@@ -32,7 +32,7 @@ const addActions = (
     updateActions : UpdateAction[],
     mesh : Object3D[],
     actionDefinitions : ActionDefinitions,
-    animations : AnimationAction[]
+    animations? : AnimationAction[]
 ) : ActionResources => {
 
     const actions : ActionList = Object

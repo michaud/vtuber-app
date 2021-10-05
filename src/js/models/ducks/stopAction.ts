@@ -1,19 +1,19 @@
+import { AnimationAction, AnimationClip, Object3D } from "three";
+import { UpdateAction } from "../../types/Action";
+
 const duckStopAction = (
-    actionList,
-    _,
-    animations
+    actionList : UpdateAction[],
+    mesh : Object3D[],
+    animations : AnimationAction[]
 ) => {
 
-    const name = 'duckStopUpdate';
+    const name:string = 'duckStopUpdate';
 
-    const duckStopUpdate = (
-        // geom,
-        // moment
-    ) => {
+    const duckStopUpdate = () => {
 
         animations.map(act => {
 
-            const clip = act.getClip();
+            const clip:AnimationClip = act.getClip();
 
             if(clip.name === 'popup_action') {
 
@@ -31,7 +31,7 @@ const duckStopAction = (
         });
 
         /* remove yourself from the actionList */
-        const idx = actionList.findIndex(item => item.name === name);
+        const idx:number = actionList.findIndex(item => item.name === name);
         actionList.splice(idx, 1);
     };
 

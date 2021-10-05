@@ -1,8 +1,11 @@
+import { OrthographicCamera, WebGLRenderer } from "three";
+import { FaceMeshFaceGeometry } from "../face/face";
+
 const resize = (
-    av,
-    camera,
-    faceGeometry,
-    renderer
+    av:GumAudioVideo,
+    camera:OrthographicCamera,
+    faceGeometry:FaceMeshFaceGeometry,
+    renderer:WebGLRenderer
 ) => async () => {
     
     await av.ready();

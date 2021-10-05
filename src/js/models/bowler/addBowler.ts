@@ -2,17 +2,24 @@ import updateAction from './updateAction';
 import actionDefinitions from './actionDefinitions';
 import addActions from '../addActions';
 import loadModel from '../loadModel';
+import { Object3D, Scene } from 'three';
+import { UpdateAction } from '../../types/Action';
+import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
+import { FaceMeshFaceGeometry } from '../../face/face';
+import { Model } from '../../types/model';
 
-const addBowler = (scene) => {
+const addBowler = (
+    scene:Scene
+) : Model => {
 
-    const mesh =[];
-    const updateActions = [];
+    const updateActions : UpdateAction[] = [];
+    const mesh : Object3D[] =[];
 
     const create = () => {
 
         loadModel(
             'bowler_hat.glb',
-            gltf => {
+            (gltf:GLTF) => {
 
                 scene.add(gltf.scene);
 
@@ -28,7 +35,10 @@ const addBowler = (scene) => {
         );
     };
 
-    const update = (geom, moment) => {
+    const update = (
+        geom:FaceMeshFaceGeometry,
+        moment:number
+    ) : void => {
 
         if(mesh.length === 0) return;
         

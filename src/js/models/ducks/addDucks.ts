@@ -1,23 +1,29 @@
-import { LoopOnce } from 'three';
+import { AnimationAction, AnimationClip, AnimationMixer, LoopOnce, Object3D, Scene } from 'three';
 
 import updateAction from './updateAction';
 import actionDefinitions from './actionDefinitions';
 import addActions from '../addActions';
 import loadModel from '../loadModel';
+import { UpdateAction } from '../../types/Action';
+import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
+import { FaceMeshFaceGeometry } from '../../face/face';
 
-const duckIds = ['000', '001', '002', '003', '004', '005', '006', '007'];
+const duckIds:string[] = ['000', '001', '002', '003', '004', '005', '006', '007'];
 
-const addDucks = (scene, mixer) => {
+const addDucks = (
+    scene : Scene,
+    mixer : AnimationMixer
+) => {
 
-    const mesh = [];
-    const updateActions = [];
-    const animations = [];
+    const updateActions : UpdateAction[] = [];
+    const mesh : Object3D[] = [];
+    const animations : AnimationAction[] = [];
 
     const create = () => {
 
         loadModel(
             'ducks.glb',
-            gltf => {
+            (gltf:GLTF) => {
                 scene.add(gltf.scene);
                 mesh.push(gltf.scene);
 
@@ -43,16 +49,16 @@ const addDucks = (scene, mixer) => {
 
                 gltf.animations.map(clip => {
 
-                    const anim = mixer.clipAction(clip);
+                    const anim : AnimationAction = mixer.clipAction(clip);
 
                     if(clip.name === 'popup_action') {
                         anim.clampWhenFinished = true;
-                        anim.setLoop(LoopOnce);
+                        anim.setLoop(LoopOnce, 1);
                     }
 
                     if(clip.name.includes('bubble')) {
                         anim.clampWhenFinished = true;
-                        anim.setLoop(LoopOnce);
+                        anim.setLoop(LoopOnce, 1);
                     }
 
                     animations.push(anim);
@@ -61,7 +67,10 @@ const addDucks = (scene, mixer) => {
         );
     };
 
-    const update = (geom, moment) => {
+    const update = (
+        geom : FaceMeshFaceGeometry,
+        moment: number
+    ) => {
 
         if(mesh.length === 0) return;
         

@@ -22,8 +22,8 @@ const render = (
     }:AllResources
 ):() => void => {
 
-    const flipCamera:boolean = true;
-    let onInitialize = onInit;
+    const flipCamera : boolean = true;
+    let onInitialize : VoidRunner = onInit;
     const runOnFirstFaceDetect = runOnce(onFirstFaceDetect);
     const runOnInitialize = runOnce(onInitialize);
 

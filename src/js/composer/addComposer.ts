@@ -1,11 +1,17 @@
+import { OrthographicCamera, Scene, WebGLRenderer } from "three";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
+import { FolderApi } from "tweakpane";
 import { passes as effectPasses } from "./passes";
 
-const addComposer = (scene, camera, renderer, pane) => {
+const addComposer = (
+    scene:Scene,
+    camera:OrthographicCamera,
+    renderer:WebGLRenderer,
+    pane:FolderApi) => {
 
-    const renderScene = new RenderPass( scene, camera );
-    const composer = new EffectComposer( renderer );
+    const renderScene:RenderPass = new RenderPass( scene, camera );
+    const composer:EffectComposer = new EffectComposer( renderer );
 
     composer.addPass( renderScene );
 
@@ -14,7 +20,7 @@ const addComposer = (scene, camera, renderer, pane) => {
         expanded: false,
     });
 
-    effectPasses.forEach(pass => {
+    effectPasses.forEach((pass) => {
         pass({
             composer,
             renderScene,

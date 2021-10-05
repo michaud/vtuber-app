@@ -1,13 +1,14 @@
+import { Group, Scene } from "three";
 import addOriginHelper from "../helpers/addOriginHelper";
 
-const onClickOrigin = group => () => {
+const onClickOrigin = (group:Group) => () => {
 
     group.visible = !group.visible;
 };
 
-const addDebugTools = (scene)=> {
+const addDebugTools = (scene:Scene)=> {
     
-    const btnOrigin = document.querySelector("#btn_origin");
+    const btnOrigin:HTMLButtonElement = document.querySelector("#btn_origin");
     const group = addOriginHelper(scene);
 
     group.visible = false;
