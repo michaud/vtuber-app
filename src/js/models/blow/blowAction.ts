@@ -1,8 +1,11 @@
+import { AnimationAction, Object3D } from "three";
+import { UpdateAction } from "../../types/Action";
+
 const blowAction = (
-    actionList,
-    mesh,
-    animations
-) => {
+    actionList : UpdateAction[],
+    mesh : Object3D[],
+    animations : AnimationAction[]
+):UpdateAction => {
 
     const name = 'blowUpdate';
 

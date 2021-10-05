@@ -6,11 +6,11 @@ import {
     WebGLRenderer
 } from 'three';
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { FaceMeshFaceGeometry } from "./face/face.js";
+import { FaceMeshFaceGeometry } from "./face/face";
 
 import createSene from "./scene/createScene";
 import addModels from './models/addModels';
-import setUpResize from './scene/resizeUpdate.js';
+import setUpResize from './scene/resizeUpdate';
 import addCameraViewControls from "./ui/addCameraViewControls.js";
 import addModelInteractions from './ui/addModelInteractions.js';
 import addComposer from './composer/addComposer.js';

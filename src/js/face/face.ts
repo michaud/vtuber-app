@@ -1,4 +1,7 @@
-import { FACES as indices, UVS as texCoords } from "./geometry.js";
+import {
+    FACES as indices,
+    UVS as texCoords
+} from "./geometry";
 
 import {
     BufferGeometry,
@@ -7,28 +10,53 @@ import {
     Triangle,
     Matrix4,
 } from "three";
+import {
+    AnnotatedPrediction 
+} from '@tensorflow-models/face-landmarks-detection/dist/mediapipe-facemesh';
+import { Coords3D } from "@tensorflow-models/face-landmarks-detection/dist/mediapipe-facemesh/util";
 
-function getScale(face, id1, id2) {
 
-    var p1 = face.mesh[id1];
-    var p1_scaled = face.scaledMesh[id1];
-    var p2 = face.mesh[id2];
-    var p2_scaled = face.scaledMesh[id2];
+export type FaceOptions = {
+    useVideoTexture? : boolean;
+    normalizeCoords? : boolean;
+}
+function getScale(face : AnnotatedPrediction, id1:number, id2:number) {
 
-    var a = p2[0] - p1[0];
-    var b = p2_scaled[0] - p1_scaled[0];
+    const p1 = (face.mesh as Coords3D)[id1];
+    const p1_scaled = (face.scaledMesh as Coords3D)[id1];
+    const p2 = (face.mesh as Coords3D)[id2];
+    const p2_scaled = (face.scaledMesh as Coords3D)[id2];
+
+    const a = p2[0] - p1[0];
+    const b = p2_scaled[0] - p1_scaled[0];
 
     return b / a;
 }
 
 class FaceMeshFaceGeometry extends BufferGeometry {
 
-    constructor(options = {}) {
+    useVideoTexture:boolean;
+    normalizeCoords:boolean;
+    flipped:boolean;
+    positions:Float32Array;
+    uvs:Float32Array;
+    p0:Vector3;
+    p1:Vector3
+    p2:Vector3
+    face:AnnotatedPrediction;
+    triangle:Triangle;
+    w:number;
+    h:number;
+    
+    constructor(options:FaceOptions = {
+        useVideoTexture: false,
+        normalizeCoords:false
+    }) {
 
         super();
 
-        this.useVideoTexture = options.useVideoTexture || false;
-        this.normalizeCoords = options.normalizeCoords || false;
+        this.useVideoTexture = options.useVideoTexture;
+        this.normalizeCoords = options.normalizeCoords;
         this.flipped = false;
         this.positions = new Float32Array(468 * 3);
         this.uvs = new Float32Array(468 * 2);
@@ -72,18 +100,18 @@ class FaceMeshFaceGeometry extends BufferGeometry {
         this.getAttribute("uv").needsUpdate = true;
     }
 
-    setSize(w, h) {
+    setSize(w:number, h:number) {
 
         this.w = w;
         this.h = h;
     }
 
-    update(face, cameraFlipped) {
+    update(face:AnnotatedPrediction, cameraFlipped:boolean) {
 
         let ptr = 0;
         this.face = face;
 
-        for (const p of face.scaledMesh) {
+        for (const p of (face.scaledMesh as Coords3D)) {
 
             this.positions[ptr] = cameraFlipped
                 ? p[0] + 0.5 * this.w
@@ -103,7 +131,7 @@ class FaceMeshFaceGeometry extends BufferGeometry {
                 const ar = this.h / this.w;
                 const scale = 2 * Math.sqrt(this.w / 1000);
 
-                for (const p of face.scaledMesh) {
+                for (const p of (face.scaledMesh as Coords3D)) {
 
                     this.positions[ptr] = scale * (p[0] / this.w + 0.5);
                     this.positions[ptr + 1] = scale * (-p[1] / this.h + 0.5) * ar;
@@ -125,7 +153,7 @@ class FaceMeshFaceGeometry extends BufferGeometry {
         this.computeVertexNormals();
     }
 
-    track(id0, id1, id2) {
+    track(id0:number, id1:number, id2:number) {
 
         const points = this.positions;
         this.p0.set(points[id0 * 3], points[id0 * 3 + 1], points[id0 * 3 + 2]);

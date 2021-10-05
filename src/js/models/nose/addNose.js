@@ -24,7 +24,9 @@ const addNose = (scene) => {
         });
 
         const noseMesh = new Mesh(new IcosahedronGeometry(1, 3), noseMaterial);
-        noseMesh.castShadow = mesh.receiveShadow = true;
+        noseMesh.castShadow = true;
+        noseMesh.receiveShadow = true;
+        
         scene.add(noseMesh);
         mesh.push(noseMesh);
 

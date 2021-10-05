@@ -1,11 +1,11 @@
 import * as fld from '@tensorflow-models/face-landmarks-detection';
 import { MediaPipeFaceMesh } from '@tensorflow-models/face-landmarks-detection/dist/mediapipe-facemesh';
 
-const getFaceDetection = async (onStartLoadModel):Promise<MediaPipeFaceMesh> => {
+const getFaceDetection = async (onStartLoadModel:any):Promise<MediaPipeFaceMesh> => {
 
     onStartLoadModel();
 
-    const faceDetectionModel:MediaPipeFaceMesh = await fld.load(
+    const faceDetectionModel : MediaPipeFaceMesh = await fld.load(
         fld.SupportedPackages.mediapipeFacemesh,
         { maxFaces: 1 }
     );

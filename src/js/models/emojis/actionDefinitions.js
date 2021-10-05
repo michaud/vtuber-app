@@ -2,7 +2,7 @@ import orevealAction from './orevealAction.js';
 import tdRevealAction from './tdRevealAction.js';
 import displaceAction from './displaceAction.js';
 import twirlAction from './twirlAction.js';
-import toggleShowAction from './toggleShowAction.js';
+import toggleShowAction from '../action/toggleShowAction';
 import switchToCirclesAction from './switchToCirclesAction.js';
 import normalMoveOutAction from './normalMoveOutAction.js';
 import normalMoveInAction from './normalMoveInAction.js';

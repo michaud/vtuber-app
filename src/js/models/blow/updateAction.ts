@@ -1,13 +1,17 @@
+import { Object3D } from "three";
+import { FaceMeshFaceGeometry } from "./../../face/face";
+import { UpdateAction } from "../../types/Action";
+
 const updateAction = (
-    _,
-    mesh
-) => {
+    actionList : UpdateAction[],
+    mesh : Object3D[]
+) : UpdateAction => {
 
     const scale = 9;
 
     const blowUpdate = (
-        geom,
-        _) => {
+        geom : FaceMeshFaceGeometry,
+        moment : number) => {
 
         if(mesh.length === 0) return;
 

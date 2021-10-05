@@ -1,5 +1,5 @@
 import actionDefinitions from './actionDefinitions';
-import updateGlassesAction from './updateAction';
+import updateAction from './updateAction';
 import addActions from '../addActions';
 
 import loadModel from '../loadModel';

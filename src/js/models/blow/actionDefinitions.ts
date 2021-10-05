@@ -1,12 +1,14 @@
 
 import blowAction from './blowAction';
 import blowDetectAction from './blowDetectAction';
-import toggleShowAction from './toggleShowAction';
+import toggleShowAction from '../action/toggleShowAction';
+
 
 const blowActionDefinitions = {
     'show / hide': {
         update: 'toggleShowUpdate',
-        action: toggleShowAction
+        action: toggleShowAction,
+        detections: blowDetectAction
     },
     'blow': {
         update: 'blowUpdate',

@@ -2,7 +2,9 @@ import {
     AnimationAction,
     AnimationClip,
     AnimationMixer,
+    Group,
     LoopOnce,
+    Object3D,
     Scene
 } from 'three';
 
@@ -12,29 +14,32 @@ import addActions from '../addActions';
 import loadModel from '../loadModel';
 import { Model } from '../../types/model';
 import { FaceMeshFaceGeometry } from '../../face/face';
-import { UpdateAction } from '../../types/UpdateAction';
+import { UpdateAction } from '../../types/Action';
+import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 
 const addBlow = (
     scene:Scene,
-    mixer:AnimationMixer,
-    faceGeometry?:FaceMeshFaceGeometry
-):Model => {
+    mixer:AnimationMixer
+) : Model => {
 
-    const mesh:Model[] = [];
     const updateActions:UpdateAction[] = [];
+    const mesh:Object3D[] = [];
     const animations:AnimationAction[] = [];
 
     const create = () => {
 
         loadModel(
             'blow.glb',
-            gltf => {
+            (gltf:GLTF) => {
+
                 scene.add(gltf.scene);
-                const blow = gltf.scene;
+
+                const blow : Group = gltf.scene
+
                 mesh.push(blow);
 
                 gltf.animations.map((clip:AnimationClip) => {
-                    const anim:AnimationAction = mixer.clipAction(clip);
+                    const anim : AnimationAction = mixer.clipAction(clip);
                     animations.push(anim);
                     anim.clampWhenFinished = true;
                     anim.setLoop(LoopOnce, 1);
@@ -51,13 +56,13 @@ const addBlow = (
     };
 
     const update = (
-        geom:FaceMeshFaceGeometry,
-        moment:number
-    ):void => {
+        geom : FaceMeshFaceGeometry,
+        moment : number
+    ) : void => {
 
         if(mesh.length === 0) return;
         
-        updateActions.map((action:UpdateAction) => action(geom, moment));
+        updateActions.map((action : UpdateAction) => action(geom, moment));
     };
 
     const { actions } = addActions(
@@ -73,7 +78,7 @@ const addBlow = (
         name: 'blow',
         actions,
         mesh
-    }
+    };
 };
 
 export default addBlow;
