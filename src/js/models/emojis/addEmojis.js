@@ -11,7 +11,8 @@ import appConstants from '../../constants/appConstants.js';
 
 import paths from "../../constants/paths";
 
-import addActions from '../addActions.js';
+import addActions from '../addActions'
+;
 import addPlaneTextures from "./addPlaneTextures.js";
 import actionDefinitions from './actionDefinitions.js';
 import updateAction from './updateAction.js';

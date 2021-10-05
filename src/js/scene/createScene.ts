@@ -17,12 +17,17 @@ import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 import paths from "../constants/paths.js";
 import { RGBELoaderCallback } from './RGBELoading.js';
 import addOriginHelper from '../helpers/addOriginHelper.js';
+export type SceneResources = {
+    renderer:WebGLRenderer,
+    scene:Scene,
+    camera:OrthographicCamera,
+    canvas:HTMLCanvasElement    
+}
+const createSene = ():SceneResources => {
 
-const createSene = () => {
-
-    const canvas = document.querySelector("canvas");
+    const canvas:HTMLCanvasElement = document.querySelector("canvas");
     /* Set a background color, or change alpha to false for a solid canvas. */
-    const renderer = new WebGLRenderer({ antialias: true, alpha: true, canvas });
+    const renderer:WebGLRenderer = new WebGLRenderer({ antialias: true, alpha: true, canvas });
     // renderer.setClearColor(0x202020);
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.shadowMap.enabled = true;
@@ -34,16 +39,16 @@ const createSene = () => {
     renderer.physicallyCorrectLights = true;
 
     renderer.shadowMap.autoUpdate = true;
-    renderer.receiveShadow = true;
+    //renderer.receiveShadow = true;
 
-    const pmremGenerator = new PMREMGenerator(renderer);
+    const pmremGenerator:PMREMGenerator = new PMREMGenerator(renderer);
     pmremGenerator.compileEquirectangularShader();
 
-    const scene = new Scene();
-    const camera = new OrthographicCamera(1, 1, 1, 1, -1000, 1000);
+    const scene:Scene = new Scene();
+    const camera:OrthographicCamera = new OrthographicCamera(1, 1, 1, 1, -1000, 1000);
 
     /* Add lights */
-    const spotLight = new SpotLight(0xffffff, 0.8);
+    const spotLight:SpotLight = new SpotLight(0xffffff, 0.8);
     spotLight.position.set(0.5, 0.5, 1);
     spotLight.position.multiplyScalar(400);
     scene.add(spotLight);
@@ -62,14 +67,14 @@ const createSene = () => {
 
     scene.add(spotLight);
 
-    const hemiLight = new HemisphereLight(0xffffff, 0x080808, 0.1);
+    const hemiLight:HemisphereLight = new HemisphereLight(0xffffff, 0x080808, 0.1);
     scene.add(hemiLight);
 
-    const ambientLight = new AmbientLight(0x404040, 0.1);
+    const ambientLight:AmbientLight = new AmbientLight(0x404040, 0.1);
     scene.add(ambientLight);
 
-    const rgbeLoadManager = new LoadingManager();
-    const RGBELoad = new RGBELoader(rgbeLoadManager)
+    const rgbeLoadManager:LoadingManager = new LoadingManager();
+    const RGBELoad:RGBELoader = new RGBELoader(rgbeLoadManager)
         .setDataType(UnsignedByteType)
         .setPath(paths.hdr);
 

@@ -1,4 +1,4 @@
-const updateBlowAction = (
+const updateAction = (
     _,
     mesh
 ) => {
@@ -27,4 +27,4 @@ const updateBlowAction = (
     return blowUpdate;
 };
 
-export default updateBlowAction;
+export default updateAction;

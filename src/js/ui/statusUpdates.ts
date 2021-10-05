@@ -1,15 +1,13 @@
-export const onClear = status => () => {
-
+export const onClear = (status) => () => {
     status.value = "loaded";
     status.hidden = true;
 };
 
-export const onLoadModel = status => () => {
-
+export const onLoadModel = (status) => () => {
     status.value = "Loading model...";
 };
 
-export const onFirstFaceDetection = status => () => {
+export const onFirstFaceDetection = (status) => () => {
 
     status.value = "Detecting face...";
 };

@@ -136,3 +136,9 @@ details {
     font-size: 1rem;
     flex-grow: 1;
 }
+
+#paneContainer {
+    position: absolute;
+    left: 0;
+    width: 250px;
+}

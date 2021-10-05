@@ -1,9 +1,12 @@
 import { runOnce } from "../utils/runOnce";
-import updateWithFaceDetection from "./../faceDetection/updateWithFaceDetection";
+import updateWithFaceDetection from "../faceDetection/updateWithFaceDetection";
+
+import { AllResources } from '../index';
+import { VoidRunner } from "../types/voidRunner";
 
 const render = (
-    onInit,
-    onFirstFaceDetect,
+    onInit: VoidRunner,
+    onFirstFaceDetect: VoidRunner,
     {
         faceDetectionModel,
         models,
@@ -16,19 +19,19 @@ const render = (
         camera,
         av,
         composer
-    }
-) => {
+    }:AllResources
+):() => void => {
 
-    const flipCamera = true;
+    const flipCamera:boolean = true;
     let onInitialize = onInit;
     const runOnFirstFaceDetect = runOnce(onFirstFaceDetect);
     const runOnInitialize = runOnce(onInitialize);
 
-    const rerender = async ()=> {
+    const rerender:VoidRunner = () => {
 
         runOnFirstFaceDetect();
 
-        const delta = threeTime.getDelta();
+        const delta:number = threeTime.getDelta();
         mixer && mixer.update(delta);
 
         updateWithFaceDetection(

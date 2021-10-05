@@ -1,6 +1,6 @@
 // icon from https://www.iconfinder.com/icons/1348651/arrow_forward_next_right_icon
 
-const template = document.createElement("template");
+const template:HTMLTemplateElement = document.createElement("template");
 template.innerHTML = `
 <style>
 :host {
@@ -61,6 +61,19 @@ p {
 `;
 
 class GumAudioVideo extends HTMLElement {
+  deviceNameLabel:HTMLElement;
+  nextDeviceButton:HTMLElement;
+  currentVideoInput:number;
+  devices:{
+    audioinput: MediaDeviceInfo[],
+    audiooutput: MediaDeviceInfo[],
+    videoinput: MediaDeviceInfo[],
+  }
+  videoLoadedData:Promise<unknown>;
+  resolveLoadedData:any;
+  rejectLoadedData:unknown;
+  video:HTMLVideoElement;  
+
   constructor() {
     super();
 
@@ -104,7 +117,8 @@ class GumAudioVideo extends HTMLElement {
 
   async ready() {
 
-    const test = this.videoLoadedData.catch((reason) => console.log('reason:', reason))
+    const test:Promise<unknown> = this.videoLoadedData.catch((reason):void => console.log('reason:', reason))
+
     await test;
   }
 
@@ -114,10 +128,10 @@ class GumAudioVideo extends HTMLElement {
       this.deviceNameLabel.textContent = `Can't enumerate devices. Make sure the page is HTTPS, and the browser support getUserMedia.`;
       return;
     }
-    const devices = await navigator.mediaDevices.enumerateDevices();
+    const devices:MediaDeviceInfo[] = await navigator.mediaDevices.enumerateDevices();
 
     for (const device of devices) {
-      let name;
+      let name:string;
       switch (device.kind) {
         case "audioinput":
           name = device.label || "Microphone";
@@ -143,17 +157,18 @@ class GumAudioVideo extends HTMLElement {
     });
   }
 
-  async getMedia(device) {
+  async getMedia(device:MediaDeviceInfo) {
     const constraints = {
       video: { deviceId: device.deviceId, width: 500, height: 500 },
     };
     this.deviceNameLabel.textContent = "Connecting...";
-    let stream = null;
+    let stream:MediaStream = null;
 
     try {
       stream = await navigator.mediaDevices.getUserMedia(constraints);
       this.deviceNameLabel.textContent = device.label;
       this.createVideoElement();
+
       this.video.srcObject = stream;
     } catch (err) {
       this.deviceNameLabel.textContent = `${err.name} ${err.message}`;
@@ -162,14 +177,14 @@ class GumAudioVideo extends HTMLElement {
 
   createVideoElement() {
     if (this.video && this.video.srcObject) {
-      this.video.srcObject.getTracks().forEach((track) => {
+      (<MediaStream>this.video.srcObject).getTracks().forEach((track) => {
         track.stop();
       });
     }
     if (!this.video) {
       this.video = document.createElement("video");
       this.video.autoplay = true;
-      this.video.playsinline = true;
+      this.video.playsInline = true;
 
       this.video.addEventListener("loadeddata", () => {
 
