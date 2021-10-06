@@ -15,12 +15,7 @@ import {
 } from '@tensorflow-models/face-landmarks-detection/dist/mediapipe-facemesh';
 import { Coords3D } from "@tensorflow-models/face-landmarks-detection/dist/mediapipe-facemesh/util";
 
-
-export type FaceOptions = {
-    useVideoTexture? : boolean;
-    normalizeCoords? : boolean;
-}
-function getScale(face : AnnotatedPrediction, id1:number, id2:number) {
+function getScale(face : AnnotatedPrediction, id1 : number, id2 : number) {
 
     const p1 = (face.mesh as Coords3D)[id1];
     const p1_scaled = (face.scaledMesh as Coords3D)[id1];
@@ -31,26 +26,31 @@ function getScale(face : AnnotatedPrediction, id1:number, id2:number) {
     const b = p2_scaled[0] - p1_scaled[0];
 
     return b / a;
+};
+
+export type FaceOptions = {
+    useVideoTexture? : boolean;
+    normalizeCoords? : boolean;
 }
 
 class FaceMeshFaceGeometry extends BufferGeometry {
 
-    useVideoTexture:boolean;
-    normalizeCoords:boolean;
-    flipped:boolean;
-    positions:Float32Array;
-    uvs:Float32Array;
-    p0:Vector3;
-    p1:Vector3
-    p2:Vector3
-    face:AnnotatedPrediction;
-    triangle:Triangle;
-    w:number;
-    h:number;
+    useVideoTexture : boolean;
+    normalizeCoords : boolean;
+    flipped : boolean;
+    positions : Float32Array;
+    uvs : Float32Array;
+    p0 : Vector3;
+    p1 : Vector3
+    p2 : Vector3
+    face : AnnotatedPrediction;
+    triangle : Triangle;
+    w : number;
+    h : number;
     
-    constructor(options:FaceOptions = {
+    constructor(options : FaceOptions = {
         useVideoTexture: false,
-        normalizeCoords:false
+        normalizeCoords : false
     }) {
 
         super();
@@ -100,13 +100,13 @@ class FaceMeshFaceGeometry extends BufferGeometry {
         this.getAttribute("uv").needsUpdate = true;
     }
 
-    setSize(w:number, h:number) {
+    setSize(w : number, h : number) {
 
         this.w = w;
         this.h = h;
     }
 
-    update(face:AnnotatedPrediction, cameraFlipped:boolean) {
+    update(face : AnnotatedPrediction, cameraFlipped : boolean) {
 
         let ptr = 0;
         this.face = face;
@@ -153,7 +153,7 @@ class FaceMeshFaceGeometry extends BufferGeometry {
         this.computeVertexNormals();
     }
 
-    track(id0:number, id1:number, id2:number) {
+    track(id0 : number, id1 : number, id2 : number) {
 
         const points = this.positions;
         this.p0.set(points[id0 * 3], points[id0 * 3 + 1], points[id0 * 3 + 2]);

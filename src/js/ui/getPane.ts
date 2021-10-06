@@ -8,11 +8,11 @@ import {
 
 import * as EssentialsPlugin from '@tweakpane/plugin-essentials';
 
-export type Panels = { pane:Pane, status:BladeApi<BladeController<View>> };
+export type Panels = { pane : Pane, status : BladeApi<BladeController<View>> };
 
-const getPane = ():Panels => {
+const getPane = () : Panels => {
 
-    const pane:Pane = new Pane({
+    const pane : Pane = new Pane({
         container: document.getElementById('paneContainer'),
     });
 

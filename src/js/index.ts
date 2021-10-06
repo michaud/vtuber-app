@@ -6,29 +6,28 @@ import {
 } from '@tensorflow-models/face-landmarks-detection/dist/mediapipe-facemesh';
 import render from './render/render';
 import getFaceDetection from './faceDetection/getFaceDetection';
-import init, { AppResources } from './init';
+import init from './init';
 import {
     onClear,
     onFirstFaceDetection,
     onLoadModel
 } from './ui/statusUpdates';
 import getPane, { Panels } from './ui/getPane';
+import { AppResources } from './types/AppResources';
+import { GumAudioVideo } from '../../third_party/gum-av';
 
-export type AllResources = AppResources & {
-    faceDetectionModel:MediaPipeFaceMesh
-};
 
-const start = async ():Promise<void> => {
+const start = async () : Promise<void> => {
     
-    const av:GumAudioVideo = document.querySelector('gum-av');
+    const av : GumAudioVideo = document.querySelector('gum-av');
 
     await Promise.all([tf.setBackend('webgl'), av.ready()]);
     
     const { pane, status }:Panels = getPane();
 
-    const data:AppResources = init(av, pane);
+    const data : AppResources = init(av, pane);
 
-    const faceDetectionModel:MediaPipeFaceMesh = await getFaceDetection(
+    const faceDetectionModel : MediaPipeFaceMesh = await getFaceDetection(
         onLoadModel(status)
     );
 

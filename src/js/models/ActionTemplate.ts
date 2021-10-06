@@ -1,19 +1,23 @@
+import { Object3D } from "three";
+import { FaceMeshFaceGeometry } from "../face/face";
+import { Update } from "../types/Action";
+
 /* replace name and implement, maybe use different step definition */
 const nameAction = (
-    updateList,
-    mesh
-) => {
+    updateList : Array<Update>,
+    mesh : Array<Object3D>
+) : Update => {
 
     const name = 'nameUpdate';
-    let start;
+    let start : number;
     const duration = 1;
     const steps = 30;
     let interval = duration / steps;
     let index = 0;
 
-    const nameUpdate = (
-        geom,
-        moment
+    const nameUpdate : Update = (
+        geom : FaceMeshFaceGeometry,
+        moment : number
     ) => {
 
         if (!start) {
@@ -36,7 +40,7 @@ const nameAction = (
                 index = 0;
                 
                 /* remove yourself from the updateList */
-                const idx = updateList.findIndex(item => item.name === name);
+                const idx : number = updateList.findIndex(item => item.name === name);
                 updateList.splice(idx, 1);
             }
         }
