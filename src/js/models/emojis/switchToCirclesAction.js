@@ -4,7 +4,7 @@ import {
 } from 'three';
 
 const switchToCirclesAction = (
-    actionList,
+    updateList,
     mesh
 ) => {
 
@@ -23,9 +23,9 @@ const switchToCirclesAction = (
                 plane.children[0].geometry = new PlaneGeometry(1, 1);
         });
 
-        /* remove yourself from the actionList */
-        const idx = actionList.findIndex(item => item.name === name);
-        actionList.splice(idx, 1);
+        /* remove yourself from the updateList */
+        const idx = updateList.findIndex(item => item.name === name);
+        updateList.splice(idx, 1);
     };
 
     return switchToCirclesUpdate;

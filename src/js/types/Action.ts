@@ -12,9 +12,9 @@ export type Action = (
     animations? : Array<AnimationAction>
 ) => Update;
 
-export interface ActionList { [index : string] : Update }
+export interface UpdateList { [index : string] : Update }
 
 export interface ActionResources {
     updateActions : Array<Update>,
-    actions : ActionList
+    actions : UpdateList
 }

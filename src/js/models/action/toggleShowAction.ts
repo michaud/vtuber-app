@@ -2,7 +2,7 @@ import { Object3D } from "three";
 import { Update } from "../../types/Action";
 
 const toggleShowAction = (
-    actionList : Array<Update>,
+    updateList : Array<Update>,
     mesh : Array<Object3D>
 ) : Update => {
 
@@ -12,11 +12,11 @@ const toggleShowAction = (
 
         mesh.forEach((el:Object3D) => el.visible = !el.visible);
 
-        /* remove yourself from the actionList */
-        const idx : number = actionList.findIndex(
+        /* remove yourself from the updateList */
+        const idx : number = updateList.findIndex(
             (item : Update) => item.name === name
         );
-        actionList.splice(idx, 1);
+        updateList.splice(idx, 1);
     };
 
     return toggleShowUpdate;

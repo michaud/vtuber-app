@@ -1,7 +1,7 @@
 import { verticalMapping } from "./verticalMapping.js";
 
 const tdRevealAction = (
-    actionList,
+    updateList,
     mesh
 ) => {
 
@@ -36,9 +36,9 @@ const tdRevealAction = (
                 revealIndex = 0;
                 mesh.forEach(plane => plane.children[0].visible = true);
                 
-                /* remove yourself from the actionList */
-                const idx = actionList.findIndex(item => item.name === name);
-                actionList.splice(idx, 1);
+                /* remove yourself from the updateList */
+                const idx = updateList.findIndex(item => item.name === name);
+                updateList.splice(idx, 1);
             }
         }
     };

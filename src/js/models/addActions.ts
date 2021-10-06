@@ -6,7 +6,7 @@ import {
 } from "../types/actionDefinitions";
 import {
     Update,
-    ActionList,
+    UpdateList,
     ActionResources,
     Action
 } from "../types/Action";
@@ -42,7 +42,7 @@ const addActions = (
     animations? : Array<AnimationAction>
 ) : ActionResources => {
 
-    const actions : ActionList = Object
+    const actions : UpdateList = Object
         .keys(actionDefinitions)
         .reduce((acc, key) => {
 

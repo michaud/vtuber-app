@@ -2,7 +2,7 @@ import { Vector3 } from "three";
 import appConstants from "../../constants/appConstants";
 
 const normalMoveInAction = (
-    actionList,
+    updateList,
     mesh
 ) => {
 
@@ -63,9 +63,9 @@ const normalMoveInAction = (
                 start = undefined;
                 index = 0;
                 
-                /* remove yourself from the actionList */
-                const idx = actionList.findIndex(item => item.name === name);
-                actionList.splice(idx, 1);
+                /* remove yourself from the updateList */
+                const idx = updateList.findIndex(item => item.name === name);
+                updateList.splice(idx, 1);
             }
         }
     };

@@ -2,7 +2,7 @@ import { AnimationAction, Object3D } from "three";
 import { Update } from "../../types/Action";
 
 const blowAction = (
-    actionList : Array<Update>,
+    updateList : Array<Update>,
     _mesh : Array<Object3D>,
     animations : Array<AnimationAction>
 ) : Update => {
@@ -21,9 +21,9 @@ const blowAction = (
             }
         });
 
-        /* remove yourself from the actionList */
-        const idx = actionList.findIndex(item => item.name === name);
-        actionList.splice(idx, 1);
+        /* remove yourself from the updateList */
+        const idx = updateList.findIndex(item => item.name === name);
+        updateList.splice(idx, 1);
     };
 
     return blowUpdate;

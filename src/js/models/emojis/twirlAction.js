@@ -1,5 +1,5 @@
 const twirlAction = (
-    actionList,
+    updateList,
     mesh
 ) => {
 
@@ -38,10 +38,10 @@ const twirlAction = (
                 start = undefined;
                 stepIndex = 0;
                 
-                /* remove yourself from the actionList */
-                const idx = actionList.findIndex(item => item.name === name);
+                /* remove yourself from the updateList */
+                const idx = updateList.findIndex(item => item.name === name);
                 mesh[geomIndex].children[0].scale.set(oriScale.x, oriScale.y, oriScale.z);
-                actionList.splice(idx, 1);
+                updateList.splice(idx, 1);
             }
         }
     };

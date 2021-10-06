@@ -1,7 +1,7 @@
 import { circularMapping } from "./circularMapping";
 
 const orevealAction = (
-    actionList,
+    updateList,
     mesh
 ) => {
 
@@ -37,9 +37,9 @@ const orevealAction = (
                 revealIndex = 0;
                 mesh.forEach(plane => plane.visible = true);
                 
-                /* remove yourself from the actionList */
-                const idx = actionList.findIndex(item => item.name === name);
-                actionList.splice(idx, 1);
+                /* remove yourself from the updateList */
+                const idx = updateList.findIndex(item => item.name === name);
+                updateList.splice(idx, 1);
             }
         }
     };

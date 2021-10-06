@@ -2,7 +2,7 @@ import { AnimationAction, Object3D } from "three";
 import { Update } from "../../types/Action";
 
 const startAction = (
-    actionList : Array<Update>,
+    updateList : Array<Update>,
     mesh : Array<Object3D>,
     animations : Array<AnimationAction>
 ) => {
@@ -20,9 +20,9 @@ const startAction = (
             }
         });
 
-        /* remove yourself from the actionList */
-        const idx : number = actionList.findIndex(item => item.name === name);
-        actionList.splice(idx, 1);
+        /* remove yourself from the updateList */
+        const idx : number = updateList.findIndex(item => item.name === name);
+        updateList.splice(idx, 1);
     };
 
     return duckStartUpdate;

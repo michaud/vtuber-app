@@ -3,7 +3,7 @@ import { circularMapping } from "./circularMapping";
 import { verticalMappingPadded } from "./verticalMapping";
 
 const displaceAction = (
-    actionList,
+    updateList,
     mesh
 ) => {
 
@@ -80,9 +80,9 @@ const displaceAction = (
                 startReveal = undefined;
                 revealIndex = 0;
 
-                /* remove yourself from the actionList */
-                const idx = actionList.findIndex(item => item.name === name);
-                actionList.splice(idx, 1);
+                /* remove yourself from the updateList */
+                const idx = updateList.findIndex(item => item.name === name);
+                updateList.splice(idx, 1);
             }
         }
     };
