@@ -15,7 +15,7 @@ const addDotScreenPass = ({
         scale: 1.5
     };
 
-    const pass:DotScreenPass = new DotScreenPass(new Vector2(0, 0), params.angle, params.scale);
+    const pass : DotScreenPass = new DotScreenPass(new Vector2(0, 0), params.angle, params.scale);
 
     pass.enabled = params['dotscreen'];
 

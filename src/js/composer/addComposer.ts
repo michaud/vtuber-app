@@ -5,13 +5,14 @@ import { FolderApi } from "tweakpane";
 import { passes as effectPasses } from "./passes";
 
 const addComposer = (
-    scene:Scene,
-    camera:OrthographicCamera,
-    renderer:WebGLRenderer,
-    pane:FolderApi) => {
+    scene : Scene,
+    camera : OrthographicCamera,
+    renderer : WebGLRenderer,
+    pane : FolderApi
+) : EffectComposer => {
 
-    const renderScene:RenderPass = new RenderPass( scene, camera );
-    const composer:EffectComposer = new EffectComposer( renderer );
+    const renderScene : RenderPass = new RenderPass( scene, camera );
+    const composer : EffectComposer = new EffectComposer( renderer );
 
     composer.addPass( renderScene );
 
@@ -23,7 +24,6 @@ const addComposer = (
     effectPasses.forEach((pass) => {
         pass({
             composer,
-            renderScene,
             renderer,
             folder
         });

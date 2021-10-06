@@ -12,10 +12,9 @@ import { PassArguments } from "../types/PassArguments";
 
 const addBloomPass = ({
     composer,
-    renderScene,
     renderer,
     folder
-}:PassArguments) => {
+} : PassArguments) => {
     
     const params = {
         exposure: 1,
@@ -37,7 +36,6 @@ const addBloomPass = ({
     const passComposer = new EffectComposer( renderer );
     passComposer.renderToScreen = false;
 
-    passComposer.addPass( renderScene );
     passComposer.addPass( pass );
 
     const finalPass = new ShaderPass(

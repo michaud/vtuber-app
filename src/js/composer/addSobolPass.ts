@@ -6,7 +6,6 @@ import { PassArguments } from "../types/PassArguments";
 
 const addSobolPass = ({
     composer,
-    renderScene,
     folder
 } : PassArguments) => {
 
@@ -17,7 +16,6 @@ const addSobolPass = ({
     /* color to grayscale conversion */
     const effectGrayScale = new ShaderPass(LuminosityShader);
 
-    composer.addPass( renderScene );
     composer.addPass(effectGrayScale);
 
     const effectSobel = new ShaderPass(SobelOperatorShader);
