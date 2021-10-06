@@ -1,26 +1,27 @@
 import {
     PlaneGeometry,
     CircleGeometry,
+    Object3D,
+    Mesh,
 } from 'three';
+import { Update } from '../../types/Action';
 
 const switchToCirclesAction = (
-    updateList,
-    mesh
-) => {
+    updateList : Array<Update>,
+    mesh : Array<Object3D>
+) : Update => {
 
     const name = 'toggleShowUpdate';
 
-    const switchToCirclesUpdate = (
-        // geom,
-        // moment
-    ) => {
+    const switchToCirclesUpdate : Update = () => {
 
         if (mesh.length > 0) mesh.map(plane => {
 
-            plane.children[0].geometry.type === 'PlaneGeometry' ?
-                plane.children[0].geometry = new CircleGeometry(.66, 36)
+            const item : Mesh = plane.children[0] as Mesh;
+            item.geometry.type === 'PlaneGeometry' ?
+                item.geometry = new CircleGeometry(.66, 36)
                 :
-                plane.children[0].geometry = new PlaneGeometry(1, 1);
+                item.geometry = new PlaneGeometry(1, 1);
         });
 
         /* remove yourself from the updateList */

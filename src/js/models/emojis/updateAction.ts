@@ -1,13 +1,19 @@
-import { Vector3 } from 'three';
-import appConstants from '../../constants/appConstants.js';
+import { BufferAttribute, Object3D, Vector3 } from 'three';
+import appConstants from '../../constants/appConstants';
+import { Update } from '../../types/Action';
+import { TrackData } from '../../types/TrackData';
 import {
     faceFeatureMapping,
-    faceFeatureScaleFactor
-} from './faceFeatureMapping.js';
+    faceFeatureScaleFactor,
+    FeatureMapping
+} from './faceFeatureMapping';
 
-const getScaleFactorForIndex = (i, faceFeatureMapping) => {
+const getScaleFactorForIndex = (
+    i : number,
+    faceFeatureMapping : FeatureMapping
+) => {
 
-    let scaleFactor = 1;
+    let scaleFactor : number = 1;
     Object.keys(faceFeatureMapping).map(key => {
         if(faceFeatureMapping[key].indexOf(i) > -1) {
             scaleFactor = faceFeatureScaleFactor[key];
@@ -18,20 +24,19 @@ const getScaleFactorForIndex = (i, faceFeatureMapping) => {
 };
 
 const updateAction = (
-    _,
-    mesh
+    _actionList : Array<Update>,
+    mesh : Array<Object3D>
 ) => {
 
     const scale = 7;
 
-    const emojisUpdate = (
-        geom,
-        // moment
+    const emojisUpdate : Update = (
+        geom
     ) => {
 
-        const points = geom.getAttribute('position');
-        const normals = geom.getAttribute('normal');
-        const track = geom.track(6, 196, 419);
+        const points : BufferAttribute = geom.getAttribute('position') as BufferAttribute;
+        const normals :  BufferAttribute = geom.getAttribute('normal') as  BufferAttribute;
+        const track : TrackData = geom.track(6, 196, 419);
 
         for (let i = 0; i < appConstants.NUM_KEYPOINTS; i++) {
 

@@ -1,14 +1,15 @@
-import orevealAction from './orevealAction.js';
-import tdRevealAction from './tdRevealAction.js';
-import displaceAction from './displaceAction.js';
-import twirlAction from './twirlAction.js';
+import orevealAction from './orevealAction';
+import tdRevealAction from './tdRevealAction';
+import displaceAction from './displaceAction';
+import twirlAction from './twirlAction';
 import toggleShowAction from '../action/toggleShowAction';
-import switchToCirclesAction from './switchToCirclesAction.js';
-import normalMoveOutAction from './normalMoveOutAction.js';
-import normalMoveInAction from './normalMoveInAction.js';
+import switchToCirclesAction from './switchToCirclesAction';
+import normalMoveOutAction from './normalMoveOutAction';
+import normalMoveInAction from './normalMoveInAction';
+import { ActionDefinitions } from '../../types/actionDefinitions';
 
 /* key is used as label for button */
-const actionDefinitions = {
+const actionDefinitions : ActionDefinitions = {
     'show / hide': { update: 'toggleShowUpdate', action: toggleShowAction },
     'top down': { update: 'tdRevealUpdate', action: tdRevealAction },
     'oreveal': { update: 'orevealUpdate', action: orevealAction },

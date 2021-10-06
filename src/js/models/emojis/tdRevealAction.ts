@@ -1,19 +1,21 @@
-import { verticalMapping } from "./verticalMapping.js";
+import { Object3D } from "three";
+import { Update } from "../../types/Action.js";
+import { verticalMapping } from "./verticalMapping";
 
 const tdRevealAction = (
-    updateList,
-    mesh
-) => {
+    updateList : Array<Update>,
+    mesh : Array<Object3D>
+) : Update => {
 
     const name = 'tdRevealUpdate';
-    let startReveal;
+    let startReveal : number;
     const revealduration = 4;
-    let revealInterval = revealduration / verticalMapping.length;
-    let revealIndex = 0;
+    let revealInterval : number = revealduration / verticalMapping.length;
+    let revealIndex : number = 0;
 
-    const tdRevealUpdate = (
-        _,
-        moment
+    const tdRevealUpdate : Update = (
+        _geom,
+        moment : number
     ) => {
 
         if (!startReveal) {
@@ -37,7 +39,7 @@ const tdRevealAction = (
                 mesh.forEach(plane => plane.children[0].visible = true);
                 
                 /* remove yourself from the updateList */
-                const idx = updateList.findIndex(item => item.name === name);
+                const idx : number = updateList.findIndex(item => item.name === name);
                 updateList.splice(idx, 1);
             }
         }

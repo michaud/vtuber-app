@@ -368,12 +368,14 @@ export const verticalMappingPadded = [
 ];
 
 /** get padded matrix from 2D array*/
-export const getPaddedMatrix = (matrix) => {
+export const getPaddedMatrix = (
+    matrix : Array<Array<number>>
+) : Array<Array<number>> => {
 
-    const isEven = num => num % 2 === 0;
+    const isEven = (num : number) => num % 2 === 0;
     const maxLen = matrix.reduce((acc, row) => row.length > acc ? row.length : acc, 0);
 
-    return matrix.reduce((acc, row) => {
+    return matrix.reduce((acc : Array<Array<number>>, row) => {
 
         const padding = Array(Math.floor((maxLen - row.length) / 2)).fill(-1, 0);
         const resultRow = [].concat(padding, row, padding);

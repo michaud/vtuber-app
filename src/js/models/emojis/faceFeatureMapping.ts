@@ -1,4 +1,8 @@
-export const faceFeatureMapping = {
+export interface FeatureMapping {
+    [index : string] : Array<number>
+}
+
+export const faceFeatureMapping : FeatureMapping = {
     leftEye: [
         359,
         467,
@@ -353,7 +357,11 @@ export const faceFeatureMapping = {
     ]
 };
 
-export const faceFeatureScaleFactor = {
+export interface FeatureScaleFactor {
+    [index : string ] : number
+}
+
+export const faceFeatureScaleFactor : FeatureScaleFactor = {
     leftEye: 0.6,
     rightEye: 0.6,
     nose: 0.6,

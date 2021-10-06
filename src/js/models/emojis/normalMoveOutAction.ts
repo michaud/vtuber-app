@@ -1,19 +1,20 @@
-import { Vector3 } from "three";
+import { Object3D, Vector3 } from "three";
 import appConstants from "../../constants/appConstants";
+import { Update } from "../../types/Action";
 
 const normalMoveOutAction = (
-    updateList,
-    mesh
-) => {
+    updateList : Array<Update>,
+    mesh : Array<Object3D>
+) : Update => {
 
     const name = 'normalMoveOutUpdate';
-    let start;
+    let start : number;
     const duration = 1;
     const steps = 20;
     let interval = duration / steps;
     let index = 0;
 
-    const normalMoveOutUpdate = (
+    const normalMoveOutUpdate : Update = (
         geom,
         moment
     ) => {
@@ -22,8 +23,6 @@ const normalMoveOutAction = (
             start = moment;
             index++;
         }
-
-        const geomIndex = 1;
 
         const points = geom.getAttribute('position');
         const normals = geom.getAttribute('normal');

@@ -1,19 +1,22 @@
+import { Object3D } from "three";
+import { FaceMeshFaceGeometry } from "../../face/face";
+import { Update } from "../../types/Action";
 import { circularMapping } from "./circularMapping";
 
 const orevealAction = (
-    updateList,
-    mesh
-) => {
+    updateList : Array<Update>,
+    mesh : Array<Object3D>
+) : Update => {
 
     const name = 'orevealUpdate';
-    let startReveal;
+    let startReveal : number;
     const revealduration = 1;
     let revealInterval = revealduration / circularMapping.length;
     let revealIndex = 0;
 
-    const orevealUpdate = (
-        _,
-        moment
+    const orevealUpdate : Update = (
+        _geom : FaceMeshFaceGeometry,
+        moment : number
     ) => {
 
         if (!startReveal) {

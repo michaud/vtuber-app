@@ -50,9 +50,7 @@ const addActions = (
 
             return ({
                 ...acc,
-                detections: action.detections ?
-                action.detections(animations) :
-                action.detections,
+                detections: action?.detections?.(animations) ?? action.detections,
                 [key]: getAction(
                     action,
                     updateActions,

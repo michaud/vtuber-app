@@ -4,25 +4,31 @@ import {
     DoubleSide,
     MeshStandardMaterial,
     Group,
-    CircleGeometry
+    CircleGeometry,
+    Scene,
+    Object3D,
+    Texture
 } from 'three';
 
-import appConstants from '../../constants/appConstants.js';
+import appConstants from '../../constants/appConstants';
 
 import paths from "../../constants/paths";
 
-import addActions from '../addActions'
-;
-import addPlaneTextures from "./addPlaneTextures.js";
-import actionDefinitions from './actionDefinitions.js';
-import updateAction from './updateAction.js';
+import addActions from '../addActions';
+import addPlaneTextures from "./addPlaneTextures";
+import actionDefinitions from './actionDefinitions';
+import updateAction from './updateAction';
+import { Model } from '../../types/model.js';
+import { Update } from '../../types/Action.js';
 
-const addEmojis = (scene, _, faceGeometry) => {
+const addEmojis = (
+    scene : Scene
+) : Model => {
 
-    const mesh = [];
-    const updateActions = [];
+    const mesh : Array<Object3D> = [];
+    const updateActions : Array<Update> = [];
 
-    const imageList = [
+    const imageList : Array<string> = [
         "5eed3a1b-ad65-48b5-9923-cb401656e7ae-profile_image-70x70.png",
         "hahaball.png",
         "pomo.png",
@@ -48,21 +54,21 @@ const addEmojis = (scene, _, faceGeometry) => {
 
         for (let i = 0; i < appConstants.NUM_KEYPOINTS; i++) {
         
-            const texture = new TextureLoader().load(`${paths.profilePics}empty.png`);
+            const texture : Texture = new TextureLoader().load(`${paths.profilePics}empty.png`);
 
-            const geometry = new CircleGeometry(.66, 36);
-            const material = new MeshStandardMaterial({
+            const geometry : CircleGeometry = new CircleGeometry(.66, 36);
+            const material : MeshStandardMaterial = new MeshStandardMaterial({
                 side: DoubleSide,
                 map: texture,
                 transparent: true,
                 opacity: 0.0
             });
         
-            const plane = new Mesh(geometry, material);
+            const plane : Mesh = new Mesh(geometry, material);
             plane.frustumCulled = false;
 
             /* isolate for transforms */
-            const group = new Group();
+            const group : Group = new Group();
 
             group.add(plane);
             group.scale.setScalar(10);
@@ -83,11 +89,11 @@ const addEmojis = (scene, _, faceGeometry) => {
         );
     };
 
-    const update = (geom, moment) => {
+    const update : Update = (geom, moment) => {
 
         if(mesh.length === 0) return;
         
-        updateActions.map(action => action(geom, moment));
+        updateActions.map((action : Update) => action(geom, moment));
     };
 
     const { actions } = addActions(

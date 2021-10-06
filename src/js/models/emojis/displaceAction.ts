@@ -1,18 +1,19 @@
-import { Vector3 } from "three";
+import { Object3D, Vector3 } from "three";
+import { Update } from "../../types/Action";
 import { circularMapping } from "./circularMapping";
 import { verticalMappingPadded } from "./verticalMapping";
 
 const displaceAction = (
-    updateList,
-    mesh
+    updateList : Array<Update>,
+    mesh : Array<Object3D>
 ) => {
 
     const name = 'displaceUpdate';
 
-    let startReveal;
+    let startReveal : number;
     const revealduration = 1;
-    let revealInterval = revealduration / circularMapping.length;
-    let revealIndex = 0;
+    let revealInterval : number = revealduration / circularMapping.length;
+    let revealIndex : number = 0;
 
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
@@ -22,7 +23,7 @@ const displaceAction = (
 
     img.src = '/assets/center_bulb2.png';
 
-    const displaceUpdate = (
+    const displaceUpdate : Update = (
         geom,
         moment
     ) => {

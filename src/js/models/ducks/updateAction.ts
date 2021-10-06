@@ -4,7 +4,7 @@ import { Update } from "../../types/Action";
 import { TrackData } from "../../types/TrackData";
 
 const updateDuckAction = (
-    _actionList : Array<Update>,
+    _updateList : Array<Update>,
     mesh : Array<Object3D>
 ) : Update => {
 

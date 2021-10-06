@@ -18,8 +18,8 @@ import { Update } from '../../types/Action';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 
 const addBlow = (
-    scene:Scene,
-    mixer:AnimationMixer
+    scene : Scene,
+    mixer : AnimationMixer
 ) : Model => {
 
     const updateActions : Array<Update> = [];

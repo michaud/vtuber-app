@@ -1,19 +1,20 @@
-import { Vector3 } from "three";
+import { Object3D, Vector3 } from "three";
 import appConstants from "../../constants/appConstants";
+import { Update } from "../../types/Action";
 
 const normalMoveInAction = (
-    updateList,
-    mesh
-) => {
+    updateList : Array<Update>,
+    mesh : Array<Object3D>
+) : Update => {
 
     const name = 'normalMoveInUpdate';
-    let start;
+    let start : number;
     const duration = 1;
     const steps = 20;
     let interval = duration / steps;
     let index = 0;
 
-    const normalMoveInUpdate = (
+    const normalMoveInUpdate : Update = (
         geom,
         moment
     ) => {
@@ -28,8 +29,7 @@ const normalMoveInAction = (
 
         if (moment > start + (index * interval)) {
 
-
-            const delta = (index * interval) * 200;
+            const delta : number = (index * interval) * 200;
 
             for (let i = 0; i < appConstants.NUM_KEYPOINTS; i++) {
 
@@ -64,7 +64,7 @@ const normalMoveInAction = (
                 index = 0;
                 
                 /* remove yourself from the updateList */
-                const idx = updateList.findIndex(item => item.name === name);
+                const idx : number = updateList.findIndex(item => item.name === name);
                 updateList.splice(idx, 1);
             }
         }

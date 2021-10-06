@@ -1,20 +1,23 @@
+import { Object3D, Vector3 } from "three";
+import { Update } from "../../types/Action";
+
 const twirlAction = (
-    updateList,
-    mesh
-) => {
+    updateList : Array<Update>,
+    mesh : Array<Object3D>
+) : Update => {
 
     const name = 'twirlUpdate';
-    let start;
+    let start : number;
     const duration = 1;
     const steps = 10;
     let interval = duration / steps;
     let stepIndex = 0;
     const geomIndex = Math.floor(Math.random() * 468);
-    let oriScale;
+    let oriScale : Vector3;
 
-    const twirlUpdate = (
+    const twirlUpdate : Update = (
         _,
-        moment
+        moment : number
     ) => {
 
         if (!start) {
@@ -39,7 +42,7 @@ const twirlAction = (
                 stepIndex = 0;
                 
                 /* remove yourself from the updateList */
-                const idx = updateList.findIndex(item => item.name === name);
+                const idx : number = updateList.findIndex(item => item.name === name);
                 mesh[geomIndex].children[0].scale.set(oriScale.x, oriScale.y, oriScale.z);
                 updateList.splice(idx, 1);
             }
