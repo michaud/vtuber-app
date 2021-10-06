@@ -7,6 +7,7 @@ const detect = (
 ) : Array<string> => {
 
     const detections : Array<string> = [];
+    
     detectors.forEach(
         detector => detector(geom, detections)
     );
