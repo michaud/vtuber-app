@@ -1,23 +1,26 @@
-import updateAction from './updateAction';
 import actionDefinitions from './actionDefinitions';
+import updateAction from './updateAction';
 import addActions from '../addActions';
+
 import loadModel from '../loadModel';
+import { Object3D, Scene } from 'three';
+import { Model } from '../../types/model';
+import { Update } from '../../types/Action';
 
-const addMistache = (scene) => {
+const addGlasses = (
+    scene : Scene
+) : Model => {
 
-    const mesh =[];
-    const updateActions = [];
+    const mesh : Array<Object3D> = [];
+    const updateActions : Array<Update> = [];
 
     const create = () => {
 
         loadModel(
-            'mistache.glb',
+            'glasses.glb',
             gltf => {
-
                 scene.add(gltf.scene);
-
                 mesh.push(gltf.scene);
-
                 updateActions.push(
                     updateAction(
                         updateActions,
@@ -28,7 +31,7 @@ const addMistache = (scene) => {
         );
     };
 
-    const update = (geom, moment) => {
+    const update : Update = (geom, moment) : void => {
 
         if(mesh.length === 0) return;
         
@@ -44,10 +47,10 @@ const addMistache = (scene) => {
     return {
         create,
         update,
-        name: 'mistache',
+        name: 'glasses',
         actions,
         mesh
     }
 };
 
-export default addMistache;
+export default addGlasses;

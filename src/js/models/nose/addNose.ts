@@ -1,17 +1,24 @@
 import {
     MeshStandardMaterial,
     IcosahedronGeometry,
-    Mesh
+    Mesh,
+    Scene,
+    Object3D
 } from 'three';
+import { FaceMeshFaceGeometry } from '../../face/face';
+import { Update } from '../../types/Action';
+import { Model } from '../../types/model';
 
 import addActions from '../addActions';
 import actionDefinitions from './actionDefinitions';
 import updateAction from './updateAction';
 
-const addNose = (scene) => {
+const addNose = (
+    scene : Scene
+) : Model => {
 
-    const mesh = [];
-    const updateActions = [];
+    const mesh : Array<Object3D> = [];
+    const updateActions : Array<Update> = [];
 
     const create = () => {
 
@@ -38,7 +45,10 @@ const addNose = (scene) => {
         );
     };
 
-    const update = (geom, moment) => {
+    const update : Update = (
+        geom : FaceMeshFaceGeometry,
+        moment : number
+    ) => {
 
         if(mesh.length === 0) return;
         

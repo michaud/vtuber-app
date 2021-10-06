@@ -1,23 +1,28 @@
 import {
+    AnimationMixer,
     DoubleSide,
     Mesh,
-    MeshBasicMaterial,
     MeshStandardMaterial,
+    Object3D,
+    Scene,
     TextureLoader,
 } from "three";
 
 import paths from "../../constants/paths";
+import { FaceMeshFaceGeometry } from "../../face/face";
+import { Update } from "../../types/Action";
+import { Model } from "../../types/model";
 import addActions from "../addActions";
 import actionDefinitions from "./actionDefinitions";
 
 const addMask = (
-    scene,
-    _,
-    faceGeometry
-) => {
+    scene : Scene,
+    _mixer: AnimationMixer,
+    faceGeometry : FaceMeshFaceGeometry
+) : Model => {
 
-    const mesh = [];
-    const updateActions = [];
+    const mesh : Array<Object3D> = [];
+    const updateActions : Array<Update> = [];
 
     const create = () => {
 
@@ -47,7 +52,10 @@ const addMask = (
         mesh.push(mask);
     };
 
-    const update = (geom, moment) => {
+    const update : Update = (
+        geom : FaceMeshFaceGeometry,
+        moment : number
+    ) => {
 
         if(mesh.length === 0) return;
         
