@@ -1,22 +1,21 @@
 import { AnimationAction, Object3D } from "three";
 import { FaceMeshFaceGeometry } from "../face/face";
 import { ActionDefinition, ActionDefinitions } from "../types/actionDefinitions";
-import { Model } from "../types/model";
 import { UpdateAction, ActionList, ActionResources, Action } from "../types/Action";
 import { VoidRunner } from "../types/voidRunner";
 
 const hasAction = (
     actionName : string,
-    updateActions : UpdateAction[]
+    updateActions : Array<UpdateAction>
 ) : boolean => updateActions.indexOf((
     action : FaceMeshFaceGeometry
 ) => action.name === actionName) < 0;
 
 const getAction = (
-    { update, action } : { update:string, action:Action },
-    updateActions : UpdateAction[],
-    mesh : Object3D[],
-    animations? : AnimationAction[]
+    { update, action } : { update : string, action : Action },
+    updateActions : Array<UpdateAction>,
+    mesh : Array<Object3D>,
+    animations? : Array<AnimationAction>
 ) : VoidRunner => () : void => {
 
     //find type for action
@@ -29,10 +28,10 @@ const getAction = (
 )};
 
 const addActions = (
-    updateActions : UpdateAction[],
-    mesh : Object3D[],
+    updateActions : Array<UpdateAction>,
+    mesh : Array<Object3D>,
     actionDefinitions : ActionDefinitions,
-    animations? : AnimationAction[]
+    animations? : Array<AnimationAction>
 ) : ActionResources => {
 
     const actions : ActionList = Object

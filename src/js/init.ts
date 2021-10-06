@@ -1,9 +1,6 @@
 import {
     AnimationMixer,
-    Clock,
-    OrthographicCamera,
-    Scene,
-    WebGLRenderer
+    Clock
 } from 'three';
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { FaceMeshFaceGeometry } from "./face/face";
@@ -16,25 +13,13 @@ import addModelInteractions from './ui/addModelInteractions';
 import addComposer from './composer/addComposer';
 import addDebugTools from './ui/addDebugTools';
 import { Pane } from 'tweakpane';
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
-import { Model } from './types/model';
+import { AppResources } from './types/AppResources';
+import { GumAudioVideo } from '../../third_party/gum-av';
 
-export type AppResources = {
-        models:Model[],
-        faceGeometry:FaceMeshFaceGeometry,
-        controls:OrbitControls,
-        scene:Scene,
-        mixer:AnimationMixer,
-        threeTime:Clock,
-        renderer:WebGLRenderer,
-        composer:EffectComposer,
-        camera:OrthographicCamera,
-        av:GumAudioVideo
-};
 const init = (
-    av:GumAudioVideo,
-    pane:Pane
-):AppResources => {
+    av : GumAudioVideo,
+    pane : Pane
+) : AppResources => {
 
     const {
         renderer,
@@ -55,7 +40,7 @@ const init = (
         renderer
     );
 
-    const controls:OrbitControls = new OrbitControls(camera, renderer.domElement);
+    const controls : OrbitControls = new OrbitControls(camera, renderer.domElement);
     controls.update();
 
     const models = addModels(

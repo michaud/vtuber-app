@@ -12,8 +12,8 @@ const addBowler = (
     scene:Scene
 ) : Model => {
 
-    const updateActions : UpdateAction[] = [];
-    const mesh : Object3D[] =[];
+    const updateActions : Array<UpdateAction> = [];
+    const mesh : Array<Object3D> = [];
 
     const create = () => {
 
@@ -36,8 +36,8 @@ const addBowler = (
     };
 
     const update = (
-        geom:FaceMeshFaceGeometry,
-        moment:number
+        geom : FaceMeshFaceGeometry,
+        moment : number
     ) : void => {
 
         if(mesh.length === 0) return;

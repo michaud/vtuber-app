@@ -8,22 +8,23 @@ import { UpdateAction } from '../../types/Action';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 import { FaceMeshFaceGeometry } from '../../face/face';
 
-const duckIds:string[] = ['000', '001', '002', '003', '004', '005', '006', '007'];
+const duckIds : Array<string> = ['000', '001', '002', '003', '004', '005', '006', '007'];
 
 const addDucks = (
     scene : Scene,
     mixer : AnimationMixer
 ) => {
 
-    const updateActions : UpdateAction[] = [];
-    const mesh : Object3D[] = [];
-    const animations : AnimationAction[] = [];
+    const updateActions : Array<UpdateAction> = [];
+    const mesh : Array<Object3D> = [];
+    const animations : Array<AnimationAction> = [];
 
     const create = () => {
 
         loadModel(
             'ducks.glb',
             (gltf:GLTF) => {
+
                 scene.add(gltf.scene);
                 mesh.push(gltf.scene);
 

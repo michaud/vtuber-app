@@ -4,8 +4,8 @@ import { UpdateAction } from "../../types/Action";
 import { TrackData } from "../../types/TrackData";
 
 const updateAction = (
-    actionList : UpdateAction[],
-    mesh : Object3D[]
+    actionList : Array<UpdateAction>,
+    mesh : Array<Object3D>
 ) => {
 
     const scale = 7;

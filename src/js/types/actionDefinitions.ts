@@ -4,7 +4,7 @@ import { Action } from "./Action";
 export type ActionDefinition = {
     update : string;
     action : Action;
-    detections? : (animations : AnimationAction[]) => (detections : []) => void
+    detections? : (animations : Array<AnimationAction>) => (detections : Array<string>) => void
 }
 
 export type ActionDefinitions = {

@@ -2,9 +2,9 @@ import { AnimationAction, AnimationClip, Object3D } from "three";
 import { UpdateAction } from "../../types/Action";
 
 const duckStopAction = (
-    actionList : UpdateAction[],
-    mesh : Object3D[],
-    animations : AnimationAction[]
+    actionList : Array<UpdateAction>,
+    mesh : Array<Object3D>,
+    animations : Array<AnimationAction>
 ) => {
 
     const name:string = 'duckStopUpdate';
@@ -13,7 +13,7 @@ const duckStopAction = (
 
         animations.map(act => {
 
-            const clip:AnimationClip = act.getClip();
+            const clip : AnimationClip = act.getClip();
 
             if(clip.name === 'popup_action') {
 
@@ -31,7 +31,7 @@ const duckStopAction = (
         });
 
         /* remove yourself from the actionList */
-        const idx:number = actionList.findIndex(item => item.name === name);
+        const idx : number = actionList.findIndex(item => item.name === name);
         actionList.splice(idx, 1);
     };
 

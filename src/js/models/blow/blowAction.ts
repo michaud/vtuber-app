@@ -2,10 +2,10 @@ import { AnimationAction, Object3D } from "three";
 import { UpdateAction } from "../../types/Action";
 
 const blowAction = (
-    actionList : UpdateAction[],
-    mesh : Object3D[],
-    animations : AnimationAction[]
-):UpdateAction => {
+    actionList : Array<UpdateAction>,
+    mesh : Array<Object3D>,
+    animations : Array<AnimationAction>
+) : UpdateAction => {
 
     const name = 'blowUpdate';
 

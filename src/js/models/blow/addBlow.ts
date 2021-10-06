@@ -22,9 +22,9 @@ const addBlow = (
     mixer:AnimationMixer
 ) : Model => {
 
-    const updateActions:UpdateAction[] = [];
-    const mesh:Object3D[] = [];
-    const animations:AnimationAction[] = [];
+    const updateActions : Array<UpdateAction> = [];
+    const mesh : Array<Object3D> = [];
+    const animations : Array<AnimationAction> = [];
 
     const create = () => {
 

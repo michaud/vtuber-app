@@ -2,9 +2,9 @@ import { AnimationAction, Object3D } from "three";
 import { UpdateAction } from "../../types/Action";
 
 const startAction = (
-    actionList : UpdateAction[],
-    mesh : Object3D[],
-    animations : AnimationAction[]
+    actionList : Array<UpdateAction>,
+    mesh : Array<Object3D>,
+    animations : Array<AnimationAction>
 ) => {
 
     const name : string = 'duckStartUpdate';
@@ -21,7 +21,7 @@ const startAction = (
         });
 
         /* remove yourself from the actionList */
-        const idx:number = actionList.findIndex(item => item.name === name);
+        const idx : number = actionList.findIndex(item => item.name === name);
         actionList.splice(idx, 1);
     };
 

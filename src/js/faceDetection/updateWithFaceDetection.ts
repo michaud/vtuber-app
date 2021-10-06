@@ -4,17 +4,18 @@ import detectors from "../detect/detectors";
 import { AnnotatedPrediction, MediaPipeFaceMesh } from "@tensorflow-models/face-landmarks-detection/dist/mediapipe-facemesh";
 import { FaceMeshFaceGeometry } from "../face/face";
 import { Model } from "../types/model";
+import { GumAudioVideo } from "../../../third_party/gum-av";
 
 const updateWithFaceDetection = async (
     faceDetectionModel : MediaPipeFaceMesh,
     av : GumAudioVideo,
     flipCamera : boolean,
     faceGeometry : FaceMeshFaceGeometry,
-    models : Model[],
+    models : Array<Model>,
     elapsedTime : number
 ) : Promise<void> => {
 
-    const faces : AnnotatedPrediction[] = await faceDetectionModel.estimateFaces({
+    const faces : Array<AnnotatedPrediction> = await faceDetectionModel.estimateFaces({
         input: av.video,
         flipHorizontal: flipCamera
     });

@@ -1,4 +1,5 @@
 import { OrthographicCamera, WebGLRenderer } from "three";
+import { GumAudioVideo } from "../../../third_party/gum-av";
 import { FaceMeshFaceGeometry } from "../face/face";
 
 const resize = (

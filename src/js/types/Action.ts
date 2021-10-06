@@ -8,14 +8,14 @@ export type UpdateAction = (
 ) => void;
 
 export type Action = (
-    updateActions : UpdateAction[],
-    mesh : Object3D[],
-    animations? : AnimationAction[]
+    updateActions : Array<UpdateAction>,
+    mesh : Array<Object3D>,
+    animations? : Array<AnimationAction>
 ) => UpdateAction;
 
 export type ActionList = { [index : string] : UpdateAction }
 
 export type ActionResources = {
-    updateActions : UpdateAction[],
+    updateActions : Array<UpdateAction>,
     actions : ActionList
 }

@@ -2,11 +2,11 @@ import { FaceMeshFaceGeometry } from "../face/face";
 import { Detector } from "../types/Detector";
 
 const detect = (
-    detectors : Detector[] = [],
+    detectors : Array<Detector> = [],
     geom : FaceMeshFaceGeometry
-):string[] => {
+) : Array<string> => {
 
-    const detections : string[] = [];
+    const detections : Array<string> = [];
     detectors.forEach(
         detector => detector(geom, detections)
     );

@@ -2,8 +2,8 @@ import { Object3D } from "three";
 import { UpdateAction } from "../../types/Action";
 
 const toggleShowAction = (
-    actionList : UpdateAction[],
-    mesh : Object3D[]
+    actionList : Array<UpdateAction>,
+    mesh : Array<Object3D>
 ) : UpdateAction => {
 
     const name:string = 'toggleShowUpdate';

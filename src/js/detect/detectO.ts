@@ -4,7 +4,7 @@ import { TrackData } from "../types/TrackData";
 
 const detectO = (
     geom:FaceMeshFaceGeometry,
-    detections : string[]
+    detections : Array<string>
 ) : void => {
 
     const vLeftInner = new Vector3().fromArray(

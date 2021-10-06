@@ -1,17 +1,17 @@
 import { AnimationMixer, Scene } from "three";
-import { FaceMeshFaceGeometry } from "../face/face.js";
-import { Model } from "../types/model.js";
-import models from "./models.js";
+import { FaceMeshFaceGeometry } from "../face/face";
+import { Model } from "../types/model";
+import models from "./models";
 
 const addModels = (
     scene:Scene,
     mixer:AnimationMixer,
     faceGeometry:FaceMeshFaceGeometry,
-    autoLoad:string[]
+    autoLoad:Array<string>
 ) => models.map(
     add => {
 
-        const model:Model = add(
+        const model : Model = add(
             scene,
             mixer,
             faceGeometry
