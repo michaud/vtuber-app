@@ -20,6 +20,7 @@ import actionDefinitions from './actionDefinitions';
 import updateAction from './updateAction';
 import { Model } from '../../types/model.js';
 import { Update } from '../../types/Action.js';
+import modelUpdate from '../modelUpdate';
 
 const addEmojis = (
     scene : Scene
@@ -89,13 +90,6 @@ const addEmojis = (
         );
     };
 
-    const update : Update = (geom, moment) => {
-
-        if(mesh.length === 0) return;
-        
-        updateActions.map((action : Update) => action(geom, moment));
-    };
-
     const { actions } = addActions(
         updateActions,
         mesh,
@@ -104,7 +98,10 @@ const addEmojis = (
 
     return {
         create,
-        update,
+        update: modelUpdate(
+            mesh,
+            updateActions
+        ),
         name: 'emojis',
         actions,
         mesh

@@ -6,9 +6,9 @@ import stopAction from './stopAction';
 import startAction from './startAction';
 
 const duckActionDefinitions : ActionDefinitions = {
-    'show / hide': { update: 'toggleShowUpdate', action: toggleShowAction },
-    'start': { update: 'startUpdate', action: startAction },
-    'stop': { update: 'stopUpdate', action: stopAction }
+    'show / hide': { updateName: 'toggleShowUpdate', action: toggleShowAction },
+    'start': { updateName: 'startUpdate', action: startAction },
+    'stop': { updateName: 'stopUpdate', action: stopAction }
 };
 
 export default duckActionDefinitions;

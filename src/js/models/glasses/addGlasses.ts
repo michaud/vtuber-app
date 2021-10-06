@@ -6,6 +6,7 @@ import loadModel from '../loadModel';
 import { Object3D, Scene } from 'three';
 import { Model } from '../../types/model';
 import { Update } from '../../types/Action';
+import modelUpdate from '../modelUpdate';
 
 const addGlasses = (
     scene : Scene
@@ -31,13 +32,6 @@ const addGlasses = (
         );
     };
 
-    const update : Update = (geom, moment) : void => {
-
-        if(mesh.length === 0) return;
-        
-        updateActions.map(action => action(geom, moment));
-    };
-
     const { actions } = addActions(
         updateActions,
         mesh,
@@ -46,7 +40,10 @@ const addGlasses = (
 
     return {
         create,
-        update,
+        update: modelUpdate(
+            mesh,
+            updateActions
+        ),
         name: 'glasses',
         actions,
         mesh

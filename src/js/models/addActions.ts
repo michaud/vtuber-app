@@ -20,14 +20,14 @@ const hasAction = (
 ) => action.name === actionName) < 0;
 
 const getAction = (
-    { update, action } : { update : string, action : Action },
+    { updateName, action } : { updateName : string, action : Action },
     updateActions : Array<Update>,
     mesh : Array<Object3D>,
     animations? : Array<AnimationAction>
 ) : VoidRunner => () : void => {
 
     //find type for action
-    hasAction(update, updateActions) && 
+    hasAction(updateName, updateActions) && 
     updateActions.push(action(
         updateActions,
         mesh,

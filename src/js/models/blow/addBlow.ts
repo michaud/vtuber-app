@@ -13,9 +13,9 @@ import actionDefinitions from './actionDefinitions';
 import addActions from '../addActions';
 import loadModel from '../loadModel';
 import { Model } from '../../types/model';
-import { FaceMeshFaceGeometry } from '../../face/face';
 import { Update } from '../../types/Action';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
+import modelUpdate from '../modelUpdate';
 
 const addBlow = (
     scene : Scene,
@@ -55,16 +55,6 @@ const addBlow = (
         );
     };
 
-    const update : Update = (
-        geom : FaceMeshFaceGeometry,
-        moment : number
-    ) : void => {
-
-        if(mesh.length === 0) return;
-        
-        updateActions.map((action : Update) => action(geom, moment));
-    };
-
     const { actions } = addActions(
         updateActions,
         mesh,
@@ -74,7 +64,10 @@ const addBlow = (
     
     return {
         create,
-        update,
+        update: modelUpdate(
+            mesh,
+            updateActions
+        ),
         name: 'blow',
         actions,
         mesh

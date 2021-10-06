@@ -6,7 +6,7 @@ import { Object3D, Scene } from 'three';
 import { Update } from '../../types/Action';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Model } from '../../types/model';
-import { FaceMeshFaceGeometry } from '../../face/face';
+import modelUpdate from '../modelUpdate';
 
 const addMistache = (
     scene : Scene
@@ -35,16 +35,6 @@ const addMistache = (
         );
     };
 
-    const update : Update = (
-        geom : FaceMeshFaceGeometry,
-        moment : number
-    ) => {
-
-        if(mesh.length === 0) return;
-        
-        updateActions.map(action => action(geom, moment));
-    };
-
     const { actions } = addActions(
         updateActions,
         mesh,
@@ -53,7 +43,10 @@ const addMistache = (
 
     return {
         create,
-        update,
+        update: modelUpdate(
+            mesh,
+            updateActions
+        ),
         name: 'mistache',
         actions,
         mesh

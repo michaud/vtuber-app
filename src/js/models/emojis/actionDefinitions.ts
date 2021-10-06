@@ -10,14 +10,14 @@ import { ActionDefinitions } from '../../types/actionDefinitions';
 
 /* key is used as label for button */
 const actionDefinitions : ActionDefinitions = {
-    'show / hide': { update: 'toggleShowUpdate', action: toggleShowAction },
-    'top down': { update: 'tdRevealUpdate', action: tdRevealAction },
-    'oreveal': { update: 'orevealUpdate', action: orevealAction },
-    'displace': { update: 'displaceUpdate', action: displaceAction },
-    'sqr / circ': { update: 'switchToCirclesUpdate', action: switchToCirclesAction },
-    'twirl': { update: 'twirlUpdate', action: twirlAction },
-    'move out': { update: 'normalMoveOutUpdate', action: normalMoveOutAction },
-    'move in': { update: 'normalMoveInUpdate', action: normalMoveInAction }
+    'show / hide': { updateName: 'toggleShowUpdate', action: toggleShowAction },
+    'top down': { updateName: 'tdRevealUpdate', action: tdRevealAction },
+    'oreveal': { updateName: 'orevealUpdate', action: orevealAction },
+    'displace': { updateName: 'displaceUpdate', action: displaceAction },
+    'sqr / circ': { updateName: 'switchToCirclesUpdate', action: switchToCirclesAction },
+    'twirl': { updateName: 'twirlUpdate', action: twirlAction },
+    'move out': { updateName: 'normalMoveOutUpdate', action: normalMoveOutAction },
+    'move in': { updateName: 'normalMoveInUpdate', action: normalMoveInAction }
 };
 
 export default actionDefinitions;

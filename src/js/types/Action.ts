@@ -1,9 +1,11 @@
-import { AnimationAction, Object3D } from "three";
+import { AnimationAction, BufferAttribute, Object3D } from "three";
 import { FaceMeshFaceGeometry } from "../face/face";
 
 export type Update = (
     geom? : FaceMeshFaceGeometry,
-    moment? : number
+    moment? : number,
+    points? : BufferAttribute,
+    normals? :  BufferAttribute
 ) => void;
 
 export type Action = (

@@ -5,8 +5,8 @@ import loadModel from '../loadModel';
 import { Object3D, Scene } from 'three';
 import { Update } from '../../types/Action';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
-import { FaceMeshFaceGeometry } from '../../face/face';
 import { Model } from '../../types/model';
+import modelUpdate from '../modelUpdate';
 
 const addBowler = (
     scene:Scene
@@ -35,16 +35,6 @@ const addBowler = (
         );
     };
 
-    const update : Update = (
-        geom : FaceMeshFaceGeometry,
-        moment : number
-    ) : void => {
-
-        if(mesh.length === 0) return;
-        
-        updateActions.map(action => action(geom, moment));
-    };
-
     const { actions } = addActions(
         updateActions,
         mesh,
@@ -53,7 +43,10 @@ const addBowler = (
 
     return {
         create,
-        update,
+        update: modelUpdate(
+            mesh,
+            updateActions
+        ),
         name: 'bowler',
         actions,
         mesh

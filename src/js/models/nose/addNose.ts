@@ -5,11 +5,12 @@ import {
     Scene,
     Object3D
 } from 'three';
-import { FaceMeshFaceGeometry } from '../../face/face';
+
 import { Update } from '../../types/Action';
 import { Model } from '../../types/model';
 
 import addActions from '../addActions';
+import modelUpdate from '../modelUpdate';
 import actionDefinitions from './actionDefinitions';
 import updateAction from './updateAction';
 
@@ -45,16 +46,6 @@ const addNose = (
         );
     };
 
-    const update : Update = (
-        geom : FaceMeshFaceGeometry,
-        moment : number
-    ) => {
-
-        if(mesh.length === 0) return;
-        
-        updateActions.map(action => action(geom, moment));
-    };
-
     const { actions } = addActions(
         updateActions,
         mesh,
@@ -63,7 +54,10 @@ const addNose = (
 
     return {
         create,
-        update,
+        update: modelUpdate(
+            mesh,
+            updateActions
+        ),
         name: 'nose',
         mesh,
         actions

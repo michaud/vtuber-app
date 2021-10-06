@@ -13,6 +13,7 @@ import { FaceMeshFaceGeometry } from "../../face/face";
 import { Update } from "../../types/Action";
 import { Model } from "../../types/model";
 import addActions from "../addActions";
+import modelUpdate from "../modelUpdate";
 import actionDefinitions from "./actionDefinitions";
 
 const addMask = (
@@ -52,16 +53,6 @@ const addMask = (
         mesh.push(mask);
     };
 
-    const update : Update = (
-        geom : FaceMeshFaceGeometry,
-        moment : number
-    ) => {
-
-        if(mesh.length === 0) return;
-        
-        updateActions.map(action => action(geom, moment));
-    };
-
     const { actions } = addActions(
         updateActions,
         mesh,
@@ -70,7 +61,10 @@ const addMask = (
 
     return {
         create,
-        update,
+        update: modelUpdate(
+            mesh,
+            updateActions
+        ),
         name: 'mask',
         mesh,
         actions

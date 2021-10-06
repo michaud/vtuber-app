@@ -6,12 +6,12 @@ import toggleShowAction from '../action/toggleShowAction';
 
 const blowActionDefinitions = {
     'show / hide': {
-        update: 'toggleShowUpdate',
+        updateName: 'toggleShowUpdate',
         action: toggleShowAction,
         detections: blowDetectAction
     },
     'blow': {
-        update: 'blowUpdate',
+        updateName: 'blowUpdate',
         action: blowAction,
         detections: blowDetectAction
     }

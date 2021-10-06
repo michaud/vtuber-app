@@ -1,5 +1,4 @@
-import { BufferAttribute, InterleavedBufferAttribute, Matrix4, Object3D, Vector3 } from "three";
-import { FaceMeshFaceGeometry } from "./../../face/face";
+import { Object3D } from "three";
 import { Update } from "../../types/Action";
 import { TrackData } from "../../types/TrackData";
 
@@ -11,13 +10,13 @@ const updateAction = (
     const scale = 7;
 
     const update : Update = (
-        geom : FaceMeshFaceGeometry
+        geom,
+        _moment,
+        points
     ) => {
 
         if(mesh.length === 0) return;
 
-        const points : BufferAttribute = geom.getAttribute('position') as BufferAttribute;
-    
         const track : TrackData = geom.track(10, 108, 337);
 
         mesh[0].scale.setScalar(scale * track.scale);

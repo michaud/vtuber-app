@@ -1,4 +1,4 @@
-import { BufferAttribute, Object3D, Vector3 } from 'three';
+import { Object3D, Vector3 } from 'three';
 import appConstants from '../../constants/appConstants';
 import { Update } from '../../types/Action';
 import { TrackData } from '../../types/TrackData';
@@ -31,11 +31,12 @@ const updateAction = (
     const scale = 7;
 
     const emojisUpdate : Update = (
-        geom
+        geom,
+        _moment,
+        points,
+        normals
     ) => {
 
-        const points : BufferAttribute = geom.getAttribute('position') as BufferAttribute;
-        const normals :  BufferAttribute = geom.getAttribute('normal') as  BufferAttribute;
         const track : TrackData = geom.track(6, 196, 419);
 
         for (let i = 0; i < appConstants.NUM_KEYPOINTS; i++) {

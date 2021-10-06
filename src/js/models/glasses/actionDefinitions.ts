@@ -3,7 +3,7 @@ import toggleShowAction from '../action/toggleShowAction';
 
 
 const actionDefinitions : ActionDefinitions = {
-    'show / hide': { update: 'toggleShowUpdate', action: toggleShowAction },
+    'show / hide': { updateName: 'toggleShowUpdate', action: toggleShowAction },
 }
 
 export default actionDefinitions;

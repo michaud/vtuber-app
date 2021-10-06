@@ -6,7 +6,7 @@ import addActions from '../addActions';
 import loadModel from '../loadModel';
 import { Update } from '../../types/Action';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
-import { FaceMeshFaceGeometry } from '../../face/face';
+import modelUpdate from '../modelUpdate';
 
 const duckIds : Array<string> = ['000', '001', '002', '003', '004', '005', '006', '007'];
 
@@ -68,16 +68,6 @@ const addDucks = (
         );
     };
 
-    const update : Update = (
-        geom : FaceMeshFaceGeometry,
-        moment: number
-    ) => {
-
-        if(mesh.length === 0) return;
-        
-        updateActions.map(action => action(geom, moment));
-    };
-
     const { actions } = addActions(
         updateActions,
         mesh,
@@ -87,7 +77,10 @@ const addDucks = (
 
     return {
         create,
-        update,
+        update: modelUpdate(
+            mesh,
+            updateActions
+        ),
         name: 'ducks',
         actions,
         mesh
