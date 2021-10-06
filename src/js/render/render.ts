@@ -47,6 +47,7 @@ const render = (
 
         //renderer.render(scene, camera);
         composer.render();
+
         requestAnimationFrame(() => rerender());
 
         runOnInitialize();
