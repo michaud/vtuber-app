@@ -1,18 +1,17 @@
 import { BufferAttribute, InterleavedBufferAttribute, Matrix4, Object3D, Vector3 } from "three";
 import { FaceMeshFaceGeometry } from "./../../face/face";
-import { UpdateAction } from "../../types/Action";
+import { Update } from "../../types/Action";
 import { TrackData } from "../../types/TrackData";
 
 const updateAction = (
-    actionList : Array<UpdateAction>,
+    _actionList : Array<Update>,
     mesh : Array<Object3D>
-) => {
+) : Update => {
 
     const scale = 7;
 
-    const update = (
-        geom : FaceMeshFaceGeometry,
-        moment : number
+    const update : Update = (
+        geom : FaceMeshFaceGeometry
     ) => {
 
         if(mesh.length === 0) return;

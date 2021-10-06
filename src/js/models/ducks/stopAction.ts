@@ -1,9 +1,9 @@
 import { AnimationAction, AnimationClip, Object3D } from "three";
-import { UpdateAction } from "../../types/Action";
+import { Update } from "../../types/Action";
 
 const duckStopAction = (
-    actionList : Array<UpdateAction>,
-    mesh : Array<Object3D>,
+    actionList : Array<Update>,
+    _mesh : Array<Object3D>,
     animations : Array<AnimationAction>
 ) => {
 

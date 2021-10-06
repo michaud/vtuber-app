@@ -1,18 +1,15 @@
 import { AnimationAction, Object3D } from "three";
-import { UpdateAction } from "../../types/Action";
+import { Update } from "../../types/Action";
 
 const blowAction = (
-    actionList : Array<UpdateAction>,
-    mesh : Array<Object3D>,
+    actionList : Array<Update>,
+    _mesh : Array<Object3D>,
     animations : Array<AnimationAction>
-) : UpdateAction => {
+) : Update => {
 
     const name = 'blowUpdate';
 
-    const blowUpdate = (
-        // geom,
-        // moment
-    ) => {
+    const blowUpdate : Update = () => {
 
         if(animations.length === 0) return;
 

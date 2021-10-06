@@ -1,16 +1,16 @@
 import { BufferAttribute, Object3D } from "three";
 import { FaceMeshFaceGeometry } from "../../face/face";
-import { UpdateAction } from "../../types/Action";
+import { Update } from "../../types/Action";
 import { TrackData } from "../../types/TrackData";
 
 const updateDuckAction = (
-    actionList : UpdateAction[],
-    mesh : Object3D[]
-) => {
+    _actionList : Array<Update>,
+    mesh : Array<Object3D>
+) : Update => {
 
-    const scale:number = 9;
+    const scale : number = 9;
 
-    const update = (
+    const update : Update = (
         geom : FaceMeshFaceGeometry
     ) => {
 

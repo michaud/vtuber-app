@@ -11,7 +11,7 @@ import { GumAudioVideo } from "../../../third_party/gum-av";
 import { FaceMeshFaceGeometry } from "../face/face";
 import { Model } from "./model";
 
-export type AppResources = {
+export interface AppResources {
     models:Array<Model>,
     faceGeometry:FaceMeshFaceGeometry,
     controls:OrbitControls,

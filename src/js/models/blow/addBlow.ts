@@ -14,7 +14,7 @@ import addActions from '../addActions';
 import loadModel from '../loadModel';
 import { Model } from '../../types/model';
 import { FaceMeshFaceGeometry } from '../../face/face';
-import { UpdateAction } from '../../types/Action';
+import { Update } from '../../types/Action';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 
 const addBlow = (
@@ -22,7 +22,7 @@ const addBlow = (
     mixer:AnimationMixer
 ) : Model => {
 
-    const updateActions : Array<UpdateAction> = [];
+    const updateActions : Array<Update> = [];
     const mesh : Array<Object3D> = [];
     const animations : Array<AnimationAction> = [];
 
@@ -55,14 +55,14 @@ const addBlow = (
         );
     };
 
-    const update = (
+    const update : Update = (
         geom : FaceMeshFaceGeometry,
         moment : number
     ) : void => {
 
         if(mesh.length === 0) return;
         
-        updateActions.map((action : UpdateAction) => action(geom, moment));
+        updateActions.map((action : Update) => action(geom, moment));
     };
 
     const { actions } = addActions(

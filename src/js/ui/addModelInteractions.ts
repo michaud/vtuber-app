@@ -1,11 +1,14 @@
 import { Clock } from "three";
-import { FolderApi, Pane } from "tweakpane";
-import { UpdateAction } from "../types/Action";
+import {
+    FolderApi,
+    Pane
+} from "tweakpane";
+import { Update } from "../types/Action";
 import { Model } from "../types/model";
 import { VoidRunner } from "../types/voidRunner";
 
 type ModelActionHandlers = {
-    [index: string]: UpdateAction
+    [index: string]: Update
 }
 
 const addModelToUIList = (

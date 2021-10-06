@@ -1,13 +1,14 @@
 import { VoidRunner } from "./voidRunner";
 import { FaceMeshFaceGeometry } from "../face/face.js";
 import { Object3D } from "three";
+import { Update } from "./Action";
 
-export type Model = {
+export interface Model {
     create : VoidRunner;
-    update : (geom : FaceMeshFaceGeometry, moment : number) => void;
+    update : Update;
     name: string;
     actions: {
-        [index: string]: (geom : FaceMeshFaceGeometry, moment : number) => void
+        [index: string]: Update
     };
     mesh: Array<Object3D>
 };

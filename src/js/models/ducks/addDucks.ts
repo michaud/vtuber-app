@@ -4,7 +4,7 @@ import updateAction from './updateAction';
 import actionDefinitions from './actionDefinitions';
 import addActions from '../addActions';
 import loadModel from '../loadModel';
-import { UpdateAction } from '../../types/Action';
+import { Update } from '../../types/Action';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 import { FaceMeshFaceGeometry } from '../../face/face';
 
@@ -15,7 +15,7 @@ const addDucks = (
     mixer : AnimationMixer
 ) => {
 
-    const updateActions : Array<UpdateAction> = [];
+    const updateActions : Array<Update> = [];
     const mesh : Array<Object3D> = [];
     const animations : Array<AnimationAction> = [];
 
@@ -68,7 +68,7 @@ const addDucks = (
         );
     };
 
-    const update = (
+    const update : Update = (
         geom : FaceMeshFaceGeometry,
         moment: number
     ) => {

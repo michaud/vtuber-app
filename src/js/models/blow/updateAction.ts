@@ -1,15 +1,15 @@
 import { BufferAttribute, Object3D } from "three";
 import { FaceMeshFaceGeometry } from "./../../face/face";
-import { UpdateAction } from "../../types/Action";
+import { Update } from "../../types/Action";
 
 const updateAction = (
-    actionList : UpdateAction[],
-    mesh : Object3D[]
-) : UpdateAction => {
+    _actionList : Array<Update>,
+    mesh : Array<Object3D>
+) : Update => {
 
     const scale = 9;
 
-    const blowUpdate = (
+    const blowUpdate : Update = (
         geom : FaceMeshFaceGeometry
     ) => {
 

@@ -1,21 +1,20 @@
 import { AnimationAction, Object3D } from "three";
 import { FaceMeshFaceGeometry } from "../face/face";
-import { Model } from "./model";
 
-export type UpdateAction = (
+export type Update = (
     geom? : FaceMeshFaceGeometry,
     moment? : number
 ) => void;
 
 export type Action = (
-    updateActions : Array<UpdateAction>,
+    updateActions : Array<Update>,
     mesh : Array<Object3D>,
     animations? : Array<AnimationAction>
-) => UpdateAction;
+) => Update;
 
-export type ActionList = { [index : string] : UpdateAction }
+export interface ActionList { [index : string] : Update }
 
-export type ActionResources = {
-    updateActions : Array<UpdateAction>,
+export interface ActionResources {
+    updateActions : Array<Update>,
     actions : ActionList
 }

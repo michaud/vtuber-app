@@ -1,10 +1,10 @@
 import { Object3D } from "three";
-import { UpdateAction } from "../../types/Action";
+import { Update } from "../../types/Action";
 
 const toggleShowAction = (
-    actionList : Array<UpdateAction>,
+    actionList : Array<Update>,
     mesh : Array<Object3D>
-) : UpdateAction => {
+) : Update => {
 
     const name:string = 'toggleShowUpdate';
 
@@ -14,7 +14,7 @@ const toggleShowAction = (
 
         /* remove yourself from the actionList */
         const idx : number = actionList.findIndex(
-            (item : UpdateAction) => item.name === name
+            (item : Update) => item.name === name
         );
         actionList.splice(idx, 1);
     };
