@@ -13,7 +13,8 @@ const detectO = (
     );
     const vRightInner = new Vector3().fromArray(
 /* @ts-ignore says it doesn't have annotations but it does */
-        geom.face.annotations.lipsLowerInner[10]);
+        geom.face.annotations.lipsLowerInner[10]
+    );
 
     const track : TrackData = geom.track(13, 78, 308);
     const hLength : number = vLeftInner.distanceToSquared(vRightInner); 

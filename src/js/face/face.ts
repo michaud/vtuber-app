@@ -106,7 +106,10 @@ class FaceMeshFaceGeometry extends BufferGeometry {
         this.h = h;
     }
 
-    update(face : AnnotatedPrediction, cameraFlipped : boolean) {
+    update(
+        face : AnnotatedPrediction,
+        cameraFlipped : boolean
+    ) {
 
         let ptr = 0;
         this.face = face;
@@ -178,7 +181,16 @@ class FaceMeshFaceGeometry extends BufferGeometry {
 
         matrix.makeBasis(x, y2, z2);
 
-        return { position: center, normal, rotation: matrix, scale: getScale(this.face, id1, id2) };
+        return {
+            position: center,
+            normal,
+            rotation: matrix,
+            scale: getScale(
+                this.face,
+                id1,
+                id2
+            )
+        };
     }
 }
 

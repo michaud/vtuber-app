@@ -61,7 +61,8 @@ const addModelInteractions = (models:Model[], threeTime:Clock, pane:Pane) => {
             .filter(item => item !== 'detections')
             .reduce((acc, key) => ({
                 ...acc,
-                [key]: () => model.actions[key](null, threeTime.elapsedTime)
+            /* shady call */
+                [key]: () => model.actions[key](null, null)
             }), {});
 
         addModelToUIList(

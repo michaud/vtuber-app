@@ -1,19 +1,28 @@
 import { AnimationAction } from "three";
+import { FaceMeshFaceGeometry } from "../../face/face";
+import { Detector } from "../../types/Detector";
 
 const blowDetectAction = (
     animations : Array<AnimationAction>
-) => (detections : Array<string>) => {
+) => {
+    const detecting : Detector = (
+        _geom: FaceMeshFaceGeometry,
+        detections : Array<string>
+    ) => {
 
-    if (animations.length > 0 && detections && detections.includes('O')) {
+        if (animations.length > 0 && detections?.includes?.('O')) {
 
-        const anim = animations[Math.floor(Math.random() * animations.length)];
+            const anim = animations[Math.floor(Math.random() * animations.length)];
 
-        if (!anim.isRunning()) {
-            anim.reset();
-            anim.clampWhenFinished = false;
-            anim.play();
+            if (!anim.isRunning()) {
+                anim.reset();
+                anim.clampWhenFinished = false;
+                anim.play();
+            }
         }
-    }
+    };
+
+    return detecting;
 };
 
 export default blowDetectAction;
