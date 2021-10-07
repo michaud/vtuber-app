@@ -8,16 +8,33 @@ import {
  * https://github.com/evanw/glfx.js
  */
 
-const DotScreenShader = {
+export interface Vector2Value {
+	value: Vector2
+}
+
+interface NumberValue {
+	value: number
+}
+
+export interface Uniforms {
+	[index:string]: Vector2Value | NumberValue
+}
+
+
+interface Shader {
+	uniforms:Uniforms;
+	vertexShader:string;
+	fragmentShader:string;		
+}
+
+const DotScreenShader : Shader = {
 
 	uniforms: {
-
 		'tDiffuse': { value: null },
 		'tSize': { value: new Vector2( 256, 256 ) },
 		'center': { value: new Vector2( 0.5, 0.5 ) },
 		'angle': { value: 1.57 },
 		'scale': { value: 1.0 }
-
 	},
 
 	vertexShader: /* glsl */`

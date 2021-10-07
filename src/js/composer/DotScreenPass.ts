@@ -1,19 +1,31 @@
 import {
 	ShaderMaterial,
-	UniformsUtils
+	UniformsUtils,
+	Vector2,
+	WebGLRenderer
 } from 'three';
-import { Pass, FullScreenQuad } from 'three/examples/postprocessing/Pass.js';
-import { DotScreenShader } from './DotScreenShader.js';
+import {
+	Pass,
+	FullScreenQuad
+} from 'three/examples/jsm/postprocessing/Pass';
+import { DotScreenShader, Uniforms } from './DotScreenShader';
 
 class DotScreenPass extends Pass {
 
-	constructor( center, angle, scale ) {
+	uniforms:Uniforms;
+
+	material: ShaderMaterial;
+	fsQuad:FullScreenQuad;
+	renderToScreen:boolean;
+	clear:boolean;
+
+	constructor(
+		public center:Vector2,
+		public angle:number,
+		public scale:number
+	) {
 
 		super();
-
-        this.center = center;
-        this.angle = angle;
-        this.scale = scale;
 
 		if ( DotScreenShader === undefined ) console.error( 'THREE.DotScreenPass relies on DotScreenShader' );
 
@@ -21,7 +33,7 @@ class DotScreenPass extends Pass {
 
 		this.uniforms = UniformsUtils.clone( shader.uniforms );
 
-		if ( this.center !== undefined ) this.uniforms[ 'center' ].value.copy( this.center );
+		if ( this.center !== undefined ) (this.uniforms[ 'center' ].value as Vector2).copy( this.center );
 		if ( this.angle !== undefined ) this.uniforms[ 'angle' ].value = this.angle;
 		if ( this.scale !== undefined ) this.uniforms[ 'scale' ].value = this.scale;
 
@@ -37,14 +49,14 @@ class DotScreenPass extends Pass {
 
 	}
 
-	render( renderer, writeBuffer, readBuffer /*, deltaTime, maskActive */ ) {
+	render(renderer : WebGLRenderer, writeBuffer:any, readBuffer:any /*, deltaTime, maskActive */ ) {
 
-        this.uniforms[ 'center' ].value.copy( this.center );
+        (this.uniforms[ 'center' ].value as Vector2).copy( this.center );
         this.uniforms[ 'angle' ].value = this.angle;
         this.uniforms[ 'scale' ].value = this.scale;
 
 		this.uniforms[ 'tDiffuse' ].value = readBuffer.texture;
-		this.uniforms[ 'tSize' ].value.set( readBuffer.width, readBuffer.height );
+		(this.uniforms[ 'tSize' ].value as Vector2).set( readBuffer.width, readBuffer.height );
 
 		if ( this.renderToScreen ) {
 

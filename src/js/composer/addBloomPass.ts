@@ -8,8 +8,6 @@ import frag from '../shader/shader.frag';
 import vert from '../shader/shader.vert';
 import { PassArguments } from "../types/PassArguments";
 
-
-
 const addBloomPass = ({
     composer,
     renderer,
