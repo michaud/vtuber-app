@@ -62,11 +62,11 @@ const createSene = () : SceneResources => {
 
     scene.add(spotLight);
 
-    // const hemiLight : HemisphereLight = new HemisphereLight(0xffffff, 0x080808, 0.1);
-    // scene.add(hemiLight);
+    const hemiLight : HemisphereLight = new HemisphereLight(0xffffff, 0x080808, 0.1);
+    scene.add(hemiLight);
 
-    // const ambientLight : AmbientLight = new AmbientLight(0x404040, 0.1);
-    // scene.add(ambientLight);
+    const ambientLight : AmbientLight = new AmbientLight(0x404040, 0.1);
+    scene.add(ambientLight);
 
     // const rgbeLoadManager : LoadingManager = new LoadingManager();
     // const RGBELoad : RGBELoader = new RGBELoader(rgbeLoadManager)
