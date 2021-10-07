@@ -50,7 +50,7 @@ const init = (
         ['emojis']
     );
 
-    addModelInteractions(models, threeTime, pane);
+    addModelInteractions(models, pane);
     pane.addSeparator();
     const composer = addComposer(scene, camera, renderer, pane);
 
