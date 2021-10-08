@@ -10,8 +10,8 @@ const updates = (
     detections : Array<string>
 ) => {
 
-    const points : BufferAttribute = geom.getAttribute('position') as BufferAttribute;
-    const normals :  BufferAttribute = geom.getAttribute('normal') as  BufferAttribute;
+    const points : BufferAttribute = <BufferAttribute>geom.getAttribute('position');
+    const normals :  BufferAttribute = <BufferAttribute>geom.getAttribute('normal');
 
     models.forEach((model : Model) => {
 

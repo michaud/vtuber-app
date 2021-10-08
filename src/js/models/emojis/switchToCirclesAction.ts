@@ -17,7 +17,7 @@ const switchToCirclesAction = (
 
         if (mesh.length > 0) mesh.map(plane => {
 
-            const item : Mesh = plane.children[0] as Mesh;
+            const item : Mesh = <Mesh>plane.children[0];
             item.geometry.type === 'PlaneGeometry' ?
                 item.geometry = new CircleGeometry(.66, 36)
                 :
