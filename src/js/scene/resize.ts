@@ -21,9 +21,11 @@ const resize = (
     faceGeometry.setSize(w, h);
 
     const videoAspectRatio = w / h;
+
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
     const windowAspectRatio = windowWidth / windowHeight;
+
     let adjustedWidth;
     let adjustedHeight;
 
