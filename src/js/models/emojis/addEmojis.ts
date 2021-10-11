@@ -60,6 +60,7 @@ const addEmojis = (
             const geometry : CircleGeometry = new CircleGeometry(.66, 36);
             const material : MeshStandardMaterial = new MeshStandardMaterial({
                 side: DoubleSide,
+                flatShading: true,
                 map: texture,
                 transparent: true,
                 opacity: 0.0

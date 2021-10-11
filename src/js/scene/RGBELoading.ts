@@ -1,5 +1,4 @@
 import { DataTexture, PMREMGenerator, Scene, Texture } from "three";
-import { VoidRunner } from "../types/voidRunner";
 
 export const RGBELoaderCallback = (
     scene : Scene,

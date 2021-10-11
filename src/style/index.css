@@ -31,6 +31,14 @@ html, body {
     padding: 0;
     background-color: black;
     font-family: sans-serif;
+    background: linear-gradient(
+        .25turn,
+        rgb(0 26 36),
+        rgb(0 0 0) 10%,
+        rgb(0 0 0) 90%,
+        rgb(0 26 36)
+    );
+    min-height: 100vh;
 }
 
 gum-av,
