@@ -41,7 +41,12 @@ html, body {
     min-height: 100vh;
 }
 
-gum-av,
+gum-av{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
 canvas {
     position: absolute;
     left: 0;
