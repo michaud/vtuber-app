@@ -7,7 +7,7 @@ import addNose from "./nose/addNose";
 import addEmojis from './emojis/addEmojis';
 import addMistache from './mistache/addMistache';
 
-const models = [
+const modelCreators = [
     addEmojis,
     addDucks,
     addGlasses,
@@ -18,4 +18,4 @@ const models = [
     addMistache
 ];
 
-export default models;
+export default modelCreators;
