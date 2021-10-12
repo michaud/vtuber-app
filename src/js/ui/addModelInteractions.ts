@@ -60,7 +60,6 @@ const addModelInteractions = (
 
         const modelActionHandlers = Object
             .keys(model.actions)
-            .filter(item => item !== 'detections')
             .reduce((acc, key) => ({
                 ...acc,
                 [key]: () => model.actions[key]()
