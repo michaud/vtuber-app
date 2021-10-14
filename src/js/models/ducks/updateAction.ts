@@ -22,13 +22,7 @@ const updateDuckAction = (
         const adjustedScale : number = scale * track.scale;
 
         mesh[0].scale.setScalar(adjustedScale);
-
-        mesh[0].position.set(
-            points.array[197 * 3],
-            points.array[(197 * 3) + 1],
-            points.array[(197 * 3) + 2]
-        )
-
+        mesh[0].position.copy(track.position);
         mesh[0].rotation.setFromRotationMatrix(track.rotation);
     };
 

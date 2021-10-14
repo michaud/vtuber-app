@@ -20,12 +20,7 @@ const updateAction = (
         const track : TrackData = geom.track(164, 267, 37);
 
         mesh[0].scale.setScalar(scale * track.scale);
-        mesh[0].position.set(
-            points.array[0 * 3],
-            points.array[(0 * 3) + 1],
-            points.array[(0 * 3) + 2]
-        );
-
+        mesh[0].position.copy(track.position);
         mesh[0].rotation.setFromRotationMatrix(track.rotation);
     }
 
