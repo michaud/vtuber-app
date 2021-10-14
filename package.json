@@ -5,11 +5,13 @@
   "source": "src/index.html",
   "scripts": {
     "start": "parcel",
-    "build": "parcel build"
+    "build": "parcel build",
+    "report": "parcel build src/index.html --reporter @parcel/reporter-bundle-analyzer"
   },
   "author": "mv",
   "license": "ISC",
   "devDependencies": {
+    "@parcel/reporter-bundle-analyzer": "^2.0.0",
     "@parcel/transformer-glsl": "^2.0.0",
     "@tensorflow-models/face-landmarks-detection": "0.0.3",
     "@tensorflow/tfjs-backend-cpu": "^3.9.0",
@@ -21,6 +23,7 @@
     "@tweakpane/plugin-essentials": "^0.1.3",
     "@types/three": "^0.132.1",
     "parcel": "^2.0.0",
+    "parcel-plugin-bundle-visualiser": "^1.2.0",
     "parcel-reporter-static-files-copy": "^1.3.0",
     "three": "^0.132.2",
     "tweakpane": "^3.0.5"
