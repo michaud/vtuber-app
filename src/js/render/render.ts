@@ -29,6 +29,8 @@ const render = (
 
     const rerender : VoidRunner = () => {
 
+        requestAnimationFrame(() => rerender());
+
         runOnFirstFaceDetect();
 
         const delta : number = threeTime.getDelta();
@@ -47,8 +49,6 @@ const render = (
 
         //renderer.render(scene, camera);
         composer.render();
-
-        requestAnimationFrame(() => rerender());
 
         runOnInitialize();
     };
