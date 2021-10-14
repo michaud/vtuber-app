@@ -6,7 +6,7 @@ import {
 
 import { SceneResources } from '../types/SceneResources';
 import addLighting from './addLighting';
-import addHDR from './addHDR';
+/* import addHDR from './addHDR'; */
 import addRendererSettings from './addRendererSettings';
 
 const createSene = (): SceneResources => {
