@@ -2,9 +2,9 @@
     --tp-base-background-color: hsla(0, 0%, 10%, 0.8);
     --tp-base-shadow-color: hsla(0, 0%, 0%, 0.2);
     --tp-button-background-color: hsla(0, 0%, 31%, 1.00);
-    --tp-button-background-color-active: hsla(0, 0%, 100%, 1);
-    --tp-button-background-color-focus: hsla(0, 0%, 95%, 1);
-    --tp-button-background-color-hover: hsla(0, 0%, 85%, 1);
+    --tp-button-background-color-active: hsla(0, 0%, 39%, 1.00);
+    --tp-button-background-color-focus: hsla(0, 0%, 24%, 1.00);
+    --tp-button-background-color-hover: hsla(0, 0%, 34%, 1.00);
     --tp-button-foreground-color: hsla(0, 0%, 91%, 0.80);
     --tp-container-background-color: hsla(0, 0%, 0%, 0.3);
     --tp-container-background-color-active: hsla(0, 0%, 0%, 0.6);
@@ -15,7 +15,7 @@
     --tp-input-background-color: hsla(0, 0%, 0%, 0.3);
     --tp-input-background-color-active: hsla(0, 0%, 0%, 0.6);
     --tp-input-background-color-focus: hsla(0, 0%, 0%, 0.5);
-    --tp-input-background-color-hover: hsla(0, 0%, 0%, 0.4);
+    --tp-button-background-color-hover: hsla(0, 0%, 34%, 1.00);
     --tp-input-foreground-color: hsla(0, 0%, 100%, 0.5);
     --tp-label-foreground-color: hsla(0, 0%, 100%, 0.5);
     --tp-monitor-background-color: hsla(0, 0%, 0%, 0.3);
@@ -31,9 +31,22 @@ html, body {
     padding: 0;
     background-color: black;
     font-family: sans-serif;
+    background: linear-gradient(
+        .25turn,
+        rgb(0 26 36),
+        rgb(0 0 0) 10%,
+        rgb(0 0 0) 90%,
+        rgb(0 26 36)
+    );
+    min-height: 100vh;
 }
 
-gum-av,
+gum-av{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
 canvas {
     position: absolute;
     left: 0;
@@ -135,4 +148,10 @@ details {
     font-weight: bold;
     font-size: 1rem;
     flex-grow: 1;
+}
+
+#paneContainer {
+    position: absolute;
+    left: 0;
+    width: 250px;
 }

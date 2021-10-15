@@ -3,16 +3,15 @@
 <head>
     <meta charset="utf-8" />
     <title>vtuber</title>
-    <script src="../third_party/gum-av.js" type="module"></script>
-    <script type="module" src="js/index.js"></script>
+    <script src="../third_party/gum-av.ts" type="module"></script>
+    <script type="module" src="js/index.ts"></script>
     <link rel="stylesheet" href="./style/index.css">
 </head>
 <body>
     <gum-av></gum-av>
     <canvas id="canvas"></canvas>
+    <div id="paneContainer"></div>
     <div class="tools">
-        <ul id="actionList">
-        </ul>
         <div id="view">
             <div class="row">
                 <button class="btn-cv" id="btn_top" style="--i:0">top</button>
