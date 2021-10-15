@@ -5,7 +5,8 @@
   "source": "src/index.html",
   "scripts": {
     "start": "parcel",
-    "prebuild": "shx rm -rf dist/*",
+    "start-cachless": "parcel serve --no-cache",
+    "prebuild": "shx rm -rf dist/* && shx rm -rf .parcel-cache",
     "build": "npm run prebuild && parcel build",
     "report": "parcel build src/index.html --reporter @parcel/reporter-bundle-analyzer"
   },
