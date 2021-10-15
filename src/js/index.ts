@@ -23,7 +23,7 @@ const start = async () : Promise<void> => {
 
     await Promise.all([tf.setBackend('webgl'), av.ready()]);
     
-    const { pane, status }:Panels = getPane();
+    const { pane, status } : Panels = getPane();
 
     const data : AppResources = init(av, pane);
 
