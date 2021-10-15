@@ -10,11 +10,14 @@ const resize = (
 ) => async () => {
     
     await av.ready();
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+
     // Resize orthographic camera to video dimensions if necessary.
     const w = av?.video?.videoWidth ?? 0;
     const h = av?.video?.videoHeight ?? 0;
-    camera.left = -0.5 * w;
-    camera.right = 0.5 * w;
+    camera.left = -0.5 * w * ((w / h) + .1);
+    camera.right = 0.5 * w * ((w / h) + .1);
     camera.top = 0.5 * h;
     camera.bottom = -0.5 * h;
     camera.updateProjectionMatrix();
@@ -22,8 +25,6 @@ const resize = (
 
     const videoAspectRatio = w / h;
 
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
     const windowAspectRatio = windowWidth / windowHeight;
 
     let adjustedWidth;
@@ -40,7 +41,7 @@ const resize = (
         adjustedHeight = windowHeight;
     }
 
-    renderer.setSize(adjustedWidth, adjustedHeight);
+    renderer.setSize(windowWidth, windowHeight);
 }
 
 export default resize;
