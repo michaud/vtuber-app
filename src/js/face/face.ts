@@ -13,7 +13,9 @@ import {
 import {
     AnnotatedPrediction 
 } from '@tensorflow-models/face-landmarks-detection/dist/mediapipe-facemesh';
-import { Coords3D } from "@tensorflow-models/face-landmarks-detection/dist/mediapipe-facemesh/util";
+import {
+    Coords3D
+} from "@tensorflow-models/face-landmarks-detection/dist/mediapipe-facemesh/util";
 
 function getScale(face : AnnotatedPrediction, id1 : number, id2 : number) {
 
