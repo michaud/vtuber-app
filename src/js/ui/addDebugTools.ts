@@ -10,8 +10,12 @@ const addDebugTools = (scene:Scene)=> {
     
     const btnOrigin:HTMLButtonElement = document.querySelector("#btn_origin");
     const group = addOriginHelper(scene);
-
     group.visible = false;
+
+    document.addEventListener('keyup', 
+        (ev : KeyboardEvent) => ev.key === 'Clear' && onClickOrigin(group)()
+    );
+
 
     btnOrigin.onclick = onClickOrigin(group);
 }

@@ -19,7 +19,20 @@ const orientationValues:OrientationValues = {
     'back': { x: 0, y: 0, z: -1 }
 }
 
-const onClickView = (camera:OrthographicCamera) => (dir:string) => () => {
+export interface IKeyMap {
+    [index : string] : string
+}
+
+const keyMapping : IKeyMap = {
+    Home : 'top',
+    ArrowLeft : 'left',
+    PageUp : 'bottom',
+    ArrowRight : 'right',
+    End : 'front',
+    PageDown : 'back',
+}
+
+const onClickView = (camera : OrthographicCamera) => (dir : string) => () => {
 
     const ori:Vect3 = orientationValues[dir];
     camera.position.set(ori.x, ori.y, ori.z);
@@ -35,7 +48,12 @@ const addCameraViewControls = (camera:OrthographicCamera) => {
     const btnBack:HTMLButtonElement = document.querySelector("#btn_back");
 
     const onClickViewCamera = onClickView(camera);
-
+    
+    document.addEventListener('keyup', 
+        (ev : KeyboardEvent) => keyMapping[ev.key] &&
+            onClickViewCamera(keyMapping[ev.key])()
+    );
+    
     btnTop.onclick = onClickViewCamera('top');
     btnLeft.onclick = onClickViewCamera('left');
     btnBottom.onclick = onClickViewCamera('bottom');
