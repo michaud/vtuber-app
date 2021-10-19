@@ -1,5 +1,4 @@
 import { AnimationAction, Object3D } from "three";
-import { FaceMeshFaceGeometry } from "../face/face";
 import {
     ActionDefinition,
     ActionDefinitions
@@ -7,29 +6,24 @@ import {
 import {
     Update,
     UpdateList,
-    ActionResources,
-    Action
+    ActionResources
 } from "../types/Action";
 import { VoidRunner } from "../types/voidRunner";
 
 const hasAction = (
     actionName : string,
     updateActions : Array<Update>
-) : boolean => {
-    return updateActions.indexOf((action) => {
-        return action.name === actionName
-    }) < 0;
-};
+) : boolean => updateActions
+    .findIndex((action : Update) => action.name === actionName) > -1;
 
 const getAction = (
-    { updateName, action } : { updateName : string, action : Action },
+    { updateName, action } : ActionDefinition,
     updateActions : Array<Update>,
     mesh : Array<Object3D>,
     animations? : Array<AnimationAction>
 ) : VoidRunner => () : void => {
 
-    //find type for action
-    hasAction(updateName, updateActions) && 
+    !hasAction(updateName, updateActions) && 
     updateActions.push(action(
         updateActions,
         mesh,
