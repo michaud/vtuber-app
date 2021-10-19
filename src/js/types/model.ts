@@ -6,9 +6,9 @@ import { Detector } from "./Detector";
 
 export interface Model {
     create : VoidRunner;
-    update : Update;
+    update? : Update;
     name: string;
-    actions: {
+    actions?: {
         [index: string]: Update | Detector
     };
     mesh: Array<Object3D>

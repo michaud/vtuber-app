@@ -7,6 +7,7 @@ import { Object3D, Scene } from 'three';
 import { Model } from '../../types/model';
 import { Update } from '../../types/Action';
 import modelUpdate from '../modelUpdate';
+import paths from '../../constants/paths';
 
 const addGlasses = (
     scene : Scene
@@ -19,6 +20,7 @@ const addGlasses = (
 
         loadModel(
             'glasses.glb',
+            paths.models,
             gltf => {
                 scene.add(gltf.scene);
                 mesh.push(gltf.scene);

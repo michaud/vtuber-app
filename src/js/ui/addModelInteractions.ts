@@ -48,11 +48,12 @@ const addModelToUIList = (
 
 const addModelInteractions = (
     models : Model[],
-    pane:Pane
+    pane:Pane,
+    folderLabel: string
 ) => {
 
     const folder = pane.addFolder({
-        title: 'models',
+        title: folderLabel,
         expanded: false,
     });
 

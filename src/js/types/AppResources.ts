@@ -13,6 +13,7 @@ import { Model } from "./model";
 
 export interface AppResources {
     models:Array<Model>,
+    stages:Array<Model>,
     faceGeometry:FaceMeshFaceGeometry,
     controls:OrbitControls,
     scene:Scene,

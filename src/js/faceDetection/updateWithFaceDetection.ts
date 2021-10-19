@@ -12,6 +12,7 @@ const updateWithFaceDetection = async (
     flipCamera : boolean,
     faceGeometry : FaceMeshFaceGeometry,
     models : Array<Model>,
+    stages: Array<Model>,
     elapsedTime : number
 ) : Promise<void> => {
 
@@ -27,6 +28,7 @@ const updateWithFaceDetection = async (
 
         updates(
             models,
+            stages,
             faceGeometry,
             elapsedTime,
             detect(

@@ -16,6 +16,7 @@ import { Model } from '../../types/model';
 import { Update } from '../../types/Action';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 import modelUpdate from '../modelUpdate';
+import paths from '../../constants/paths';
 
 const addBlow = (
     scene : Scene,
@@ -30,6 +31,7 @@ const addBlow = (
 
         loadModel(
             'blow.glb',
+            paths.models,
             (gltf:GLTF) => {
 
                 scene.add(gltf.scene);

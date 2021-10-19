@@ -3,7 +3,8 @@ const paths = {
     models: 'assets/models/',
     profilePics: 'assets/profilePics/',
     mask: 'assets/mask/',
-    hdr: 'assets/equirectangular/'
+    hdr: 'assets/equirectangular/',
+    stage: 'assets/stage/'
 };
 
 export default paths;

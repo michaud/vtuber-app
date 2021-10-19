@@ -5,6 +5,7 @@ import { Model } from "../types/model";
 
 const updates = (
     models : Array<Model>,
+    stages: Array<Model>,
     geom : FaceMeshFaceGeometry,
     timeStamp : number,
     detections : Array<string>
@@ -26,6 +27,16 @@ const updates = (
 
                 (model.actions?.detections as Detector)?.(geom, detections);
             }
+        }
+    );
+    stages.forEach((stage : Model) => {
+
+            stage.update(
+                geom,
+                timeStamp,
+                points,
+                normals
+            );
         }
     );
 };

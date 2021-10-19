@@ -7,6 +7,7 @@ import { Update } from '../../types/Action';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Model } from '../../types/model';
 import modelUpdate from '../modelUpdate';
+import paths from '../../constants/paths';
 
 const addMistache = (
     scene : Scene
@@ -19,6 +20,7 @@ const addMistache = (
 
         loadModel(
             'mistache.glb',
+            paths.models,
             (gltf:GLTF) => {
 
                 scene.add(gltf.scene);

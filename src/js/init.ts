@@ -15,6 +15,8 @@ import addDebugTools from './ui/addDebugTools';
 import { Pane } from 'tweakpane';
 import { AppResources } from './types/AppResources';
 import { GumAudioVideo } from '../../third_party/gum-av';
+import addstages from './stage/addstages';
+import { Model } from './types/model';
 
 const init = (
     av : GumAudioVideo,
@@ -50,15 +52,22 @@ const init = (
         ['emojis']
     );
 
-    addModelInteractions(models, pane);
+    addModelInteractions(models, pane, 'models');
     pane.addSeparator();
+
     const composer = addComposer(scene, camera, renderer, pane);
+
+    const stages : Array<Model> = addstages(scene, mixer);
+    pane.addSeparator();
+
+    addModelInteractions(stages, pane, 'stages');
 
     addCameraViewControls(camera);
     addDebugTools(scene);
 
     return {
         models,
+        stages,
         faceGeometry,
         controls,
         scene,

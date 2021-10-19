@@ -10,6 +10,7 @@ const render = (
     {
         faceDetectionModel,
         models,
+        stages,
         controls,
         scene,
         mixer,
@@ -20,7 +21,7 @@ const render = (
         av,
         composer
     } : AllResources
-):() => void => {
+) : () => void => {
 
     const flipCamera : boolean = true;
     let onInitialize : VoidRunner = onInit;
@@ -42,6 +43,7 @@ const render = (
             flipCamera,
             faceGeometry,
             models,
+            stages,
             threeTime.elapsedTime
         );
 

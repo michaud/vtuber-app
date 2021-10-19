@@ -15,9 +15,11 @@ import { VoidRunner } from "../types/voidRunner";
 const hasAction = (
     actionName : string,
     updateActions : Array<Update>
-) : boolean => updateActions.indexOf((
-    action : FaceMeshFaceGeometry
-) => action.name === actionName) < 0;
+) : boolean => {
+    return updateActions.indexOf((action) => {
+        return action.name === actionName
+    }) < 0;
+};
 
 const getAction = (
     { updateName, action } : { updateName : string, action : Action },
