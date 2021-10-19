@@ -1,6 +1,7 @@
 import { AnimationMixer, Scene } from "three";
-import { FaceMeshFaceGeometry } from "../face/face";
-import { Model } from "../types/model";
+
+import { Model } from "types/model";
+import FaceMeshFaceGeometry from "../face/FaceMeshFaceGeometry";
 import stageCreators from "./stageCreators";
 
 const addstages = (

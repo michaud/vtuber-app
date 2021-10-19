@@ -4,7 +4,7 @@ import {
     OrthographicCamera
 } from 'three';
 
-import { SceneResources } from '../types/SceneResources';
+import { SceneResources } from 'types/SceneResources';
 import addLighting from './addLighting';
 /* import addHDR from './addHDR'; */
 import addRendererSettings from './addRendererSettings';

@@ -3,7 +3,7 @@ import {
     AnimationClip,
     Object3D
 } from "three";
-import { Update } from "../../types/Action";
+import { Update } from "types/Update";
 
 const openCloseAction = (
     updateList : Array<Update>,
@@ -16,12 +16,14 @@ const openCloseAction = (
     const openCloseUpdate = () => {
 
         animations.map(act => {
-        console.log('act:', act)
 
-            act.paused = false;
+            if(!act.isRunning()) {
 
-            act.play();
-            act.timeScale = -1;
+                act.paused = false;
+                act.play();
+                act.timeScale = act.timeScale * -1;
+            }
+
         });
 
         /* remove yourself from the updateList */

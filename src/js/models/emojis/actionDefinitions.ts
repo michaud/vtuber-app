@@ -2,11 +2,11 @@ import orevealAction from './orevealAction';
 import tdRevealAction from './tdRevealAction';
 import displaceAction from './displaceAction';
 import twirlAction from './twirlAction';
-import toggleShowAction from '../action/toggleShowAction';
+import toggleShowAction from '../../action/toggleShowAction';
 import switchToCirclesAction from './switchToCirclesAction';
 import normalMoveOutAction from './normalMoveOutAction';
 import normalMoveInAction from './normalMoveInAction';
-import { ActionDefinitions } from '../../types/actionDefinitions';
+import { ActionDefinitions } from 'types/actionDefinitions';
 
 /* key is used as label for button */
 const actionDefinitions : ActionDefinitions = {

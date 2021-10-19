@@ -1,6 +1,6 @@
+import { appConstants } from "../../constant/appConstants";
+import { Update } from "types/Update";
 import { Object3D, Vector3 } from "three";
-import appConstants from "../../constants/appConstants";
-import { Update } from "../../types/Action";
 
 const normalMoveOutAction = (
     updateList : Array<Update>,

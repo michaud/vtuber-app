@@ -1,8 +1,7 @@
-import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass";
 import { LuminosityShader } from 'three/examples/jsm/shaders/LuminosityShader.js';
 import { SobelOperatorShader } from 'three/examples/jsm/shaders/SobelOperatorShader.js';
-import { PassArguments } from "../types/PassArguments";
+import { PassArguments } from "types/PassArguments";
 
 const addSobolPass = ({
     composer,

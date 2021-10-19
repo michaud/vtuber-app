@@ -1,8 +1,8 @@
 import { Object3D, Scene } from "three";
+import { Update } from "types/Update";
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
-import paths from "../../constants/paths";
 import loadModel from "../../models/loadModel";
-import { Update } from "../../types/Action";
+import paths from "../../constant/paths";
 
 
 const addBackground = (scene : Scene) => {

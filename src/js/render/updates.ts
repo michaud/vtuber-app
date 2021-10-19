@@ -1,7 +1,8 @@
 import { BufferAttribute } from "three";
-import { FaceMeshFaceGeometry } from "../face/face";
-import { Detector } from "../types/Detector";
-import { Model } from "../types/model";
+
+import { Detector } from "types/Detector";
+import { Model } from "types/model";
+import FaceMeshFaceGeometry from "../face/FaceMeshFaceGeometry";
 
 const updates = (
     models : Array<Model>,

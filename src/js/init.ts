@@ -3,7 +3,6 @@ import {
     Clock
 } from 'three';
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { FaceMeshFaceGeometry } from "./face/face";
 
 import createSene from "./scene/createScene";
 import addModels from './models/addModels';
@@ -13,10 +12,11 @@ import addModelInteractions from './ui/addModelInteractions';
 import addComposer from './composer/addComposer';
 import addDebugTools from './ui/addDebugTools';
 import { Pane } from 'tweakpane';
-import { AppResources } from './types/AppResources';
+import { AppResources } from 'types/AppResources';
 import { GumAudioVideo } from '../../third_party/gum-av';
 import addstages from './stage/addstages';
-import { Model } from './types/model';
+import { Model } from 'types/model';
+import FaceMeshFaceGeometry from './face/FaceMeshFaceGeometry';
 
 const init = (
     av : GumAudioVideo,

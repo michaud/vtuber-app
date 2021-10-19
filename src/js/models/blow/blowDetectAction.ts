@@ -1,6 +1,7 @@
+
+import FaceMeshFaceGeometry from "../../face/FaceMeshFaceGeometry";
 import { AnimationAction } from "three";
-import { FaceMeshFaceGeometry } from "../../face/face";
-import { Detector } from "../../types/Detector";
+import { Detector } from "types/Detector";
 
 const blowDetectAction = (
     animations : Array<AnimationAction>

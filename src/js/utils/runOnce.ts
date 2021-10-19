@@ -1,4 +1,4 @@
-import { VoidRunner } from "../types/voidRunner";
+import { VoidRunner } from "types/voidRunner";
 
 export const runOnce = (fn:VoidRunner):VoidRunner => {
 

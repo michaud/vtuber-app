@@ -1,7 +1,8 @@
+import { Update } from "types/Update";
 import { Object3D, Vector3 } from "three";
-import { Update } from "../../types/Action";
 import { circularMapping } from "./circularMapping";
 import { verticalMappingPadded } from "./verticalMapping";
+import FaceMeshFaceGeometry from "../../face/FaceMeshFaceGeometry";
 
 const displaceAction = (
     updateList : Array<Update>,
@@ -24,8 +25,8 @@ const displaceAction = (
     img.src = '/assets/center_bulb2.png';
 
     const displaceUpdate : Update = (
-        geom,
-        moment
+        geom : FaceMeshFaceGeometry,
+        moment : number
     ) => {
 
         if (!startReveal) startReveal = moment;

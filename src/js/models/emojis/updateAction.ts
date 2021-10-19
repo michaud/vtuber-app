@@ -1,7 +1,7 @@
+import { appConstants } from '../../constant/appConstants';
+import { TrackData } from 'types/TrackData';
+import { Update } from 'types/Update';
 import { Object3D, Vector3 } from 'three';
-import appConstants from '../../constants/appConstants';
-import { Update } from '../../types/Action';
-import { TrackData } from '../../types/TrackData';
 import {
     faceFeatureMapping,
     faceFeatureScaleFactor,

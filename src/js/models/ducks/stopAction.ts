@@ -3,7 +3,7 @@ import {
     AnimationClip,
     Object3D
 } from "three";
-import { Update } from "../../types/Action";
+import { Update } from "types/Update";
 
 const duckStopAction = (
     updateList : Array<Update>,

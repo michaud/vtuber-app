@@ -2,7 +2,7 @@
 import blowAction from './blowAction';
 import blowDetectAction from './blowDetectAction';
 import toggleShowAction from '../../action/toggleShowAction';
-import { ActionDefinitions } from '../../types/actionDefinitions';
+import { ActionDefinitions } from 'types/actionDefinitions';
 
 const actionDefinitions : ActionDefinitions = {
     'show / hide': {

@@ -4,6 +4,7 @@ import '@tensorflow/tfjs-backend-webgl';
 import {
     MediaPipeFaceMesh
 } from '@tensorflow-models/face-landmarks-detection/dist/mediapipe-facemesh';
+import { AppResources } from 'types/AppResources';
 import render from './render/render';
 import getFaceDetection from './faceDetection/getFaceDetection';
 import init from './init';
@@ -13,7 +14,6 @@ import {
     onLoadModel
 } from './ui/statusUpdates';
 import getPane, { Panels } from './ui/getPane';
-import { AppResources } from './types/AppResources';
 import { GumAudioVideo } from '../../third_party/gum-av';
 
 

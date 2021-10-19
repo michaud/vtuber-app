@@ -1,6 +1,6 @@
 import { Object3D } from "three";
-import { Update } from "../../types/Action";
-import { TrackData } from "../../types/TrackData";
+import { Update } from "types/Update";
+import { TrackData } from "types/TrackData";
 
 const updateDuckAction = (
     _updateList : Array<Update>,

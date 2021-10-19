@@ -6,7 +6,7 @@ import {
     WebGLRenderer
 } from "three";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
-import paths from "../constants/paths";
+import paths from "../constant/paths";
 import { RGBELoaderCallback } from "./RGBELoading";
 
 const addHDR = (

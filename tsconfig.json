@@ -5,6 +5,10 @@
         "removeComments": true,
         "preserveConstEnums": true,
         "sourceMap": true,
-        "isolatedModules": true
+        "isolatedModules": true,
+        "baseUrl": ".", 
+        "paths": {
+            "types/*": ["./src/js/types/*"]
+        }
     }
 }

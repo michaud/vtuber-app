@@ -1,5 +1,6 @@
-import { FaceMeshFaceGeometry } from "../face/face";
-import { Detector } from "../types/Detector";
+
+import { Detector } from "types/Detector";
+import FaceMeshFaceGeometry from "../face/FaceMeshFaceGeometry";
 
 const detect = (
     detectors : Array<Detector> = [],

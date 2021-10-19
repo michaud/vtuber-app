@@ -6,8 +6,8 @@ import addMask from "./mask/addMask";
 import addNose from "./nose/addNose";
 import addEmojis from './emojis/addEmojis';
 import addMistache from './mistache/addMistache';
-import { Update } from '../types/Action';
-import { SceneCreator } from '../types/SceneCreator';
+
+import { SceneCreator } from 'types/SceneCreator';
 
 const modelCreators : Array<SceneCreator> = [
     addEmojis,

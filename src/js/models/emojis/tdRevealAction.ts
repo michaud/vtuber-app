@@ -1,5 +1,6 @@
 import { Object3D } from "three";
-import { Update } from "../../types/Action.js";
+import { Update } from "types/Update";
+
 import { verticalMapping } from "./verticalMapping";
 
 const tdRevealAction = (

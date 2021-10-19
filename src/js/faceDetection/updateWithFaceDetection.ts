@@ -2,9 +2,9 @@ import updates from "../render/updates";
 import detect from "../detect/detect";
 import detectors from "../detect/detectors";
 import { AnnotatedPrediction, MediaPipeFaceMesh } from "@tensorflow-models/face-landmarks-detection/dist/mediapipe-facemesh";
-import { FaceMeshFaceGeometry } from "../face/face";
-import { Model } from "../types/model";
+import { Model } from "types/model";
 import { GumAudioVideo } from "../../../third_party/gum-av";
+import FaceMeshFaceGeometry from "../face/FaceMeshFaceGeometry";
 
 const updateWithFaceDetection = async (
     faceDetectionModel : MediaPipeFaceMesh,

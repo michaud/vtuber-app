@@ -1,4 +1,4 @@
-import toggleShowAction from '../action/toggleShowAction';
+import toggleShowAction from '../../action/toggleShowAction';
 
 
 const actionDefinitions = {

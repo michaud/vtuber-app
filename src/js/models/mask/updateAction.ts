@@ -1,4 +1,4 @@
-import { Update } from "../../types/Action";
+import { Update } from "types/Update";
 
 const updateAction = () => {
 

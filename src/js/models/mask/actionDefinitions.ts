@@ -1,5 +1,5 @@
-import { ActionDefinitions } from '../../types/actionDefinitions';
-import toggleShowAction from '../action/toggleShowAction';
+import { ActionDefinitions } from 'types/actionDefinitions';
+import toggleShowAction from '../../action/toggleShowAction';
 
 
 const actionDefinitions : ActionDefinitions = {

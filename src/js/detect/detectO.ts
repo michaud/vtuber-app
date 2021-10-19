@@ -1,6 +1,7 @@
 import { Vector3 } from "three";
-import { FaceMeshFaceGeometry } from "../face/face";
-import { TrackData } from "../types/TrackData";
+
+import { TrackData } from "types/TrackData";
+import FaceMeshFaceGeometry from "../face/FaceMeshFaceGeometry";
 
 const detectO = (
     geom:FaceMeshFaceGeometry,

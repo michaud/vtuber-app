@@ -1,8 +1,10 @@
+
 import {
     AnimationMixer,
     Scene
 } from "three";
-import { FaceMeshFaceGeometry } from "../face/face";
+import FaceMeshFaceGeometry from "../face/FaceMeshFaceGeometry";
+
 import { Model } from "./model";
 
 export type SceneCreator = (

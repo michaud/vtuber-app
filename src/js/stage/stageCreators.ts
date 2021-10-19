@@ -1,4 +1,4 @@
-import { SceneCreator } from "../types/SceneCreator";
+import { SceneCreator } from "types/SceneCreator";
 import addBackground from "./pointy/addBackground";
 import addBlinds from "./blinds/addBlinds";
 

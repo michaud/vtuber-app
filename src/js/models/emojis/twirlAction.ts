@@ -1,5 +1,5 @@
 import { Object3D, Vector3 } from "three";
-import { Update } from "../../types/Action";
+import { Update } from "types/Update";
 
 const twirlAction = (
     updateList : Array<Update>,

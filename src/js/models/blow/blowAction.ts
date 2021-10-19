@@ -1,5 +1,5 @@
 import { AnimationAction, Object3D } from "three";
-import { Update } from "../../types/Action";
+import { Update } from "types/Update";
 
 const blowAction = (
     updateList : Array<Update>,

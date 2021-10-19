@@ -10,17 +10,16 @@ import {
     Texture
 } from 'three';
 
-import appConstants from '../../constants/appConstants';
-
-import paths from "../../constants/paths";
-
 import addActions from '../addActions';
 import addPlaneTextures from "./addPlaneTextures";
 import actionDefinitions from './actionDefinitions';
 import updateAction from './updateAction';
-import { Model } from '../../types/model.js';
-import { Update } from '../../types/Action.js';
 import modelUpdate from '../modelUpdate';
+import { Model } from 'types/model';
+import { Update } from 'types/Update';
+
+import { appConstants } from '../../constant/appConstants';
+import paths from '../../constant/paths';
 
 const addEmojis = (
     scene : Scene

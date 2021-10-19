@@ -1,13 +1,19 @@
-import { AnimationAction, AnimationClip, AnimationMixer, LoopOnce, Object3D, Scene } from 'three';
+import {
+    AnimationAction,
+    AnimationMixer,
+    LoopOnce,
+    Object3D,
+    Scene
+} from 'three';
 
 import updateAction from './updateAction';
 import actionDefinitions from './actionDefinitions';
 import addActions from '../addActions';
 import loadModel from '../loadModel';
-import { Update } from '../../types/Action';
+import { Update } from 'types/Update';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 import modelUpdate from '../modelUpdate';
-import paths from '../../constants/paths';
+import paths from '../../constant/paths';
 
 const duckIds : Array<string> = ['000', '001', '002', '003', '004', '005', '006', '007'];
 

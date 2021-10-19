@@ -7,11 +7,12 @@ import {
     Scene
 } from "three";
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
-import paths from "../../constants/paths";
 import addActions from "../../models/addActions";
 import actionDefinitions from "./actionDefinitions";
 import loadModel from "../../models/loadModel";
-import { Update } from "../../types/Action";
+import { Update } from "types/Update";
+import modelUpdate from "../../models/modelUpdate";
+import paths from "../../constant/paths";
 
 const addBlinds = (
     scene : Scene,
@@ -57,7 +58,10 @@ const addBlinds = (
 
     return {
         create,
-        update: () => {},
+        update: modelUpdate(
+            mesh,
+            updateActions
+        ),
         name: 'blinds',
         actions,
         mesh

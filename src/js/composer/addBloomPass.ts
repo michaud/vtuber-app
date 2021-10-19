@@ -6,7 +6,7 @@ import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPa
 import frag from '../shader/shader.frag';
 /* @ts-ignore */
 import vert from '../shader/shader.vert';
-import { PassArguments } from "../types/PassArguments";
+import { PassArguments } from "types/PassArguments";
 
 const addBloomPass = ({
     composer,

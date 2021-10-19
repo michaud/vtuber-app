@@ -1,6 +1,6 @@
+import FaceMeshFaceGeometry from "../../face/FaceMeshFaceGeometry";
 import { Object3D } from "three";
-import { FaceMeshFaceGeometry } from "../../face/face";
-import { Update } from "../../types/Action";
+import { Update } from "types/Update";
 import { circularMapping } from "./circularMapping";
 
 const orevealAction = (

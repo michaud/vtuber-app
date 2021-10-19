@@ -1,8 +1,8 @@
 import { VoidRunner } from "./voidRunner";
-import { FaceMeshFaceGeometry } from "../face/face.js";
 import { Object3D } from "three";
-import { Update } from "./Action";
+
 import { Detector } from "./Detector";
+import { Update } from "./Update";
 
 export interface Model {
     create : VoidRunner;

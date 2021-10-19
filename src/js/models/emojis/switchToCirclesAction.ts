@@ -4,7 +4,7 @@ import {
     Object3D,
     Mesh,
 } from 'three';
-import { Update } from '../../types/Action';
+import { Update } from 'types/Update';
 
 const switchToCirclesAction = (
     updateList : Array<Update>,

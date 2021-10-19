@@ -196,4 +196,4 @@ class FaceMeshFaceGeometry extends BufferGeometry {
     }
 }
 
-export { FaceMeshFaceGeometry };
+export default FaceMeshFaceGeometry;

@@ -3,11 +3,11 @@ import actionDefinitions from './actionDefinitions';
 import addActions from '../addActions';
 import loadModel from '../loadModel';
 import { Object3D, Scene } from 'three';
-import { Update } from '../../types/Action';
+import { Update } from 'types/Update';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
-import { Model } from '../../types/model';
+import { Model } from 'types/model';
 import modelUpdate from '../modelUpdate';
-import paths from '../../constants/paths';
+import paths from '../../constant/paths';
 
 const addMistache = (
     scene : Scene

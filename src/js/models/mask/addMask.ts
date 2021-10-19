@@ -8,13 +8,13 @@ import {
     TextureLoader,
 } from "three";
 
-import paths from "../../constants/paths";
-import { FaceMeshFaceGeometry } from "../../face/face";
-import { Update } from "../../types/Action";
-import { Model } from "../../types/model";
+import paths from "../../constant/paths";
+import { Update } from "types/Update";
+import { Model } from "types/model";
 import addActions from "../addActions";
 import modelUpdate from "../modelUpdate";
 import actionDefinitions from "./actionDefinitions";
+import FaceMeshFaceGeometry from "../../face/FaceMeshFaceGeometry";
 
 const addMask = (
     scene : Scene,

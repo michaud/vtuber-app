@@ -1,6 +1,6 @@
-import { ActionDefinitions } from '../../types/actionDefinitions';
+import { ActionDefinitions } from 'types/actionDefinitions';
 
-import toggleShowAction from '../action/toggleShowAction';
+import toggleShowAction from '../../action/toggleShowAction';
 
 import stopAction from './stopAction';
 import startAction from './startAction';

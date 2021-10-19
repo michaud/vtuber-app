@@ -4,10 +4,10 @@ import addActions from '../addActions';
 
 import loadModel from '../loadModel';
 import { Object3D, Scene } from 'three';
-import { Model } from '../../types/model';
-import { Update } from '../../types/Action';
+import { Model } from 'types/model';
+import { Update } from 'types/Update';
 import modelUpdate from '../modelUpdate';
-import paths from '../../constants/paths';
+import paths from '../../constant/paths';
 
 const addGlasses = (
     scene : Scene

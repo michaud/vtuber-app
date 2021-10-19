@@ -6,8 +6,8 @@ import {
     Object3D
 } from 'three';
 
-import { Update } from '../../types/Action';
-import { Model } from '../../types/model';
+import { Model } from 'types/model';
+import { Update } from 'types/Update';
 
 import addActions from '../addActions';
 import modelUpdate from '../modelUpdate';

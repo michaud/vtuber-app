@@ -8,12 +8,14 @@
     "start-cachless": "parcel serve --no-cache",
     "prebuild": "shx rm -rf dist/* && shx rm -rf .parcel-cache",
     "build": "npm run prebuild && parcel build",
+    "build-ver": "npm run prebuild && parcel build --log-level verbose",
     "report": "parcel build src/index.html --reporter @parcel/reporter-bundle-analyzer"
   },
   "author": "mv",
   "license": "ISC",
   "devDependencies": {
     "@parcel/reporter-bundle-analyzer": "^2.0.0",
+    "@parcel/resolver-glob": "^2.0.0",
     "@parcel/transformer-glsl": "^2.0.0",
     "@tensorflow-models/face-landmarks-detection": "0.0.3",
     "@tensorflow/tfjs-backend-cpu": "^3.9.0",
@@ -33,5 +35,8 @@
   },
   "staticFiles": {
     "staticOutPath": "assets/"
+  },
+  "alias": {
+    "types": ["./src/js/types"] 
   }
 }

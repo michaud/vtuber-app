@@ -7,16 +7,15 @@ import {
     Object3D,
     Scene
 } from 'three';
-
+import { Model } from 'types/model';
+import { Update } from 'types/Update';
 import updateAction from './updateAction';
 import actionDefinitions from './actionDefinitions';
 import addActions from '../addActions';
 import loadModel from '../loadModel';
-import { Model } from '../../types/model';
-import { Update } from '../../types/Action';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 import modelUpdate from '../modelUpdate';
-import paths from '../../constants/paths';
+import paths from '../../constant/paths';
 
 const addBlow = (
     scene : Scene,

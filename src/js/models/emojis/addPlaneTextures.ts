@@ -1,12 +1,11 @@
+import { appConstants } from "../../constant/appConstants";
+import paths from "../../constant/paths";
 import {
     Mesh,
     MeshStandardMaterial,
     Object3D,
     TextureLoader
 } from "three";
-import appConstants from "../../constants/appConstants";
-import paths from "../../constants/paths";
-
 
 const addPlaneTextures = (
     imageList : Array<string>,

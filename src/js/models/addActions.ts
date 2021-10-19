@@ -2,13 +2,13 @@ import { AnimationAction, Object3D } from "three";
 import {
     ActionDefinition,
     ActionDefinitions
-} from "../types/actionDefinitions";
+} from "types/actionDefinitions";
 import {
-    Update,
     UpdateList,
     ActionResources
-} from "../types/Action";
-import { VoidRunner } from "../types/voidRunner";
+} from "types/Action";
+import { VoidRunner } from "types/voidRunner";
+import { Update } from "types/Update";
 
 const hasAction = (
     actionName : string,

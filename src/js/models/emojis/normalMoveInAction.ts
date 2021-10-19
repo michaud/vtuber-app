@@ -1,6 +1,7 @@
+import { appConstants } from "../../constant/appConstants";
+import { Update } from "types/Update";
 import { Object3D, Vector3 } from "three";
-import appConstants from "../../constants/appConstants";
-import { Update } from "../../types/Action";
+import FaceMeshFaceGeometry from "../../face/FaceMeshFaceGeometry";
 
 const normalMoveInAction = (
     updateList : Array<Update>,
@@ -15,8 +16,8 @@ const normalMoveInAction = (
     let index = 0;
 
     const normalMoveInUpdate : Update = (
-        geom,
-        moment
+        geom : FaceMeshFaceGeometry,
+        moment : number
     ) => {
 
         if (!start) {
