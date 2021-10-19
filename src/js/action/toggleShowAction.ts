@@ -1,5 +1,5 @@
 import { Object3D } from "three";
-import { Update } from "../../types/Action";
+import { Update } from "../types/Action";
 
 const toggleShowAction = (
     updateList : Array<Update>,
