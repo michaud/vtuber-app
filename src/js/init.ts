@@ -63,7 +63,7 @@ const init = (
     addModelInteractions(stages, pane, 'stages');
 
     addCameraViewControls(camera);
-    addDebugTools(scene);
+    addDebugTools(scene, controls);
 
     return {
         models,
