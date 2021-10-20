@@ -43,6 +43,7 @@ const addBlinds = (
 
                     animations.push(anim);
                     anim.clampWhenFinished = true;
+                    anim.timeScale = -1;
                     anim.setLoop(LoopOnce, 1);
                 });
             }

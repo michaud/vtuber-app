@@ -23,7 +23,6 @@ const openCloseAction = (
                 act.play();
                 act.timeScale = act.timeScale * -1;
             }
-
         });
 
         /* remove yourself from the updateList */
