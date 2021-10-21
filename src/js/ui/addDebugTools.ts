@@ -60,7 +60,6 @@ const addDebugTools = (scene:Scene, controls : OrbitControls, lights: Array<Ligh
     document.addEventListener('keyup', 
         (ev : KeyboardEvent) => {
             
-            console.log('ev.key:', typeof ev.key)
             ev.key === 'Clear' && onClickOrigin(group)();
             ev.key === 'Numpad 0' && onClickReset(controls)();
         });
