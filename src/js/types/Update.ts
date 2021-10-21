@@ -1,8 +1,8 @@
+import FaceGeometry from "face/FaceGeometry";
 import { BufferAttribute } from "three";
-import FaceMeshFaceGeometry from "../face/FaceMeshFaceGeometry";
 
 export type Update = (
-    geom? : FaceMeshFaceGeometry,
+    geom? : FaceGeometry,
     moment? : number,
     points? : BufferAttribute,
     normals? :  BufferAttribute

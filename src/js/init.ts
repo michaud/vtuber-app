@@ -16,7 +16,7 @@ import { AppResources } from 'types/AppResources';
 import { GumAudioVideo } from '../../third_party/gum-av';
 import addstages from './stage/addstages';
 import { Model } from 'types/model';
-import FaceMeshFaceGeometry from './face/FaceMeshFaceGeometry';
+import FaceGeometry from 'face/FaceGeometry';
 
 const init = (
     av : GumAudioVideo,
@@ -34,7 +34,7 @@ const init = (
     const threeTime = new Clock();
 
     /* Create a new geometry helper */
-    const faceGeometry = new FaceMeshFaceGeometry();
+    const faceGeometry = new FaceGeometry();
 
     setUpResize(
         av,

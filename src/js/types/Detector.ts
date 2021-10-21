@@ -1,6 +1,6 @@
-import FaceMeshFaceGeometry from "../face/FaceMeshFaceGeometry";
+import FaceGeometry from "face/FaceGeometry";
 
 export type Detector = (
-    geom? : FaceMeshFaceGeometry,
+    geom? : FaceGeometry,
     detections? : Array<string>
 ) => void

@@ -13,13 +13,13 @@ import { Model } from "types/model";
 import addActions from "../addActions";
 import modelUpdate from "../modelUpdate";
 import actionDefinitions from "./actionDefinitions";
-import FaceMeshFaceGeometry from "../../face/FaceMeshFaceGeometry";
 import paths from "constant/paths";
+import FaceGeometry from "face/FaceGeometry";
 
 const addMask = (
     scene : Scene,
     _mixer: AnimationMixer,
-    faceGeometry : FaceMeshFaceGeometry
+    faceGeometry : FaceGeometry
 ) : Model => {
 
     const mesh : Array<Object3D> = [];

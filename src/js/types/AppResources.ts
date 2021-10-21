@@ -1,3 +1,4 @@
+import FaceGeometry from "face/FaceGeometry";
 import {
     AnimationMixer,
     Clock,
@@ -8,14 +9,12 @@ import {
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import { GumAudioVideo } from "../../../third_party/gum-av";
-import FaceMeshFaceGeometry from "../face/FaceMeshFaceGeometry";
-
 import { Model } from "./model";
 
 export interface AppResources {
     models:Array<Model>,
     stages:Array<Model>,
-    faceGeometry:FaceMeshFaceGeometry,
+    faceGeometry:FaceGeometry,
     controls:OrbitControls,
     scene:Scene,
     mixer:AnimationMixer,

@@ -2,7 +2,7 @@ import { Update } from "types/Update";
 import { Object3D, Vector3 } from "three";
 import { circularMapping } from "./circularMapping";
 import { verticalMappingPadded } from "./verticalMapping";
-import FaceMeshFaceGeometry from "../../face/FaceMeshFaceGeometry";
+import FaceGeometry from "face/FaceGeometry";
 
 const displaceAction = (
     updateList : Array<Update>,
@@ -25,7 +25,7 @@ const displaceAction = (
     img.src = '/assets/center_bulb2.png';
 
     const displaceUpdate : Update = (
-        geom : FaceMeshFaceGeometry,
+        geom : FaceGeometry,
         moment : number
     ) => {
 

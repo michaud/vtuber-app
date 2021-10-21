@@ -11,7 +11,7 @@ import {
     Matrix4,
 } from "three";
 import {
-    AnnotatedPrediction 
+    AnnotatedPrediction
 } from '@tensorflow-models/face-landmarks-detection/dist/mediapipe-facemesh';
 import {
     Coords3D
@@ -35,7 +35,7 @@ export type FaceOptions = {
     normalizeCoords? : boolean;
 }
 
-class FaceMeshFaceGeometry extends BufferGeometry {
+class FaceGeometry extends BufferGeometry {
 
     useVideoTexture : boolean;
     normalizeCoords : boolean;
@@ -196,4 +196,4 @@ class FaceMeshFaceGeometry extends BufferGeometry {
     }
 }
 
-export default FaceMeshFaceGeometry;
+export default FaceGeometry;

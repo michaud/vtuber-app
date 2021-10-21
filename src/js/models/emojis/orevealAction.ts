@@ -1,4 +1,4 @@
-import FaceMeshFaceGeometry from "../../face/FaceMeshFaceGeometry";
+import FaceGeometry from "face/FaceGeometry";
 import { Object3D } from "three";
 import { Update } from "types/Update";
 import { circularMapping } from "./circularMapping";
@@ -15,7 +15,7 @@ const orevealAction = (
     let revealIndex = 0;
 
     const orevealUpdate : Update = (
-        _geom : FaceMeshFaceGeometry,
+        _geom : FaceGeometry,
         moment : number
     ) => {
 

@@ -38,6 +38,7 @@
   },
   "alias": {
     "types": "./src/js/types",
-    "constant": "./src/js/constant"
+    "constant": "./src/js/constant",
+    "face": "./src/js/face"
   }
 }

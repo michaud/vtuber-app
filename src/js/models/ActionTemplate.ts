@@ -1,7 +1,7 @@
+import FaceGeometry from "face/FaceGeometry";
 import { Object3D } from "three";
 
 import { Update } from "types/Update";
-import FaceMeshFaceGeometry from "../face/FaceMeshFaceGeometry";
 
 /* replace name and implement, maybe use different step definition */
 const nameAction = (
@@ -17,7 +17,7 @@ const nameAction = (
     let index = 0;
 
     const nameUpdate : Update = (
-        geom : FaceMeshFaceGeometry,
+        geom : FaceGeometry,
         moment : number
     ) => {
 

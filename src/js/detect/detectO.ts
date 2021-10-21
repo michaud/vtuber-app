@@ -1,10 +1,10 @@
+import FaceGeometry from "face/FaceGeometry";
 import { Vector3 } from "three";
 
 import { TrackData } from "types/TrackData";
-import FaceMeshFaceGeometry from "../face/FaceMeshFaceGeometry";
 
 const detectO = (
-    geom:FaceMeshFaceGeometry,
+    geom : FaceGeometry,
     detections : Array<string>
 ) : void => {
 

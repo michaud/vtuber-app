@@ -1,13 +1,13 @@
+import FaceGeometry from "face/FaceGeometry";
 import { BufferAttribute } from "three";
 
 import { Detector } from "types/Detector";
 import { Model } from "types/model";
-import FaceMeshFaceGeometry from "../face/FaceMeshFaceGeometry";
 
 const updates = (
     models : Array<Model>,
     stages: Array<Model>,
-    geom : FaceMeshFaceGeometry,
+    geom : FaceGeometry,
     timeStamp : number,
     detections : Array<string>
 ) => {

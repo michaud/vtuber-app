@@ -1,12 +1,11 @@
+import FaceGeometry from "face/FaceGeometry";
 import { OrthographicCamera, WebGLRenderer } from "three";
 import { GumAudioVideo } from "../../../third_party/gum-av";
-import FaceMeshFaceGeometry from "../face/FaceMeshFaceGeometry";
-
 
 const resize = (
     av:GumAudioVideo,
     camera:OrthographicCamera,
-    faceGeometry:FaceMeshFaceGeometry,
+    faceGeometry:FaceGeometry,
     renderer:WebGLRenderer
 ) => async () => {
     
