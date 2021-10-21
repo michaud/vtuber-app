@@ -5,6 +5,7 @@ import {
 } from 'three';
 
 import { SceneResources } from 'types/SceneResources';
+import addDebugPlane from './addDebugPlane';
 import addLighting from './addLighting';
 /* import addHDR from './addHDR'; */
 import addRendererSettings from './addRendererSettings';
@@ -26,13 +27,16 @@ const createSene = (): SceneResources => {
 
     //addHDR(scene, renderer);
 
-    addLighting(scene);
+    const lights = addLighting(scene);
+
+    //addDebugPlane(scene);
 
     return {
         renderer,
         scene,
         camera,
-        canvas
+        canvas,
+        lights
     }
 };
 

@@ -1,4 +1,5 @@
 import {
+    Light,
     OrthographicCamera,
     Scene,
     WebGLRenderer
@@ -8,5 +9,6 @@ export interface SceneResources {
     renderer : WebGLRenderer,
     scene : Scene,
     camera : OrthographicCamera,
-    canvas : HTMLCanvasElement    
+    canvas : HTMLCanvasElement,
+    lights: Array<Light>
 }

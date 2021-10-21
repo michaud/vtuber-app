@@ -20,8 +20,8 @@ const openCloseAction = (
             if(!act.isRunning()) {
 
                 act.paused = false;
-                act.play();
                 act.timeScale = act.timeScale * -1;
+                act.play();
             }
         });
 

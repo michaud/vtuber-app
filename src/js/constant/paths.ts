@@ -4,7 +4,8 @@ const paths = {
     profilePics: 'assets/profilePics/',
     mask: 'assets/mask/',
     hdr: 'assets/equirectangular/',
-    stage: 'assets/stage/'
+    stage: 'assets/stage/',
+    background: 'assets/backgrounds'
 };
 
 export default paths;

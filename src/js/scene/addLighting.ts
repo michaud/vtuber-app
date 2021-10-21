@@ -3,6 +3,8 @@ import {
     DirectionalLight,
     HemisphereLight,
     IcosahedronGeometry,
+    Light,
+    Matrix4,
     Mesh,
     MeshStandardMaterial,
     Scene,
@@ -10,48 +12,45 @@ import {
     Vector3
 } from "three";
 
-const addLighting = (scene : Scene) : void => {
+const addLighting = (scene : Scene) : Array<Light> => {
 
-    const posScalar = 400;
-
-    const fillLightPos = new Vector3(1, -.35, 0);
-    const fillLight = new DirectionalLight( 0xffddcc, 3);
-    fillLightPos.setLength(posScalar);
-    fillLight.position = fillLightPos;
+    const fillLightPos = new Vector3(400, -140, 0);
+    const fillLight = new SpotLight( 0xffddcc, 0, 10);
+    fillLight.position.copy(fillLightPos);
+    fillLight.name = 'fillLight';
     scene.add( fillLight );
 
-    /* keep for debugging */
-    // const fillLightPositionMesh = new Mesh(new IcosahedronGeometry(5, 4));
-    // fillLightPositionMesh.position.set(fillLightPos.x, fillLightPos.y, fillLightPos.z);
-    // scene.add(fillLightPositionMesh);
-
-    const highLightPos = new Vector3(-1, .25, 0.5);
-    const highLight = new DirectionalLight( 0xccccff, 3 );
-    highLightPos.setLength(posScalar);
-    highLight.position = highLightPos;
+    const highLightPos = new Vector3(-400, 100, 200);
+    const highLight = new SpotLight( 0xccccff, .2, 150);
+    highLight.power = 1;
+    highLight.name = 'highLight';
+    highLight.position.copy(highLightPos);
     scene.add( highLight );
 
-    /* keep for debugging */
-    // const highLightPositionMesh = new Mesh(new IcosahedronGeometry(5, 4));
-    // highLightPositionMesh.position.set(highLightPos.x, highLightPos.y, highLightPos.z);
-    // scene.add(highLightPositionMesh);
+    const topLightPos = new Vector3(-60, -60, 460);
+    const topLight = new SpotLight( 0xccccff, 0, 10);
+    topLight.name = 'topLight';
 
-    const topLightPos = new Vector3(-.15, -.15, 1.15);
-    const topLight = new DirectionalLight( 0xccccff, 10 );
-    topLightPos.setLength(posScalar);
-    topLight.position = topLightPos;
+    topLight.position.copy(topLightPos);
     scene.add( topLight );
 
-    /* keep for debugging */
-    // const topLightPositionMesh = new Mesh(new IcosahedronGeometry(5, 4));
-    // topLightPositionMesh.position.set(topLightPos.x, topLightPos.y, topLightPos.z);
-    // scene.add(topLightPositionMesh);
+    const hemiLight: HemisphereLight = new HemisphereLight(0xffffff, 0x080808, 0);
+    hemiLight.name = 'hemiLight';
 
-    const hemiLight: HemisphereLight = new HemisphereLight(0xffffff, 0x080808, .75);
     scene.add(hemiLight);
 
-    const ambientLight2 : AmbientLight = new AmbientLight(0xffffff, 1.15);
+    const ambientLight2 : AmbientLight = new AmbientLight(0xffffff, 0);
+    ambientLight2.name = 'ambientLight2';
+
     scene.add(ambientLight2);
+
+    return [
+        hemiLight,
+        ambientLight2,
+        topLight,
+        highLight,
+        fillLight
+    ]
 }
 
 export default addLighting;

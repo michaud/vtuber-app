@@ -26,7 +26,8 @@ const init = (
     const {
         renderer,
         scene,
-        camera
+        camera,
+        lights
     } = createSene();
 
     const mixer = new AnimationMixer(scene);
@@ -54,7 +55,7 @@ const init = (
 
     addModelInteractions(models, pane, 'models');
     pane.addSeparator();
-
+    
     const composer = addComposer(scene, camera, renderer, pane);
 
     const stages : Array<Model> = addstages(scene, mixer);
@@ -63,7 +64,7 @@ const init = (
     addModelInteractions(stages, pane, 'stages');
 
     addCameraViewControls(camera);
-    addDebugTools(scene, controls);
+    addDebugTools(scene, controls, lights);
 
     return {
         models,

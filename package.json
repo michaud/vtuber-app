@@ -37,6 +37,7 @@
     "staticOutPath": "assets/"
   },
   "alias": {
-    "types": ["./src/js/types"] 
+    "types": "./src/js/types",
+    "constant": "./src/js/constant"
   }
 }
