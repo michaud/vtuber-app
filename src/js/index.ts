@@ -14,8 +14,7 @@ import {
     onLoadModel
 } from './ui/statusUpdates';
 import getPane, { Panels } from './ui/getPane';
-import { GumAudioVideo } from '../../third_party/gum-av';
-
+import { GumAudioVideo } from 'thirdparty/gum-av';
 
 const start = async () : Promise<void> => {
     

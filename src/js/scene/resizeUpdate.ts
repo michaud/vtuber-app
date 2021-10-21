@@ -1,6 +1,6 @@
 import FaceGeometry from "face/FaceGeometry";
+import { GumAudioVideo } from "thirdparty/gum-av";
 import { OrthographicCamera, WebGLRenderer } from "three";
-import { GumAudioVideo } from "../../../third_party/gum-av";
 
 import resize from "./resize";
 

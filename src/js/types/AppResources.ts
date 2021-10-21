@@ -1,4 +1,5 @@
 import FaceGeometry from "face/FaceGeometry";
+import { GumAudioVideo } from "thirdparty/gum-av";
 import {
     AnimationMixer,
     Clock,
@@ -8,7 +9,6 @@ import {
 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
-import { GumAudioVideo } from "../../../third_party/gum-av";
 import { Model } from "./model";
 
 export interface AppResources {

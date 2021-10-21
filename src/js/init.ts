@@ -13,10 +13,10 @@ import addComposer from './composer/addComposer';
 import addDebugTools from './ui/addDebugTools';
 import { Pane } from 'tweakpane';
 import { AppResources } from 'types/AppResources';
-import { GumAudioVideo } from '../../third_party/gum-av';
 import addstages from './stage/addstages';
 import { Model } from 'types/model';
 import FaceGeometry from 'face/FaceGeometry';
+import { GumAudioVideo } from 'thirdparty/gum-av';
 
 const init = (
     av : GumAudioVideo,

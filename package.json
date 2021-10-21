@@ -39,6 +39,7 @@
   "alias": {
     "types": "./src/js/types",
     "constant": "./src/js/constant",
-    "face": "./src/js/face"
+    "face": "./src/js/face",
+    "thirdparty": "./third_party"
   }
 }
