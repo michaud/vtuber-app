@@ -1,11 +1,11 @@
-import { appConstants } from "../../constant/appConstants";
-import paths from "../../constant/paths";
 import {
     Mesh,
     MeshStandardMaterial,
     Object3D,
     TextureLoader
 } from "three";
+import paths from "constant/paths";
+import { appConstants } from "constant/appConstants";
 
 const addPlaneTextures = (
     imageList : Array<string>,
@@ -22,7 +22,9 @@ const addPlaneTextures = (
 
             const rndImgIndex = Math.floor(Math.random() * imageCount);
             const fileName = imageList[rndImgIndex];
-            const texture = new TextureLoader().load(`${paths.profilePics}${fileName}`);
+            const texture = new TextureLoader().load(
+                `${paths.profilePics}${fileName}`
+            );
 
             ((planes[i].children[0] as Mesh).material as MeshStandardMaterial).opacity = 1;
             ((planes[i].children[0] as Mesh).material as MeshStandardMaterial).map = texture;

@@ -1,7 +1,7 @@
-import { appConstants } from "../../constant/appConstants";
 import { Update } from "types/Update";
 import { Object3D, Vector3 } from "three";
 import FaceMeshFaceGeometry from "../../face/FaceMeshFaceGeometry";
+import { appConstants } from "constant/appConstants";
 
 const normalMoveInAction = (
     updateList : Array<Update>,

@@ -20,7 +20,7 @@ import actionDefinitions from "./actionDefinitions";
 import loadModel from "../../models/loadModel";
 import { Update } from "types/Update";
 import modelUpdate from "../../models/modelUpdate";
-import paths from "../../constant/paths";
+import paths from "constant/paths";
 
 const addBlinds = (
     scene : Scene,
@@ -45,7 +45,9 @@ const addBlinds = (
                 scene.add(gltf.scene);
                 mesh.push(gltf.scene);
 
-                const texture : Texture = new TextureLoader().load(`${paths.background}/empty.pmg`);
+                const texture : Texture = new TextureLoader().load(
+                    `${paths.background}/empty.pmg`
+                );
 
                 const geometry : PlaneGeometry = new PlaneGeometry(1000, 500);
                 const material : MeshStandardMaterial = new MeshStandardMaterial({
@@ -68,7 +70,10 @@ const addBlinds = (
                 
                 mesh.push(group);
                 scene.add(group);
-                const imgtexture = new TextureLoader().load(`${paths.background}/${imageList[0]}`);
+                const imgtexture = new TextureLoader().load(
+                    `${paths.background}/${imageList[0]}`
+                );
+
                 (plane.material as MeshStandardMaterial).map = imgtexture;
 
                 gltf.scene.position.setZ(-100);

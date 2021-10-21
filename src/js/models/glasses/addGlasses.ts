@@ -7,7 +7,7 @@ import { Object3D, Scene } from 'three';
 import { Model } from 'types/model';
 import { Update } from 'types/Update';
 import modelUpdate from '../modelUpdate';
-import paths from '../../constant/paths';
+import paths from 'constant/paths';
 
 const addGlasses = (
     scene : Scene

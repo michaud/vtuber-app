@@ -1,4 +1,3 @@
-import { appConstants } from '../../constant/appConstants';
 import { TrackData } from 'types/TrackData';
 import { Update } from 'types/Update';
 import { Object3D, Vector3 } from 'three';
@@ -7,6 +6,7 @@ import {
     faceFeatureScaleFactor,
     FeatureMapping
 } from './faceFeatureMapping';
+import { appConstants } from 'constant/appConstants';
 
 const getScaleFactorForIndex = (
     i : number,

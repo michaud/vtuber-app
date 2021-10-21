@@ -8,13 +8,13 @@ import {
     TextureLoader,
 } from "three";
 
-import paths from "../../constant/paths";
 import { Update } from "types/Update";
 import { Model } from "types/model";
 import addActions from "../addActions";
 import modelUpdate from "../modelUpdate";
 import actionDefinitions from "./actionDefinitions";
 import FaceMeshFaceGeometry from "../../face/FaceMeshFaceGeometry";
+import paths from "constant/paths";
 
 const addMask = (
     scene : Scene,
@@ -28,7 +28,9 @@ const addMask = (
     const create = () => {
 
         /* Load textures for mask material. */
-        const colorTexture = new TextureLoader().load(`${paths.mask}mesh_map.jpg`);
+        const colorTexture = new TextureLoader().load(
+            `${paths.mask}mesh_map.jpg`
+        );
         // const aoTexture = new TextureLoader().load("../../assets/ao.jpg");
         // const alphaTexture = new TextureLoader().load("../../assets/mask.png");
 

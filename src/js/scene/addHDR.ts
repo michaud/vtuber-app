@@ -1,3 +1,4 @@
+import paths from "constant/paths";
 import {
     LoadingManager,
     PMREMGenerator,
@@ -6,7 +7,6 @@ import {
     WebGLRenderer
 } from "three";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
-import paths from "../constant/paths";
 import { RGBELoaderCallback } from "./RGBELoading";
 
 const addHDR = (

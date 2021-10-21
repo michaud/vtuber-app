@@ -7,7 +7,7 @@ import { Update } from 'types/Update';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Model } from 'types/model';
 import modelUpdate from '../modelUpdate';
-import paths from '../../constant/paths';
+import paths from 'constant/paths';
 
 const addMistache = (
     scene : Scene

@@ -18,8 +18,8 @@ import modelUpdate from '../modelUpdate';
 import { Model } from 'types/model';
 import { Update } from 'types/Update';
 
-import { appConstants } from '../../constant/appConstants';
-import paths from '../../constant/paths';
+import paths from 'constant/paths';
+import { appConstants } from 'constant/appConstants';
 
 const addEmojis = (
     scene : Scene
@@ -54,7 +54,9 @@ const addEmojis = (
 
         for (let i = 0; i < appConstants.NUM_KEYPOINTS; i++) {
         
-            const texture : Texture = new TextureLoader().load(`${paths.profilePics}empty.png`);
+            const texture : Texture = new TextureLoader().load(
+                `${paths.profilePics}empty.png`
+            );
 
             const geometry : CircleGeometry = new CircleGeometry(.66, 36);
             const material : MeshStandardMaterial = new MeshStandardMaterial({

@@ -13,7 +13,7 @@ import loadModel from '../loadModel';
 import { Update } from 'types/Update';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 import modelUpdate from '../modelUpdate';
-import paths from '../../constant/paths';
+import paths from 'constant/paths';
 
 const duckIds : Array<string> = ['000', '001', '002', '003', '004', '005', '006', '007'];
 
