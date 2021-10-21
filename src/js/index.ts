@@ -21,7 +21,7 @@ const start = async () : Promise<void> => {
     const av : GumAudioVideo = document.querySelector('gum-av');
 
     await Promise.all([tf.setBackend('webgl'), av.ready()]);
-    
+
     const { pane, status } : Panels = getPane();
 
     const data : AppResources = init(av, pane);
