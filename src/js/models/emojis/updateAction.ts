@@ -14,7 +14,7 @@ const getScaleFactorForIndex = (
 ) => {
 
     let scaleFactor : number = 1;
-    Object.keys(faceFeatureMapping).map(key => {
+    Object.keys(faceFeatureMapping).forEach(key => {
         if(faceFeatureMapping[key].indexOf(i) > -1) {
             scaleFactor = faceFeatureScaleFactor[key];
         }

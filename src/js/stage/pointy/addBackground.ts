@@ -7,7 +7,6 @@ import paths from "constant/paths";
 const addBackground = (scene : Scene) => {
 
     const mesh : Array<Object3D> =[];
-    const updateActions : Array<Update> = [];
 
     const create = () => {
 

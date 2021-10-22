@@ -30,6 +30,7 @@ const updates = (
             }
         }
     );
+
     stages.forEach((stage : Model) => {
 
             stage.update(

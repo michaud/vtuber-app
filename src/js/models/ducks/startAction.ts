@@ -11,7 +11,7 @@ const startAction = (
 
     const duckStartUpdate = () => {
 
-        animations.map(act => {
+        animations.forEach(act => {
 
             if(!act.isRunning()) {
                 act.timeScale = 1;

@@ -1,9 +1,10 @@
-import { AnimationAction, Object3D } from "three";
+import { AnimationAction, Light, Object3D } from "three";
 import { Update } from "./Update";
 
 export type Action = (
     updateActions : Array<Update>,
     mesh : Array<Object3D>,
+    lights : Array<Light>,
     animations? : Array<AnimationAction>
 ) => Update;
 

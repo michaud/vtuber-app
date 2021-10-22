@@ -1,10 +1,12 @@
-import { Object3D } from "three";
+import { Light, Object3D } from "three";
+import { ModelResources } from "types/model";
 import { Update } from "types/Update";
 
-const modelUpdate = (
-    mesh: Array<Object3D>,
-    updateActions: Array<Update>
-) : Update => {
+const modelUpdate = ({
+    mesh,
+    lights,
+    updateActions
+}: ModelResources) : Update => {
 
     const update : Update = (
         geom,
@@ -15,7 +17,7 @@ const modelUpdate = (
     
         if(mesh.length === 0) return;
         
-        updateActions.map((action : Update) => action(
+        updateActions.forEach((action : Update) => action(
             geom,
             moment,
             points,

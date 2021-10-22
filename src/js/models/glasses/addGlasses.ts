@@ -34,18 +34,19 @@ const addGlasses = (
         );
     };
 
-    const { actions } = addActions(
-        updateActions,
-        mesh,
+    const { actions } = addActions({
+            updateActions,
+            mesh,
+        },
         actionDefinitions
     ); 
 
     return {
         create,
-        update: modelUpdate(
+        update: modelUpdate({
             mesh,
             updateActions
-        ),
+        }),
         name: 'glasses',
         actions,
         mesh

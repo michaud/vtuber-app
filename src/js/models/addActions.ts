@@ -1,4 +1,4 @@
-import { AnimationAction, Object3D } from "three";
+import { AnimationAction, Light, Object3D } from "three";
 import {
     ActionDefinition,
     ActionDefinitions
@@ -9,6 +9,7 @@ import {
 } from "types/Action";
 import { VoidRunner } from "types/voidRunner";
 import { Update } from "types/Update";
+import { ModelResources } from "types/model";
 
 const hasAction = (
     actionName : string,
@@ -20,6 +21,7 @@ const getAction = (
     { updateName, action } : ActionDefinition,
     updateActions : Array<Update>,
     mesh : Array<Object3D>,
+    lights : Array<Light>,
     animations? : Array<AnimationAction>
 ) : VoidRunner => () : void => {
 
@@ -27,15 +29,18 @@ const getAction = (
     updateActions.push(action(
         updateActions,
         mesh,
+        lights,
         animations
     )
 )};
 
-const addActions = (
-    updateActions : Array<Update>,
-    mesh : Array<Object3D>,
-    actionDefinitions : ActionDefinitions,
-    animations? : Array<AnimationAction>
+const addActions = ({
+        updateActions,
+        mesh,
+        lights,
+        animations
+    }: ModelResources,
+    actionDefinitions : ActionDefinitions
 ) : ActionResources => {
 
     const actions : UpdateList = Object
@@ -55,6 +60,7 @@ const addActions = (
                     action,
                     updateActions,
                     mesh,
+                    lights,
                     animations
                 )
             })

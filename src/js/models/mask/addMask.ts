@@ -55,18 +55,19 @@ const addMask = (
         mesh.push(mask);
     };
 
-    const { actions } = addActions(
-        updateActions,
-        mesh,
+    const { actions } = addActions({
+            updateActions,
+            mesh,
+        },
         actionDefinitions
     );
 
     return {
         create,
-        update: modelUpdate(
+        update: modelUpdate({
             mesh,
             updateActions
-        ),
+        }),
         name: 'mask',
         mesh,
         actions

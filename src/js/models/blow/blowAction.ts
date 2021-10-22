@@ -13,7 +13,7 @@ const blowAction = (
 
         if(animations.length === 0) return;
 
-        animations.map(act => {
+        animations.forEach(act => {
 
             if(!act.isRunning()) {
                 act.reset();

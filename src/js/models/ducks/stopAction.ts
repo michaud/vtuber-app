@@ -15,7 +15,7 @@ const duckStopAction = (
 
     const duckStopUpdate = () => {
 
-        animations.map(act => {
+        animations.forEach(act => {
 
             const clip : AnimationClip = act.getClip();
 

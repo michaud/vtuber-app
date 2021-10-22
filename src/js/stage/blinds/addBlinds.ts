@@ -1,18 +1,23 @@
 import {
+    AmbientLight,
     AnimationAction,
     AnimationClip,
     AnimationMixer,
     Color,
     DoubleSide,
     Group,
+    Light,
     LoopOnce,
     Mesh,
     MeshStandardMaterial,
     Object3D,
     PlaneGeometry,
+    PointLight,
     Scene,
+    SpotLight,
     Texture,
-    TextureLoader
+    TextureLoader,
+    Vector3
 } from "three";
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
 import addActions from "../../models/addActions";
@@ -21,18 +26,21 @@ import loadModel from "../../models/loadModel";
 import { Update } from "types/Update";
 import modelUpdate from "../../models/modelUpdate";
 import paths from "constant/paths";
+import { Model } from "types/model";
 
 const addBlinds = (
     scene : Scene,
     mixer : AnimationMixer
-) => {
+) : Model => {
 
     const mesh : Array<Object3D> =[];
     const updateActions : Array<Update> = [];
-    const animations : Array<AnimationAction> = [];
+    let animations : Array<AnimationAction> = [];
+    const lights : Array<Light> = [];
     const imageList : Array<string> = [
         'pattern_1590067427667_clip01_adj.png'
     ];
+
     const create = () => {
 
         loadModel(
@@ -49,13 +57,23 @@ const addBlinds = (
                     `${paths.background}/empty.pmg`
                 );
 
+                const highLightPos = new Vector3(-50, 10, 200);
+                const highLight = new PointLight( 0xffffff, 350);
+                highLight.name = 'blindsHighLight';
+                highLight.position.copy(highLightPos);
+                scene.add(highLight);
+                lights.push(highLight);
+
+                const blindsAmbientLight : AmbientLight = new AmbientLight(0xffffff, 1.25);
+                blindsAmbientLight.name = 'blindsAmbientLight';
+                scene.add(blindsAmbientLight);
+                lights.push(blindsAmbientLight);
+            
                 const geometry : PlaneGeometry = new PlaneGeometry(1000, 500);
                 const material : MeshStandardMaterial = new MeshStandardMaterial({
                     side: DoubleSide,
                     flatShading: true,
-                    map: texture,
-                    // transparent: true,
-                    // opacity: 1
+                    map: texture
                 });
             
                 const plane : Mesh = new Mesh(geometry, material);
@@ -78,36 +96,40 @@ const addBlinds = (
 
                 gltf.scene.position.setZ(-100);
 
-                gltf.animations.map((clip:AnimationClip) => {
+                animations = gltf.animations.map((clip:AnimationClip) => {
 
                     const anim : AnimationAction = mixer.clipAction(clip);
 
-                    animations.push(anim);
                     anim.clampWhenFinished = true;
                     /* set backwards so we can flip it to positive at the start */
                     anim.timeScale = -1;
                     anim.setLoop(LoopOnce, 1);
+                    return anim;
                 });
             }
         )
     };
 
-    const { actions } = addActions(
-        updateActions,
-        mesh,
+    const { actions } = addActions({
+            updateActions,
+            mesh,
+            lights,
+            animations
+        },
         actionDefinitions,
-        animations
     );
 
     return {
         create,
-        update: modelUpdate(
+        update: modelUpdate({
             mesh,
+            lights,
             updateActions
-        ),
+        }),
         name: 'blinds',
         actions,
-        mesh
+        mesh,
+        lights
     }
 };
 

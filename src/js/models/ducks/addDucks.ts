@@ -24,7 +24,7 @@ const addDucks = (
 
     const updateActions : Array<Update> = [];
     const mesh : Array<Object3D> = [];
-    const animations : Array<AnimationAction> = [];
+    let animations : Array<AnimationAction> = [];
 
     const create = () => {
 
@@ -43,7 +43,7 @@ const addDucks = (
                     )
                 );
 
-                duckIds.map(
+                duckIds.forEach(
                     id => gltf.scene
                         .getObjectByName(`ducky${id}`)
                         .scale.setScalar(0)
@@ -56,7 +56,7 @@ const addDucks = (
                     )
                 );
 
-                gltf.animations.map(clip => {
+                animations = gltf.animations.map(clip => {
 
                     const anim : AnimationAction = mixer.clipAction(clip);
 
@@ -70,25 +70,26 @@ const addDucks = (
                         anim.setLoop(LoopOnce, 1);
                     }
 
-                    animations.push(anim);
+                    return anim;
                 })
             }
         );
     };
 
-    const { actions } = addActions(
-        updateActions,
-        mesh,
-        actionDefinitions,
-        animations
+    const { actions } = addActions({
+            updateActions,
+            mesh,
+            animations
+        },
+        actionDefinitions
     ); 
 
     return {
         create,
-        update: modelUpdate(
+        update: modelUpdate({
             mesh,
             updateActions
-        ),
+        }),
         name: 'ducks',
         actions,
         mesh

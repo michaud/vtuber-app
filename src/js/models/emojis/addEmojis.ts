@@ -92,18 +92,19 @@ const addEmojis = (
         );
     };
 
-    const { actions } = addActions(
+    const { actions } = addActions({
         updateActions,
         mesh,
-        actionDefinitions
+    },
+    actionDefinitions
     );
 
     return {
         create,
-        update: modelUpdate(
+        update: modelUpdate({
             mesh,
             updateActions
-        ),
+        }),
         name: 'emojis',
         actions,
         mesh

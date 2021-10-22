@@ -15,7 +15,7 @@ const openCloseAction = (
 
     const openCloseUpdate = () => {
 
-        animations.map(act => {
+        animations.forEach(act => {
 
             if(!act.isRunning()) {
 

@@ -15,7 +15,7 @@ const switchToCirclesAction = (
 
     const switchToCirclesUpdate : Update = () => {
 
-        if (mesh.length > 0) mesh.map(plane => {
+        if (mesh.length > 0) mesh.forEach(plane => {
 
             const item : Mesh = <Mesh>plane.children[0];
             item.geometry.type === 'PlaneGeometry' ?
