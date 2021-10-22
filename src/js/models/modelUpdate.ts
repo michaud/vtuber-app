@@ -1,10 +1,8 @@
-import { Light, Object3D } from "three";
 import { ModelResources } from "types/model";
 import { Update } from "types/Update";
 
 const modelUpdate = ({
     mesh,
-    lights,
     updateActions
 }: ModelResources) : Update => {
 
