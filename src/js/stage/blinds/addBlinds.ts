@@ -35,7 +35,7 @@ const addBlinds = (
 
     const mesh : Array<Object3D> =[];
     const updateActions : Array<Update> = [];
-    let animations : Array<AnimationAction> = [];
+    const animations : Array<AnimationAction> = [];
     const lights : Array<Light> = [];
     const imageList : Array<string> = [
         'pattern_1590067427667_clip01_adj.png'
@@ -96,7 +96,8 @@ const addBlinds = (
 
                 gltf.scene.position.setZ(-100);
 
-                animations = gltf.animations.map((clip:AnimationClip) => {
+                console.log('gltf.animations:', gltf.animations)
+                gltf.animations.forEach((clip:AnimationClip) => {
 
                     const anim : AnimationAction = mixer.clipAction(clip);
 
@@ -104,7 +105,7 @@ const addBlinds = (
                     /* set backwards so we can flip it to positive at the start */
                     anim.timeScale = -1;
                     anim.setLoop(LoopOnce, 1);
-                    return anim;
+                    animations.push(anim);
                 });
             }
         )

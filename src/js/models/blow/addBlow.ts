@@ -24,7 +24,7 @@ const addBlow = (
 
     const updateActions : Array<Update> = [];
     const mesh : Array<Object3D> = [];
-    let animations : Array<AnimationAction> = [];
+    const animations : Array<AnimationAction> = [];
 
     const create = () => {
 
@@ -39,11 +39,11 @@ const addBlow = (
 
                 mesh.push(blow);
 
-                animations = gltf.animations.map((clip:AnimationClip) => {
+                gltf.animations.forEach((clip:AnimationClip) => {
                     const anim : AnimationAction = mixer.clipAction(clip);
                     anim.clampWhenFinished = true;
                     anim.setLoop(LoopOnce, 1);
-                    return anim;
+                    animations.push(anim);
                 });
 
                 updateActions.push(

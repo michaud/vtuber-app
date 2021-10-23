@@ -1,5 +1,6 @@
 import {
     AnimationAction,
+    AnimationClip,
     AnimationMixer,
     LoopOnce,
     Object3D,
@@ -24,7 +25,7 @@ const addDucks = (
 
     const updateActions : Array<Update> = [];
     const mesh : Array<Object3D> = [];
-    let animations : Array<AnimationAction> = [];
+    const animations : Array<AnimationAction> = [];
 
     const create = () => {
 
@@ -56,7 +57,7 @@ const addDucks = (
                     )
                 );
 
-                animations = gltf.animations.map(clip => {
+                gltf.animations.forEach((clip : AnimationClip) => {
 
                     const anim : AnimationAction = mixer.clipAction(clip);
 
@@ -70,7 +71,7 @@ const addDucks = (
                         anim.setLoop(LoopOnce, 1);
                     }
 
-                    return anim;
+                    animations.push(anim);
                 })
             }
         );
