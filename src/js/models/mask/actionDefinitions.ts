@@ -1,8 +1,8 @@
-import { ActionDefinitions } from 'types/actionDefinitions';
+import { ActionDefinitionList } from 'types/actionDefinitions';
 import toggleShowAction from '../../action/toggleShowAction';
 
 
-const actionDefinitions : ActionDefinitions = {
+const actionDefinitions : ActionDefinitionList = {
     'show / hide': { updateName: 'toggleShowUpdate', action: toggleShowAction },
 }
 

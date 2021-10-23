@@ -1,7 +1,7 @@
 import { AnimationAction, Light, Object3D } from "three";
 import {
     ActionDefinition,
-    ActionDefinitions
+    ActionDefinitionList
 } from "types/actionDefinitions";
 import {
     UpdateList,
@@ -40,7 +40,7 @@ const addActions = ({
         lights,
         animations
     }: ModelResources,
-    actionDefinitions : ActionDefinitions
+    actionDefinitions : ActionDefinitionList
 ) : ActionResources => {
 
     const actions : UpdateList = Object

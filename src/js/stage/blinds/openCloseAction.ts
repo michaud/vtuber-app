@@ -1,6 +1,6 @@
 import {
     AnimationAction,
-    AnimationClip,
+    Light,
     Object3D
 } from "three";
 import { Update } from "types/Update";
@@ -8,6 +8,7 @@ import { Update } from "types/Update";
 const openCloseAction = (
     updateList : Array<Update>,
     _mesh : Array<Object3D>,
+    lights: Array<Light>,
     animations : Array<AnimationAction>
 ) => {
 

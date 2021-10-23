@@ -7,6 +7,6 @@ export interface ActionDefinition {
     detections? : (animations : Array<AnimationAction>) => (detections : Array<string>) => void
 }
 
-export interface ActionDefinitions {
+export interface ActionDefinitionList {
     [index : string] : ActionDefinition
 }
