@@ -9,7 +9,8 @@
     "prebuild": "shx rm -rf dist/* && shx rm -rf .parcel-cache",
     "build": "npm run prebuild && parcel build",
     "build-ver": "npm run prebuild && parcel build --log-level verbose",
-    "report": "parcel build src/index.html --reporter @parcel/reporter-bundle-analyzer"
+    "report": "parcel build src/index.html --reporter @parcel/reporter-bundle-analyzer",
+    "type-check": "tsc --noEmit"
   },
   "author": "mv",
   "license": "ISC",
