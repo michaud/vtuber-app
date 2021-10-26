@@ -1,10 +1,13 @@
 import { Light, Object3D } from "three";
+import { ActionModelResources } from "types/Action";
 import { Update } from "types/Update";
 
 const toggleShowAction = (
     updateList : Array<Update>,
-    mesh : Array<Object3D>,
-    lights : Array<Light>
+    {
+        mesh,
+        lights
+    } : ActionModelResources
 ) : Update => {
 
     const name:string = 'toggleShowUpdate';
