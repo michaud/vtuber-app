@@ -7,13 +7,12 @@ import { ActionDefinitionList } from 'types/actionDefinitions';
 const actionDefinitions : ActionDefinitionList = {
     'show / hide': {
         updateName: 'toggleShowUpdate',
-        action: toggleShowAction,
-        detections: blowDetectAction
+        action: toggleShowAction
     },
     'blow': {
         updateName: 'blowUpdate',
         action: blowAction,
-        detections: blowDetectAction
+        detectAction: blowDetectAction
     }
 };
 

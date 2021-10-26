@@ -1,7 +1,7 @@
 import FaceGeometry from "face/FaceGeometry";
 import { BufferAttribute } from "three";
 
-import { Detector } from "types/Detector";
+import { DetectUpdate } from "types/Detector";
 import { Model } from "types/model";
 
 const updates = (
@@ -24,9 +24,9 @@ const updates = (
                 normals
             );
 
-            if(detections.length > 0) {
+            if(detections.length > 0 && model.actions?.detectUpdate) {
 
-                (model.actions?.detections as Detector)?.(geom, detections);
+                (model.actions?.detectUpdate as DetectUpdate)?.(geom, detections);
             }
         }
     );

@@ -1,12 +1,13 @@
 
 import FaceGeometry from "face/FaceGeometry";
 import { AnimationAction } from "three";
-import { Detector } from "types/Detector";
+import { DetectUpdate } from "types/Detector";
 
 const blowDetectAction = (
     animations : Array<AnimationAction>
-) => {
-    const detecting : Detector = (
+) : DetectUpdate => {
+
+    const detectActionUpdate : DetectUpdate = (
         _geom: FaceGeometry,
         detections : Array<string>
     ) => {
@@ -23,7 +24,7 @@ const blowDetectAction = (
         }
     };
 
-    return detecting;
+    return detectActionUpdate;
 };
 
 export default blowDetectAction;

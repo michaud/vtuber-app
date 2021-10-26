@@ -17,6 +17,7 @@ const hasAction = (
 ) : boolean => updateActions
     .findIndex((action : Update) => action.name === actionName) > -1;
 
+
 const getAction = (
     { updateName, action } : ActionDefinition,
     updateActions : Array<Update>,
@@ -51,13 +52,13 @@ const addActions = ({
 
             const action : ActionDefinition = actionDefinitions[key];
 
-            const detections = action?.detections ? {
-                detections: action.detections(animations)
+            const detectUpdate = action?.detectAction ? {
+                detectUpdate: action.detectAction(animations)
             } : {};
 
             return ({
                 ...acc,
-                ...detections,
+                ...detectUpdate,
                 [key]: getAction(
                     action,
                     updateActions,

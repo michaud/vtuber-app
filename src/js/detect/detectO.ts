@@ -3,6 +3,8 @@ import { Vector3 } from "three";
 
 import { TrackData } from "types/TrackData";
 
+// const hData : Array<number> = [];
+
 const detectO = (
     geom : FaceGeometry,
     detections : Array<string>
@@ -21,8 +23,7 @@ const detectO = (
     const hLength : number = vLeftInner.distanceToSquared(vRightInner); 
     const scale : number = track.scale;
     const softScale : number = Math.round(scale * 100)/100;
-    const calcL : number = Math.round(softScale * softScale * 1475);
-    const diff : number = Math.round(hLength - calcL);
+    const diff : number = Math.round(hLength - softScale);
 
     // get the mean for debug
     // if(hData.length < 100) {
@@ -32,13 +33,15 @@ const detectO = (
     //     hData.push(diff);
     // }
 
-    // const mean = hData.reduce((acc, val) => acc + (val/hData.length), 0);
-    // //console.log('mean:', mean)
+    // const mean = Math.round(hData.reduce((acc, val) => acc + (val/hData.length), 0));
+    // console.log('diff:', diff)
 
-    if(diff < -200) {
+    if(diff < 2000) {
 
         detections.push('O');
+
     } else {
+
         detections.splice(0, detections.length);
     }
 };

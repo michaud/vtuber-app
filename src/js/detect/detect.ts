@@ -1,8 +1,8 @@
 import FaceGeometry from "face/FaceGeometry";
-import { Detector } from "types/Detector";
+import { DetectUpdate } from "types/Detector";
 
 const detect = (
-    detectors : Array<Detector> = [],
+    detectors : Array<DetectUpdate> = [],
     geom : FaceGeometry
 ) : Array<string> => {
 
