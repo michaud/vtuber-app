@@ -1,10 +1,10 @@
-import { ModelResources } from "types/model";
+import { ActionModelResources } from "types/Action";
 import { Update } from "types/Update";
 
-const modelUpdate = ({
-    mesh,
-    updateActions
-}: ModelResources) : Update => {
+const modelUpdate = (
+    updateActions : Array<Update>,
+    { mesh }: ActionModelResources
+) : Update => {
 
     const update : Update = (
         geom,

@@ -121,11 +121,13 @@ const addBlinds = (
 
     return {
         create,
-        update: modelUpdate({
-            mesh,
-            lights,
-            updateActions
-        }),
+        update: modelUpdate(
+            updateActions,
+            {
+                mesh,
+                lights,
+            }
+        ),
         name: 'blinds',
         actions,
         mesh,

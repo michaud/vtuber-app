@@ -27,9 +27,7 @@ const addGlasses = (
                 updateActions.push(
                     updateAction(
                         updateActions,
-                        {
-                            mesh
-                        }
+                        { mesh }
                     )
                 );
             }
@@ -45,10 +43,10 @@ const addGlasses = (
 
     return {
         create,
-        update: modelUpdate({
-            mesh,
-            updateActions
-        }),
+        update: modelUpdate(
+            updateActions,
+            { mesh }
+        ),
         name: 'glasses',
         actions,
         mesh

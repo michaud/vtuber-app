@@ -55,9 +55,7 @@ const addDucks = (
                 updateActions.push(
                     updateAction(
                         updateActions,
-                        {
-                            mesh
-                        }
+                        { mesh }
                     )
                 );
 
@@ -91,10 +89,10 @@ const addDucks = (
 
     return {
         create,
-        update: modelUpdate({
-            mesh,
-            updateActions
-        }),
+        update: modelUpdate(
+            updateActions,
+            { mesh }
+        ),
         name: 'ducks',
         actions,
         mesh

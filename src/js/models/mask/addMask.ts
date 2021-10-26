@@ -64,10 +64,10 @@ const addMask = (
 
     return {
         create,
-        update: modelUpdate({
-            mesh,
-            updateActions
-        }),
+        update: modelUpdate(
+            updateActions,
+            { mesh }
+        ),
         name: 'mask',
         mesh,
         actions

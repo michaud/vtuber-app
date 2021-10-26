@@ -30,9 +30,7 @@ const addBowler = (
                 updateActions.push(
                     updateAction(
                         updateActions,
-                        {
-                            mesh
-                        }
+                        { mesh }
                     )
                 );
             }
@@ -48,10 +46,10 @@ const addBowler = (
 
     return {
         create,
-        update: modelUpdate({
-            mesh,
-            updateActions
-        }),
+        update: modelUpdate(
+            updateActions,
+            { mesh }
+        ),
         name: 'bowler',
         actions,
         mesh

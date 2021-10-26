@@ -30,9 +30,7 @@ const addMistache = (
                 updateActions.push(
                     updateAction(
                         updateActions,
-                        {
-                            mesh
-                        }
+                        { mesh }
                     )
                 );
             }
@@ -48,10 +46,10 @@ const addMistache = (
 
     return {
         create,
-        update: modelUpdate({
-            mesh,
-            updateActions
-        }),
+        update: modelUpdate(
+            updateActions,
+            { mesh }
+        ),
         name: 'mistache',
         actions,
         mesh

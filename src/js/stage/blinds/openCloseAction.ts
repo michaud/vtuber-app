@@ -1,15 +1,11 @@
-import {
-    AnimationAction,
-    Light,
-    Object3D
-} from "three";
+import { ActionModelResources } from "types/Action";
 import { Update } from "types/Update";
 
 const openCloseAction = (
     updateList : Array<Update>,
-    _mesh : Array<Object3D>,
-    lights: Array<Light>,
-    animations : Array<AnimationAction>
+    {
+        animations
+    } : ActionModelResources
 ) => {
 
     const name:string = 'openCloseUpdate';

@@ -49,9 +49,7 @@ const addBlow = (
                 updateActions.push(
                     updateAction(
                         updateActions,
-                        {
-                            mesh
-                        }
+                        { mesh }
                     )
                 );
             }
@@ -68,10 +66,9 @@ const addBlow = (
     
     return {
         create,
-        update: modelUpdate({
-            mesh,
-            updateActions
-        }),
+        update: modelUpdate(
+            updateActions,
+            { mesh }),
         name: 'blow',
         actions,
         mesh

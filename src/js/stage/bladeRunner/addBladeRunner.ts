@@ -67,11 +67,13 @@ const addBladeRunner = (
 
     return {
         create,
-        update: modelUpdate({
-            mesh,
-            lights,
-            updateActions
-        }),
+        update: modelUpdate(
+            updateActions,
+            {
+                mesh,
+                lights,
+            }
+        ),
         name: 'bladeRunner',
         actions,
         mesh,

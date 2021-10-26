@@ -41,9 +41,7 @@ const addNose = (
         updateActions.push(
             updateAction(
                 updateActions,
-                {
-                    mesh
-                }
+                { mesh }
             )
         );
     };
@@ -57,10 +55,10 @@ const addNose = (
 
     return {
         create,
-        update: modelUpdate({
-            mesh,
-            updateActions
-        }),
+        update: modelUpdate(
+            updateActions,
+            { mesh }
+        ),
         name: 'nose',
         mesh,
         actions
