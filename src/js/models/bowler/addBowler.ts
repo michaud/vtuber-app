@@ -30,7 +30,9 @@ const addBowler = (
                 updateActions.push(
                     updateAction(
                         updateActions,
-                        mesh
+                        {
+                            mesh
+                        }
                     )
                 );
             }

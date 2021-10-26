@@ -1,9 +1,12 @@
 import { Object3D, Vector3 } from "three";
+import { ActionModelResources } from "types/Action";
 import { Update } from "types/Update";
 
 const twirlAction = (
     updateList : Array<Update>,
-    mesh : Array<Object3D>
+    {
+        mesh
+    } : ActionModelResources
 ) : Update => {
 
     const name = 'twirlUpdate';

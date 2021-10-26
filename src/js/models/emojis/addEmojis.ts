@@ -87,7 +87,9 @@ const addEmojis = (
         updateActions.push(
             updateAction(
                 updateActions,
-                mesh
+                {
+                    mesh
+                }
             )
         );
     };

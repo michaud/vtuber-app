@@ -1,11 +1,14 @@
 import { Update } from "types/Update";
-import { Object3D, Vector3 } from "three";
+import { Vector3 } from "three";
 import { appConstants } from "constant/appConstants";
 import FaceGeometry from "face/FaceGeometry";
+import { ActionModelResources } from "types/Action";
 
 const normalMoveInAction = (
     updateList : Array<Update>,
-    mesh : Array<Object3D>
+    {
+        mesh
+    } : ActionModelResources
 ) : Update => {
 
     const name = 'normalMoveInUpdate';

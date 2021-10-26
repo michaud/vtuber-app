@@ -30,7 +30,9 @@ const addMistache = (
                 updateActions.push(
                     updateAction(
                         updateActions,
-                        mesh
+                        {
+                            mesh
+                        }
                     )
                 );
             }

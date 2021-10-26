@@ -41,7 +41,9 @@ const addNose = (
         updateActions.push(
             updateAction(
                 updateActions,
-                mesh
+                {
+                    mesh
+                }
             )
         );
     };

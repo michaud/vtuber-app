@@ -1,10 +1,12 @@
 import { AnimationAction, Object3D } from "three";
+import { ActionModelResources } from "types/Action";
 import { Update } from "types/Update";
 
 const blowAction = (
     updateList : Array<Update>,
-    _mesh : Array<Object3D>,
-    animations : Array<AnimationAction>
+    {
+        animations
+    } : ActionModelResources
 ) : Update => {
 
     const name = 'blowUpdate';

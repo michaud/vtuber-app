@@ -40,7 +40,9 @@ const addDucks = (
                 updateActions.push(
                     updateAction(
                         updateActions,
-                        mesh
+                        {
+                            mesh
+                        }
                     )
                 );
 
@@ -53,7 +55,9 @@ const addDucks = (
                 updateActions.push(
                     updateAction(
                         updateActions,
-                        mesh
+                        {
+                            mesh
+                        }
                     )
                 );
 
@@ -72,7 +76,7 @@ const addDucks = (
                     }
 
                     animations.push(anim);
-                })
+                });
             }
         );
     };

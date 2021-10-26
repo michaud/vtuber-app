@@ -7,6 +7,7 @@ import {
     FeatureMapping
 } from './faceFeatureMapping';
 import { appConstants } from 'constant/appConstants';
+import { ActionModelResources } from 'types/Action';
 
 const getScaleFactorForIndex = (
     i : number,
@@ -26,7 +27,9 @@ const getScaleFactorForIndex = (
 
 const updateAction = (
     _actionList : Array<Update>,
-    mesh : Array<Object3D>
+    {
+        mesh
+    } : ActionModelResources
 ) => {
 
     const scale = 7;

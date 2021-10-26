@@ -96,7 +96,6 @@ const addBlinds = (
 
                 gltf.scene.position.setZ(-100);
 
-                console.log('gltf.animations:', gltf.animations)
                 gltf.animations.forEach((clip:AnimationClip) => {
 
                     const anim : AnimationAction = mixer.clipAction(clip);

@@ -1,11 +1,14 @@
 import FaceGeometry from "face/FaceGeometry";
 import { Object3D } from "three";
+import { ActionModelResources } from "types/Action";
 import { Update } from "types/Update";
 import { circularMapping } from "./circularMapping";
 
 const orevealAction = (
     updateList : Array<Update>,
-    mesh : Array<Object3D>
+    {
+        mesh
+    } : ActionModelResources
 ) : Update => {
 
     const name = 'orevealUpdate';

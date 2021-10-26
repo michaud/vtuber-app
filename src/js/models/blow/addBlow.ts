@@ -49,7 +49,9 @@ const addBlow = (
                 updateActions.push(
                     updateAction(
                         updateActions,
-                        mesh
+                        {
+                            mesh
+                        }
                     )
                 );
             }

@@ -3,10 +3,13 @@ import { Object3D, Vector3 } from "three";
 import { circularMapping } from "./circularMapping";
 import { verticalMappingPadded } from "./verticalMapping";
 import FaceGeometry from "face/FaceGeometry";
+import { ActionModelResources } from "types/Action";
 
 const displaceAction = (
     updateList : Array<Update>,
-    mesh : Array<Object3D>
+    {
+        mesh
+    } : ActionModelResources
 ) => {
 
     const name = 'displaceUpdate';

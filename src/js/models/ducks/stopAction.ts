@@ -3,12 +3,14 @@ import {
     AnimationClip,
     Object3D
 } from "three";
+import { ActionModelResources } from "types/Action";
 import { Update } from "types/Update";
 
 const duckStopAction = (
     updateList : Array<Update>,
-    _mesh : Array<Object3D>,
-    animations : Array<AnimationAction>
+    {
+        animations
+    } : ActionModelResources
 ) => {
 
     const name:string = 'duckStopUpdate';

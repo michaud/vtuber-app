@@ -27,7 +27,9 @@ const addGlasses = (
                 updateActions.push(
                     updateAction(
                         updateActions,
-                        mesh
+                        {
+                            mesh
+                        }
                     )
                 );
             }

@@ -17,7 +17,7 @@ export interface Model {
 
 export type ModelResources = {
     updateActions : Array<Update>,
-    mesh : Array<Object3D>,
+    mesh? : Array<Object3D>,
     lights? : Array<Light>,
     animations? : Array<AnimationAction>
 };

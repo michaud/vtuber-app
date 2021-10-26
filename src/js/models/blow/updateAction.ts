@@ -1,10 +1,13 @@
 import { Object3D } from "three";
 import { Update } from "types/Update";
 import { TrackData } from "types/TrackData";
+import { ActionModelResources } from "types/Action";
 
 const updateAction = (
     _actionList : Array<Update>,
-    mesh : Array<Object3D>
+    {
+        mesh
+    } : ActionModelResources
 ) : Update => {
 
     const scale = 9;

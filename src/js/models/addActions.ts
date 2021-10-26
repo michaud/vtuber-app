@@ -28,9 +28,11 @@ const getAction = (
     !hasAction(updateName, updateActions) && 
     updateActions.push(action(
         updateActions,
-        mesh,
-        lights,
-        animations
+        {
+            mesh,
+            lights,
+            animations
+        }
     )
 )};
 
