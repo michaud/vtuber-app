@@ -20,11 +20,11 @@ import {
     Vector3
 } from "three";
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
-import addActions from "../../models/addActions";
+import addActions from "models/addActions";
 import actionDefinitions from "./actionDefinitions";
-import loadModel from "../../models/loadModel";
+import loadModel from "models/loadModel";
 import { Update } from "types/Update";
-import modelUpdate from "../../models/modelUpdate";
+import modelUpdate from "models/modelUpdate";
 import paths from "constant/paths";
 import { Model } from "types/model";
 

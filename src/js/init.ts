@@ -5,7 +5,7 @@ import {
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 import createSene from "./scene/createScene";
-import addModels from './models/addModels';
+import addModels from 'models/addModels';
 import setUpResize from './scene/resizeUpdate';
 import addCameraViewControls from "./ui/addCameraViewControls";
 import addModelInteractions from './ui/addModelInteractions';

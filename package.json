@@ -40,6 +40,8 @@
     "types": "./src/js/types",
     "constant": "./src/js/constant",
     "face": "./src/js/face",
+    "models": "./src/js/models",
+    "action": "./src/js/action",
     "thirdparty": "./third_party"
   }
 }

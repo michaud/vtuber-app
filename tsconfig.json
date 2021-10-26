@@ -9,6 +9,8 @@
         "baseUrl": ".", 
         "paths": {
             "types/*": ["./src/js/types/*"],
+            "action/*": ["./src/js/action/*"],
+            "models/*": ["./src/js/models/*"],
             "constant/*": ["./src/js/constant/*"],
             "face/*": ["./src/js/face/*"],
             "thirdparty/*": ["./third_party/*"]

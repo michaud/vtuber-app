@@ -8,6 +8,6 @@ import { Model } from "./model";
 
 export type SceneCreator = (
     scene : Scene,
-    _mixer: AnimationMixer,
+    mixer?: AnimationMixer,
     faceGeometry? : FaceGeometry
 ) => Model
