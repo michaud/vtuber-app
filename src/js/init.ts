@@ -23,24 +23,29 @@ const init = (
     pane : Pane
 ) : AppResources => {
 
+    const canvas: HTMLCanvasElement = document.getElementById("three-scene") as HTMLCanvasElement;
+
     const {
         renderer,
         scene,
         camera,
-        lights
-    } = createSene();
+        lights,
+    } = createSene(canvas);
 
     const mixer = new AnimationMixer(scene);
     const threeTime = new Clock();
 
     /* Create a new geometry helper */
-    const faceGeometry = new FaceGeometry();
+    const faceGeometry = new FaceGeometry({
+        customScale: 3
+    });
 
     setUpResize(
         av,
         camera,
         faceGeometry,
-        renderer
+        renderer,
+        canvas
     );
 
     const controls : OrbitControls = new OrbitControls(camera, renderer.domElement);

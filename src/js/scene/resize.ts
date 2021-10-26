@@ -6,42 +6,23 @@ const resize = (
     av:GumAudioVideo,
     camera:OrthographicCamera,
     faceGeometry:FaceGeometry,
-    renderer:WebGLRenderer
+    renderer:WebGLRenderer,
+    canvas : HTMLCanvasElement
 ) => async () => {
     
     await av.ready();
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
 
-    // Resize orthographic camera to video dimensions if necessary.
     const w = av?.video?.videoWidth ?? 0;
     const h = av?.video?.videoHeight ?? 0;
-    camera.left = -0.5 * w * ((w / h) + .1);
-    camera.right = 0.5 * w * ((w / h) + .1);
-    camera.top = 0.5 * h;
-    camera.bottom = -0.5 * h;
-    camera.updateProjectionMatrix();
     faceGeometry.setSize(w, h);
 
-    const videoAspectRatio = w / h;
+    camera.left = -0.5 * canvas.clientWidth;
+    camera.right = 0.5 * canvas.clientWidth;
+    camera.top = 0.5 * canvas.clientHeight;
+    camera.bottom = -0.5 * canvas.clientHeight;
+    camera.updateProjectionMatrix();
 
-    const windowAspectRatio = windowWidth / windowHeight;
-
-    let adjustedWidth;
-    let adjustedHeight;
-
-    if (videoAspectRatio > windowAspectRatio) {
-
-        adjustedWidth = windowWidth;
-        adjustedHeight = windowWidth / videoAspectRatio;
-
-    } else {
-
-        adjustedWidth = windowHeight * videoAspectRatio;
-        adjustedHeight = windowHeight;
-    }
-
-    renderer.setSize(windowWidth, windowHeight);
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
 }
 
 export default resize;

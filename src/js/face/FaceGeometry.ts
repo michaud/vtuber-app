@@ -17,7 +17,12 @@ import {
     Coords3D
 } from "@tensorflow-models/face-landmarks-detection/dist/mediapipe-facemesh/util";
 
-function getScale(face : AnnotatedPrediction, id1 : number, id2 : number) {
+function getScale(
+    face : AnnotatedPrediction,
+    id1 : number,
+    id2 : number,
+    customScale: number
+) {
 
     const p1 = (face.mesh as Coords3D)[id1];
     const p1_scaled = (face.scaledMesh as Coords3D)[id1];
@@ -27,12 +32,13 @@ function getScale(face : AnnotatedPrediction, id1 : number, id2 : number) {
     const a = p2[0] - p1[0];
     const b = p2_scaled[0] - p1_scaled[0];
 
-    return b / a;
+    return (b / a) * customScale;
 };
 
 export type FaceOptions = {
     useVideoTexture? : boolean;
     normalizeCoords? : boolean;
+    customScale: number
 }
 
 class FaceGeometry extends BufferGeometry {
@@ -49,16 +55,19 @@ class FaceGeometry extends BufferGeometry {
     triangle : Triangle;
     w : number;
     h : number;
+    customScale : number;
     
     constructor(options : FaceOptions = {
         useVideoTexture: false,
-        normalizeCoords : false
+        normalizeCoords : false,
+        customScale: 1
     }) {
 
         super();
 
         this.useVideoTexture = options.useVideoTexture;
         this.normalizeCoords = options.normalizeCoords;
+        this.customScale = options.customScale
         this.flipped = false;
         this.positions = new Float32Array(468 * 3);
         this.uvs = new Float32Array(468 * 2);
@@ -67,7 +76,13 @@ class FaceGeometry extends BufferGeometry {
         this.setUvs();
         this.setIndex(indices);
         this.computeVertexNormals();
-        this.applyMatrix4(new Matrix4().makeScale(10, 10, 10));
+        this.applyMatrix4(new Matrix4()
+            .makeScale(
+                this.customScale,
+                this.customScale,
+                this.customScale
+            )
+        );
         this.p0 = new Vector3();
         this.p1 = new Vector3();
         this.p2 = new Vector3();
@@ -154,7 +169,16 @@ class FaceGeometry extends BufferGeometry {
             }
         }
 
+        this.applyMatrix4(new Matrix4()
+            .makeScale(
+                this.customScale,
+                this.customScale,
+                this.customScale
+            )
+        );
+
         this.attributes.position.needsUpdate = true;
+
         this.computeVertexNormals();
     }
 
@@ -190,7 +214,8 @@ class FaceGeometry extends BufferGeometry {
             scale: getScale(
                 this.face,
                 id1,
-                id2
+                id2,
+                this.customScale
             )
         };
     }

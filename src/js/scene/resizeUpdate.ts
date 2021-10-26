@@ -8,14 +8,16 @@ const setUpResize = (
     av : GumAudioVideo,
     camera : OrthographicCamera,
     faceGeometry : FaceGeometry,
-    renderer : WebGLRenderer
+    renderer : WebGLRenderer,
+    canvas : HTMLCanvasElement
 ) : void => {
 
     const resizeUpdate = resize(
         av,
         camera,
         faceGeometry,
-        renderer
+        renderer,
+        canvas
     );
 
     window.addEventListener("resize", () => resizeUpdate());
