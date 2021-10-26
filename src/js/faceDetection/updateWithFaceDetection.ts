@@ -16,10 +16,11 @@ const updateWithFaceDetection = async (
     elapsedTime : number
 ) : Promise<void> => {
 
-    const faces : Array<AnnotatedPrediction> = await faceDetectionModel.estimateFaces({
-        input: av.video,
-        flipHorizontal: flipCamera
-    });
+    const faces : Array<AnnotatedPrediction> = await faceDetectionModel
+        .estimateFaces({
+            input: av.video,
+            flipHorizontal: flipCamera
+        });
     /* There's at least one face. */
     if (faces.length > 0) {
 

@@ -10,9 +10,7 @@ const updateDuckAction = (
     const scale : number = 9;
 
     const update : Update = (
-        geom,
-        _moment,
-        points
+        geom
     ) => {
 
         if(mesh.length === 0) return;
