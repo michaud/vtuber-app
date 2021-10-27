@@ -1,4 +1,4 @@
-import { BufferAttribute, Vector2 } from 'three';
+import { Vector2 } from 'three';
 import { DotScreenPass } from 'three/examples/jsm/postprocessing/DotScreenPass.js';
 import { PassArguments } from 'types/PassArguments';
 import { Uniforms, Vector2Value } from './DotScreenShader';

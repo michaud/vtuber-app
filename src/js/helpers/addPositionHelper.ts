@@ -2,7 +2,6 @@ import {
     ArrowHelper,
     Group,
     Object3D,
-    Scene,
     Vector3
 } from "three";
 

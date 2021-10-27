@@ -1,4 +1,4 @@
-import { Light, Object3D } from "three";
+import { Object3D } from "three";
 import { ActionModelResources } from "types/Action";
 import { Update } from "types/Update";
 
