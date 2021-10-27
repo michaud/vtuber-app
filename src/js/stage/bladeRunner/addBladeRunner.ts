@@ -32,8 +32,6 @@ const addBladeRunner = (
             paths.stage,
             (gltf:GLTF) => {
 
-                gltf.scene.scale.setScalar(400);
-
                 scene.add(gltf.scene);
                 mesh.push(gltf.scene);
 
@@ -49,9 +47,10 @@ const addBladeRunner = (
                 scene.add(blindsAmbientLight);
                 lights.push(blindsAmbientLight);
 
-                gltf.scene.position.setX(275);
-                gltf.scene.position.setY(-500);
-                gltf.scene.position.setZ(-250);
+                gltf.scene.scale.setScalar(1200);
+                gltf.scene.position.setX(850);
+                gltf.scene.position.setY(-1300);
+                gltf.scene.position.setZ(-950);
             }
         )
     };
