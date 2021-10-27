@@ -22,7 +22,7 @@ const createSene = (canvas : HTMLCanvasElement): SceneResources => {
     addRendererSettings(renderer);
 
     const scene: Scene = new Scene();
-    const camera: OrthographicCamera = new OrthographicCamera(1, 1, 1, 1, -1000, 1000);
+    const camera: OrthographicCamera = new OrthographicCamera(1, 1, 1, 1, -2000, 2000);
     //addHDR(scene, renderer);
 
     const lights = addLighting(scene);
