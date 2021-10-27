@@ -1,7 +1,12 @@
+import { VoidRunner } from 'types/voidRunner';
 import * as fld from '@tensorflow-models/face-landmarks-detection';
-import { MediaPipeFaceMesh } from '@tensorflow-models/face-landmarks-detection/dist/mediapipe-facemesh';
+import {
+    MediaPipeFaceMesh
+} from '@tensorflow-models/face-landmarks-detection/dist/mediapipe-facemesh';
 
-const getFaceDetection = async (onStartLoadModel:any):Promise<MediaPipeFaceMesh> => {
+const getFaceDetection = async (
+    onStartLoadModel : VoidRunner
+) : Promise<MediaPipeFaceMesh> => {
 
     onStartLoadModel();
 
