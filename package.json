@@ -10,7 +10,8 @@
     "build": "npm run prebuild && parcel build",
     "build-ver": "npm run prebuild && parcel build --log-level verbose",
     "report": "parcel build src/index.html --reporter @parcel/reporter-bundle-analyzer",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "type-dec": "tsc --declaration --emitDeclarationOnly --declarationDir ./dec"
   },
   "author": "mv",
   "license": "ISC",
