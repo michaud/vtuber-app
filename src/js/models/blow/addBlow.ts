@@ -1,3 +1,5 @@
+import { Model } from 'types/model';
+import { Update } from 'types/Update';
 import {
     AnimationAction,
     AnimationClip,
@@ -7,8 +9,6 @@ import {
     Object3D,
     Scene
 } from 'three';
-import { Model } from 'types/model';
-import { Update } from 'types/Update';
 import updateAction from './updateAction';
 import actionDefinitions from './actionDefinitions';
 import addActions from '../addActions';

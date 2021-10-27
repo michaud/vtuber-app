@@ -1,4 +1,8 @@
-import { OrthographicCamera, Scene, WebGLRenderer } from "three";
+import {
+    OrthographicCamera,
+    Scene,
+    WebGLRenderer
+} from "three";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { FolderApi } from "tweakpane";
