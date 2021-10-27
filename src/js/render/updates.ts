@@ -1,15 +1,15 @@
-import FaceGeometry from "face/FaceGeometry";
-import { BufferAttribute } from "three";
-
 import { DetectUpdate } from "types/Detector";
 import { Model } from "types/model";
+import { BufferAttribute } from "three";
+import FaceGeometry from "face/FaceGeometry";
+import detect from "../detect/detect";
+import detectors from "../detect/detectors";
 
 const updates = (
     models : Array<Model>,
     stages: Array<Model>,
     geom : FaceGeometry,
-    timeStamp : number,
-    detections : Array<string>
+    timeStamp : number
 ) => {
 
     const points : BufferAttribute = <BufferAttribute>geom.getAttribute('position');
@@ -24,23 +24,27 @@ const updates = (
                 normals
             );
 
-            if(detections.length > 0 && model.actions?.detectUpdate) {
+            if(model.actions?.detectUpdate) {
 
-                (model.actions?.detectUpdate as DetectUpdate)?.(geom, detections);
+                const detections : Array<string> = detect(
+                    detectors,
+                    geom
+                );
+
+                if(detections.length > 0) {
+
+                    (model.actions.detectUpdate as DetectUpdate)(geom, detections);
+                } 
             }
         }
     );
 
-    stages.forEach((stage : Model) => {
-
-            stage.update(
-                geom,
-                timeStamp,
-                points,
-                normals
-            );
-        }
-    );
+    stages.forEach((stage : Model) => stage.update(
+        geom,
+        timeStamp,
+        points,
+        normals
+    ));
 };
 
 export default updates;
