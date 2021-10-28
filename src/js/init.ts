@@ -63,7 +63,11 @@ const init = (
     
     const composer = addComposer(scene, camera, renderer, pane);
 
-    const stages : Array<Model> = addstages(scene, mixer);
+    const stages : Array<Model> = addstages({
+        scene,
+        mixer
+    });
+
     pane.addSeparator();
 
     addModelInteractions(stages, pane, 'stages');

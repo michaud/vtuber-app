@@ -3,13 +3,17 @@ import { AnimationMixer, Scene } from "three";
 
 import { Model } from "types/model";
 import stageCreators from "./stageCreators";
-
-const addstages = (
+export interface StageResources {
     scene:Scene,
     mixer:AnimationMixer,
-    _geom?:FaceGeometry,
     autoLoad?:Array<string>
-) : Array<Model> => stageCreators.map(
+}
+
+const addstages = ({
+    scene,
+    mixer,
+    autoLoad
+} : StageResources) : Array<Model> => stageCreators.map(
     add => {
 
         const model : Model = add(
