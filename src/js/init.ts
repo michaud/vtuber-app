@@ -7,16 +7,14 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import createSene from "./scene/createScene";
 import addModels from 'models/addModels';
 import setUpResize from './scene/resizeUpdate';
-import addCameraViewControls from "./ui/addCameraViewControls";
-import addModelInteractions from './ui/addModelInteractions';
 import addComposer from './composer/addComposer';
-import addDebugTools from './ui/addDebugTools';
 import { Pane } from 'tweakpane';
 import { AppResources } from 'types/AppResources';
 import addstages from './stage/addstages';
 import { Model } from 'types/model';
 import FaceGeometry from 'face/FaceGeometry';
 import { GumAudioVideo } from 'thirdparty/gum-av';
+import addUI from './ui/addUI';
 
 const init = (
     av : GumAudioVideo,
@@ -58,22 +56,27 @@ const init = (
         ['emojis']
     );
 
-    addModelInteractions(models, pane, 'models');
-    pane.addSeparator();
-    
-    const composer = addComposer(scene, camera, renderer, pane);
+    const {
+        composer,
+        passes
+    } = addComposer(scene, camera, renderer);
+
 
     const stages : Array<Model> = addstages({
         scene,
         mixer
     });
 
-    pane.addSeparator();
-
-    addModelInteractions(stages, pane, 'stages');
-
-    addCameraViewControls(camera);
-    addDebugTools(scene, controls, lights);
+    addUI(
+        pane,
+        models,
+        passes,
+        stages,
+        camera,
+        scene,
+        controls,
+        lights
+    );
 
     return {
         models,

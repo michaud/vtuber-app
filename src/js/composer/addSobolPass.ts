@@ -1,11 +1,10 @@
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass";
 import { LuminosityShader } from 'three/examples/jsm/shaders/LuminosityShader.js';
 import { SobelOperatorShader } from 'three/examples/jsm/shaders/SobelOperatorShader.js';
-import { PassArguments } from "types/PassArguments";
+import { PassArguments } from "types/PostProcessing";
 
 const addSobolPass = ({
-    composer,
-    folder
+    composer
 } : PassArguments) => {
 
     const params = {
@@ -17,26 +16,23 @@ const addSobolPass = ({
 
     composer.addPass(effectGrayScale);
 
-    const effectSobel = new ShaderPass(SobelOperatorShader);
-    effectSobel.uniforms['resolution'].value.x = window.innerWidth * window.devicePixelRatio;
-    effectSobel.uniforms['resolution'].value.y = window.innerHeight * window.devicePixelRatio;
+    const pass = new ShaderPass(SobelOperatorShader);
+    pass.uniforms['resolution'].value.x = window.innerWidth * window.devicePixelRatio;
+    pass.uniforms['resolution'].value.y = window.innerHeight * window.devicePixelRatio;
 
-    composer.addPass(effectSobel);
+    composer.addPass(pass);
 
-    effectSobel.enabled = params.sobol;
+    pass.enabled = params.sobol;
     effectGrayScale.enabled = params.sobol;
 
-    const f = folder.addFolder({
-        title: 'sobol',
-        expanded: true,
-    });
-
-    f.addInput(params, 'sobol', { label: 'on'}).on('change',(ev)=> {
-        effectGrayScale.enabled = Boolean(ev.value);
-        effectSobel.enabled = Boolean(ev.value);
-    });
-
-    return composer;
+    return {
+        name: 'sobolPass',
+        params,
+        passes: {
+            pass,
+            effectGrayScale
+        }
+    };
 };
 
 export default addSobolPass;
