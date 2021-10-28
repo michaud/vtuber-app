@@ -1,21 +1,6 @@
-import {
-    FolderApi,
-    Pane
-} from "tweakpane";
-import { EffectPass } from "../composer/addComposer";
-import addBloomUI from "./addBloomUI";
-import addDotScreenUI from "./addDotScreenUI";
-import addSobolUI from "./addSobolUI";
-
-export interface passUIInteractions {
-    [index:string]: (folder: FolderApi, effectPass: EffectPass) => void;
-}
-
-const passUIInteractions : passUIInteractions = {
-    'sobolPass': addSobolUI,
-    'dotScreenPass': addDotScreenUI,
-    'bloomPass': addBloomUI
-}
+import { EffectPass } from "types/PostProcessing";
+import { Pane } from "tweakpane";
+import { passUIInteractions } from "./passUIInteractions";
 
 const addComposerInteractions = (
     passes : Array<EffectPass>,
@@ -28,9 +13,6 @@ const addComposerInteractions = (
     });
 
     passes.forEach(pass => {
-    console.log('pass:', pass)
-
-        console.log('passUIInteractions[pass.name]:', passUIInteractions[pass.name])
         passUIInteractions[pass.name](folder, pass)
     })
 };
