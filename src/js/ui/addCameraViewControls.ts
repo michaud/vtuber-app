@@ -1,16 +1,16 @@
-import { OrthographicCamera, Vector3 } from "three";
+import { OrthographicCamera } from "three";
 
 export type Vect3 = {
-    x:number,
-    y:number,
-    z:number
+    x : number,
+    y : number,
+    z : number
 } 
 
 export type OrientationValues = {
     [index : string]: Vect3
 }
 
-const orientationValues:OrientationValues = {
+const orientationValues : OrientationValues = {
     'top': { x: 0, y: 1, z: 0 },
     'left': { x: -1, y: 0, z: 0 },
     'bottom': { x: 0, y: -1, z: 0 },
