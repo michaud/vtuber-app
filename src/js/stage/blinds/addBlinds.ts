@@ -61,12 +61,12 @@ const addBlinds = (
                 const highLight = new PointLight( 0xffffff, 350);
                 highLight.name = 'blindsHighLight';
                 highLight.position.copy(highLightPos);
-                scene.add(highLight);
+                gltf.scene.add(highLight);
                 lights.push(highLight);
 
                 const blindsAmbientLight : AmbientLight = new AmbientLight(0xffffff, 1.25);
                 blindsAmbientLight.name = 'blindsAmbientLight';
-                scene.add(blindsAmbientLight);
+                gltf.scene.add(blindsAmbientLight);
                 lights.push(blindsAmbientLight);
             
                 const geometry : PlaneGeometry = new PlaneGeometry(1000, 500);
@@ -87,7 +87,8 @@ const addBlinds = (
                 group.add(plane);
                 
                 mesh.push(group);
-                scene.add(group);
+                gltf.scene.add(group);
+
                 const imgtexture = new TextureLoader().load(
                     `${paths.background}/${imageList[0]}`
                 );

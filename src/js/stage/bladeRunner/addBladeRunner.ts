@@ -37,15 +37,15 @@ const addBladeRunner = (
 
                 const highLightPos = new Vector3(-50, 10, 200);
                 const highLight = new PointLight( 0xffffff, 350);
-                highLight.name = 'blindsHighLight';
+                highLight.name = 'bladeRunnerHighLight';
                 highLight.position.copy(highLightPos);
-                scene.add(highLight);
+                gltf.scene.add(highLight);
                 lights.push(highLight);
 
-                const blindsAmbientLight : AmbientLight = new AmbientLight(0xffffff, 1.25);
-                blindsAmbientLight.name = 'blindsAmbientLight';
-                scene.add(blindsAmbientLight);
-                lights.push(blindsAmbientLight);
+                const ambientLight : AmbientLight = new AmbientLight(0xffffff, 1.25);
+                ambientLight.name = 'bladeRunnerAmbientLight';
+                gltf.scene.add(ambientLight);
+                lights.push(ambientLight);
 
                 gltf.scene.scale.setScalar(1200);
                 gltf.scene.position.setX(850);
