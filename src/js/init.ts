@@ -1,3 +1,5 @@
+import { AppResources } from 'types/AppResources';
+import { Model } from 'types/model';
 import {
     AnimationMixer,
     Clock
@@ -9,9 +11,7 @@ import addModels from 'models/addModels';
 import setUpResize from './scene/resizeUpdate';
 import addComposer from './composer/addComposer';
 import { Pane } from 'tweakpane';
-import { AppResources } from 'types/AppResources';
 import addstages from './stage/addstages';
-import { Model } from 'types/model';
 import FaceGeometry from 'face/FaceGeometry';
 import { GumAudioVideo } from 'thirdparty/gum-av';
 import addUI from './ui/addUI';
@@ -46,7 +46,11 @@ const init = (
         canvas
     );
 
-    const controls : OrbitControls = new OrbitControls(camera, renderer.domElement);
+    const controls : OrbitControls = new OrbitControls(
+        camera,
+        renderer.domElement
+    );
+
     controls.update();
 
     const models = addModels(
@@ -59,8 +63,11 @@ const init = (
     const {
         composer,
         passes
-    } = addComposer(scene, camera, renderer);
-
+    } = addComposer(
+        scene,
+        camera,
+        renderer
+    );
 
     const stages : Array<Model> = addstages({
         scene,
