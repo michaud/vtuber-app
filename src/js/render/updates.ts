@@ -43,7 +43,8 @@ const updates = (
         geom,
         timeStamp,
         points,
-        normals
+        normals,
+        stage.lights
     ));
 };
 

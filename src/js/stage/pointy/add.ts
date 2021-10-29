@@ -3,7 +3,7 @@ import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
 import loadModel from "models/loadModel";
 import paths from "constant/paths";
 
-const addBackground = (scene : Scene) => {
+export const add = (scene : Scene) => {
 
     const mesh : Array<Object3D> =[];
 
@@ -29,5 +29,3 @@ const addBackground = (scene : Scene) => {
         mesh
     }
 };
-
-export default addBackground;

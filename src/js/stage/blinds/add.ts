@@ -28,7 +28,7 @@ import modelUpdate from "models/modelUpdate";
 import paths from "constant/paths";
 import { Model } from "types/model";
 
-const addBlinds = (
+export const add = (
     scene : Scene,
     mixer : AnimationMixer
 ) : Model => {
@@ -135,5 +135,3 @@ const addBlinds = (
         lights
     }
 };
-
-export default addBlinds;

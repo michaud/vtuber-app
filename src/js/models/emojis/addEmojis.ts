@@ -93,10 +93,10 @@ const addEmojis = (
     };
 
     const { actions } = addActions({
-        updateActions,
-        mesh,
-    },
-    actionDefinitions
+            updateActions,
+            mesh,
+        },
+        actionDefinitions
     );
 
     return {

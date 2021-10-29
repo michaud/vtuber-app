@@ -1,7 +1,8 @@
-import { Group, Light, Object3D, Scene, SpotLightHelper } from "three";
+import { Group, Object3D, Scene } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { Model } from "types/model";
 import addOriginHelper from "../helpers/addOriginHelper";
-import addPositionHelper from "../helpers/addPositionHelper";
+import { createLightHelpers } from "./createLightHelpers";
 
 const onClickOrigin = (group:Group) => () => {
 
@@ -14,39 +15,23 @@ const onClickReset = (controls:OrbitControls) => () => {
 
 const onClickLights = (
     scene: Scene,
-    lights: Array<Light>
+    stages: Array<Model>
     ) => {
 
     const helpers : Array<Object3D> = [];
-
-    lights.forEach(light => {
-
-        if(
-            light.type === 'SpotLight' &&
-            scene.children.findIndex(item => item.name === `${light.name}_position`) < 0
-        ) {
-
-            if(light.type === 'SpotLight') {
-
-                const spotLightHelper = new SpotLightHelper( light );
-                spotLightHelper.name = `${light.name}_position`;
-                scene.add( spotLightHelper );
-                spotLightHelper.scale.setScalar(.1);
     
-    
-                spotLightHelper.visible = false;
-                helpers.push(spotLightHelper);
-                scene.add(spotLightHelper);
-            }
-        }
-    })
+    return (_:unknown) => {
 
-    return (ev:unknown) => {
+        createLightHelpers(scene, stages, helpers);
         helpers.forEach(item => item.visible = !item.visible);
     }
 }
 
-const addDebugTools = (scene:Scene, controls : OrbitControls, lights: Array<Light>)=> {
+const addDebugTools = (
+    scene:Scene,
+    controls : OrbitControls,
+    stages: Array<Model>
+)=> {
     
     const btnOrigin:HTMLButtonElement = document.querySelector("#btn_origin");
     const btnReset:HTMLButtonElement = document.querySelector("#btn_reset_controls");
@@ -55,7 +40,7 @@ const addDebugTools = (scene:Scene, controls : OrbitControls, lights: Array<Ligh
     const group = addOriginHelper(scene);
     group.visible = false;
 
-    const handleOnLights = onClickLights(scene, lights);
+    const handleOnLights = onClickLights(scene, stages);
 
     document.addEventListener('keyup', 
         (ev : KeyboardEvent) => {
@@ -70,3 +55,4 @@ const addDebugTools = (scene:Scene, controls : OrbitControls, lights: Array<Ligh
 }
 
 export default addDebugTools;
+

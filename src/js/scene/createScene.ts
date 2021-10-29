@@ -5,8 +5,6 @@ import {
 } from 'three';
 
 import { SceneResources } from 'types/SceneResources';
-import addDebugPlane from './addDebugPlane';
-import addLighting from './addLighting';
 /* import addHDR from './addHDR'; */
 import addRendererSettings from './addRendererSettings';
 
@@ -22,19 +20,17 @@ const createSene = (canvas : HTMLCanvasElement): SceneResources => {
     addRendererSettings(renderer);
 
     const scene: Scene = new Scene();
-    const camera: OrthographicCamera = new OrthographicCamera(1, 1, 1, 1, -2000, 2000);
+    const camera: OrthographicCamera = new OrthographicCamera(
+        1, 1, 1, 1,
+        -2000, 2000
+    );
     //addHDR(scene, renderer);
-
-    const lights = addLighting(scene);
-
-    //addDebugPlane(scene);
 
     return {
         renderer,
         scene,
         camera,
-        canvas,
-        lights
+        canvas
     }
 };
 

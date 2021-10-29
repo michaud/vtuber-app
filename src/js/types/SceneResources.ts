@@ -9,6 +9,5 @@ export interface SceneResources {
     renderer : WebGLRenderer,
     scene : Scene,
     camera : OrthographicCamera,
-    canvas : HTMLCanvasElement,
-    lights: Array<Light>
+    canvas : HTMLCanvasElement
 }

@@ -26,8 +26,7 @@ const init = (
     const {
         renderer,
         scene,
-        camera,
-        lights,
+        camera
     } = createSene(canvas);
 
     const mixer = new AnimationMixer(scene);
@@ -71,7 +70,8 @@ const init = (
 
     const stages : Array<Model> = addstages({
         scene,
-        mixer
+        mixer,
+        autoLoad: ['baseStage']
     });
 
     addUI(
@@ -81,8 +81,7 @@ const init = (
         stages,
         camera,
         scene,
-        controls,
-        lights
+        controls
     );
 
     return {

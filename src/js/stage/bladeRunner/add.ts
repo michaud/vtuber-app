@@ -16,7 +16,7 @@ import modelUpdate from "models/modelUpdate";
 import paths from "constant/paths";
 import { Model } from "types/model";
 
-const addBladeRunner = (
+export const add = (
     scene : Scene
 ) : Model => {
 
@@ -79,5 +79,3 @@ const addBladeRunner = (
         lights
     }
 };
-
-export default addBladeRunner;

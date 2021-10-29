@@ -1,12 +1,14 @@
 import { SceneCreator } from "types/SceneCreator";
-import addBackground from "./pointy/addBackground";
-import addBlinds from "./blinds/addBlinds";
-import addBladeRunner from "./bladeRunner/addBladeRunner";
+import { add as addPointy } from "./pointy/add";
+import { add as addBlinds } from "./blinds/add";
+import { add as addBladeRunner } from "./bladeRunner/add";
+import { add as addBaseStage } from "./baseStage/add";
 
 const stageCreators : Array<SceneCreator> = [
-    addBackground,
+    addBaseStage,
+    addPointy,
     addBlinds,
-    addBladeRunner
+    addBladeRunner,
 ]
 
 export default stageCreators;
