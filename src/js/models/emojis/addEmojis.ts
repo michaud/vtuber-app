@@ -52,6 +52,9 @@ const addEmojis = (
 
     const create = () => {
 
+        const emojiGroup : Group = new Group();
+        emojiGroup.name = 'emojiGroup';
+ 
         for (let i = 0; i < appConstants.NUM_KEYPOINTS; i++) {
         
             const texture : Texture = new TextureLoader().load(
@@ -76,8 +79,10 @@ const addEmojis = (
             group.add(plane);
             group.scale.setScalar(10);
             mesh.push(group);
-            scene.add(group);
+            emojiGroup.add(group);
         }
+        
+        scene.add(emojiGroup);
 
         addPlaneTextures(
             imageList,
