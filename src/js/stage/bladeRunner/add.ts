@@ -5,6 +5,7 @@ import {
     Object3D,
     PointLight,
     Scene,
+    SpotLight,
     Vector3
 } from "three";
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
@@ -28,29 +29,31 @@ export const add = (
     const create = () => {
 
         loadModel(
-            'blade_runner_office.glb',
+            'blade_runner_office_stage.glb',
             paths.stage,
             (gltf:GLTF) => {
-
+                gltf.scene.name = 'bladeRunnerStage';
                 scene.add(gltf.scene);
                 mesh.push(gltf.scene);
+                gltf.scene.traverse(
+                    (el:Object3D) => {
+                        if(el.type === 'SpotLight') {
+                            (el as SpotLight).decay = 0;
+                            lights.push(el as Light);
+                        }
+                    }
+                );
+                // const highLightPos = new Vector3(-50, 10, 200);
+                // const highLight = new PointLight( 0xffffff, 350);
+                // highLight.name = 'bladeRunnerHighLight';
+                // highLight.position.copy(highLightPos);
+                // gltf.scene.add(highLight);
+                // lights.push(highLight);
 
-                const highLightPos = new Vector3(-50, 10, 200);
-                const highLight = new PointLight( 0xffffff, 350);
-                highLight.name = 'bladeRunnerHighLight';
-                highLight.position.copy(highLightPos);
-                gltf.scene.add(highLight);
-                lights.push(highLight);
-
-                const ambientLight : AmbientLight = new AmbientLight(0xffffff, 1.25);
-                ambientLight.name = 'bladeRunnerAmbientLight';
-                gltf.scene.add(ambientLight);
-                lights.push(ambientLight);
-
-                gltf.scene.scale.setScalar(1200);
-                gltf.scene.position.setX(850);
-                gltf.scene.position.setY(-1300);
-                gltf.scene.position.setZ(-950);
+                // const ambientLight : AmbientLight = new AmbientLight(0xffffff, 1.25);
+                // ambientLight.name = 'bladeRunnerAmbientLight';
+                // gltf.scene.add(ambientLight);
+                // lights.push(ambientLight);
             }
         )
     };

@@ -5,19 +5,19 @@ export const createLightHelpers = (
     scene: Scene,
     stages: Model[],
     helpers: Array<Object3D>
-) => {
+) : Array<Light> => {
 
     const lights: Array<Light> = stages.reduce(
         (acc: Array<Light>, model: Model) => acc.concat(model.lights ?? []),
         []
     );
-
+debugger
     lights.forEach(light => {
 
-        if (light.type === 'SpotLight' &&
+        if ((light.type === 'PointLight' || light.type === 'SpotLight') &&
             scene.children.findIndex(item => item.name === `${light.name}_position`) < 0) {
 
-            if (light.type === 'SpotLight') {
+            if (light.type === 'PointLight' || light.type === 'SpotLight') {
 
                 const spotLightHelper = new SpotLightHelper(light);
                 spotLightHelper.name = `${light.name}_position`;
@@ -31,4 +31,6 @@ export const createLightHelpers = (
             }
         }
     });
+
+    return lights;
 };

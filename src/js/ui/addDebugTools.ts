@@ -22,8 +22,24 @@ const onClickLights = (
     
     return (_:unknown) => {
 
-        createLightHelpers(scene, stages, helpers);
-        helpers.forEach(item => item.visible = !item.visible);
+        const lights = createLightHelpers(scene, stages, helpers);
+
+        lights.forEach(light => {
+
+            const helper = helpers.find(helper => helper.name === `${light.name}_position`);
+
+            if(helper) {
+
+                if(light?.visible) {
+
+                    helper.visible = !helper.visible;
+
+                } else {
+
+                    helper.visible = false;
+                }
+            }
+        });
     }
 }
 
