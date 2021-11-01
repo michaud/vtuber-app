@@ -1,16 +1,11 @@
+import { Action } from "types/Action";
 import {
-    AnimationAction,
-    AnimationClip,
-    Object3D
+    AnimationClip
 } from "three";
-import { ActionModelResources } from "types/Action";
-import { Update } from "types/Update";
 
-const duckStopAction = (
-    updateList : Array<Update>,
-    {
-        animations
-    } : ActionModelResources
+const duckStopAction : Action = (
+    updateList,
+    { animations }
 ) => {
 
     const name:string = 'duckStopUpdate';

@@ -1,15 +1,13 @@
 import { Update } from "types/Update";
-import { Object3D, Vector3 } from "three";
+import { Vector3 } from "three";
 import { circularMapping } from "./circularMapping";
 import { verticalMappingPadded } from "./verticalMapping";
 import FaceGeometry from "face/FaceGeometry";
-import { ActionModelResources } from "types/Action";
+import { Action } from "types/Action";
 
-const displaceAction = (
-    updateList : Array<Update>,
-    {
-        mesh
-    } : ActionModelResources
+const displaceAction : Action = (
+    updateList,
+    { mesh }
 ) => {
 
     const name = 'displaceUpdate';

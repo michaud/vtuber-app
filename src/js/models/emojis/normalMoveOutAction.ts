@@ -1,13 +1,11 @@
 import { Update } from "types/Update";
 import { Object3D, Vector3 } from "three";
 import { appConstants } from "constant/appConstants";
-import { ActionModelResources } from "types/Action";
+import { Action, ActionModelResources } from "types/Action";
 
-const normalMoveOutAction = (
-    updateList : Array<Update>,
-    {
-        mesh
-    } : ActionModelResources
+const normalMoveOutAction : Action = (
+    updateList,
+    { mesh }
 ) : Update => {
 
     const name = 'normalMoveOutUpdate';

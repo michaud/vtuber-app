@@ -4,14 +4,12 @@ import {
     Object3D,
     Mesh,
 } from 'three';
-import { ActionModelResources } from 'types/Action';
+import { Action, ActionModelResources } from 'types/Action';
 import { Update } from 'types/Update';
 
-const switchToCirclesAction = (
-    updateList : Array<Update>,
-    {
-        mesh
-    } : ActionModelResources
+const switchToCirclesAction : Action = (
+    updateList,
+    { mesh }
 ) : Update => {
 
     const name = 'toggleShowUpdate';

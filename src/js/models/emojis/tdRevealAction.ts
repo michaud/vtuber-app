@@ -1,14 +1,12 @@
 import { Object3D } from "three";
-import { ActionModelResources } from "types/Action";
+import { Action, ActionModelResources } from "types/Action";
 import { Update } from "types/Update";
 
 import { verticalMapping } from "./verticalMapping";
 
-const tdRevealAction = (
-    updateList : Array<Update>,
-    {
-        mesh
-    } : ActionModelResources
+const tdRevealAction : Action = (
+    updateList,
+    { mesh }
 ) : Update => {
 
     const name = 'tdRevealUpdate';
