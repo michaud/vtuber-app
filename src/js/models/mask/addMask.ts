@@ -15,12 +15,13 @@ import modelUpdate from "../modelUpdate";
 import actionDefinitions from "./actionDefinitions";
 import paths from "constant/paths";
 import FaceGeometry from "face/FaceGeometry";
+import { SceneCreator } from "types/SceneCreator";
 
-const addMask = (
-    scene : Scene,
-    _mixer: AnimationMixer,
-    faceGeometry : FaceGeometry
-) : Model => {
+const addMask : SceneCreator = (
+    scene,
+    _mixer,
+    faceGeometry
+) => {
 
     const mesh : Array<Object3D> = [];
     const updateActions : Array<Update> = [];

@@ -2,11 +2,10 @@ import {
     MeshStandardMaterial,
     IcosahedronGeometry,
     Mesh,
-    Scene,
     Object3D
 } from 'three';
 
-import { Model } from 'types/model';
+import { SceneCreator } from 'types/SceneCreator';
 import { Update } from 'types/Update';
 
 import addActions from '../addActions';
@@ -14,9 +13,7 @@ import modelUpdate from '../modelUpdate';
 import actionDefinitions from './actionDefinitions';
 import updateAction from './updateAction';
 
-const addNose = (
-    scene : Scene
-) : Model => {
+const addNose : SceneCreator = (scene) => {
 
     const mesh : Array<Object3D> = [];
     const updateActions : Array<Update> = [];

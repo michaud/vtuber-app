@@ -1,13 +1,10 @@
-import { Model } from 'types/model';
 import { Update } from 'types/Update';
 import {
     AnimationAction,
     AnimationClip,
-    AnimationMixer,
     Group,
     LoopOnce,
-    Object3D,
-    Scene
+    Object3D
 } from 'three';
 import updateAction from './updateAction';
 import actionDefinitions from './actionDefinitions';
@@ -16,11 +13,12 @@ import loadModel from '../loadModel';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 import modelUpdate from '../modelUpdate';
 import paths from 'constant/paths';
+import { SceneCreator } from 'types/SceneCreator';
 
-const addBlow = (
-    scene : Scene,
-    mixer : AnimationMixer
-) : Model => {
+const addBlow : SceneCreator = (
+    scene,
+    mixer
+) => {
 
     const updateActions : Array<Update> = [];
     const mesh : Array<Object3D> = [];

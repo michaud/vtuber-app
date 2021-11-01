@@ -1,10 +1,8 @@
 import {
     AnimationAction,
     AnimationClip,
-    AnimationMixer,
     LoopOnce,
     Object3D,
-    Scene
 } from 'three';
 
 import updateAction from './updateAction';
@@ -15,12 +13,13 @@ import { Update } from 'types/Update';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 import modelUpdate from '../modelUpdate';
 import paths from 'constant/paths';
+import { SceneCreator } from 'types/SceneCreator';
 
 const duckIds : Array<string> = ['000', '001', '002', '003', '004', '005', '006', '007'];
 
-const addDucks = (
-    scene : Scene,
-    mixer : AnimationMixer
+const addDucks : SceneCreator = (
+    scene,
+    mixer
 ) => {
 
     const updateActions : Array<Update> = [];

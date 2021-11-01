@@ -5,7 +5,6 @@ import {
     MeshStandardMaterial,
     Group,
     CircleGeometry,
-    Scene,
     Object3D,
     Texture
 } from 'three';
@@ -15,15 +14,13 @@ import addPlaneTextures from "./addPlaneTextures";
 import actionDefinitions from './actionDefinitions';
 import updateAction from './updateAction';
 import modelUpdate from '../modelUpdate';
-import { Model } from 'types/model';
 import { Update } from 'types/Update';
 
 import paths from 'constant/paths';
 import { appConstants } from 'constant/appConstants';
+import { SceneCreator } from 'types/SceneCreator';
 
-const addEmojis = (
-    scene : Scene
-) : Model => {
+const addEmojis : SceneCreator = (scene) => {
 
     const mesh : Array<Object3D> = [];
     const updateActions : Array<Update> = [];

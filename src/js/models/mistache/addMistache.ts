@@ -2,16 +2,15 @@ import updateAction from './updateAction';
 import actionDefinitions from './actionDefinitions';
 import addActions from '../addActions';
 import loadModel from '../loadModel';
-import { Object3D, Scene } from 'three';
+import { Object3D } from 'three';
 import { Update } from 'types/Update';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
-import { Model } from 'types/model';
+
 import modelUpdate from '../modelUpdate';
 import paths from 'constant/paths';
+import { SceneCreator } from 'types/SceneCreator';
 
-const addMistache = (
-    scene : Scene
-) : Model => {
+const addMistache : SceneCreator = (scene) => {
 
     const mesh : Array<Object3D> =[];
     const updateActions : Array<Update> = [];

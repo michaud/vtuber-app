@@ -1,14 +1,15 @@
 import FaceGeometry from "face/FaceGeometry";
 import { Vector3 } from "three";
+import { DetectUpdate } from "types/Detector";
 
 import { TrackData } from "types/TrackData";
 
 // const hData : Array<number> = [];
 
-const detectO = (
-    geom : FaceGeometry,
-    detections : Array<string>
-) : void => {
+const detectO : DetectUpdate = (
+    geom,
+    detections
+) => {
 
     const vLeftInner = new Vector3().fromArray(
 /* @ts-ignore says it doesn't have annotations but it does */

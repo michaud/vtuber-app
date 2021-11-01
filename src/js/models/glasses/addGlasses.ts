@@ -8,10 +8,9 @@ import { Model } from 'types/model';
 import { Update } from 'types/Update';
 import modelUpdate from '../modelUpdate';
 import paths from 'constant/paths';
+import { SceneCreator } from 'types/SceneCreator';
 
-const addGlasses = (
-    scene : Scene
-) : Model => {
+const addGlasses : SceneCreator = (scene) => {
 
     const mesh : Array<Object3D> = [];
     const updateActions : Array<Update> = [];
