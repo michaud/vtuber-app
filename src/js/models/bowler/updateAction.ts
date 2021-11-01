@@ -1,21 +1,17 @@
-import { Object3D } from "three";
 import { Update } from "types/Update";
 import { TrackData } from "types/TrackData";
-import { ActionModelResources } from "types/Action";
+import { Action } from "types/Action";
 
-const updateAction = (
-    _actionList : Array<Update>,
-    {
-        mesh
-    } : ActionModelResources
+const updateAction : Action = (
+    _actionList,
+    { mesh }
 ) : Update => {
 
     const scale = 550;
 
     const update : Update = (
         geom,
-        _moment,
-        points
+        _moment
     ) => {
 
         if(mesh.length === 0) return;

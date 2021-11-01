@@ -1,6 +1,7 @@
+import { Action } from "types/Action";
 import { Update } from "types/Update";
 
-const updateAction = () => {
+const updateAction : Action = () => {
 
     const update : Update = (
     ) => {}

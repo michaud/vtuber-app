@@ -1,13 +1,13 @@
 import { TrackData } from 'types/TrackData';
 import { Update } from 'types/Update';
-import { Object3D, Vector3 } from 'three';
+import { Vector3 } from 'three';
 import {
     faceFeatureMapping,
     faceFeatureScaleFactor,
     FeatureMapping
 } from './faceFeatureMapping';
 import { appConstants } from 'constant/appConstants';
-import { ActionModelResources } from 'types/Action';
+import { Action } from 'types/Action';
 
 const getScaleFactorForIndex = (
     i : number,
@@ -25,11 +25,9 @@ const getScaleFactorForIndex = (
     return scaleFactor;
 };
 
-const updateAction = (
-    _actionList : Array<Update>,
-    {
-        mesh
-    } : ActionModelResources
+const updateAction : Action = (
+    _actionList,
+    { mesh }
 ) => {
 
     const scale = 7;
