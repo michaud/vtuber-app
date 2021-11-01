@@ -5,10 +5,10 @@ import { Model } from "types/model";
 import modelCreators from "./modelCreators";
 
 const addModels = (
-    scene:Scene,
-    mixer:AnimationMixer,
-    faceGeometry:FaceGeometry,
-    autoLoad:Array<string>
+    scene : Scene,
+    mixer : AnimationMixer,
+    faceGeometry : FaceGeometry,
+    autoLoad : Array<string>
 ) : Array<Model> => modelCreators.map(
     add => {
 
