@@ -11,19 +11,19 @@ import { VoidRunner } from "types/voidRunner";
 import { Update } from "types/Update";
 import { ModelResources } from "types/model";
 
-const hasAction = (
-    actionName : string,
-    updateActions : Array<Update>
-) : boolean => updateActions
+const hasAction : HasAction = (
+    actionName,
+    updateActions
+) => updateActions
     .findIndex((action : Update) => action.name === actionName) > -1;
 
 
-const getAction = (
-    { updateName, action } : ActionDefinition,
-    updateActions : Array<Update>,
-    mesh : Array<Object3D>,
-    lights : Array<Light>,
-    animations? : Array<AnimationAction>
+const getAction : GetAction = (
+    { updateName, action },
+    updateActions,
+    mesh,
+    lights,
+    animations?
 ) : VoidRunner => () : void => {
 
     !hasAction(updateName, updateActions) && 
@@ -37,13 +37,13 @@ const getAction = (
     )
 )};
 
-const addActions = ({
+const addActions : AddActions = ({
         updateActions,
         mesh,
         lights,
         animations
-    }: ModelResources,
-    actionDefinitions : ActionDefinitionList
+    },
+    actionDefinitions
 ) : ActionResources => {
 
     const actions : UpdateList = Object
@@ -75,5 +75,23 @@ const addActions = ({
         actions
     }
 };
+/* hmmm, this is good for readability but seems @nal */
+type HasAction = (
+    actionName : string,
+    updateActions : Array<Update>
+) => boolean;
+
+type GetAction = (
+    actionDefinition : ActionDefinition,
+    updateActions : Array<Update>,
+    mesh : Array<Object3D>,
+    lights : Array<Light>,
+    animations? : Array<AnimationAction>
+) => VoidRunner
+
+type AddActions = (
+    modelResources : ModelResources,
+    actionDefinitions : ActionDefinitionList
+) => ActionResources
 
 export default addActions;
