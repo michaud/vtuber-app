@@ -25,6 +25,7 @@ const addBlow = (
     const updateActions : Array<Update> = [];
     const mesh : Array<Object3D> = [];
     const animations : Array<AnimationAction> = [];
+    const name = 'blow';
 
     const create = () => {
 
@@ -32,6 +33,8 @@ const addBlow = (
             'blow.glb',
             paths.models,
             (gltf:GLTF) => {
+
+                gltf.scene.name = name;
 
                 scene.add(gltf.scene);
 
@@ -69,7 +72,7 @@ const addBlow = (
         update: modelUpdate(
             updateActions,
             { mesh }),
-        name: 'blow',
+        name,
         actions,
         mesh
     };

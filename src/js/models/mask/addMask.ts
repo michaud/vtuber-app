@@ -24,6 +24,7 @@ const addMask = (
 
     const mesh : Array<Object3D> = [];
     const updateActions : Array<Update> = [];
+    const name = 'mask';
 
     const create = () => {
 
@@ -49,6 +50,7 @@ const addMask = (
 
         /* Create mask mesh. */
         const mask = new Mesh(faceGeometry, material);
+        mask.name = name;
         scene.add(mask);
         mask.receiveShadow = mask.castShadow = false;
 
@@ -68,7 +70,7 @@ const addMask = (
             updateActions,
             { mesh }
         ),
-        name: 'mask',
+        name,
         mesh,
         actions
     };

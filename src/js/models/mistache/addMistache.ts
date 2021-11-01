@@ -15,6 +15,7 @@ const addMistache = (
 
     const mesh : Array<Object3D> =[];
     const updateActions : Array<Update> = [];
+    const name = 'mistache';
 
     const create = () => {
 
@@ -22,6 +23,8 @@ const addMistache = (
             'mistache.glb',
             paths.models,
             (gltf:GLTF) => {
+
+                gltf.scene.name = name;
 
                 scene.add(gltf.scene);
 
@@ -50,7 +53,7 @@ const addMistache = (
             updateActions,
             { mesh }
         ),
-        name: 'mistache',
+        name,
         actions,
         mesh
     }

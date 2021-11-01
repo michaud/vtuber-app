@@ -27,7 +27,8 @@ const addEmojis = (
 
     const mesh : Array<Object3D> = [];
     const updateActions : Array<Update> = [];
-
+    const name = 'emojis';
+    
     const imageList : Array<string> = [
         "5eed3a1b-ad65-48b5-9923-cb401656e7ae-profile_image-70x70.png",
         "hahaball.png",
@@ -50,10 +51,11 @@ const addEmojis = (
         "nyxiatve.png"
     ];
 
+
     const create = () => {
 
         const emojiGroup : Group = new Group();
-        emojiGroup.name = 'emojiGroup';
+        emojiGroup.name = name;
  
         for (let i = 0; i < appConstants.NUM_KEYPOINTS; i++) {
         
@@ -110,7 +112,7 @@ const addEmojis = (
             updateActions,
             { mesh }
         ),
-        name: 'emojis',
+        name,
         actions,
         mesh
     };

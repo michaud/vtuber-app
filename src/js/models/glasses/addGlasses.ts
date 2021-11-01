@@ -15,6 +15,7 @@ const addGlasses = (
 
     const mesh : Array<Object3D> = [];
     const updateActions : Array<Update> = [];
+    const name = 'glasses';
 
     const create = () => {
 
@@ -22,6 +23,9 @@ const addGlasses = (
             'glasses.glb',
             paths.models,
             gltf => {
+
+                gltf.scene.name = name;
+
                 scene.add(gltf.scene);
                 mesh.push(gltf.scene);
                 updateActions.push(
@@ -47,7 +51,7 @@ const addGlasses = (
             updateActions,
             { mesh }
         ),
-        name: 'glasses',
+        name,
         actions,
         mesh
     }

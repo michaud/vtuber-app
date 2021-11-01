@@ -20,6 +20,7 @@ const addNose = (
 
     const mesh : Array<Object3D> = [];
     const updateActions : Array<Update> = [];
+    const name = 'nose';
 
     const create = () => {
 
@@ -32,6 +33,7 @@ const addNose = (
         });
 
         const noseMesh = new Mesh(new IcosahedronGeometry(1, 3), noseMaterial);
+        noseMesh.name = name;
         noseMesh.castShadow = true;
         noseMesh.receiveShadow = true;
         
@@ -59,7 +61,7 @@ const addNose = (
             updateActions,
             { mesh }
         ),
-        name: 'nose',
+        name,
         mesh,
         actions
     };

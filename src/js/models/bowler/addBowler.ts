@@ -15,6 +15,7 @@ const addBowler = (
 
     const updateActions : Array<Update> = [];
     const mesh : Array<Object3D> = [];
+    const name = 'bowler';
 
     const create = () => {
 
@@ -23,6 +24,8 @@ const addBowler = (
             paths.models,
             (gltf:GLTF) => {
 
+                gltf.scene.name = name;
+                
                 scene.add(gltf.scene);
 
                 mesh.push(gltf.scene);
