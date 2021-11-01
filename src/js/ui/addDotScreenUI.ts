@@ -1,11 +1,14 @@
 import { Vector2 } from "three";
 import { DotScreenPass } from "three/examples/jsm/postprocessing/DotScreenPass";
 import { FolderApi } from "tweakpane";
-import { EffectPass } from "../composer/addComposer";
+import { EffectPass } from "types/PostProcessing";
 
 import { Uniforms, Vector2Value } from "../composer/DotScreenShader";
 
-const addDotScreenUI = (folder : FolderApi, effectPass : EffectPass) => {
+const addDotScreenUI = (
+    folder : FolderApi,
+    effectPass : EffectPass
+) => {
 
     const f = folder.addFolder({
         title: 'dot screen',
