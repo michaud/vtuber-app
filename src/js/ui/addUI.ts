@@ -18,13 +18,13 @@ const addUI = (
     controls: OrbitControls
 ) => {
 
-    addModelInteractions(models, pane, 'models');
+    addModelInteractions(models, scene, pane, 'models');
     pane.addSeparator();
 
     addComposerInteractions(passes, pane);
     pane.addSeparator();
 
-    addModelInteractions(stages, pane, 'stages');
+    addModelInteractions(stages, scene, pane, 'stages');
 
     addCameraViewControls(camera);
 

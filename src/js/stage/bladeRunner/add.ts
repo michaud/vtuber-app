@@ -26,13 +26,15 @@ export const add = (
     const animations : Array<AnimationAction> = [];
     const lights : Array<Light> = [];
 
+    const name = 'bladeRunnerStage';
+
     const create = () => {
 
         loadModel(
             'blade_runner_office_stage.glb',
             paths.stage,
             (gltf:GLTF) => {
-                gltf.scene.name = 'bladeRunnerStage';
+                gltf.scene.name = name;
                 scene.add(gltf.scene);
                 mesh.push(gltf.scene);
                 gltf.scene.traverse(
@@ -76,7 +78,7 @@ export const add = (
                 lights,
             }
         ),
-        name: 'bladeRunner',
+        name,
         actions,
         mesh,
         lights

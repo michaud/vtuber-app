@@ -1,3 +1,4 @@
+import { Scene } from "three";
 import {
     FolderApi,
     Pane
@@ -46,8 +47,19 @@ const addModelToUIList = (
     );
 };
 
+const addIfAbsent = (
+    scene:Scene,
+    model: Model
+) => () => {
+
+    if(!scene.children.find(item=> item.name === model.name)) {
+        model.create()
+    }
+};
+
 const addModelInteractions = (
     models : Model[],
+    scene : Scene,
     pane:Pane,
     folderLabel: string
 ) => {
@@ -68,7 +80,7 @@ const addModelInteractions = (
 
         addModelToUIList(
             model,
-            () => model.create(),
+            addIfAbsent(scene, model),
             modelActionHandlers,
             folder
         )

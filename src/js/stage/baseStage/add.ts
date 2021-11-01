@@ -1,6 +1,6 @@
 import { Update } from "types/Update";
 import addActions from "models/addActions";
-import { Light, Object3D, Scene } from "three";
+import { Group, Light, Object3D, Scene } from "three";
 import actionDefinitions from './actionDefinitions'
 import addLighting from './addLighting';
 import modelUpdate from "models/modelUpdate";
@@ -10,10 +10,14 @@ export const add = (scene : Scene) => {
     const mesh : Array<Object3D> =[];
     const updateActions : Array<Update> = [];
     const lights : Array<Light> = [];
+    const name = 'baseStage';
 
     const create = () => {
 
-        addLighting(scene, lights);
+        const group = new Group();
+        group.name = name;
+    
+        addLighting(group, scene, lights);
     };
 
     const { actions } = addActions({
@@ -33,7 +37,7 @@ export const add = (scene : Scene) => {
                 lights
             }
         ),
-        name: 'baseStage',
+        name,
         actions,
         mesh,
         lights

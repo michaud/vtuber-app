@@ -40,7 +40,7 @@ export const add = (
     const imageList : Array<string> = [
         'pattern_1590067427667_clip01_adj.png'
     ];
-
+    const name = 'blinds';
     const create = () => {
 
         loadModel(
@@ -49,7 +49,7 @@ export const add = (
             (gltf:GLTF) => {
 
                 gltf.scene.scale.setScalar(11);
-
+                gltf.scene.name = name;
                 scene.add(gltf.scene);
                 mesh.push(gltf.scene);
 
@@ -129,7 +129,7 @@ export const add = (
                 lights,
             }
         ),
-        name: 'blinds',
+        name,
         actions,
         mesh,
         lights

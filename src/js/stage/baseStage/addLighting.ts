@@ -8,10 +8,8 @@ import {
     Vector3
 } from "three";
 
-const addLighting = (scene : Scene, lights : Array<Light>) => {
+const addLighting = (group : Group, scene : Scene, lights : Array<Light>) => {
 
-    const group = new Group();
-    group.name = 'baseStage';
 
     const fillLightPos = new Vector3(500, -400, 0);
     const fillLight = new SpotLight( 0xffddcc, 300);
