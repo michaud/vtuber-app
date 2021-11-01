@@ -1,12 +1,9 @@
-import { AnimationAction, Object3D } from "three";
-import { ActionModelResources } from "types/Action";
+import { Action } from "types/Action";
 import { Update } from "types/Update";
 
-const blowAction = (
-    updateList : Array<Update>,
-    {
-        animations
-    } : ActionModelResources
+const blowAction : Action = (
+    updateList,
+    { animations }
 ) : Update => {
 
     const name = 'blowUpdate';
