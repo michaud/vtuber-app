@@ -1,9 +1,6 @@
-import { DetectUpdate } from "types/Detector";
 import { Model } from "types/model";
 import { BufferAttribute } from "three";
 import FaceGeometry from "face/FaceGeometry";
-import detect from "../detect/detect";
-import detectors from "../detect/detectors";
 
 const updates = (
     models : Array<Model>,
@@ -24,18 +21,9 @@ const updates = (
                 normals
             );
 
-            if(model.actions?.detectUpdate) {
-
-                const detections : Array<string> = detect(
-                    detectors,
-                    geom
-                );
-
-                if(detections.length > 0) {
-
-                    (model.actions.detectUpdate as DetectUpdate)(geom, detections);
-                } 
-            }
+            model.detectors?.forEach(detector => {
+                detector.detectAction(geom, detector.detection(geom))
+            })
         }
     );
 

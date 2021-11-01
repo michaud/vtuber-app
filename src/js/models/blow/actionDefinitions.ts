@@ -1,6 +1,5 @@
 
 import blowAction from './blowAction';
-import blowDetectAction from './blowDetectAction';
 import toggleShowAction from '../../action/toggleShowAction';
 import { ActionDefinitionList } from 'types/actionDefinitions';
 
@@ -11,8 +10,7 @@ const actionDefinitions : ActionDefinitionList = {
     },
     'blow': {
         updateName: 'blowUpdate',
-        action: blowAction,
-        detectAction: blowDetectAction
+        action: blowAction
     }
 };
 

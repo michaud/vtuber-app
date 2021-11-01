@@ -2,16 +2,17 @@ import { VoidRunner } from "./voidRunner";
 import { AnimationAction, Light, Object3D } from "three";
 
 import { Update } from "types/Update";
-import { DetectUpdate } from "types/Detector";
+import { Detector, DetectUpdate } from "types/Detector";
 export interface Model {
     create : VoidRunner;
     update? : Update;
     name: string;
     actions?: {
-        [index: string]: Update | DetectUpdate
+        [index: string]: Update
     };
     mesh: Array<Object3D>,
-    lights? : Array<Light>
+    lights? : Array<Light>,
+    detectors?: Array<Detector>
 };
 
 export type ModelResources = {

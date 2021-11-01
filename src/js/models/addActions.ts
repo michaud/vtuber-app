@@ -52,13 +52,8 @@ const addActions : AddActions = ({
 
             const action : ActionDefinition = actionDefinitions[key];
 
-            const detectUpdate = action?.detectAction ? {
-                detectUpdate: action.detectAction(animations)
-            } : {};
-
             return ({
                 ...acc,
-                ...detectUpdate,
                 [key]: getAction(
                     action,
                     updateActions,

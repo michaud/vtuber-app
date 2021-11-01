@@ -1,4 +1,3 @@
-
 import FaceGeometry from "face/FaceGeometry";
 import { AnimationAction } from "three";
 import { DetectUpdate } from "types/Detector";
@@ -9,10 +8,10 @@ const blowDetectAction = (
 
     const detectActionUpdate : DetectUpdate = (
         _geom: FaceGeometry,
-        detections : Array<string>
+        detection : string
     ) => {
 
-        if (animations.length > 0 && detections?.includes?.('O')) {
+        if (animations.length > 0 && detection === 'O') {
 
             const anim = animations[Math.floor(Math.random() * animations.length)];
 

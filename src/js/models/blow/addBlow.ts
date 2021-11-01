@@ -14,6 +14,9 @@ import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 import modelUpdate from '../modelUpdate';
 import paths from 'constant/paths';
 import { SceneCreator } from 'types/SceneCreator';
+import blowDetectAction from './blowDetectAction';
+import detectO from '../../detect/detectO';
+import { Detector, DetectUpdate } from 'types/Detector';
 
 const addBlow : SceneCreator = (
     scene,
@@ -64,7 +67,14 @@ const addBlow : SceneCreator = (
         },
         actionDefinitions
     );
-    
+
+    const detectors : Array<Detector> = [
+        {
+            detection : detectO,
+            detectAction:blowDetectAction(animations)
+        }
+    ] 
+
     return {
         create,
         update: modelUpdate(
@@ -72,7 +82,8 @@ const addBlow : SceneCreator = (
             { mesh }),
         name,
         actions,
-        mesh
+        mesh,
+        detectors
     };
 };
 
