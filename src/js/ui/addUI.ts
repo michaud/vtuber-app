@@ -1,6 +1,6 @@
 import { EffectPass } from "types/PostProcessing";
 import { Model } from "types/model";
-import { OrthographicCamera, Scene } from "three";
+import { Camera, Scene } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { Pane } from "tweakpane";
 import addCameraViewControls from "./addCameraViewControls";
@@ -13,7 +13,7 @@ const addUI = (
     models: Array<Model>,
     passes: Array<EffectPass>,
     stages: Array<Model>,
-    camera: OrthographicCamera,
+    camera: Camera,
     scene: Scene,
     controls: OrbitControls
 ) => {

@@ -61,7 +61,7 @@ const render = (
         })
 
         //renderer.render(scene, camera);
-        composer.render();
+        //composer.render();
 
         runOnInitialize();
     };

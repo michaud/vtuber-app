@@ -2,8 +2,8 @@ import FaceGeometry from "face/FaceGeometry";
 import { GumAudioVideo } from "thirdparty/gum-av";
 import {
     AnimationMixer,
+    Camera,
     Clock,
-    OrthographicCamera,
     Scene,
     WebGLRenderer
 } from "three";
@@ -22,7 +22,7 @@ export interface AppResources {
     threeTime:Clock,
     renderer:WebGLRenderer,
     composer:EffectComposer,
-    camera:OrthographicCamera,
+    camera:Camera,
     av:GumAudioVideo,
     passes:Array<EffectPass>
 };

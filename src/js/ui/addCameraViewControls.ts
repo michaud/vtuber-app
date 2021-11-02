@@ -1,4 +1,4 @@
-import { OrthographicCamera } from "three";
+import { Camera } from "three";
 
 export type Vect3 = {
     x : number,
@@ -32,13 +32,13 @@ const keyMapping : IKeyMap = {
     PageDown : 'back',
 }
 
-const onClickView = (camera : OrthographicCamera) => (dir : string) => () => {
+const onClickView = (camera : Camera) => (dir : string) => () => {
 
     const ori:Vect3 = orientationValues[dir];
     camera.position.set(ori.x, ori.y, ori.z);
 };
 
-const addCameraViewControls = (camera:OrthographicCamera) => {
+const addCameraViewControls = (camera : Camera) => {
 
     const btnTop:HTMLButtonElement = document.querySelector("#btn_top");
     const btnLeft:HTMLButtonElement = document.querySelector("#btn_left");

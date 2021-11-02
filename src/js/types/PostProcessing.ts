@@ -1,11 +1,18 @@
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
-import { Mesh, OrthographicCamera, Scene, ShaderMaterial, WebGLRenderer, WebGLRenderTarget } from "three";
+import {
+    Camera,
+    Mesh,
+    Scene,
+    ShaderMaterial,
+    WebGLRenderer,
+    WebGLRenderTarget
+} from "three";
 import { Pass } from "three/examples/jsm/postprocessing/Pass.js";
 
 export type PassArguments = {
     composer : EffectComposer,
     renderer : WebGLRenderer,
-    camera : OrthographicCamera,
+    camera : Camera,
     scene : Scene
 }
 
@@ -34,7 +41,7 @@ export type ComposerResources = {
 
 export type PostProcessingProps = {
     scene: Scene,
-    camera: OrthographicCamera,
+    camera: Camera,
     rtTextureColors: WebGLRenderTarget,
     rtTextureDepth: WebGLRenderTarget,
     rtTextureDepthMask: WebGLRenderTarget,

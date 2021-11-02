@@ -1,4 +1,8 @@
-import { AnimationAction, Light, Object3D } from "three";
+import {
+    AnimationAction,
+    Light,
+    Object3D
+} from "three";
 import { Update } from "./Update";
 
 export interface ActionModelResources {

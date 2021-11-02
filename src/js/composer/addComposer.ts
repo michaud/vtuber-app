@@ -1,5 +1,5 @@
 import {
-    OrthographicCamera,
+    Camera,
     Scene,
     WebGLRenderer
 } from "three";
@@ -10,7 +10,7 @@ import { passes } from "./passes";
 
 const addComposer = (
     scene : Scene,
-    camera : OrthographicCamera,
+    camera : Camera,
     renderer : WebGLRenderer
 ) : ComposerResources => {
 

@@ -1,7 +1,9 @@
 import {
     WebGLRenderer,
     Scene,
-    OrthographicCamera
+    OrthographicCamera,
+    PerspectiveCamera,
+    Camera
 } from 'three';
 
 import { SceneResources } from 'types/SceneResources';
@@ -20,10 +22,17 @@ const createSene = (canvas : HTMLCanvasElement): SceneResources => {
     addRendererSettings(renderer);
 
     const scene: Scene = new Scene();
-    const camera: OrthographicCamera = new OrthographicCamera(
+    const camera: Camera = new OrthographicCamera(
         1, 1, 1, 1,
-        -2000, 2000
+        -10000, 10000
     );
+    // const camera: Camera = new PerspectiveCamera(
+    //     50,
+    //     1,
+    //     0.1,
+    //     10000
+    // );
+    camera.position.z = 4000;
     //addHDR(scene, renderer);
 
     return {

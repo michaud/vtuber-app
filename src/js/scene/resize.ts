@@ -1,11 +1,11 @@
 import FaceGeometry from "face/FaceGeometry";
 import { GumAudioVideo } from "thirdparty/gum-av";
-import { OrthographicCamera, WebGLRenderer } from "three";
-import { EffectPass, PostProcessingProps } from "types/PostProcessing";
+import { Camera, OrthographicCamera, WebGLRenderer } from "three";
+import { EffectPass } from "types/PostProcessing";
 
 const resize = (
     av:GumAudioVideo,
-    camera:OrthographicCamera,
+    camera:Camera,
     faceGeometry:FaceGeometry,
     renderer:WebGLRenderer,
     canvas : HTMLCanvasElement,
@@ -21,17 +21,22 @@ const resize = (
     const clientWidth = canvas.clientWidth;
     const clientHeight = canvas.clientHeight;
 
-    camera.left = -0.5 * clientWidth;
-    camera.right = 0.5 * clientWidth;
-    camera.top = 0.5 * clientHeight;
-    camera.bottom = -0.5 * clientHeight;
-    camera.updateProjectionMatrix();
+    if(camera.type === 'OrthographicCamera') {
+
+        const cam = (camera as OrthographicCamera);
+
+        cam.left = -0.5 * clientWidth;
+        cam.right = 0.5 * clientWidth;
+        cam.top = 0.5 * clientHeight;
+        cam.bottom = -0.5 * clientHeight;
+        cam.updateProjectionMatrix();
+    }
 
     const pass = passes.find(pass => pass.name === 'godRayPass');
 
     if(pass) {
 
-        const godrayRenderTargetResolutionMultiplier = 1.0 / 4.0;
+        const godrayRenderTargetResolutionMultiplier = 1.0 / 2.0;
         pass.pp.rtTextureColors.setSize(clientWidth, clientHeight );
         pass.pp.rtTextureDepth.setSize( clientWidth, clientHeight );
         pass.pp.rtTextureDepthMask.setSize( clientWidth, clientHeight );

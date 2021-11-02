@@ -1,13 +1,13 @@
 import FaceGeometry from "face/FaceGeometry";
 import { GumAudioVideo } from "thirdparty/gum-av";
-import { OrthographicCamera, WebGLRenderer } from "three";
+import { Camera, WebGLRenderer } from "three";
 import { EffectPass, PostProcessingProps } from "types/PostProcessing";
 
 import resize from "./resize";
 
 const setUpResize = (
     av : GumAudioVideo,
-    camera : OrthographicCamera,
+    camera : Camera,
     faceGeometry : FaceGeometry,
     renderer : WebGLRenderer,
     canvas : HTMLCanvasElement,

@@ -21,14 +21,14 @@ const addGodRaysPass = ({
 } : PassArguments) => {
 
     const params = {
-        godray: false,
-        sunX: 0,
-        sunY: 1000,
-        sunZ: -1000,
+        godray: true,
+        sunX: -2390,
+        sunY: 1500,
+        sunZ: 0,
         cameraZ: 100,
         bgColor: 0x000511,
-        sunColor: 0xffee00,
-        intensity: 0.75,
+        sunColor: 0x4a56b3,
+        intensity: 0.25,
         rayLength: 1.0
     };
 
