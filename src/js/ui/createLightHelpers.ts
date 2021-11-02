@@ -11,7 +11,7 @@ export const createLightHelpers = (
         (acc: Array<Light>, model: Model) => acc.concat(model.lights ?? []),
         []
     );
-debugger
+
     lights.forEach(light => {
 
         if ((light.type === 'PointLight' || light.type === 'SpotLight') &&

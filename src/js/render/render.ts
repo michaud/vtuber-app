@@ -19,7 +19,8 @@ const render = (
         renderer,
         camera,
         av,
-        composer
+        composer,
+        passes
     } : AllResources
 ) : () => void => {
 
@@ -48,6 +49,16 @@ const render = (
         );
 
         controls.update();
+
+        passes.forEach(pass => {
+
+            if(pass.passComposer) {
+
+                pass.passComposer.render();
+            }
+
+            pass.render?.()
+        })
 
         //renderer.render(scene, camera);
         composer.render();

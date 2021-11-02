@@ -22,7 +22,9 @@ const addComposer = (
     const effectPasses = passes.map((pass) => 
         pass({
             composer,
-            renderer
+            renderer,
+            camera,
+            scene
         })
     );
 

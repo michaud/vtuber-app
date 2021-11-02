@@ -37,12 +37,22 @@ const init = (
         customScale: 3
     });
 
+    const {
+        composer,
+        passes
+    } = addComposer(
+        scene,
+        camera,
+        renderer
+    );
+
     setUpResize(
         av,
         camera,
         faceGeometry,
         renderer,
-        canvas
+        canvas,
+        passes
     );
 
     const controls : OrbitControls = new OrbitControls(
@@ -59,19 +69,10 @@ const init = (
         ['emojis']
     );
 
-    const {
-        composer,
-        passes
-    } = addComposer(
-        scene,
-        camera,
-        renderer
-    );
-
     const stages : Array<Model> = addstages({
         scene,
         mixer,
-        autoLoad: ['baseStage']
+        autoLoad: ['bladeRunnerStage']
     });
 
     addUI(
@@ -95,7 +96,8 @@ const init = (
         renderer,
         composer,
         camera,
-        av
+        av,
+        passes
     };
 };
 

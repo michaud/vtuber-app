@@ -7,10 +7,13 @@ import frag from '../shader/shader.frag';
 /* @ts-ignore */
 import vert from '../shader/shader.vert';
 import { PassArguments } from "types/PostProcessing";
+import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 
 const addBloomPass = ({
     composer,
-    renderer
+    renderer,
+    camera,
+    scene
 } : PassArguments) => {
     
     const params = {
@@ -20,7 +23,9 @@ const addBloomPass = ({
         bloomRadius: 1.0,
         bloom: false
     };
-    
+
+    const renderScene = new RenderPass( scene, camera );
+
     const pass = new UnrealBloomPass(
         new Vector2( window.innerWidth, window.innerHeight ),
         1.5, 0.4, 0.85
@@ -32,7 +37,7 @@ const addBloomPass = ({
     
     const passComposer = new EffectComposer( renderer );
     passComposer.renderToScreen = false;
-
+    passComposer.addPass( renderScene );
     passComposer.addPass( pass );
 
     const finalPass = new ShaderPass(
@@ -50,7 +55,8 @@ const addBloomPass = ({
     finalPass.needsSwap = true;
     finalPass.enabled = params.bloom;
 
-    composer.addPass(finalPass);
+    composer.addPass( renderScene );
+    composer.addPass( finalPass );
 
     return {
         name: 'bloomPass',
@@ -59,7 +65,9 @@ const addBloomPass = ({
             pass,
             finalPass
         },
-        renderer
+        renderer,
+        composer,
+        passComposer
     }
 };
 

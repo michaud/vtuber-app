@@ -10,6 +10,7 @@ import {
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import { Model } from "./model";
+import { EffectPass } from "./PostProcessing";
 
 export interface AppResources {
     models:Array<Model>,
@@ -22,5 +23,6 @@ export interface AppResources {
     renderer:WebGLRenderer,
     composer:EffectComposer,
     camera:OrthographicCamera,
-    av:GumAudioVideo
+    av:GumAudioVideo,
+    passes:Array<EffectPass>
 };
