@@ -1,7 +1,7 @@
+import { Update } from "types/Update";
 import FaceGeometry from "face/FaceGeometry";
 import { Object3D } from "three";
 
-import { Update } from "types/Update";
 
 /* replace name and implement, maybe use different step definition */
 const nameAction = (

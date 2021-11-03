@@ -1,6 +1,11 @@
 import { Update } from "types/Update";
+import {
+    Group,
+    Light,
+    Object3D,
+    Scene
+} from "three";
 import addActions from "models/addActions";
-import { Group, Light, Object3D, Scene } from "three";
 import actionDefinitions from './actionDefinitions'
 import addLighting from './addLighting';
 import modelUpdate from "models/modelUpdate";

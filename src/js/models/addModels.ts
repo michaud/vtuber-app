@@ -1,7 +1,6 @@
+import { Model } from "types/model";
 import FaceGeometry from "face/FaceGeometry";
 import { AnimationMixer, Scene } from "three";
-
-import { Model } from "types/model";
 import modelCreators from "./modelCreators";
 
 const addModels = (

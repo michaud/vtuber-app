@@ -1,6 +1,6 @@
+import { EffectPass } from "types/PostProcessing";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass";
 import { FolderApi } from "tweakpane";
-import { EffectPass } from "types/PostProcessing";
 
 const addSobolUI = (
     folder : FolderApi,

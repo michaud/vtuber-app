@@ -1,21 +1,18 @@
+import { Update } from "types/Update";
+import { Model } from "types/model";
 import {
-    AmbientLight,
     AnimationAction,
     Light,
     Object3D,
-    PointLight,
     Scene,
     SpotLight,
-    Vector3
 } from "three";
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
 import addActions from "models/addActions";
 import actionDefinitions from "./actionDefinitions";
 import loadModel from "models/loadModel";
-import { Update } from "types/Update";
 import modelUpdate from "models/modelUpdate";
 import paths from "constant/paths";
-import { Model } from "types/model";
 
 export const add = (
     scene : Scene

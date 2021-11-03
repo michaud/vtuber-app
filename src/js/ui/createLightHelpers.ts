@@ -1,5 +1,10 @@
-import { Light, Object3D, Scene, SpotLightHelper } from "three";
 import { Model } from "types/model";
+import {
+    Light,
+    Object3D,
+    Scene,
+    SpotLightHelper
+} from "three";
 
 export const createLightHelpers = (
     scene: Scene,

@@ -1,6 +1,6 @@
-import { Object3D } from "three";
-import { Action, ActionModelResources } from "types/Action";
+import { Action } from "types/Action";
 import { Update } from "types/Update";
+import { Object3D } from "three";
 
 const toggleShowAction : Action = (
     updateList,

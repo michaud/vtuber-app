@@ -1,7 +1,7 @@
 import { Update } from "types/Update";
-import { Object3D, Vector3 } from "three";
+import { Action } from "types/Action";
+import { Vector3 } from "three";
 import { appConstants } from "constant/appConstants";
-import { Action, ActionModelResources } from "types/Action";
 
 const normalMoveOutAction : Action = (
     updateList,

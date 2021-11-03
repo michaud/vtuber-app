@@ -1,5 +1,5 @@
-import { FolderApi } from "tweakpane";
 import { EffectPass } from "types/PostProcessing";
+import { FolderApi } from "tweakpane";
 
 const addGodRayUI = (
     folder : FolderApi,

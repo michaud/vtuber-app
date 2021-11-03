@@ -1,8 +1,8 @@
 import { Update } from "types/Update";
+import { Action } from "types/Action";
 import { Vector3 } from "three";
 import { appConstants } from "constant/appConstants";
 import FaceGeometry from "face/FaceGeometry";
-import { Action, ActionModelResources } from "types/Action";
 
 const normalMoveInAction : Action = (
     updateList,

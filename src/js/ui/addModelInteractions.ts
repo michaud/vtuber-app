@@ -1,10 +1,10 @@
+import { Model } from "types/model";
+import { VoidRunner } from "types/voidRunner";
 import { Scene } from "three";
 import {
     FolderApi,
     Pane
 } from "tweakpane";
-import { Model } from "types/model";
-import { VoidRunner } from "types/voidRunner";
 
 type ModelActionHandlers = {
     [index: string] : VoidRunner

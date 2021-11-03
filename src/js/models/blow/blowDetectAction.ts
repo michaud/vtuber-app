@@ -1,6 +1,6 @@
+import { DetectUpdate } from "types/Detector";
 import FaceGeometry from "face/FaceGeometry";
 import { AnimationAction } from "three";
-import { DetectUpdate } from "types/Detector";
 
 const blowDetectAction = (
     animations : Array<AnimationAction>

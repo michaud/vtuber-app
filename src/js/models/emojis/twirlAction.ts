@@ -1,6 +1,6 @@
-import { Object3D, Vector3 } from "three";
-import { Action, ActionModelResources } from "types/Action";
+import { Action } from "types/Action";
 import { Update } from "types/Update";
+import { Vector3 } from "three";
 
 const twirlAction : Action = (
     updateList,

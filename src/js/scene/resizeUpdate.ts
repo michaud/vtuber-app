@@ -1,7 +1,7 @@
+import { EffectPass } from "types/PostProcessing";
 import FaceGeometry from "face/FaceGeometry";
 import { GumAudioVideo } from "thirdparty/gum-av";
 import { Camera, WebGLRenderer } from "three";
-import { EffectPass, PostProcessingProps } from "types/PostProcessing";
 
 import resize from "./resize";
 

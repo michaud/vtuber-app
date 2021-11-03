@@ -1,7 +1,7 @@
+import { EffectPass } from "types/PostProcessing";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
 import { FolderApi } from "tweakpane";
-import { EffectPass } from "types/PostProcessing";
 
 const addBloomUI = (
     folder : FolderApi,

@@ -1,6 +1,10 @@
-import { Group, Object3D, Scene } from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { Model } from "types/model";
+import {
+    Group,
+    Object3D,
+    Scene
+} from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import addOriginHelper from "../helpers/addOriginHelper";
 import { createLightHelpers } from "./createLightHelpers";
 

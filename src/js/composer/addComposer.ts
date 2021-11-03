@@ -1,3 +1,4 @@
+import { ComposerResources } from "types/PostProcessing";
 import {
     Camera,
     Scene,
@@ -5,7 +6,6 @@ import {
 } from "three";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
-import { ComposerResources } from "types/PostProcessing";
 import { passes } from "./passes";
 
 const addComposer = (

@@ -1,9 +1,9 @@
 import { Update } from "types/Update";
+import { Action } from "types/Action";
 import { Vector3 } from "three";
 import { circularMapping } from "./circularMapping";
 import { verticalMappingPadded } from "./verticalMapping";
 import FaceGeometry from "face/FaceGeometry";
-import { Action } from "types/Action";
 
 const displaceAction : Action = (
     updateList,

@@ -1,8 +1,8 @@
+import { VoidRunner } from "types/voidRunner";
+import { AllResources } from "types/AllResources";
 import { runOnce } from "../utils/runOnce";
 import updateWithFaceDetection from "../faceDetection/updateWithFaceDetection";
 
-import { VoidRunner } from "types/voidRunner";
-import { AllResources } from "types/AllResources";
 
 const render = (
     onInit : VoidRunner,

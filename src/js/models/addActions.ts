@@ -1,4 +1,3 @@
-import { AnimationAction, Light, Object3D } from "three";
 import {
     ActionDefinition,
     ActionDefinitionList
@@ -10,6 +9,7 @@ import {
 import { VoidRunner } from "types/voidRunner";
 import { Update } from "types/Update";
 import { ModelResources } from "types/model";
+import { AnimationAction, Light, Object3D } from "three";
 
 const hasAction : HasAction = (
     actionName,

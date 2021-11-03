@@ -1,7 +1,6 @@
-import { Vector3 } from "three";
 import { DetectorUpdate } from "types/Detector";
-
 import { TrackData } from "types/TrackData";
+import { Vector3 } from "three";
 
 // const hData : Array<number> = [];
 

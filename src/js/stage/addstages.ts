@@ -1,7 +1,5 @@
-import FaceGeometry from "face/FaceGeometry";
-import { AnimationMixer, Scene } from "three";
-
 import { Model } from "types/model";
+import { AnimationMixer, Scene } from "three";
 import stageCreators from "./stageCreators";
 export interface StageResources {
     scene:Scene,

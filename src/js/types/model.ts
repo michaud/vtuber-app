@@ -1,8 +1,11 @@
-import { VoidRunner } from "./voidRunner";
-import { AnimationAction, Light, Object3D } from "three";
-
 import { Update } from "types/Update";
-import { Detector, DetectUpdate } from "types/Detector";
+import { Detector } from "types/Detector";
+import { VoidRunner } from "./voidRunner";
+import {
+    AnimationAction,
+    Light,
+    Object3D
+} from "three";
 export interface Model {
     create : VoidRunner;
     update? : Update;

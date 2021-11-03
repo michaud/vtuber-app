@@ -1,21 +1,16 @@
+import { Update } from "types/Update";
+import { SceneCreator } from "types/SceneCreator";
 import {
-    AnimationMixer,
     DoubleSide,
     Mesh,
     MeshStandardMaterial,
     Object3D,
-    Scene,
     TextureLoader,
 } from "three";
-
-import { Update } from "types/Update";
-import { Model } from "types/model";
 import addActions from "../addActions";
 import modelUpdate from "../modelUpdate";
 import actionDefinitions from "./actionDefinitions";
 import paths from "constant/paths";
-import FaceGeometry from "face/FaceGeometry";
-import { SceneCreator } from "types/SceneCreator";
 
 const addMask : SceneCreator = (
     scene,
