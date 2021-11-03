@@ -1,3 +1,4 @@
+import { PassArguments } from "types/PostProcessing";
 import { ShaderMaterial, Vector2 } from "three";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass";
@@ -6,7 +7,6 @@ import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPa
 import frag from '../shader/shader.frag';
 /* @ts-ignore */
 import vert from '../shader/shader.vert';
-import { PassArguments } from "types/PostProcessing";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 
 const addBloomPass = ({
