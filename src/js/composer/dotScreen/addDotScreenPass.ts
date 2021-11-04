@@ -8,6 +8,7 @@ const addDotScreenPass = ({
 
     const params = {
         'dotscreen': false,
+        enabled: false,
         centerX: 0,
         centerY: 0,
         angle: 1.28,
@@ -17,6 +18,7 @@ const addDotScreenPass = ({
     const pass : DotScreenPass = new DotScreenPass(new Vector2(0, 0), params.angle, params.scale);
 
     pass.enabled = params['dotscreen'];
+    pass.enabled = params.enabled;
 
     composer.addPass(pass);
 

@@ -32,6 +32,8 @@ const resize = (
         cam.updateProjectionMatrix();
     }
 
+    passes.forEach(pass => pass.setSize?.(clientWidth, clientHeight));
+
     const pass = passes.find(pass => pass.name === 'godRayPass');
 
     if(pass) {
@@ -46,6 +48,8 @@ const resize = (
         pass.pp.rtTextureGodRays1.setSize( adjustedWidth, adjustedHeight );
         pass.pp.rtTextureGodRays2.setSize( adjustedWidth, adjustedHeight );
     }
+
+
 
     renderer.setSize(canvas.clientWidth, canvas.clientHeight);
 }

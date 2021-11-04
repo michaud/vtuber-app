@@ -24,6 +24,8 @@ export type PassList = {
     [index:string]: Pass
 }
 
+export type UpdateSize = (width: number, height: number) => void;
+
 export type EffectPass = {
     name: string,
     params: EffectPassParams,
@@ -31,7 +33,8 @@ export type EffectPass = {
     renderer?: WebGLRenderer ,
     passComposer?: EffectComposer,
     render?: () => void,
-    pp?: PostProcessingProps
+    pp?: PostProcessingProps,
+    setSize?: UpdateSize
 }
 
 export type ComposerResources = {

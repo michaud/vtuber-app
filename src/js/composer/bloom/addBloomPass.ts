@@ -4,10 +4,15 @@ import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
 /* @ts-ignore */
-import frag from '../shader/shader.frag';
+import frag from './shader/shader.frag';
 /* @ts-ignore */
-import vert from '../shader/shader.vert';
+import vert from './shader/shader.vert';
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
+
+const setSize = (pass : UnrealBloomPass) => (
+    width: number,
+    height: number
+) => pass.resolution = new Vector2(width, height);
 
 const addBloomPass = ({
     composer,
@@ -15,30 +20,39 @@ const addBloomPass = ({
     camera,
     scene
 } : PassArguments) => {
-    
+
     const params = {
-        exposure: 1,
-        bloomStrength: 0,
-        bloomThreshold: 0,
-        bloomRadius: 1.0,
-        bloom: false
+        exposure: renderer.toneMappingExposure,
+        bloomStrength: 1.5,
+        bloomThreshold: 0.85,
+        bloomRadius: 0.4,
+        bloom: false,
+        enabled: false
     };
 
     const renderScene = new RenderPass( scene, camera );
 
     const pass = new UnrealBloomPass(
-        new Vector2( window.innerWidth, window.innerHeight ),
-        1.5, 0.4, 0.85
+        new Vector2(
+            window.innerWidth,
+            window.innerHeight
+        ),
+        params.bloomStrength,
+        params.bloomRadius,
+        params.bloomThreshold
     );
 
-    pass.threshold = params.bloomThreshold;
-    pass.strength = params.bloomStrength;
-    pass.radius = params.bloomRadius;
-    
+    pass.enabled = params.bloom;
+    pass.enabled = params.enabled;
+
     const passComposer = new EffectComposer( renderer );
     passComposer.renderToScreen = false;
     passComposer.addPass( renderScene );
     passComposer.addPass( pass );
+    passComposer.setSize(
+        window.innerWidth,
+        window.innerHeight
+    )
 
     const finalPass = new ShaderPass(
         new ShaderMaterial( {
@@ -67,7 +81,8 @@ const addBloomPass = ({
         },
         renderer,
         composer,
-        passComposer
+        passComposer,
+        setSize: setSize(pass)
     }
 };
 

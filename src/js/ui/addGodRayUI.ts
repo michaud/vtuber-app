@@ -11,7 +11,7 @@ const addGodRayUI = (
         expanded: true,
     });
 
-    f.addInput(effectPass.params, 'godray', { label: 'on'})
+    f.addInput(effectPass.params, 'enabled', { label: 'on'})
 
     const fparams = f.addFolder({
         title: 'params',

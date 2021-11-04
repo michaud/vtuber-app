@@ -8,7 +8,8 @@ const addSobolPass = ({
 } : PassArguments) => {
 
     const params = {
-        sobol: false
+        sobol: false,
+        enabled: false
     };
 
     /* color to grayscale conversion */
@@ -23,7 +24,9 @@ const addSobolPass = ({
     composer.addPass(pass);
 
     pass.enabled = params.sobol;
+    pass.enabled = params.enabled;
     effectGrayScale.enabled = params.sobol;
+    effectGrayScale.enabled = params.enabled;
 
     return {
         name: 'sobolPass',

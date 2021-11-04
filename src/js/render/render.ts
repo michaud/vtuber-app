@@ -3,7 +3,6 @@ import { AllResources } from "types/AllResources";
 import { runOnce } from "../utils/runOnce";
 import updateWithFaceDetection from "../faceDetection/updateWithFaceDetection";
 
-
 const render = (
     onInit : VoidRunner,
     onFirstFaceDetect : VoidRunner,
@@ -51,17 +50,13 @@ const render = (
         controls.update();
 
         passes.forEach(pass => {
-
-            if(pass.passComposer) {
-
-                pass.passComposer.render();
-            }
-
-            pass.render?.()
+            pass.passComposer?.render();
+            pass.render?.();
         })
 
+        composer.render();
+
         //renderer.render(scene, camera);
-        //composer.render();
 
         runOnInitialize();
     };

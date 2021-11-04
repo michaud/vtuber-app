@@ -14,7 +14,7 @@ const addSobolUI = (
 
     const pass = effectPass.passes['pass'] as ShaderPass;
 
-    f.addInput(effectPass.params, 'sobol', { label: 'on'}).on('change',(ev)=> {
+    f.addInput(effectPass.params, 'enabled', { label: 'on'}).on('change',(ev)=> {
         effectPass.passes['effectGrayScale'].enabled = Boolean(ev.value);
         pass.enabled = Boolean(ev.value);
     });

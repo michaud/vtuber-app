@@ -1,6 +1,6 @@
 import { EffectPass } from "types/PostProcessing";
 import { Model } from "types/model";
-import { Camera, Scene } from "three";
+import { Camera, Scene, WebGLRenderer } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { Pane } from "tweakpane";
 import addCameraViewControls from "./addCameraViewControls";
@@ -15,20 +15,21 @@ const addUI = (
     stages: Array<Model>,
     camera: Camera,
     scene: Scene,
-    controls: OrbitControls
+    controls: OrbitControls,
+    renderer: WebGLRenderer
 ) => {
 
     addModelInteractions(models, scene, pane, 'models');
     pane.addSeparator();
 
-    addComposerInteractions(passes, pane);
+    addComposerInteractions(passes, renderer, pane);
     pane.addSeparator();
 
     addModelInteractions(stages, scene, pane, 'stages');
 
     addCameraViewControls(camera);
 
-    addDebugTools(scene, controls, stages);
+    addDebugTools(scene, camera, controls, stages);
 }
 
 export default addUI;

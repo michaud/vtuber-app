@@ -21,7 +21,8 @@ const addGodRaysPass = ({
 } : PassArguments) => {
 
     const params = {
-        godray: true,
+        godray: false,
+        enabled: false,
         sunX: -2390,
         sunY: 1500,
         sunZ: 0,
@@ -67,7 +68,7 @@ const addGodRaysPass = ({
 
     const render = () => {
 
-        if(params.godray) {
+        if(params.enabled) {
 
             pp.godraysFakeSunUniforms.bgColor.value.setHex( params.bgColor );
             pp.godraysFakeSunUniforms.sunColor.value.setHex( params.sunColor );

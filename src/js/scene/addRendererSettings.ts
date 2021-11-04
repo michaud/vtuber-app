@@ -1,6 +1,7 @@
 import {
     ACESFilmicToneMapping,
     PCFSoftShadowMap,
+    ReinhardToneMapping,
     sRGBEncoding,
     WebGLRenderer
 } from "three";
@@ -12,7 +13,6 @@ const addRendererSettings = (renderer : WebGLRenderer) : void => {
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = PCFSoftShadowMap;
     renderer.shadowMap.autoUpdate = true;
-
     renderer.toneMapping = ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1;
 

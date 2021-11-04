@@ -14,7 +14,7 @@ const addDotScreenUI = (
         expanded: true,
     });
 
-    f.addInput(effectPass.params, 'dotscreen', { label: 'on'}).on('change',(ev)=> {
+    f.addInput(effectPass.params, 'enabled', { label: 'on'}).on('change',(ev)=> {
         pass.enabled = Boolean(ev.value);
     });
 
@@ -24,6 +24,7 @@ const addDotScreenUI = (
         title: 'params',
         expanded: false,
     });
+
     fparams.addInput(effectPass.params, 'centerX', {
         label: 'centerX',
         step: 0.1,
@@ -72,8 +73,6 @@ const addDotScreenUI = (
         'change',
         (ev)=> (pass.uniforms as Uniforms)['scale'].value = Number(ev.value)
     );
-
-    folder.addSeparator();
 }
 
 export default addDotScreenUI;

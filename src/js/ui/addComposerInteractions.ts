@@ -1,9 +1,11 @@
 import { EffectPass } from "types/PostProcessing";
 import { Pane } from "tweakpane";
 import { passUIInteractions } from "./passUIInteractions";
+import { WebGLRenderer } from "three";
 
 const addComposerInteractions = (
     passes : Array<EffectPass>,
+    renderer: WebGLRenderer,
     pane:Pane
 ) => {
 
@@ -13,7 +15,7 @@ const addComposerInteractions = (
     });
 
     passes.forEach(pass => {
-        passUIInteractions[pass.name](folder, pass)
+        passUIInteractions[pass.name](folder, pass, renderer)
     })
 };
 

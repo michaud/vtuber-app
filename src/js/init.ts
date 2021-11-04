@@ -72,7 +72,7 @@ const init = (
     const stages : Array<Model> = addstages({
         scene,
         mixer,
-        autoLoad: ['bladeRunnerStage']
+        autoLoad: ['baseStage']
     });
 
     addUI(
@@ -82,7 +82,8 @@ const init = (
         stages,
         camera,
         scene,
-        controls
+        controls,
+        renderer
     );
 
     return {

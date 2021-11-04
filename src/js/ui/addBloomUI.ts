@@ -2,12 +2,15 @@ import { EffectPass } from "types/PostProcessing";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
 import { FolderApi } from "tweakpane";
+import { WebGLRenderer } from "three";
 
 const addBloomUI = (
     folder : FolderApi,
-    effectPass : EffectPass
+    effectPass : EffectPass,
+    renderer: WebGLRenderer
 ) => {
 
+    const exposure = renderer.toneMappingExposure;
     const f = folder.addFolder({
         title: 'bloom',
         expanded: true,
@@ -16,7 +19,8 @@ const addBloomUI = (
     const pass = effectPass.passes['pass'] as UnrealBloomPass;
     const finalPass = effectPass.passes['finalPass'] as ShaderPass;
 
-    f.addInput(effectPass.params, 'bloom', { label: 'on'}).on('change',(ev)=> {
+    f.addInput(effectPass.params, 'enabled', { label: 'on'}).on('change',(ev)=> {
+        pass.enabled = Boolean(ev.value);
         finalPass.enabled = Boolean(ev.value);
     });
     
@@ -29,11 +33,18 @@ const addBloomUI = (
     fparams.addInput(effectPass.params, 'exposure', {
         label: 'exposure',
         step: 0.1,
-        min: 0.1,
+        min: 0,
         max: 2,
     }).on(
         'change',
-        (ev)=> effectPass.renderer.toneMappingExposure = Math.pow( <number>ev.value, 4.0 )
+        (ev) => {
+            if(effectPass.params.bloom) {
+
+                effectPass.renderer.toneMappingExposure = ev.value as number;
+            } else {
+                renderer.toneMappingExposure = exposure;
+            }
+        }
     );
 
     fparams.addInput(effectPass.params, 'bloomThreshold', {
