@@ -27,6 +27,7 @@ const render = (
     let onInitialize : VoidRunner = onInit;
     const runOnFirstFaceDetect = runOnce(onFirstFaceDetect);
     const runOnInitialize = runOnce(onInitialize);
+    let dogRayReset : VoidRunner;
 
     const rerender : VoidRunner = () => {
 
@@ -49,12 +50,19 @@ const render = (
 
         controls.update();
 
-        passes.forEach(pass => {
-            pass.passComposer?.render();
-            pass.render?.();
-        })
+        const rendererPass = passes.find(pass => pass.name === 'godRayPass');
 
-        composer.render();
+        if(rendererPass.params.enabled) {
+
+            rendererPass.render();
+            if(!dogRayReset) dogRayReset = runOnce(rendererPass.reset);
+
+        } else {
+            /* should run at least once */
+            dogRayReset?.();
+            passes.forEach(pass => pass.passComposer?.render())
+            composer.render();
+        }
 
         //renderer.render(scene, camera);
 

@@ -62,8 +62,7 @@ const addGodRaysPass = ({
         window.innerWidth,
         window.innerHeight,
         pp,
-        params,
-        renderer
+        params
     );
 
     const render = () => {
@@ -214,19 +213,20 @@ const addGodRaysPass = ({
             renderer.render( pp.scene, pp.camera );
             pp.scene.overrideMaterial = null;
 
-        } else {
-
-            renderer.setRenderTarget( null );
-            renderer.clear();
-            renderer.render( scene, camera );
         }
     }
+
+    const reset = () => {
+        scene.overrideMaterial = null;
+        renderer.setRenderTarget( null );
+    };
 
     return {
         name: 'godRayPass',
         params,
         render,
-        pp
+        pp,
+        reset
     };
 };
 

@@ -26,12 +26,12 @@ const initPostprocessing = (
     renderTargetWidth : number,
     renderTargetHeight : number,
     pp : PostProcessingProps,
-    params: TpParams,
-    renderer: WebGLRenderer
+    params: TpParams
 ) => {
 
     // Use a smaller size for some of the god-ray render targets for better performance.
     const godrayRenderTargetResolutionMultiplier = 1.0 / 2.0;
+
     pp.scene = new Scene();
 
     pp.camera = new OrthographicCamera( - 0.5, 0.5, 0.5, - 0.5, - 10000, 10000 )

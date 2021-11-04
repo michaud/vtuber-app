@@ -8,6 +8,7 @@ import {
     WebGLRenderTarget
 } from "three";
 import { Pass } from "three/examples/jsm/postprocessing/Pass.js";
+import { VoidRunner } from "./voidRunner";
 
 export type PassArguments = {
     composer : EffectComposer,
@@ -34,7 +35,8 @@ export type EffectPass = {
     passComposer?: EffectComposer,
     render?: () => void,
     pp?: PostProcessingProps,
-    setSize?: UpdateSize
+    setSize?: UpdateSize,
+    reset?: VoidRunner
 }
 
 export type ComposerResources = {
