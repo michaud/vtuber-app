@@ -50,18 +50,18 @@ const addActions : AddActions = ({
         .keys(actionDefinitions)
         .reduce((acc, key) => {
 
-            const action : ActionDefinition = actionDefinitions[key];
+        const action : ActionDefinition = actionDefinitions[key];
 
-            return ({
-                ...acc,
-                [key]: getAction(
-                    action,
-                    updateActions,
-                    mesh,
-                    lights,
-                    animations
-                )
-            })
+        return ({
+            ...acc,
+            [key]: getAction(
+                action,
+                updateActions,
+                mesh,
+                lights,
+                animations
+            )
+        })
     }
     , {})
 
