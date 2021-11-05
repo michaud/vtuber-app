@@ -15,7 +15,7 @@ const addComposerInteractions = (
     });
 
     passes.forEach(pass => {
-        passUIInteractions[pass.name](folder, pass, renderer)
+        passUIInteractions[pass.name]?.(folder, pass, renderer)
     })
 };
 
