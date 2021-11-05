@@ -50,17 +50,18 @@ const render = (
 
         controls.update();
 
-        const rendererPass = passes.find(pass => pass.name === 'godRayPass');
+        passes.forEach(pass => pass.passComposer?.render())
 
-        if(rendererPass.params.enabled) {
+        const dogRayPass = passes.find(pass => pass.name === 'godRayPass');
 
-            rendererPass.render();
-            if(!dogRayReset) dogRayReset = runOnce(rendererPass.reset);
+        if(dogRayPass && dogRayPass?.params.enabled) {
+
+            dogRayPass.render();
+            if(!dogRayReset) dogRayReset = runOnce(dogRayPass.reset);
 
         } else {
-            /* should run at least once */
+            /* should run once */
             dogRayReset?.();
-            passes.forEach(pass => pass.passComposer?.render())
             composer.render();
         }
 

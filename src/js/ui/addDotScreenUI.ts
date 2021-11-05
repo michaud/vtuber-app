@@ -1,8 +1,9 @@
 import { EffectPass } from "types/PostProcessing";
 import { Vector2 } from "three";
-import { DotScreenPass } from "three/examples/jsm/postprocessing/DotScreenPass";
+
 import { FolderApi } from "tweakpane";
-import { Uniforms, Vector2Value } from "../composer/dotScreen/DotScreenShader";
+import { Uniforms } from "../composer/dotScreen/DotScreenShader";
+import { DotScreenPass } from "../composer/dotScreen/DotScreenPass";
 
 const addDotScreenUI = (
     folder : FolderApi,
@@ -15,6 +16,10 @@ const addDotScreenUI = (
     });
 
     f.addInput(effectPass.params, 'enabled', { label: 'on'}).on('change',(ev)=> {
+        Boolean(ev.value) ?
+            effectPass.add() :
+            effectPass.remove()
+
         pass.enabled = Boolean(ev.value);
     });
 
@@ -30,29 +35,24 @@ const addDotScreenUI = (
         step: 0.1,
         min: 0.0,
         max: 1.0,
-    }).on('change', (ev)=> {
-
-        ((pass.uniforms as Uniforms)['center'] as Vector2Value).value.copy(
-            new Vector2(
-                Number(ev.value),
-                ((pass.uniforms as Uniforms)['center'] as Vector2Value).value.y
-            )
-        );
-    })
+    }).on('change', (ev)=> pass.center.copy(
+        new Vector2(
+            Number(ev.value),
+            pass.center.y
+        ))
+    )
 
     fparams.addInput(effectPass.params, 'centerY', {
         label: 'centerY',
         step: 0.1,
         min: 0.0,
         max: 1.0,
-    }).on('change', (ev)=> {
-        ((pass.uniforms as Uniforms)['center'] as Vector2Value).value.copy(
-            new Vector2(
-                ((pass.uniforms as Uniforms)['center'] as Vector2Value).value.x,
-                Number(ev.value)
-            )
-        );
-    });
+    }).on('change', (ev)=> pass.center.copy(
+        new Vector2(
+            pass.center.y,
+            Number(ev.value)
+        ))
+    );
 
     fparams.addInput(effectPass.params, 'angle', {
         label: 'angle',
@@ -61,7 +61,7 @@ const addDotScreenUI = (
         max: Math.PI * 2,
     }).on(
         'change',
-        (ev)=> (pass.uniforms as Uniforms)['angle'].value = Number(ev.value)
+        (ev)=> pass.angle = Number(ev.value)
     );
 
     fparams.addInput(effectPass.params, 'scale', {
@@ -71,7 +71,7 @@ const addDotScreenUI = (
         max: Math.PI * 2,
     }).on(
         'change',
-        (ev)=> (pass.uniforms as Uniforms)['scale'].value = Number(ev.value)
+        (ev)=> pass.scale = Number(ev.value)
     );
 }
 

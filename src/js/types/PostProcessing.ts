@@ -36,7 +36,9 @@ export type EffectPass = {
     render?: () => void,
     pp?: PostProcessingProps,
     setSize?: UpdateSize,
-    reset?: VoidRunner
+    reset?: VoidRunner,
+    add?: VoidRunner,
+    remove?: VoidRunner
 }
 
 export type ComposerResources = {

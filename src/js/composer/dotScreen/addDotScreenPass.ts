@@ -7,7 +7,6 @@ const addDotScreenPass = ({
 } : PassArguments) => {
 
     const params = {
-        'dotscreen': false,
         enabled: false,
         centerX: 0,
         centerY: 0,
@@ -15,19 +14,32 @@ const addDotScreenPass = ({
         scale: 1.5
     };
 
-    const pass : DotScreenPass = new DotScreenPass(new Vector2(0, 0), params.angle, params.scale);
+    const pass : DotScreenPass = new DotScreenPass(
+        new Vector2(params.centerX, params.centerY),
+        params.angle,
+        params.scale
+    );
 
-    pass.enabled = params['dotscreen'];
     pass.enabled = params.enabled;
 
-    composer.addPass(pass);
+    const add = () => {
+        
+        composer.addPass( pass );
+    }
+
+    const remove = () => {
+        
+        composer.removePass( pass );
+    }
 
     return {
         name: 'dotScreenPass',
         params,
         passes: {
             pass
-        }
+        },
+        add,
+        remove
     };
 };
 

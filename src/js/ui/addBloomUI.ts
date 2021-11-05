@@ -11,19 +11,30 @@ const addBloomUI = (
 ) => {
 
     const exposure = renderer.toneMappingExposure;
+
     const f = folder.addFolder({
         title: 'bloom',
         expanded: true,
     });
 
-    const pass = effectPass.passes['pass'] as UnrealBloomPass;
-    const finalPass = effectPass.passes['finalPass'] as ShaderPass;
+    let pass : UnrealBloomPass;
+    let finalPass : ShaderPass;
 
     f.addInput(effectPass.params, 'enabled', { label: 'on'}).on('change',(ev)=> {
-        pass.enabled = Boolean(ev.value);
-        finalPass.enabled = Boolean(ev.value);
-    });
+
+        Boolean(ev.value) ? 
+            effectPass.add() :
+            effectPass.remove();
+
+        pass = effectPass.passes['pass'] as UnrealBloomPass;
+        finalPass = effectPass.passes['finalPass'] as ShaderPass;
     
+        if(pass && finalPass) {
+
+            pass.enabled = Boolean(ev.value);
+            finalPass.enabled = Boolean(ev.value);
+        }
+    });
     
     const fparams = f.addFolder({
         title: 'params',
@@ -38,7 +49,7 @@ const addBloomUI = (
     }).on(
         'change',
         (ev) => {
-            if(effectPass.params.bloom) {
+            if(effectPass.params.enabled) {
 
                 effectPass.renderer.toneMappingExposure = ev.value as number;
             } else {
@@ -54,7 +65,10 @@ const addBloomUI = (
         max: 1.0,
     }).on(
         'change',
-        (ev)=> pass.threshold = Number(ev.value)
+        (ev)=> {
+
+            pass.threshold = Number(ev.value)
+        }
     );
     
     fparams.addInput(effectPass.params, 'bloomStrength', {

@@ -13,16 +13,18 @@ import { DotScreenShader, Uniforms } from './DotScreenShader';
 class DotScreenPass extends Pass {
 
 	uniforms:Uniforms;
-
 	material: ShaderMaterial;
 	fsQuad:FullScreenQuad;
 	renderToScreen:boolean;
 	clear:boolean;
+	center: Vector2;
+	angle: number;
+	scale: number;
 
 	constructor(
-		public center:Vector2,
-		public angle:number,
-		public scale:number
+		center : Vector2,
+		angle : number,
+		scale : number
 	) {
 
 		super();
@@ -32,10 +34,13 @@ class DotScreenPass extends Pass {
 		var shader = DotScreenShader;
 
 		this.uniforms = UniformsUtils.clone( shader.uniforms );
+		this.center = center ?? new Vector2(0, 0);
+		this.angle = angle ?? 1.28;
+		this.scale = scale ?? 1.5;
 
-		if ( this.center !== undefined ) (this.uniforms[ 'center' ].value as Vector2).copy( this.center );
-		if ( this.angle !== undefined ) this.uniforms[ 'angle' ].value = this.angle;
-		if ( this.scale !== undefined ) this.uniforms[ 'scale' ].value = this.scale;
+		(this.uniforms[ 'center' ].value as Vector2).copy( this.center );
+		this.uniforms[ 'angle' ].value = this.angle;
+		this.uniforms[ 'scale' ].value = this.scale;
 
 		this.material = new ShaderMaterial( {
 
@@ -46,7 +51,6 @@ class DotScreenPass extends Pass {
 		} );
 
 		this.fsQuad = new FullScreenQuad( this.material );
-
 	}
 
 	render(renderer : WebGLRenderer, writeBuffer:any, readBuffer:any /*, deltaTime, maskActive */ ) {

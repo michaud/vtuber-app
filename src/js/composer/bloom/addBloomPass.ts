@@ -1,4 +1,4 @@
-import { PassArguments } from "types/PostProcessing";
+import { EffectPass, PassArguments } from "types/PostProcessing";
 import { ShaderMaterial, Vector2 } from "three";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass";
@@ -19,14 +19,13 @@ const addBloomPass = ({
     renderer,
     camera,
     scene
-} : PassArguments) => {
+} : PassArguments) : EffectPass => {
 
     const params = {
         exposure: renderer.toneMappingExposure,
         bloomStrength: 1.5,
         bloomThreshold: 0.85,
         bloomRadius: 0.4,
-        bloom: false,
         enabled: false
     };
 
@@ -42,7 +41,6 @@ const addBloomPass = ({
         params.bloomThreshold
     );
 
-    pass.enabled = params.bloom;
     pass.enabled = params.enabled;
 
     const passComposer = new EffectComposer( renderer );
@@ -67,10 +65,17 @@ const addBloomPass = ({
     );
 
     finalPass.needsSwap = true;
-    finalPass.enabled = params.bloom;
+    finalPass.enabled = params.enabled;
+    
+    const add = () => {
+        
+        composer.addPass( finalPass );
+    }
 
-    composer.addPass( renderScene );
-    composer.addPass( finalPass );
+    const remove = () => {
+        
+        composer.removePass( finalPass );
+    }
 
     return {
         name: 'bloomPass',
@@ -80,9 +85,10 @@ const addBloomPass = ({
             finalPass
         },
         renderer,
-        composer,
         passComposer,
-        setSize: setSize(pass)
+        setSize: setSize(pass),
+        add,
+        remove
     }
 };
 

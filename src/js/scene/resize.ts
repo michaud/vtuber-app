@@ -32,7 +32,7 @@ const resize = (
         cam.updateProjectionMatrix();
     }
 
-    passes.forEach(pass => pass.setSize?.(clientWidth, clientHeight));
+    passes.forEach(pass => pass?.setSize?.(clientWidth, clientHeight));
 
     const pass = passes.find(pass => pass.name === 'godRayPass');
 
