@@ -17,7 +17,6 @@ const hasAction : HasAction = (
 ) => updateActions
     .findIndex((action : Update) => action.name === actionName) > -1;
 
-
 const getAction : GetAction = (
     { updateName, action },
     updateActions,
