@@ -58,15 +58,6 @@ const addGodRaysPass = ({
         quad: null
     };
 
-    const renderScene = new RenderPass( scene, camera );
-
-    const passComposer = new EffectComposer( renderer );
-    passComposer.renderToScreen = false;
-    passComposer.addPass( renderScene );
-
-
-    passComposer.renderer.autoClear = false;
-
     initPostprocessing(
         window.innerWidth,
         window.innerHeight,
@@ -115,8 +106,8 @@ const addGodRaysPass = ({
 
             /* Clear colors and depths, will clear to sky color */
 
-            passComposer.renderer.setRenderTarget( pp.rtTextureColors );
-            passComposer.renderer.clear( true, true, false );
+            renderer.setRenderTarget( pp.rtTextureColors );
+            renderer.clear( true, true, false );
 
 /*             Sun render. Runs a shader that gives a brightness based on the screen
             space distance to the sun. Not very efficient, so i make a scissor
@@ -130,44 +121,44 @@ const addGodRaysPass = ({
             screenSpacePosition.x *= window.innerWidth;
             screenSpacePosition.y *= window.innerHeight;
 
-            passComposer.renderer.setScissor(
+            renderer.setScissor(
                 screenSpacePosition.x - sunsqW / 2,
                 screenSpacePosition.y - sunsqH / 2,
                 sunsqW,
                 sunsqH
             );
             
-            passComposer.renderer.setScissorTest( true );
+            renderer.setScissorTest( true );
 
             pp.godraysFakeSunUniforms[ "fAspect" ]
                 .value = window.innerWidth / window.innerHeight;
 
             pp.scene.overrideMaterial = pp.materialGodraysFakeSun;
-            passComposer.renderer.setRenderTarget( pp.rtTextureColors );
-            passComposer.renderer.render( pp.scene, pp.camera );
+            renderer.setRenderTarget( pp.rtTextureColors );
+            renderer.render( pp.scene, pp.camera );
 
-            passComposer.renderer.setScissorTest( false );
+            renderer.setScissorTest( false );
 
             /* -- Draw scene objects -- */
 
             /* Colors */
 
             scene.overrideMaterial = null;
-            passComposer.renderer.setRenderTarget( pp.rtTextureColors );
-            passComposer.renderer.render( scene, camera );
+            renderer.setRenderTarget( pp.rtTextureColors );
+            renderer.render( scene, camera );
 
             /* Depth */
 
             scene.overrideMaterial = materialDepth;
-            passComposer.renderer.setRenderTarget( pp.rtTextureDepth );
-            passComposer.renderer.clear();
-            passComposer.renderer.render( scene, camera );
+            renderer.setRenderTarget( pp.rtTextureDepth );
+            renderer.clear();
+            renderer.render( scene, camera );
 
             pp.godrayMaskUniforms[ "tInput" ].value = pp.rtTextureDepth.texture;
 
             pp.scene.overrideMaterial = pp.materialGodraysDepthMask;
-            passComposer.renderer.setRenderTarget( pp.rtTextureDepthMask );
-            passComposer.renderer.render( pp.scene, pp.camera );
+            renderer.setRenderTarget( pp.rtTextureDepthMask );
+            renderer.render( pp.scene, pp.camera );
 
             /*  -- Render god-rays -- */
 
@@ -190,7 +181,7 @@ const addGodRaysPass = ({
                 pp.rtTextureGodRays2,
                 getStepSize( filterLen, TAPS_PER_PASS, 1.0 ),
                 pp,
-                passComposer.renderer
+                renderer
             );
 
             /* pass 2 - render into second ping-pong target */
@@ -199,7 +190,7 @@ const addGodRaysPass = ({
                 pp.rtTextureGodRays1,
                 getStepSize( filterLen, TAPS_PER_PASS, 2.0 ),
                 pp,
-                passComposer.renderer
+                renderer
             );
 
             /* pass 3 - 1st RT */
@@ -208,7 +199,7 @@ const addGodRaysPass = ({
                 pp.rtTextureGodRays2,
                 getStepSize( filterLen, TAPS_PER_PASS, 3.0 ),
                 pp,
-                passComposer.renderer
+                renderer
             );
 
             /* final pass - composite god-rays onto colors */
@@ -218,8 +209,8 @@ const addGodRaysPass = ({
 
             pp.scene.overrideMaterial = pp.materialGodraysCombine;
 
-            passComposer.renderer.setRenderTarget( null );
-            passComposer.renderer.render( pp.scene, pp.camera );
+            renderer.setRenderTarget( null );
+            renderer.render( pp.scene, pp.camera );
             pp.scene.overrideMaterial = null;
 
         }
@@ -227,7 +218,7 @@ const addGodRaysPass = ({
 
     const reset = () => {
         scene.overrideMaterial = null;
-        passComposer.renderer.setRenderTarget( null );
+        renderer.setRenderTarget( null );
     };
 
     return {
