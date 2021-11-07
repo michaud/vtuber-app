@@ -20,7 +20,8 @@ const updateWithFaceDetection = async (
     faceDetectionModel
         .estimateFaces({
             input: av.video,
-            flipHorizontal: flipCamera
+            flipHorizontal: flipCamera,
+            predictIrises: false
         }).then((faces) => {
 
             /* There's at least one face. */
