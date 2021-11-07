@@ -57,6 +57,7 @@ const render = (
         if(dogRayPass && dogRayPass?.params.enabled) {
 
             dogRayPass.render();
+            /* capture the reset */
             if(!dogRayReset) dogRayReset = runOnce(dogRayPass.reset);
 
         } else {
