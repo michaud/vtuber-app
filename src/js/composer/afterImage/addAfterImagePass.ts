@@ -23,8 +23,7 @@ const addAfterImagePass = ({
 
     const pass = new AfterimagePass();
     (pass.uniforms as Uniforms)[ "damp" ].value = params.damp;
-    composer.addPass(renderScene);
-    composer.addPass(pass);
+
     composer.setSize(
         window.innerWidth,
         window.innerHeight
@@ -51,7 +50,7 @@ const addAfterImagePass = ({
         },
         add,
         remove,
-        setSize
+        setSize: setSize(pass)
     };
 };
 
