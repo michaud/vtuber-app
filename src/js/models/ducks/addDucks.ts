@@ -25,16 +25,27 @@ const addDucks : SceneCreator = (
     const updateActions : Array<Update> = [];
     const mesh : Array<Object3D> = [];
     const animations : Array<AnimationAction> = [];
-    const name = 'ducks';
 
-    const create = () => {
+    const model = {
+        create: () => {},
+        update: modelUpdate(
+            updateActions,
+            { mesh }
+        ),
+        name: 'ducks',
+        actions: {},
+        mesh,
+        active: false
+    };
+
+    model.create = () => {
 
         loadModel(
             'ducks.glb',
             paths.models,
             (gltf:GLTF) => {
 
-                gltf.scene.name = name;
+                gltf.scene.name = model.name;
                 
                 scene.add(gltf.scene);
                 mesh.push(gltf.scene);
@@ -77,6 +88,8 @@ const addDucks : SceneCreator = (
 
                     animations.push(anim);
                 });
+
+                model.active = true;
             }
         );
     };
@@ -89,16 +102,9 @@ const addDucks : SceneCreator = (
         actionDefinitions
     ); 
 
-    return {
-        create,
-        update: modelUpdate(
-            updateActions,
-            { mesh }
-        ),
-        name,
-        actions,
-        mesh
-    }
+    model.actions = actions;
+
+    return model
 };
 
 export default addDucks;

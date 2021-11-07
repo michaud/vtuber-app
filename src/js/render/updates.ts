@@ -14,20 +14,21 @@ const updates = (
 
     models.forEach((model : Model) => {
 
-            model.update(
-                geom,
-                timeStamp,
-                points,
-                normals
-            );
+        if(!model.active) return
 
-            model.detectors?.forEach(detector => {
-                detector.detectAction(geom, detector.detection(geom))
-            })
-        }
-    );
+        model.update(
+            geom,
+            timeStamp,
+            points,
+            normals
+        );
 
-    stages.forEach((stage : Model) => stage.update(
+        model.detectors?.forEach(detector => {
+            detector.detectAction(geom, detector.detection(geom))
+        })
+    });
+
+    stages.forEach((stage : Model) => stage.active && stage.update(
         geom,
         timeStamp,
         points,

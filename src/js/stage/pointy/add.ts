@@ -6,15 +6,23 @@ import paths from "constant/paths";
 export const add = (scene : Scene) => {
 
     const mesh : Array<Object3D> =[];
-    const name = 'pointy background';
 
-    const create = () => {
+    const model = {
+        create: () => {},
+        update: () => {},
+        name: 'pointy background',
+        actions: {},
+        mesh,
+        active: false
+    };
+
+    model.create = () => {
 
         loadModel(
             'pointy_background.glb',
             paths.stage,
             (gltf:GLTF) => {
-                gltf.scene.name = name;
+                gltf.scene.name = model.name;
                 gltf.scene.scale.setScalar(130);
                 scene.add(gltf.scene);
                 mesh.push(gltf.scene);
@@ -22,11 +30,5 @@ export const add = (scene : Scene) => {
         )
     };
 
-    return {
-        create,
-        update: () => {},
-        name,
-        actions: {},
-        mesh
-    }
+    return model;
 };

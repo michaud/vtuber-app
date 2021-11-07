@@ -24,6 +24,8 @@ function getScale(
     customScale: number
 ) {
 
+    if(!face) return 1;
+
     const p1 = (face.mesh as Coords3D)[id1];
     const p1_scaled = (face.scaledMesh as Coords3D)[id1];
     const p2 = (face.mesh as Coords3D)[id2];

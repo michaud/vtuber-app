@@ -20,9 +20,20 @@ const addMask : SceneCreator = (
 
     const mesh : Array<Object3D> = [];
     const updateActions : Array<Update> = [];
-    const name = 'mask';
 
-    const create = () => {
+    const model = {
+        create: () => {},
+        update: modelUpdate(
+            updateActions,
+            { mesh }
+        ),
+        name: 'mask',
+        mesh,
+        actions: {},
+        active: false
+    };
+
+    model.create = () => {
 
         /* Load textures for mask material. */
         const colorTexture = new TextureLoader().load(
@@ -46,11 +57,12 @@ const addMask : SceneCreator = (
 
         /* Create mask mesh. */
         const mask = new Mesh(faceGeometry, material);
-        mask.name = name;
+        mask.name = model.name;
         scene.add(mask);
         mask.receiveShadow = mask.castShadow = false;
 
         mesh.push(mask);
+        model.active = true;
     };
 
     const { actions } = addActions({
@@ -60,16 +72,9 @@ const addMask : SceneCreator = (
         actionDefinitions
     );
 
-    return {
-        create,
-        update: modelUpdate(
-            updateActions,
-            { mesh }
-        ),
-        name,
-        mesh,
-        actions
-    };
+    model.actions = actions;
+
+    return model;
 };
 
 export default addMask;

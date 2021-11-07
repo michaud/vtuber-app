@@ -10,19 +10,36 @@ import actionDefinitions from './actionDefinitions'
 import addLighting from './addLighting';
 import modelUpdate from "models/modelUpdate";
 
-export const add = (scene : Scene) => {
+export const add = (scene: Scene) => {
 
-    const mesh : Array<Object3D> =[];
-    const updateActions : Array<Update> = [];
-    const lights : Array<Light> = [];
-    const name = 'baseStage';
+    const mesh: Array<Object3D> = [];
+    const updateActions: Array<Update> = [];
+    const lights: Array<Light> = [];
 
-    const create = () => {
+    const model = {
+        create: () => {},
+        update: modelUpdate(
+            updateActions,
+            {
+                mesh,
+                lights
+            }
+        ),
+        name: 'baseStage',
+        actions: {},
+        mesh,
+        lights,
+        active: false
+    };
+
+    model.create = () => {
 
         const group = new Group();
-        group.name = name;
-    
+        group.name = model.name;
+
         addLighting(group, scene, lights);
+
+        model.active = true;
     };
 
     const { actions } = addActions({
@@ -33,18 +50,7 @@ export const add = (scene : Scene) => {
         actionDefinitions
     );
 
-    return {
-        create,
-        update: modelUpdate(
-            updateActions,
-            {
-                mesh,
-                lights
-            }
-        ),
-        name,
-        actions,
-        mesh,
-        lights
-    }
+    model.actions = actions;
+
+    return model;
 };

@@ -40,8 +40,24 @@ export const add = (
     const imageList : Array<string> = [
         'pattern_1590067427667_clip01_adj.png'
     ];
-    const name = 'blinds';
-    const create = () => {
+
+    const model = {
+        create: () => {},
+        update: modelUpdate(
+            updateActions,
+            {
+                mesh,
+                lights,
+            }
+        ),
+        name: 'blinds',
+        actions: {},
+        mesh,
+        lights,
+        active: false
+    };
+
+    model.create = () => {
 
         loadModel(
             'blinds.glb',
@@ -49,7 +65,7 @@ export const add = (
             (gltf:GLTF) => {
 
                 gltf.scene.scale.setScalar(11);
-                gltf.scene.name = name;
+                gltf.scene.name = model.name;
                 scene.add(gltf.scene);
                 mesh.push(gltf.scene);
 
@@ -107,6 +123,8 @@ export const add = (
                     anim.setLoop(LoopOnce, 1);
                     animations.push(anim);
                 });
+
+                model.active = true;
             }
         )
     };
@@ -120,18 +138,7 @@ export const add = (
         actionDefinitions,
     );
 
-    return {
-        create,
-        update: modelUpdate(
-            updateActions,
-            {
-                mesh,
-                lights,
-            }
-        ),
-        name,
-        actions,
-        mesh,
-        lights
-    }
+    model.actions = actions;
+
+    return model;
 };

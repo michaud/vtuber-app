@@ -14,7 +14,18 @@ const addMistache : SceneCreator = (scene) => {
 
     const mesh : Array<Object3D> =[];
     const updateActions : Array<Update> = [];
-    const name = 'mistache';
+
+    const model = {
+        create: () => {},
+        update: modelUpdate(
+            updateActions,
+            { mesh }
+        ),
+        name: 'mistache',
+        actions: {},
+        mesh,
+        active: false
+    };
 
     const create = () => {
 
@@ -23,7 +34,7 @@ const addMistache : SceneCreator = (scene) => {
             paths.models,
             (gltf:GLTF) => {
 
-                gltf.scene.name = name;
+                gltf.scene.name = model.name;
 
                 scene.add(gltf.scene);
 
@@ -35,6 +46,8 @@ const addMistache : SceneCreator = (scene) => {
                         { mesh }
                     )
                 );
+
+                model.active = true;
             }
         );
     };
@@ -45,17 +58,10 @@ const addMistache : SceneCreator = (scene) => {
         },
         actionDefinitions
     ); 
+    
+    model.actions = actions;
 
-    return {
-        create,
-        update: modelUpdate(
-            updateActions,
-            { mesh }
-        ),
-        name,
-        actions,
-        mesh
-    }
+    return model
 };
 
 export default addMistache;

@@ -23,15 +23,29 @@ export const add = (
     const animations : Array<AnimationAction> = [];
     const lights : Array<Light> = [];
 
-    const name = 'bladeRunnerStage';
+    const model = {
+        create: () => {},
+        update: modelUpdate(
+            updateActions,
+            {
+                mesh,
+                lights,
+            }
+        ),
+        name: 'bladeRunnerStage',
+        actions:{},
+        mesh,
+        lights,
+        active: false
+    };
 
-    const create = () => {
+    model.create = () => {
 
         loadModel(
             'blade_runner_office_stage.glb',
             paths.stage,
             (gltf:GLTF) => {
-                gltf.scene.name = name;
+                gltf.scene.name = model.name;
                 scene.add(gltf.scene);
                 mesh.push(gltf.scene);
                 gltf.scene.traverse(
@@ -53,6 +67,8 @@ export const add = (
                 // ambientLight.name = 'bladeRunnerAmbientLight';
                 // gltf.scene.add(ambientLight);
                 // lights.push(ambientLight);
+
+                model.actions = true;
             }
         )
     };
@@ -65,19 +81,8 @@ export const add = (
         },
         actionDefinitions,
     );
+    
+    model.actions = actions;
 
-    return {
-        create,
-        update: modelUpdate(
-            updateActions,
-            {
-                mesh,
-                lights,
-            }
-        ),
-        name,
-        actions,
-        mesh,
-        lights
-    }
+    return model;
 };

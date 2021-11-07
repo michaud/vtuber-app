@@ -7,20 +7,21 @@ import {
     Object3D
 } from "three";
 export interface Model {
-    create : VoidRunner;
-    update? : Update;
-    name: string;
+    create : VoidRunner | null
+    mesh: Array<Object3D>
+    name: string
+    active : boolean
+    update? : Update
     actions?: {
         [index: string]: Update
-    };
-    mesh: Array<Object3D>,
-    lights? : Array<Light>,
+    }
+    lights? : Array<Light>
     detectors?: Array<Detector>
 };
 
 export type ModelResources = {
-    updateActions : Array<Update>,
-    mesh? : Array<Object3D>,
-    lights? : Array<Light>,
+    updateActions : Array<Update>
+    mesh? : Array<Object3D>
+    lights? : Array<Light>
     animations? : Array<AnimationAction>
 };

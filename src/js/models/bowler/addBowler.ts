@@ -13,16 +13,27 @@ const addBowler : SceneCreator = (scene) => {
 
     const updateActions : Array<Update> = [];
     const mesh : Array<Object3D> = [];
-    const name = 'bowler';
 
-    const create = () => {
+    const model = {
+        create: () => {},
+        update: modelUpdate(
+            updateActions,
+            { mesh }
+        ),
+        name: 'bowler',
+        actions: {},
+        mesh,
+        active: false
+    };
+
+    model.create = () => {
 
         loadModel(
             'bowler_hat.glb',
             paths.models,
             (gltf:GLTF) => {
 
-                gltf.scene.name = name;
+                gltf.scene.name = model.name;
                 
                 scene.add(gltf.scene);
 
@@ -34,27 +45,22 @@ const addBowler : SceneCreator = (scene) => {
                         { mesh }
                     )
                 );
+
+                model.active = true;
             }
         );
     };
 
     const { actions } = addActions({
-        updateActions,
-        mesh,
-    },
-    actionDefinitions
+            updateActions,
+            mesh,
+        },
+        actionDefinitions
     ); 
 
-    return {
-        create,
-        update: modelUpdate(
-            updateActions,
-            { mesh }
-        ),
-        name: 'bowler',
-        actions,
-        mesh
-    }
+    model.actions = actions;
+
+    return model
 };
 
 export default addBowler;

@@ -17,7 +17,18 @@ const addNose : SceneCreator = (scene) => {
 
     const mesh : Array<Object3D> = [];
     const updateActions : Array<Update> = [];
-    const name = 'nose';
+
+    const model = {
+        create : () => {},
+        update: modelUpdate(
+            updateActions,
+            { mesh }
+        ),
+        name: 'nose',
+        mesh,
+        actions: {},
+        active: false
+    }
 
     const create = () => {
 
@@ -30,7 +41,7 @@ const addNose : SceneCreator = (scene) => {
         });
 
         const noseMesh = new Mesh(new IcosahedronGeometry(1, 3), noseMaterial);
-        noseMesh.name = name;
+        noseMesh.name = model.name;
         noseMesh.castShadow = true;
         noseMesh.receiveShadow = true;
         
@@ -43,6 +54,8 @@ const addNose : SceneCreator = (scene) => {
                 { mesh }
             )
         );
+
+        model.active = true;
     };
 
     const { actions } = addActions({
@@ -52,16 +65,9 @@ const addNose : SceneCreator = (scene) => {
         actionDefinitions
     );
 
-    return {
-        create,
-        update: modelUpdate(
-            updateActions,
-            { mesh }
-        ),
-        name,
-        mesh,
-        actions
-    };
+    model.actions = actions;
+
+    return model;
 };
 
 export default addNose;

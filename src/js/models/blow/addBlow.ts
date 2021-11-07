@@ -16,7 +16,7 @@ import paths from 'constant/paths';
 import { SceneCreator } from 'types/SceneCreator';
 import blowDetectAction from './blowDetectAction';
 import detectO from '../../detect/detectO';
-import { Detector, DetectUpdate } from 'types/Detector';
+import { Detector } from 'types/Detector';
 
 const addBlow : SceneCreator = (
     scene,
@@ -26,16 +26,34 @@ const addBlow : SceneCreator = (
     const updateActions : Array<Update> = [];
     const mesh : Array<Object3D> = [];
     const animations : Array<AnimationAction> = [];
-    const name = 'blow';
 
-    const create = () => {
+    const detectors : Array<Detector> = [
+        {
+            detection : detectO,
+            detectAction : blowDetectAction(animations)
+        }
+    ] 
+
+    const model = {
+        create: () => {},
+        update: modelUpdate(
+            updateActions,
+            { mesh }),
+        name: 'blow',
+        actions: {},
+        mesh,
+        detectors,
+        active: false
+    }
+
+    model.create = () => {
 
         loadModel(
             'blow.glb',
             paths.models,
             (gltf:GLTF) => {
 
-                gltf.scene.name = name;
+                gltf.scene.name = model.name;
 
                 scene.add(gltf.scene);
 
@@ -56,6 +74,8 @@ const addBlow : SceneCreator = (
                         { mesh }
                     )
                 );
+
+                model.active = true;
             }
         );
     };
@@ -68,23 +88,9 @@ const addBlow : SceneCreator = (
         actionDefinitions
     );
 
-    const detectors : Array<Detector> = [
-        {
-            detection : detectO,
-            detectAction:blowDetectAction(animations)
-        }
-    ] 
+    model.actions = actions;
 
-    return {
-        create,
-        update: modelUpdate(
-            updateActions,
-            { mesh }),
-        name,
-        actions,
-        mesh,
-        detectors
-    };
+    return model;
 };
 
 export default addBlow;

@@ -22,10 +22,21 @@ import { SceneCreator } from 'types/SceneCreator';
 
 const addEmojis : SceneCreator = (scene) => {
 
-    const mesh : Array<Object3D> = [];
     const updateActions : Array<Update> = [];
-    const name = 'emojis';
-    
+    const mesh : Array<Object3D> = [];
+
+    const model = {
+        create: () => {},
+        update: modelUpdate(
+            updateActions,
+            { mesh }
+        ),
+        name: 'emojis',
+        actions: {},
+        mesh,
+        active: false
+    }
+
     const imageList : Array<string> = [
         "5eed3a1b-ad65-48b5-9923-cb401656e7ae-profile_image-70x70.png",
         "hahaball.png",
@@ -49,10 +60,10 @@ const addEmojis : SceneCreator = (scene) => {
     ];
 
 
-    const create = () => {
+    model.create = () => {
 
         const emojiGroup : Group = new Group();
-        emojiGroup.name = name;
+        emojiGroup.name = model.name;
  
         for (let i = 0; i < appConstants.NUM_KEYPOINTS; i++) {
         
@@ -94,6 +105,8 @@ const addEmojis : SceneCreator = (scene) => {
                 { mesh }
             )
         );
+
+        model.active = true;
     };
 
     const { actions } = addActions({
@@ -103,16 +116,9 @@ const addEmojis : SceneCreator = (scene) => {
         actionDefinitions
     );
 
-    return {
-        create,
-        update: modelUpdate(
-            updateActions,
-            { mesh }
-        ),
-        name,
-        actions,
-        mesh
-    };
+    model.actions = actions;
+
+    return model
 };
 
 export default addEmojis;

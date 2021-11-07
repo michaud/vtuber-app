@@ -3,8 +3,7 @@ import updateAction from './updateAction';
 import addActions from '../addActions';
 
 import loadModel from '../loadModel';
-import { Object3D, Scene } from 'three';
-import { Model } from 'types/model';
+import { Object3D } from 'three';
 import { Update } from 'types/Update';
 import modelUpdate from '../modelUpdate';
 import paths from 'constant/paths';
@@ -14,16 +13,27 @@ const addGlasses : SceneCreator = (scene) => {
 
     const mesh : Array<Object3D> = [];
     const updateActions : Array<Update> = [];
-    const name = 'glasses';
 
-    const create = () => {
+    const model = {
+        create: () => {},
+        update: modelUpdate(
+            updateActions,
+            { mesh }
+        ),
+        name: 'glasses',
+        actions:{},
+        mesh,
+        active: false
+    };
+
+    model.create = () => {
 
         loadModel(
             'glasses.glb',
             paths.models,
             gltf => {
 
-                gltf.scene.name = name;
+                gltf.scene.name = model.name;
 
                 scene.add(gltf.scene);
                 mesh.push(gltf.scene);
@@ -33,6 +43,7 @@ const addGlasses : SceneCreator = (scene) => {
                         { mesh }
                     )
                 );
+                model.active = true;
             }
         );
     };
@@ -44,16 +55,9 @@ const addGlasses : SceneCreator = (scene) => {
         actionDefinitions
     ); 
 
-    return {
-        create,
-        update: modelUpdate(
-            updateActions,
-            { mesh }
-        ),
-        name,
-        actions,
-        mesh
-    }
+    model.actions = actions;
+
+    return model
 };
 
 export default addGlasses;
