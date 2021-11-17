@@ -44,6 +44,7 @@ export const add = (
         loadModel(
             'blade_runner_office_stage.glb',
             paths.stage,
+            null,
             (gltf:GLTF) => {
                 gltf.scene.name = model.name;
                 scene.add(gltf.scene);
@@ -68,7 +69,7 @@ export const add = (
                 // gltf.scene.add(ambientLight);
                 // lights.push(ambientLight);
 
-                model.actions = true;
+                model.active = true;
             }
         )
     };

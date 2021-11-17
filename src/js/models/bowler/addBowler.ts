@@ -31,6 +31,7 @@ const addBowler : SceneCreator = (scene) => {
         loadModel(
             'bowler_hat.glb',
             paths.models,
+            null,
             (gltf:GLTF) => {
 
                 gltf.scene.name = model.name;

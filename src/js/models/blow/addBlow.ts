@@ -51,6 +51,7 @@ const addBlow : SceneCreator = (
         loadModel(
             'blow.glb',
             paths.models,
+            null,
             (gltf:GLTF) => {
 
                 gltf.scene.name = model.name;

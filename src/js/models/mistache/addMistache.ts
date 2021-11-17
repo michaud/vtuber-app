@@ -32,6 +32,7 @@ const addMistache : SceneCreator = (scene) => {
         loadModel(
             'mistache.glb',
             paths.models,
+            null,
             (gltf:GLTF) => {
 
                 gltf.scene.name = model.name;

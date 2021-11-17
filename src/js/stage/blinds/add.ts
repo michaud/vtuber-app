@@ -62,6 +62,7 @@ export const add = (
         loadModel(
             'blinds.glb',
             paths.stage,
+            null,
             (gltf:GLTF) => {
 
                 gltf.scene.scale.setScalar(11);

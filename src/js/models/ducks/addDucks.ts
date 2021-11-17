@@ -43,6 +43,7 @@ const addDucks : SceneCreator = (
         loadModel(
             'ducks.glb',
             paths.models,
+            null,
             (gltf:GLTF) => {
 
                 gltf.scene.name = model.name;

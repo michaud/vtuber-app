@@ -16,7 +16,8 @@ export interface Model {
         [index: string]: Update
     }
     lights? : Array<Light>
-    detectors?: Array<Detector>
+    detectors?: Array<Detector>,
+    progress?: number
 };
 
 export type ModelResources = {

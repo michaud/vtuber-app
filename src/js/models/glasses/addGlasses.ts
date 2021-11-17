@@ -31,6 +31,7 @@ const addGlasses : SceneCreator = (scene) => {
         loadModel(
             'glasses.glb',
             paths.models,
+            null,
             gltf => {
 
                 gltf.scene.name = model.name;

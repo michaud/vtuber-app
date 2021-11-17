@@ -4,9 +4,10 @@ import { LoadingManager } from 'three';
 import paths from 'constant/paths';
 
 const loadModel = (
-    fileName:string,
-    path:string,
-    onLoad:(gltf:GLTF) => void) => {
+    fileName: string,
+    path: string,
+    onProgress: (event: ProgressEvent<EventTarget>) => void,
+    onLoad: (gltf: GLTF) => void) => {
 
     const gltfLoadmanager = new LoadingManager();
 
@@ -19,7 +20,8 @@ const loadModel = (
 
     GLTFLoad.load(
         fileName,
-        onLoad
+        onLoad,
+        onProgress
     );
 };
 
