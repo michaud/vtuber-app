@@ -26,7 +26,7 @@ const addModelToUIList = (
             }
 
             return acc;
-        },[])
+        },[]);
 
     pane.addButton({
         title: `add ${model.name}`,
