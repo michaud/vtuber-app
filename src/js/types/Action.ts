@@ -16,6 +16,10 @@ export type Action = (
     resources: ActionModelResources
 ) => Update;
 
+export type ActionUpdate = {
+    [index: string]: Update
+}
+
 export interface UpdateList { [index : string] : Update }
 
 export interface ActionResources {

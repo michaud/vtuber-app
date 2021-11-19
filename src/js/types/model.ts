@@ -1,6 +1,7 @@
 import { Update } from "types/Update";
 import { Detector } from "types/Detector";
 import { VoidRunner } from "./voidRunner";
+import { ActionUpdate } from "./Action";
 import {
     AnimationAction,
     Light,
@@ -12,11 +13,9 @@ export interface Model {
     name: string
     active : boolean
     update? : Update
-    actions?: {
-        [index: string]: Update
-    }
+    actions?: ActionUpdate
     lights? : Array<Light>
-    detectors?: Array<Detector>,
+    detectors?: Array<Detector>
     progress?: number
 };
 
