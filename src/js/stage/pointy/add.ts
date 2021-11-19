@@ -10,7 +10,7 @@ export const add = (scene : Scene) => {
 
     const model : Model = {
         create: null,
-        update: () => {},
+        update: null,
         name: 'pointy background',
         actions: {},
         mesh,
@@ -28,6 +28,7 @@ export const add = (scene : Scene) => {
                 gltf.scene.scale.setScalar(130);
                 scene.add(gltf.scene);
                 mesh.push(gltf.scene);
+                model.active = true;
             }
         )
     };
