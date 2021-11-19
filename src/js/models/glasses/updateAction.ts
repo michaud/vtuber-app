@@ -9,11 +9,9 @@ const updateAction : Action = (
 
     const scale : number = 8;
 
-    const update : Update = (
-        geom,
-        _moment,
-        points
-    ) => {
+    const update : Update = ({
+        geom
+    }) => {
 
         if(mesh.length === 0) return;
 

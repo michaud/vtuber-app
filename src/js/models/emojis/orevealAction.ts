@@ -1,6 +1,5 @@
 import { Action } from "types/Action";
 import { Update } from "types/Update";
-import FaceGeometry from "face/FaceGeometry";
 import { circularMapping } from "./circularMapping";
 
 const orevealAction : Action = (
@@ -14,9 +13,9 @@ const orevealAction : Action = (
     let revealInterval = revealduration / circularMapping.length;
     let revealIndex = 0;
 
-    const orevealUpdate : Update = (
-        _geom : FaceGeometry,
-        moment : number
+    const orevealUpdate : Update = ({
+        moment
+    }
     ) => {
 
         if (!startReveal) {

@@ -9,7 +9,11 @@ import {
 import { VoidRunner } from "types/voidRunner";
 import { Update } from "types/Update";
 import { ModelResources } from "types/model";
-import { AnimationAction, Light, Object3D } from "three";
+import {
+    AnimationAction,
+    Light,
+    Object3D
+} from "three";
 
 const hasAction : HasAction = (
     actionName,
@@ -18,23 +22,27 @@ const hasAction : HasAction = (
     .findIndex((action : Update) => action.name === actionName) > -1;
 
 const getAction : GetAction = (
-    { updateName, action },
+    actionDefinition,
     updateActions,
     mesh,
     lights,
     animations?
 ) : VoidRunner => () : void => {
 
-    !hasAction(updateName, updateActions) && 
-    updateActions.push(action(
-        updateActions,
-        {
-            mesh,
-            lights,
-            animations
-        }
-    )
-)};
+    if(!hasAction(actionDefinition.updateName, updateActions)) {
+
+        const update = actionDefinition.action(
+            updateActions,
+            {
+                mesh,
+                lights,
+                animations
+            }
+        );
+
+        updateActions.push(update);
+    }
+};
 
 const addActions : AddActions = ({
         updateActions,
@@ -49,20 +57,21 @@ const addActions : AddActions = ({
         .keys(actionDefinitions)
         .reduce((acc, key) => {
 
-        const action : ActionDefinition = actionDefinitions[key];
+            const action : ActionDefinition = actionDefinitions[key];
 
-        return ({
-            ...acc,
-            [key]: getAction(
-                action,
-                updateActions,
-                mesh,
-                lights,
-                animations
-            )
-        })
-    }
-    , {})
+            return ({
+                ...acc,
+                [key]: getAction(
+                    action,
+                    updateActions,
+                    mesh,
+                    lights,
+                    animations
+                )
+            })
+        },
+        {}
+    )
 
     return {
         updateActions,

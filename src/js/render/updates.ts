@@ -16,25 +16,25 @@ const updates = (
 
         if(!model.active) return
 
-        model.update(
+        model.update({
             geom,
-            timeStamp,
+            moment: timeStamp,
             points,
             normals
-        );
+        });
 
         model.detectors?.forEach(detector => {
             detector.detectAction(geom, detector.detection(geom))
         })
     });
 
-    stages.forEach((stage : Model) => stage.active && stage.update(
+    stages.forEach((stage : Model) => stage.active && stage.update({
         geom,
-        timeStamp,
+        moment: timeStamp,
         points,
         normals,
-        stage.lights
-    ));
+        lights: stage.lights
+    }));
 };
 
 export default updates;

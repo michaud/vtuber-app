@@ -16,10 +16,9 @@ const twirlAction : Action = (
     const geomIndex = Math.floor(Math.random() * 468);
     let oriScale : Vector3;
 
-    const twirlUpdate : Update = (
-        _,
-        moment : number
-    ) => {
+    const twirlUpdate : Update = ({
+        moment
+    }) => {
 
         if (!start) {
             start = moment;

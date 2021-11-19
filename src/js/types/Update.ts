@@ -4,11 +4,16 @@ import {
     Light
 } from "three";
 
-export type Update = (
+export interface UpdateResources {
     geom? : FaceGeometry,
     moment? : number,
     points? : BufferAttribute,
     normals? :  BufferAttribute,
-    lights? : Array<Light>
-) => void;
+    lights? : Array<Light>,
+    resources?: object,
+    timeStamp?: number
+}
+
+export type Update = (resources? : UpdateResources) => void;
+
 

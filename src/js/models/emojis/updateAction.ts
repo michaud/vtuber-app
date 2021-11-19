@@ -32,12 +32,11 @@ const updateAction : Action = (
 
     const scale = 7;
 
-    const emojisUpdate : Update = (
+    const emojisUpdate : Update = ({
         geom,
-        _moment,
         points,
         normals
-    ) => {
+    }) => {
 
         const track : TrackData = geom.track(6, 196, 419);
 

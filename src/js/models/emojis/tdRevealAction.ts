@@ -13,11 +13,9 @@ const tdRevealAction : Action = (
     let revealInterval : number = revealduration / verticalMapping.length;
     let revealIndex : number = 0;
 
-    const tdRevealUpdate : Update = (
-        _geom,
-        moment : number
-    ) => {
-
+    const tdRevealUpdate : Update = ({
+        moment
+    }) => {
         if (!startReveal) {
             startReveal = moment;
             mesh.forEach(plane => plane.children[0].visible = false);

@@ -76,7 +76,8 @@ const addModelInteractions = (
             .reduce((acc, key) => ({
                 ...acc,
                 [key]: () => model.actions[key]()
-            }), {});
+            })
+            , {});
 
         addModelToUIList(
             model,

@@ -9,9 +9,9 @@ const updateAction : Action = (
 
     const scale = 9;
 
-    const blowUpdate : Update = (
+    const blowUpdate : Update = ({
         geom
-    ) => {
+    }) => {
 
         if(mesh.length === 0) return;
 

@@ -21,6 +21,7 @@ export const add = (scene : Scene) => {
         loadModel(
             'pointy_background.glb',
             paths.stage,
+            null,
             (gltf:GLTF) => {
                 gltf.scene.name = model.name;
                 gltf.scene.scale.setScalar(130);

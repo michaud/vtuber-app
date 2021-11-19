@@ -25,10 +25,10 @@ const displaceAction : Action = (
 
     img.src = '/assets/center_bulb2.png';
 
-    const displaceUpdate : Update = (
-        geom : FaceGeometry,
-        moment : number
-    ) => {
+    const displaceUpdate : Update = ({
+        geom,
+        moment
+    }) => {
 
         if (!startReveal) startReveal = moment;
 

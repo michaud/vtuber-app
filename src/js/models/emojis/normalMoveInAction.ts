@@ -16,10 +16,10 @@ const normalMoveInAction : Action = (
     let interval = duration / steps;
     let index = 0;
 
-    const normalMoveInUpdate : Update = (
-        geom : FaceGeometry,
-        moment : number
-    ) => {
+    const normalMoveInUpdate : Update = ({
+        geom,
+        moment
+    }) => {
 
         if (!start) {
             start = moment;

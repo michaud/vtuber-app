@@ -3,8 +3,7 @@ import { Update } from "types/Update";
 
 const updateAction : Action = () => {
 
-    const update : Update = (
-    ) => {}
+    const update : Update = () => {}
 
     return update;
 };

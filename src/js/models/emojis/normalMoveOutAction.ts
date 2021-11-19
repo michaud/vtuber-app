@@ -15,10 +15,10 @@ const normalMoveOutAction : Action = (
     let interval = duration / steps;
     let index = 0;
 
-    const normalMoveOutUpdate : Update = (
+    const normalMoveOutUpdate : Update = ({
         geom,
         moment
-    ) => {
+    }) => {
 
         if (!start) {
             start = moment;
