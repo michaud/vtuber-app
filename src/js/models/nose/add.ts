@@ -4,6 +4,7 @@ import {
     Mesh,
     Object3D
 } from 'three';
+import { Model } from 'types/model';
 
 import { SceneCreator } from 'types/SceneCreator';
 import { Update } from 'types/Update';
@@ -13,13 +14,13 @@ import modelUpdate from '../modelUpdate';
 import actionDefinitions from './actionDefinitions';
 import updateAction from './updateAction';
 
-const addNose : SceneCreator = (scene) => {
+export const add : SceneCreator = (scene) => {
 
     const mesh : Array<Object3D> = [];
     const updateActions : Array<Update> = [];
 
-    const model = {
-        create : () => {},
+    const model : Model = {
+        create : null,
         update: modelUpdate(
             updateActions,
             { mesh }
@@ -30,7 +31,7 @@ const addNose : SceneCreator = (scene) => {
         active: false
     }
 
-    const create = () => {
+    model.create = () => {
 
         // Create a red material for the nose.
         const noseMaterial = new MeshStandardMaterial({
@@ -69,5 +70,3 @@ const addNose : SceneCreator = (scene) => {
 
     return model;
 };
-
-export default addNose;

@@ -41,8 +41,8 @@ export const add = (
         'pattern_1590067427667_clip01_adj.png'
     ];
 
-    const model = {
-        create: () => {},
+    const model : Model = {
+        create: null,
         update: modelUpdate(
             updateActions,
             {

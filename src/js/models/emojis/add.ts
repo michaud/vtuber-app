@@ -21,7 +21,7 @@ import paths from 'constant/paths';
 import { appConstants } from 'constant/appConstants';
 import { SceneCreator } from 'types/SceneCreator';
 
-const addEmojis : SceneCreator = (scene) => {
+export const add : SceneCreator = (scene) => {
 
     const updateActions : Array<Update> = [];
     const mesh : Array<Object3D> = [];
@@ -121,5 +121,3 @@ const addEmojis : SceneCreator = (scene) => {
 
     return model
 };
-
-export default addEmojis;

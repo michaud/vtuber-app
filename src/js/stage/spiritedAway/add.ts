@@ -37,7 +37,7 @@ export const add = (
     ];
 
     const model : Model = {
-        create: () => {},
+        create: null,
         update: modelUpdate(
             updateActions,
             {

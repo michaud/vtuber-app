@@ -11,8 +11,9 @@ import addActions from "../addActions";
 import modelUpdate from "../modelUpdate";
 import actionDefinitions from "./actionDefinitions";
 import paths from "constant/paths";
+import { Model } from "types/model";
 
-const addMask : SceneCreator = (
+export const add : SceneCreator = (
     scene,
     _mixer,
     faceGeometry
@@ -21,8 +22,8 @@ const addMask : SceneCreator = (
     const mesh : Array<Object3D> = [];
     const updateActions : Array<Update> = [];
 
-    const model = {
-        create: () => {},
+    const model : Model = {
+        create: null,
         update: modelUpdate(
             updateActions,
             { mesh }
@@ -76,5 +77,3 @@ const addMask : SceneCreator = (
 
     return model;
 };
-
-export default addMask;

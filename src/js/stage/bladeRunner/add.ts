@@ -23,8 +23,8 @@ export const add = (
     const animations : Array<AnimationAction> = [];
     const lights : Array<Light> = [];
 
-    const model = {
-        create: () => {},
+    const model : Model = {
+        create: null,
         update: modelUpdate(
             updateActions,
             {

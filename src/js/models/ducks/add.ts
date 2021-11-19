@@ -14,10 +14,11 @@ import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 import modelUpdate from '../modelUpdate';
 import paths from 'constant/paths';
 import { SceneCreator } from 'types/SceneCreator';
+import { Model } from 'types/model';
 
 const duckIds : Array<string> = ['000', '001', '002', '003', '004', '005', '006', '007'];
 
-const addDucks : SceneCreator = (
+export const add : SceneCreator = (
     scene,
     mixer
 ) => {
@@ -26,8 +27,8 @@ const addDucks : SceneCreator = (
     const mesh : Array<Object3D> = [];
     const animations : Array<AnimationAction> = [];
 
-    const model = {
-        create: () => {},
+    const model : Model = {
+        create: null,
         update: modelUpdate(
             updateActions,
             { mesh }
@@ -107,5 +108,3 @@ const addDucks : SceneCreator = (
 
     return model
 };
-
-export default addDucks;

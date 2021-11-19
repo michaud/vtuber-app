@@ -2,13 +2,14 @@ import { Object3D, Scene } from "three";
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
 import loadModel from "models/loadModel";
 import paths from "constant/paths";
+import { Model } from "types/model";
 
 export const add = (scene : Scene) => {
 
     const mesh : Array<Object3D> =[];
 
-    const model = {
-        create: () => {},
+    const model : Model = {
+        create: null,
         update: () => {},
         name: 'pointy background',
         actions: {},

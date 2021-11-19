@@ -9,14 +9,15 @@ import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 import modelUpdate from '../modelUpdate';
 import paths from 'constant/paths';
 import { SceneCreator } from 'types/SceneCreator';
+import { Model } from 'types/model';
 
-const addMistache : SceneCreator = (scene) => {
+export const add : SceneCreator = (scene) => {
 
     const mesh : Array<Object3D> =[];
     const updateActions : Array<Update> = [];
 
-    const model = {
-        create: () => {},
+    const model : Model = {
+        create: null,
         update: modelUpdate(
             updateActions,
             { mesh }
@@ -27,7 +28,7 @@ const addMistache : SceneCreator = (scene) => {
         active: false
     };
 
-    const create = () => {
+    model.create = () => {
 
         loadModel(
             'mistache.glb',
@@ -64,5 +65,3 @@ const addMistache : SceneCreator = (scene) => {
 
     return model
 };
-
-export default addMistache;
