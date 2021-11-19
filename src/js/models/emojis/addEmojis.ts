@@ -1,3 +1,5 @@
+import { Update } from 'types/Update';
+import { Model } from 'types/Model';
 import {
     TextureLoader,
     Mesh,
@@ -14,7 +16,6 @@ import addPlaneTextures from "./addPlaneTextures";
 import actionDefinitions from './actionDefinitions';
 import updateAction from './updateAction';
 import modelUpdate from '../modelUpdate';
-import { Update } from 'types/Update';
 
 import paths from 'constant/paths';
 import { appConstants } from 'constant/appConstants';
@@ -25,8 +26,8 @@ const addEmojis : SceneCreator = (scene) => {
     const updateActions : Array<Update> = [];
     const mesh : Array<Object3D> = [];
 
-    const model = {
-        create: () => {},
+    const model : Model = {
+        create: null,
         update: modelUpdate(
             updateActions,
             { mesh }
