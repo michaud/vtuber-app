@@ -6,6 +6,7 @@ import { add as addMask } from "./mask/add";
 import { add as addNose } from "./nose/add";
 import { add as addEmojis } from './emojis/add';
 import { add as addMistache } from './mistache/add';
+import { add as addOcculus } from './occulus/add';
 
 import { SceneCreator } from 'types/SceneCreator';
 
@@ -17,7 +18,8 @@ const modelCreators : Array<SceneCreator> = [
     addMask,
     addBowler,
     addBlow,
-    addMistache
+    addMistache,
+    addOcculus
 ];
 
 export default modelCreators;

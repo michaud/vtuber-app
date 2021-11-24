@@ -1,19 +1,8 @@
-import { ActionModelResources } from "types/Action";
 import { Update } from "types/Update";
 
 const modelUpdate = (
-    updateActions : Array<Update>,
-    _: ActionModelResources
-) : Update => (
-    geom,
-    moment,
-    points,
-    normals
-) => updateActions.forEach((action : Update) => action(
-    geom,
-    moment,
-    points,
-    normals
-));
+    updateActions : Array<Update>
+) : Update => (resources) => updateActions
+    .forEach((action : Update) => action(resources));
 
 export default modelUpdate;

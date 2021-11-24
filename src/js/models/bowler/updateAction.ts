@@ -11,11 +11,16 @@ const updateAction : Action = (
 
     const update : Update = ({
         geom,
+        faceTrackindeces
     }) => {
 
         if(mesh.length === 0) return;
 
-        const track : TrackData = geom.track(10, 108, 337);
+        const track : TrackData = geom.track(
+            faceTrackindeces[0],
+            faceTrackindeces[1],
+            faceTrackindeces[2]
+        );
 
         mesh[0].scale.setScalar(scale * track.scale);
         mesh[0].position.copy(track.position);

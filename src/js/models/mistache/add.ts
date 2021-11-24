@@ -18,14 +18,12 @@ export const add : SceneCreator = (scene) => {
 
     const model : Model = {
         create: null,
-        update: modelUpdate(
-            updateActions,
-            { mesh }
-        ),
+        update: modelUpdate(updateActions),
         name: 'mistache',
         actions: {},
         mesh,
-        active: false
+        active: false,
+        faceTrackindeces: [164, 267, 37]
     };
 
     model.create = () => {

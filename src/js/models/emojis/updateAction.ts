@@ -35,10 +35,15 @@ const updateAction : Action = (
     const emojisUpdate : Update = ({
         geom,
         points,
-        normals
+        normals,
+        faceTrackindeces
     }) => {
 
-        const track : TrackData = geom.track(6, 196, 419);
+        const track : TrackData = geom.track(
+            faceTrackindeces[0],
+            faceTrackindeces[1],
+            faceTrackindeces[2]
+        );
 
         for (let i = 0; i < appConstants.NUM_KEYPOINTS; i++) {
 

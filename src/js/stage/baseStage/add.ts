@@ -18,13 +18,7 @@ export const add = (scene: Scene) => {
 
     const model = {
         create: () => {},
-        update: modelUpdate(
-            updateActions,
-            {
-                mesh,
-                lights
-            }
-        ),
+        update: modelUpdate(updateActions),
         name: 'baseStage',
         actions: {},
         mesh,

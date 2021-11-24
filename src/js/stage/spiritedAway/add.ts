@@ -38,13 +38,7 @@ export const add = (
 
     const model : Model = {
         create: null,
-        update: modelUpdate(
-            updateActions,
-            {
-                mesh,
-                lights,
-            }
-        ),
+        update: modelUpdate(updateActions),
         name: 'spiritedAwayStage',
         actions:{},
         mesh,

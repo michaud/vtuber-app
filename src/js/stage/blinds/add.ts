@@ -43,13 +43,7 @@ export const add = (
 
     const model : Model = {
         create: null,
-        update: modelUpdate(
-            updateActions,
-            {
-                mesh,
-                lights,
-            }
-        ),
+        update: modelUpdate(updateActions),
         name: 'blinds',
         actions: {},
         mesh,
@@ -67,6 +61,7 @@ export const add = (
 
                 gltf.scene.scale.setScalar(11);
                 gltf.scene.name = model.name;
+
                 scene.add(gltf.scene);
                 mesh.push(gltf.scene);
 
@@ -112,7 +107,7 @@ export const add = (
 
                 (plane.material as MeshStandardMaterial).map = imgtexture;
 
-                gltf.scene.position.setZ(-100);
+                gltf.scene.position.setZ(-1000);
 
                 gltf.animations.forEach((clip:AnimationClip) => {
 

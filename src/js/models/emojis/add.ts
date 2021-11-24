@@ -28,14 +28,12 @@ export const add : SceneCreator = (scene) => {
 
     const model : Model = {
         create: null,
-        update: modelUpdate(
-            updateActions,
-            { mesh }
-        ),
+        update: modelUpdate(updateActions),
         name: 'emojis',
         actions: {},
         mesh,
-        active: false
+        active: false,
+        faceTrackindeces: [6, 196, 419]
     }
 
     const imageList : Array<string> = [

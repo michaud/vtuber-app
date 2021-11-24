@@ -3,17 +3,16 @@ import {
     BufferAttribute,
     Light
 } from "three";
+import { ActionModelResources } from "./Action";
 
-export interface UpdateResources {
+export interface StepUpdateResources {
     geom? : FaceGeometry,
     moment? : number,
     points? : BufferAttribute,
     normals? :  BufferAttribute,
-    lights? : Array<Light>,
-    resources?: object,
-    timeStamp?: number
+    timeStamp?: number,
 }
 
+export type UpdateResources = StepUpdateResources & ActionModelResources
+
 export type Update = (resources? : UpdateResources) => void;
-
-

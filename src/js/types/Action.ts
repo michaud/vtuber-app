@@ -8,7 +8,8 @@ import { Update } from "./Update";
 export interface ActionModelResources {
     mesh? : Array<Object3D>,
     lights? : Array<Light>,
-    animations? : Array<AnimationAction>
+    animations? : Array<AnimationAction>,
+    faceTrackindeces? : Array<number>
 };
 
 export type Action = (

@@ -20,7 +20,8 @@ const updates = (
             geom,
             moment: timeStamp,
             points,
-            normals
+            normals,
+            faceTrackindeces: model.faceTrackindeces
         });
 
         model.detectors?.forEach(detector => {
