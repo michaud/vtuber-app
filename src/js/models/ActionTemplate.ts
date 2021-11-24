@@ -16,10 +16,10 @@ const nameAction = (
     let interval = duration / steps;
     let index = 0;
 
-    const nameUpdate : Update = (
-        geom : FaceGeometry,
-        moment : number
-    ) => {
+    const nameUpdate : Update = ({
+        geom,
+        moment
+    }) => {
 
         if (!start) {
             start = moment;
