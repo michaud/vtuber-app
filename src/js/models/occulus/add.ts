@@ -3,6 +3,7 @@ import {
     AnimationClip,
     LoopOnce,
     Object3D,
+    PointLight,
 } from 'three';
 
 import updateAction from './updateAction';
@@ -32,7 +33,8 @@ export const add : SceneCreator = (
         actions: {},
         mesh,
         active: false,
-        faceTrackindeces: [6, 196, 419]
+        faceTrackindeces: [6, 196, 419],
+        scale: 6
     };
 
     model.create = () => {
@@ -44,7 +46,14 @@ export const add : SceneCreator = (
             (gltf:GLTF) => {
 
                 gltf.scene.name = model.name;
-                
+                gltf.scene.traverse(
+                    (el:Object3D) => {
+                        if(el.type === 'SpotLight') {
+                            (el as PointLight).decay = 0;
+                            //lights.push(el as Light);
+                        }
+                    }
+                );
                 scene.add(gltf.scene);
                 mesh.push(gltf.scene);
 

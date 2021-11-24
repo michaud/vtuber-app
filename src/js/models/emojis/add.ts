@@ -33,7 +33,8 @@ export const add : SceneCreator = (scene) => {
         actions: {},
         mesh,
         active: false,
-        faceTrackindeces: [6, 196, 419]
+        faceTrackindeces: [6, 196, 419],
+        scale: 7
     }
 
     const imageList : Array<string> = [

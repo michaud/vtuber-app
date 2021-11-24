@@ -21,7 +21,8 @@ const updates = (
             moment: timeStamp,
             points,
             normals,
-            faceTrackindeces: model.faceTrackindeces
+            faceTrackindeces: model.faceTrackindeces,
+            scale: model.scale
         });
 
         model.detectors?.forEach(detector => {

@@ -27,16 +27,16 @@ const getScaleFactorForIndex = (
 
 const updateAction : Action = (
     _actionList,
-    { mesh }
+    {
+        mesh
+    }
 ) => {
-
-    const scale = 7;
-
     const emojisUpdate : Update = ({
         geom,
         points,
         normals,
-        faceTrackindeces
+        faceTrackindeces,
+        scale
     }) => {
 
         const track : TrackData = geom.track(

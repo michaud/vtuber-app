@@ -16,8 +16,9 @@ export interface Model {
     actions?: ActionUpdate
     lights? : Array<Light>
     detectors?: Array<Detector>
-    progress?: number,
+    progress?: number
     faceTrackindeces?: Array<number>
+    scale?: number
 };
 
 export type ModelResources = {

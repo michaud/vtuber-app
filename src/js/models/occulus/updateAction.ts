@@ -9,11 +9,10 @@ const updateOcculusAction : Action = (
     }
 ) : Update => {
 
-    const scale : number = 7;
-
     const update : Update = ({
         geom,
-        faceTrackindeces
+        faceTrackindeces,
+        scale
     }) => {
 
         if(mesh.length === 0) return;

@@ -26,7 +26,8 @@ export const add : SceneCreator = (scene) => {
         mesh,
         actions: {},
         active: false,
-        faceTrackindeces: [5, 45, 275]
+        faceTrackindeces: [5, 45, 275],
+        scale: 15
     }
 
     model.create = () => {

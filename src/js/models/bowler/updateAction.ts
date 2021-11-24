@@ -4,14 +4,15 @@ import { Action } from "types/Action";
 
 const updateAction : Action = (
     _actionList,
-    { mesh }
+    {
+        mesh
+    }
 ) : Update => {
-
-    const scale = 550;
 
     const update : Update = ({
         geom,
-        faceTrackindeces
+        faceTrackindeces,
+        scale
     }) => {
 
         if(mesh.length === 0) return;

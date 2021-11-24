@@ -4,14 +4,15 @@ import { Action } from "types/Action";
 
 const updateDuckAction : Action = (
     _updateList,
-    { mesh }
+    {
+        mesh
+    }
 ) : Update => {
-
-    const scale : number = 9;
 
     const update : Update = ({
         geom,
-        faceTrackindeces
+        faceTrackindeces,
+        scale
     }) => {
 
         if(mesh.length === 0) return;

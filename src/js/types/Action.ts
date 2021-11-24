@@ -9,7 +9,8 @@ export interface ActionModelResources {
     mesh? : Array<Object3D>,
     lights? : Array<Light>,
     animations? : Array<AnimationAction>,
-    faceTrackindeces? : Array<number>
+    faceTrackindeces? : Array<number>,
+    scale?: number
 };
 
 export type Action = (
