@@ -17,11 +17,9 @@ const updateDuckAction : Action = (
 
         if(mesh.length === 0) return;
 
-        const track : TrackData = geom.track(
-            faceTrackindeces[0],
-            faceTrackindeces[1],
-            faceTrackindeces[2]
-        );
+        const [one, two, three] = faceTrackindeces;
+
+        const track : TrackData = geom.track(one, two, three);
 
         const adjustedScale : number = scale * track.scale;
 
