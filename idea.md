@@ -50,7 +50,7 @@
 
 - pin head
 - eye piece
-    - HUD
+    V Occulus
 - nose bleed
 - hats
     - japanese war lord helmet
@@ -61,11 +61,11 @@
 - two face
     - split
     - copy, one left, one right
-- ears
+V ears
+- steam from ears
 - mask
     - transparency
 - pipe
-- steam from ears
 - companion
 - angel and devil on shoulder
 - chat dreadlocks
